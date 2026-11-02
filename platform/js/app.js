@@ -11,7 +11,7 @@
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
   /* ---------- state (persisted per browser) ---------- */
-  const KEY = "ravi-brand-v1";
+  const KEY = "ravi-brand-v3";
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { saved = {}; }
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -172,7 +172,7 @@
         <div class="card fade-in"><h3>${c.name} <small>${c.dates}</small><span class="tag acc right">${c.stateFa}</span></h3>
           <div class="stack">${c.kpis.map(kpiRow).join("")}</div>
           <div class="divider"></div>
-          <div class="suggest"><p><b>اقدام بعدی پیشنهادی:</b> صبر تا انتشار L4 در ایتا (۱۱ آبان)؛ اگر کمتر از ۶۵ هزار آورد، رزرو جایگزین بله فعال شود. تا ۴۸ ساعت قبل قابل لغو است.</p><button class="btn sm acc" data-go="approvals">تأییدها ←</button></div>
+          <div class="suggest"><p><b>اقدام بعدی پیشنهادی:</b> صبر تا انتشار L4 در ایتا (۱۱ آبان)؛ اگر کمتر از ۵۰ هزار آورد، رزرو جایگزین بله فعال شود. تا ۴۸ ساعت قبل قابل لغو است.</p><button class="btn sm acc" data-go="approvals">تأییدها ←</button></div>
         </div>
         <div class="stack">${D.campaigns.map((k) => `<div class="card flat fade-in"><div class="row"><b class="grow">${k.name}</b><span class="tag ${k.state === "live" ? "acc" : k.state === "closed" ? "ok" : ""}">${k.stateFa}</span></div>
           <div class="tiny muted" style="margin:6px 0">${k.dates} · بودجه ${num(k.budget)} میلیون تومان</div>
@@ -195,7 +195,7 @@
             <div class="grid g2"><div><b>۴. مهلت</b><input type="text" value="${W.deadline}" /></div><div><b>۵. بودجه</b><input type="text" value="${W.budget}" /></div></div>
             <div><b>۶. بسترهای ترجیحی</b>${chips(W.channels, [0, 1, 3, 5, 6])}</div>
             <div><b>۷. سطح تعهد</b>${chips(W.commit, [1])}</div>
-            <div class="suggest"><p><b>اطلاعات ناقص:</b> مجوز ادعای سلامت «گوارش بهتر» هنوز ارائه نشده است. تا آن زمان این ادعا در محتوا استفاده نمی‌شود.</p></div>
+            <div class="suggest"><p><b>اطلاعات ناقص:</b> برای ادعای «مقاوم‌ترین میلگرد ایران» مقایسه‌ی مستقل ارائه نشده است. تا آن زمان این ادعا در محتوا استفاده نمی‌شود.</p></div>
             <button class="btn primary" id="runW">ساخت سه سناریو</button>
           </div></div>
         <div class="stack" id="scen">${S.wizardRun ? scenHTML() : `<div class="card flat empty fade-in">پس از تأیید بریف، راوی سه سناریو با فرض‌های صریح می‌سازد: محتاط، متعادل، آزمایشی.</div>`}</div>
@@ -251,8 +251,8 @@
     $$("[data-cr]", el).forEach((b) => (b.onclick = () => { S.studio = b.dataset.cr; rerender(); }));
     $("#varB").onclick = async () => {
       $("#alt").innerHTML = `<div class="typing"><i></i><i></i><i></i></div>`; await sleep(800);
-      $("#alt").innerHTML = `<div class="suggest fade-in" style="margin-top:12px"><p><b>پیشنهاد:</b> «شام سبک امشب: ماست سپیدار+ با خیار و نعناع. بدون شکر افزوده. #تبلیغ». ادعای سلامت حذف شد؛ فقط واقعیت تأییدشده استفاده شده.</p><button class="btn sm acc" id="sendA">ارسال برای تأیید</button></div>`;
-      $("#sendA").onclick = () => { S.approvals.unshift({ id: "a" + Date.now(), kind: "محتوا", t: "قلاب «شام سبک امشب» نسخه‌ی ۱", d: "جایگزین بدون ادعای سلامت برای L4.", who: "مدیر برند سپیدار", amount: 0, status: "pending" }); addLog(D.user.name, "نسخه‌ی «شام سبک امشب» برای تأیید ارسال شد"); toast("به صف تأیید رفت"); rerender(); };
+      $("#alt").innerHTML = `<div class="suggest fade-in" style="margin-top:12px"><p><b>پیشنهاد:</b> «۳ اشتباه در خرید میلگرد که هزینه‌ی پروژه را بالا می‌برد. اشتباه سوم: برگه‌ی آزمون کشش محموله را نخواستن. #تبلیغ». ادعای برتری حذف شد؛ فقط واقعیت تأییدشده استفاده شده.</p><button class="btn sm acc" id="sendA">ارسال برای تأیید</button></div>`;
+      $("#sendA").onclick = () => { S.approvals.unshift({ id: "a" + Date.now(), kind: "محتوا", t: "قلاب «۳ اشتباه در خرید میلگرد» نسخه‌ی ۱", d: "جایگزین بدون ادعای برتری برای L4.", who: "مدیر بازاریابی فولاد سپیدار", amount: 0, status: "pending" }); addLog(D.user.name, "نسخه‌ی «۳ اشتباه در خرید میلگرد» برای تأیید ارسال شد"); toast("به صف تأیید رفت"); rerender(); };
     };
   };
 

@@ -4,13 +4,17 @@ Date: 2026-11-02 (۱۱ آبان ۱۴۰۵) · Status: script v1 for the first onb
 
 ## The session in one sentence
 
-A brand asks for 500,000 real views; today the answer is a guess. Ravi turns that one message into **thousands of verifiable agent actions and about ten human decisions**, and the partner can start selling it after a 10-day sprint.
+A steel company asks for 400,000 real views and 100 price enquiries from contractors and engineers; today the answer is a guess. Ravi turns that one message into **thousands of verifiable agent actions and about ten human decisions**, and the partner can start selling it after a 10-day sprint.
 
 ## What the partner should leave believing
 
 1. **"They understand our clients and our market."** We start from the brand's message and from the 2026 market, not from our technology.
 2. **"The AI system is real, big and safe."** Hundreds of parallel agents do the operational work; humans approve money, publication and claims; nothing is faked.
 3. **"The first step is small and concrete."** 10 days, 5 client conversations, 3 old campaign files, then a paid pilot with go/no-go gates.
+
+## The example client
+
+The demo campaign uses a **fictional steel company, «فولاد سپیدار»**, launching A4 rebar (میلگرد A4) to contractors, structural engineers and steel distributors. The partner named steel as one of its client sectors. It also shows the B2B version of the promise: separate view targets per platform **plus logged price enquiries with project names** (استعلام قیمت ثبت‌شده), which matter more to an industrial client than raw reach. All names, channels and numbers are invented; do not present them as a real company or real results.
 
 ## Running order (about 40 minutes)
 
@@ -64,7 +68,7 @@ Each scene: what is on screen, what the presenter says (Persian, also shown as t
 **Notes:** Start in silence for three seconds. Let the points form the word, then speak.
 
 ### Scene 1 · One message (60 s)
-**Screen:** a chat bubble from a brand manager: «سلام. برای ماست جدیدمون تا آخر ماه ۵۰۰ هزار بازدید واقعی می‌خوایم، توی روبیکا، ایتا و اینستاگرام. شدنیه؟ چقدر؟ از کجا بفهمیم واقعیه؟» The points split into three groups: «شدنیه؟»، «چقدر؟»، «واقعیه؟».
+**Screen:** a chat bubble from the marketing manager of «فولاد سپیدار» (fictional name): «سلام. برای معرفی میلگرد جدیدمون به پیمانکارها و مهندس‌ها، تا آخر ماه ۴۰۰ هزار بازدید واقعی و دست‌کم ۱۰۰ استعلام قیمت می‌خوایم؛ توی روبیکا، ایتا و آپارات. شدنیه؟ چقدر؟ از کجا بفهمیم واقعیه؟» The points split into three groups: «شدنیه؟»، «چقدر؟»، «واقعیه؟».
 **Narration:**
 > شما هر هفته این پیام را می‌گیرید. سه سؤال در آن است: شدنی است؟ چقدر هزینه دارد؟ از کجا بفهمیم واقعی است؟ امروز جواب هر سه حدس است: یک فهرست کانال، یک عدد، و چند اسکرین‌شات در پایان. راوی ساخته شده تا جواب هر سه را با داده بدهد.
 
@@ -88,10 +92,10 @@ Each scene: what is on screen, what the presenter says (Persian, also shown as t
 A counter runs through all ten stations: **«کار انجام‌شده توسط عامل‌ها»** and **«تصمیم انسانی»**. At the end it reads about **۱۸٬۷۰۰ actions and ۹ decisions**.
 
 **4a · Brief (40 s).** Three agents read the message; a structured brief fills in: objective, metric per platform, audience, deadline, budget; four missing questions appear.
-> سه عامل پیام را می‌خوانند و آن را به یک بریف دقیق تبدیل می‌کنند: هدف هر بستر جدا، مخاطب، مهلت و بودجه. چهار سؤال هم می‌پرسند که مشتری جا انداخته، مثل مجوز ادعای سلامت. اولین تصمیم انسانی: تأیید بریف.
+> سه عامل پیام را می‌خوانند و آن را به یک بریف دقیق تبدیل می‌کنند: هدف هر بستر جدا، مخاطب، مهلت و بودجه. چهار سؤال هم می‌پرسند که مشتری جا انداخته، مثل گواهی استاندارد و فرم استعلام قیمت. اولین تصمیم انسانی: تأیید بریف.
 
-**4b · Market radar (45 s).** 500 listening agents fan out over public food and family channels and return with what is rising.
-> شب اول، پانصد عامل شنود محتوای عمومی صنعت غذا را در روبیکا، ایتا، بله و آپارات می‌خوانند: کدام قالب رشد کرده، کدام قلاب جواب داده، رقبا چه تبلیغی کرده‌اند. صبح، خلاصه روی میز است.
+**4b · Market radar (45 s).** 500 listening agents fan out over public steel-price, contractor and engineering channels and return with what is rising.
+> شب اول، پانصد عامل شنود محتوای عمومی صنعت فولاد و ساختمان را در روبیکا، ایتا، بله و آپارات می‌خوانند: کدام قالب رشد کرده، کدام قلاب جواب داده، رقبا چه تبلیغی کرده‌اند. صبح، خلاصه روی میز است.
 
 **4c · Supplier quality index (50 s).** A grid of 1,200 channels is scanned; most turn green or amber, 87 turn red for abnormal view patterns; 60 move into a shortlist.
 > حالا مهم‌ترین قسمت: هزار و دویست کانال را بررسی می‌کنیم. نه تعداد عضو، بلکه رفتار واقعی بازدید: منحنی رشد هر پست، نسبت بازدید به عضو، کیفیت نظرها. هشتاد و هفت کانال الگوی غیرعادی دارند و کنار می‌روند. پیش از خرج یک ریال، تقلب را فیلتر کرده‌ایم.
@@ -102,14 +106,14 @@ A counter runs through all ten stations: **«کار انجام‌شده توسط
 **4e · Outreach (45 s).** 60 agents contact 60 real admins and creators at once from the company's business account; replies stream in.
 > شصت عامل هم‌زمان با شصت ادمین و سازنده‌ی واقعی گفت‌وگو می‌کنند: قیمت، زمان، نوع مدرک. در دو ساعت چهل و هشت پاسخ رسیده؛ کاری که یک تیم را یک هفته مشغول می‌کرد. قرارداد و تعهد مالی را انسان می‌بندد.
 
-**4f · Creative (50 s).** 24 variants appear; a panel of 300 simulated readers reacts; three hooks rise; one health claim is blocked.
-> عامل‌های محتوا بیست و چهار نسخه برای هر قالب می‌سازند. یک پنل سیصد نفره‌ی شبیه‌سازی‌شده آن‌ها را از نظر وضوح نقد می‌کند. این پیش‌آزمون است، نه پیش‌بینی فروش؛ برنده‌ها در جایگاه واقعی آزموده می‌شوند. عامل بررسی ادعا جلوی یک ادعای سلامت بی‌مجوز را می‌گیرد. برند سه نسخه را تأیید می‌کند.
+**4f · Creative (50 s).** 24 variants appear; a panel of 300 simulated readers reacts; three hooks rise; one unsupported superiority claim («مقاوم‌ترین میلگرد ایران») is blocked.
+> عامل‌های محتوا بیست و چهار نسخه برای هر قالب می‌سازند. یک پنل سیصد نفره‌ی شبیه‌سازی‌شده آن‌ها را از نظر وضوح نقد می‌کند. این پیش‌آزمون است، نه پیش‌بینی فروش؛ برنده‌ها در جایگاه واقعی آزموده می‌شوند. عامل بررسی ادعا جلوی ادعای بی‌پشتوانه‌ی «مقاوم‌ترین میلگرد ایران» را می‌گیرد. برند سه نسخه را تأیید می‌کند.
 
 **4g · Launch (40 s).** 41 placements light up within the same hour; each gets a check mark with post ID and time.
 > ساعت دوازده، کمپین روی چهل و یک جایگاه واقعی منتشر می‌شود، همه در یک ساعت. برای هر پست، شناسه، زمان و محتوای منتشرشده ثبت و با نسخه‌ی تأییدشده مقایسه می‌شود.
 
-**4h · Live operations (60 s).** Delivery curves rise against forecast bands; Eitaa lags; a recovery proposal appears; the presenter clicks «تأیید». Comment counter on the brand's own page rises.
-> چهل و یک عامل پایش هر پانزده دقیقه آمار را می‌خوانند. ساعت هجدهم، ایتا از منحنی عقب است. عامل بازیابی رزرو جایگزین در بله را پیشنهاد می‌دهد. یک کلیک انسانی، و کمپین به مسیر برمی‌گردد. هم‌زمان، دستیار برند با نام و نشان خودش به سؤال‌های واقعی مشتری‌ها در صفحه‌ی برند جواب می‌دهد و سی و هشت سرنخ فروش را به تیم فروش می‌فرستد.
+**4h · Live operations (60 s).** Delivery curves rise against forecast bands; Eitaa lags; a recovery proposal appears; the presenter clicks «تأیید». Counters for technical/price questions answered and enquiries passed to sales rise.
+> چهل و یک عامل پایش هر پانزده دقیقه آمار را می‌خوانند. ساعت هجدهم، ایتا از منحنی عقب است. عامل بازیابی رزرو جایگزین در بله را پیشنهاد می‌دهد. یک کلیک انسانی، و کمپین به مسیر برمی‌گردد. هم‌زمان، دستیار برند با نام و نشان خودش به پرسش‌های فنی و قیمت در صفحه‌ی برند جواب می‌دهد و چهل و دو استعلام را به واحد فروش می‌فرستد.
 
 **Notes:** Let the partner click «تأیید» themselves if presenting on their laptop.
 
