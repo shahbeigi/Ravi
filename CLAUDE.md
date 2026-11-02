@@ -6,13 +6,14 @@
 | Path | What |
 |---|---|
 | `research/` | **Current work** (2026-11-02): commercial pivot research, architecture, meeting brief, local agent-fleet assessment, Persian product guide |
-| `decision-room/` | **Decision Room** (`index.html`): Persian animated explainer + decision tool for the team and media partner (team/partner modes) |
-| `ravi/` | User's improved cinematic UI (teal theme + motion layer), currently the political content; next step is porting the commercial flow onto it |
+| `onboarding/` | **Partner onboarding journey** (`index.html`): cinematic 20-scene presentation of the campaign journey and the agent fleet; script in `research/07_partner_onboarding_script.md` |
+| `ravi/` | **Main dashboard** on the cinematic teal UI: commercial campaign flow + agent fleet, market radar, supplier quality index. Political version at `ravi/political.html` |
+| `decision-room/` | Decision Room (`index.html`): team appendix with readiness map, unit economics and open decisions (team/partner modes) |
 | `technical-walkthrough/` | Animated technical walkthrough (HyperFrames + study player `walkthrough.html`) |
 | `01_concept_and_research.md`, `03_v2_direction.md` | Original concept, research and v2 direction |
 | `04_platform_design.md` | Platform v1 design (Compass personalisation, flows, architecture) |
 | `05_cost_estimate.md` | AI cost brief. OpenAI prohibits political campaigning and doesn't serve Iran; self-hosted open-weight models are recommended |
-| `platform/` | Clickable Persian RTL prototype of the commercial campaign platform (static: `python -m http.server 8791 --directory platform`). Political version archived at `platform/political.html` |
+| `platform/` | Earlier version of the commercial prototype in the original visual style (superseded by `ravi/`). Serve the repo root (`python -m http.server 8000`) so `ravi/`, `onboarding/` and `decision-room/` share fonts |
 | `video/` | HyperFrames pitch film source (compositions, scripts). Rendered media, plates and voice takes are **not in git** |
 | `tools/` | Local media scripts (ComfyUI, Codex, Persian VO pipeline). Need the user's local GPU PC |
 
