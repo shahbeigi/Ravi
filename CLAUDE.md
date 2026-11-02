@@ -6,6 +6,8 @@
 | Path | What |
 |---|---|
 | `research/` | **Current work** (2026-11-02): commercial pivot research, architecture, meeting brief, local agent-fleet assessment, Persian product guide |
+| `decision-room/` | **Decision Room** (`index.html`): Persian animated explainer + decision tool for the team and media partner (team/partner modes) |
+| `ravi/` | User's improved cinematic UI (teal theme + motion layer), currently the political content; next step is porting the commercial flow onto it |
 | `technical-walkthrough/` | Animated technical walkthrough (HyperFrames + study player `walkthrough.html`) |
 | `01_concept_and_research.md`, `03_v2_direction.md` | Original concept, research and v2 direction |
 | `04_platform_design.md` | Platform v1 design (Compass personalisation, flows, architecture) |

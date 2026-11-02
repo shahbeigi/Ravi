@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#10383a" />
+<title>اتاق فکر راوی</title>
+<meta name="description" content="چشم‌انداز، تمایز، طرز کار عامل‌ها، میزان آمادگی، اقتصاد واحد و تصمیم‌های باز راوی؛ برای تیم و شریک رسانه‌ای." />
+<style>
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-400.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-500.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-700.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-900.woff2") format("woff2");font-weight:900}
+:root{
+  --t950:#082d2f;--t900:#10383a;--t800:#164849;--t700:#1f5b5a;--signal:#e9b65f;--signal-hi:#ffd98e;--mint:#7fc8b6;
+  --ground:#eef1ec;--card:#fff;--ink:#132a2b;--ink2:#566866;--line:#d6dfd9;--soft:#e6ece7;
+  --risk:#d5402b;--risk-soft:#fbe9e6;--ok:#1f7a6c;--ok-soft:#e1efeb;--warn:#b7791f;--warn-soft:#f8eedb;
+  --r:22px;--shadow:0 24px 70px rgba(12,52,52,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--t950)}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none}
+a{color:inherit}
+::selection{background:var(--signal);color:var(--t900)}
+/* top bar */
+.bar{position:fixed;inset:0 0 auto 0;z-index:30;height:64px;display:flex;align-items:center;gap:14px;padding:0 24px;background:rgba(8,45,47,.86);backdrop-filter:blur(12px);color:#e5ede6;border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{font-weight:900;font-size:26px;display:flex;align-items:center;gap:8px}.logo i{width:10px;height:10px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 6px rgba(233,182,95,.12)}
+.logo small{font-size:12px;font-weight:500;color:#9fb9b1}
+.dots{display:flex;gap:6px;margin-right:auto}
+.dots a{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;text-decoration:none;color:#9fb9b1;border:1px solid rgba(255,255,255,.12);transition:.25s}
+.dots a.on{background:var(--signal);color:var(--t900);border-color:var(--signal)}
+.mode{display:flex;background:rgba(255,255,255,.07);border-radius:12px;padding:3px}
+.mode button{padding:6px 12px;border-radius:9px;font-size:13px;font-weight:700;color:#cfe0da}
+.mode button.on{background:var(--signal);color:var(--t900)}
+.demo{padding:7px 14px;border-radius:11px;border:1px solid rgba(233,182,95,.5);color:var(--signal-hi);font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+/* layout */
+section{padding:110px 24px 70px;max-width:1240px;margin:0 auto;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:var(--t700);letter-spacing:.02em}
+.eyebrow:before{content:"";width:26px;height:2px;background:var(--signal)}
+h1,h2,h3{margin:0;line-height:1.35}
+h2{font-size:clamp(28px,4vw,44px);font-weight:900;margin:10px 0 12px}
+.lead{font-size:18px;color:var(--ink2);max-width:760px}
+.num{position:absolute;top:96px;left:24px;font-size:92px;font-weight:900;color:rgba(16,56,58,.06);line-height:1}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);min-width:0}
+.card.dark{background:linear-gradient(150deg,var(--t900),var(--t950));color:#e5ede6;border-color:transparent}
+.card h3{font-size:18px;font-weight:900;margin-bottom:8px}
+.muted{color:var(--ink2)}.small{font-size:14px}.tiny{font-size:12.5px}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:9px;font-size:12.5px;font-weight:700;background:var(--soft);color:var(--ink2);white-space:nowrap}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}.tag.warn{background:var(--warn-soft);color:var(--warn)}.tag.risk{background:var(--risk-soft);color:var(--risk)}.tag.sig{background:var(--signal);color:var(--t900)}
+.src{font-size:12px;color:var(--ink2);margin-top:10px}.src a{color:var(--t700)}
+.card.dark .src,.card.dark .muted{color:#a9c2bb}.card.dark .src a{color:var(--signal-hi)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:12px;font-weight:700;background:var(--t900);color:#eef3ef}
+.btn.sig{background:var(--signal);color:var(--t900)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--d,0)*90ms)}
+.rv.in{opacity:1;transform:none}
+/* mode visibility */
+body.partner .team{display:none!important}
+body:not(.partner) .partner-only{display:none!important}
+.team-flag{display:inline-block;font-size:11px;font-weight:700;color:var(--warn);background:var(--warn-soft);padding:1px 8px;border-radius:7px;margin-inline-start:6px;vertical-align:middle}
+/* hero */
+.hero{max-width:none;margin:0;padding:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 75% 30%,rgba(233,182,95,.13),transparent 30rem),linear-gradient(160deg,var(--t900),var(--t950));color:#eef3ef;overflow:hidden}
+.hero-in{max-width:1240px;width:100%;padding:120px 24px 80px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(36px,5.4vw,68px);font-weight:900}
+.hero h1 em{font-style:normal;color:var(--signal)}
+.hero p{font-size:19px;color:#bcd2cb;max-width:560px}
+.hero .chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 28px}
+.hero .chips span{padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.14);font-size:13px;color:#d6e6e0}
+#heroArt{width:100%;height:auto;max-height:520px}
+.scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:12px;color:#8fb0a7;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translate(-50%,6px)}}
+/* facts */
+.fact b{display:block;font-size:40px;font-weight:900;color:var(--t900);line-height:1.2}
+.fact.risk b{color:var(--risk)}
+/* compare */
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{padding:12px 10px;text-align:right;border-bottom:1px solid var(--soft);vertical-align:top}
+th{font-size:13px;color:var(--ink2)}
+td.us{background:rgba(233,182,95,.10);font-weight:700}
+.y{color:var(--ok);font-weight:900}.n{color:var(--risk);font-weight:900}.p{color:var(--warn);font-weight:900}
+.scroll-x{overflow-x:auto}
+/* pillars */
+.pillar .ico{width:52px;height:52px;border-radius:16px;background:var(--t900);display:grid;place-items:center;margin-bottom:14px}
+.pillar .ico svg{width:26px;height:26px;stroke:var(--signal);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* swimlane */
+.lane-wrap{position:relative;margin-top:26px}
+.lanes{display:grid;grid-template-columns:120px repeat(8,1fr);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);min-width:900px}
+.lanes .h{background:var(--t900);color:#d8e7e1;font-size:12.5px;font-weight:700;padding:10px 8px;text-align:center}
+.lanes .lh{background:#f5f8f5;font-weight:900;font-size:13.5px;padding:12px 10px;border-top:1px solid var(--soft);display:flex;align-items:center;gap:6px}
+.lanes .c{border-top:1px solid var(--soft);border-right:1px dashed var(--soft);padding:8px;min-height:74px;transition:background .4s}
+.lanes .c.on{background:rgba(233,182,95,.13)}
+.ev{font-size:12.5px;line-height:1.6;padding:7px 9px;border-radius:10px;background:var(--soft);opacity:.45;transition:.4s}
+.ev.ag{background:#e3f1ec;color:#155c51}.ev.hu{background:#f6ecd8;color:#7d5410}.ev.mo{background:#e7ecf4;color:#2e4b70}.ev.su{background:#eee;color:#444}
+.c.on .ev{opacity:1;box-shadow:0 6px 18px rgba(12,52,52,.12);transform:translateY(-1px)}
+.lane-ctl{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+.lane-ctl .cap{flex:1;min-width:260px;font-weight:700}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px}.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-inline-end:4px;vertical-align:-1px}
+/* hundred agents */
+.agents{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.field{display:grid;grid-template-columns:repeat(20,1fr);gap:6px;direction:ltr;margin:16px 0}
+.field i{aspect-ratio:1;border-radius:50%;background:#4b6a68;transition:background .3s,transform .3s}
+.legit .field i.go{background:var(--mint);transform:scale(1.15)}
+.legit .field i.live{background:var(--signal)}
+.fake .field i.go{background:#b05a4c}
+.fake .field i.dead{background:#3a3f3f;transform:scale(.7)}
+.agents .card.dark h3{color:#fff}
+.counter{display:flex;gap:18px;flex-wrap:wrap}.counter div b{display:block;font-size:30px;font-weight:900;color:var(--signal-hi)}.counter div span{font-size:12.5px;color:#a9c2bb}
+.fake .counter div b{color:#f19b8c}
+/* agent map */
+.amap{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;margin-top:26px;align-items:start}
+#agentSvg{width:100%;height:auto}
+#agentSvg .node{cursor:pointer}
+#agentSvg .node circle{fill:#fff;stroke:var(--line);stroke-width:2;transition:.25s}
+#agentSvg .node.on circle,#agentSvg .node:hover circle{fill:var(--signal);stroke:var(--t900)}
+#agentSvg text{font-family:Vazirmatn;font-size:13px;font-weight:700;fill:var(--ink);text-anchor:middle}
+#agentSvg .spoke{stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 5}
+#agentSvg .pulse{fill:var(--signal)}
+.apanel dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:8px 12px;font-size:14.5px}
+.apanel dt{font-weight:900;color:var(--t700)}.apanel dd{margin:0}
+.guard{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.guard span{padding:5px 11px;border-radius:10px;background:var(--t900);color:#e5ede6;font-size:12.5px;font-weight:700}
+/* readiness */
+.gauge-row{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:center;margin-top:20px}
+#gauge{width:100%;max-width:260px}
+.ready{display:grid;gap:10px;margin-top:22px}
+.rrow{display:grid;grid-template-columns:1.3fr 120px 1fr 1.4fr;gap:14px;align-items:center;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.rrow .meter{height:10px;border-radius:6px;background:var(--soft);overflow:hidden}
+.rrow .meter u{display:block;height:100%;width:0;border-radius:6px;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
+.rrow b{font-size:15px}
+.rhead{font-size:12.5px;color:var(--ink2);font-weight:700;padding:0 16px}
+body.partner .rrow,body.partner .rhead{grid-template-columns:1.3fr 120px 1fr}
+/* economics */
+.econ{display:grid;grid-template-columns:1fr 1.1fr;gap:20px;margin-top:24px}
+.sl{margin-bottom:14px}.sl label{display:flex;justify-content:space-between;font-size:14px;font-weight:700}.sl label span{color:var(--t700)}
+input[type=range]{width:100%;accent-color:var(--t700);direction:rtl}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.out div{padding:14px;border-radius:16px;background:rgba(255,255,255,.06)}
+.out b{display:block;font-size:26px;font-weight:900;color:var(--signal-hi)}.out span{font-size:12.5px;color:#a9c2bb}
+.out .neg b{color:#f19b8c}
+.bars{margin-top:18px;display:grid;gap:8px}
+.bars .br{display:grid;grid-template-columns:110px 1fr 70px;gap:10px;align-items:center;font-size:13px}
+.bars .br i{display:block;height:12px;border-radius:6px;transition:width .6s}
+/* decisions */
+.dec{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+.dec .card h3{display:flex;gap:8px;align-items:flex-start}
+.opts{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+.opts span{padding:7px 11px;border-radius:10px;background:var(--soft);font-size:14px}
+.opts span.lean{background:var(--warn-soft);border:1px solid #ecd3a3;font-weight:700}
+.offer{margin-top:24px}
+.offer ul{margin:8px 0 0;padding-right:20px}
+footer{background:var(--t950);color:#a9c2bb;padding:40px 24px;font-size:13px}
+footer .in{max-width:1240px;margin:0 auto}
+footer a{color:var(--signal-hi)}
+footer ol{padding-right:20px;columns:2;column-gap:40px}
+@media (max-width:980px){.hero-in,.g2,.g3,.g4,.agents,.amap,.econ,.dec,.gauge-row{grid-template-columns:1fr}.rrow,body.partner .rrow{grid-template-columns:1fr}.rhead{display:none}.dots{display:none}footer ol{columns:1}.num{display:none}}
+@media (max-width:560px){.bar{padding:0 12px;gap:8px}.logo small,.demo{display:none}section{padding:90px 16px 50px}.hero-in{padding:100px 16px 70px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="logo"><i></i>راوی<small>اتاق فکر</small></div>
+  <nav class="dots" id="dots"></nav>
+  <div class="mode" role="group" aria-label="حالت نمایش">
+    <button data-mode="team" class="on">تیم</button><button data-mode="partner">شریک رسانه‌ای</button>
+  </div>
+  <a class="demo" href="../platform/index.html">نسخه‌ی کلیک‌پذیر ←</a>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-in">
+    <div>
+      <div class="eyebrow" style="color:var(--signal)">راوی، پلتفرم عملیات کمپین برای برندها</div>
+      <h1 style="margin:14px 0">کمپینی که می‌شود<br><em>به عددش اعتماد کرد.</em></h1>
+      <p>برندها برای دیده‌شدن پول می‌دهند ولی نمی‌دانند واقعاً چه گرفته‌اند. راوی برنامه می‌ریزد، محتوا می‌سازد، جایگاه واقعی می‌خرد، و برای هر عددی که صورتحساب می‌شود مدرک می‌آورد. عامل‌های هوش مصنوعی کار عملیات را انجام می‌دهند، نه کار مخاطب را.</p>
+      <div class="chips"><span>روبیکا، ایتا، بله، آپارات</span><span>تلگرام و اینستاگرام با برنامه‌ی جایگزین</span><span>پرداخت در برابر شواهد</span><span>بدون تعامل جعلی</span></div>
+      <a class="btn sig" href="#c1">شروع ←</a>
+    </div>
+    <svg id="heroArt" viewBox="0 0 520 460" aria-hidden="true"></svg>
+  </div>
+  <div class="scroll-hint">پایین بروید</div>
+</div>
+
+<!-- 1 PROBLEM -->
+<section id="c1">
+  <span class="num">۰۱</span>
+  <div class="eyebrow rv">مسئله‌ی مشتری</div>
+  <h2 class="rv">برند پول می‌دهد، ولی عدد را باور نمی‌کند.</h2>
+  <p class="lead rv">چهار واقعیت که بازار تبلیغات اجتماعی ایران را در ۱۴۰۵ شکل می‌دهد.</p>
+  <div class="grid g4" style="margin-top:26px">
+    <div class="card fact risk rv" style="--d:0"><b data-count="80">۰</b><div class="small"><strong>هزار تومان برای هزار عضو جعلی</strong> تلگرام؛ بازار فروش عضو و «بازدید تضمینی» آشکار است.</div><div class="src">مشرق‌نیوز، بدون تاریخ؛ بازه‌ی ۳۰ تا ۸۰ هزار تومان، <a href="https://www.mashreghnews.ir/news/588827/">منبع</a></div></div>
+    <div class="card fact risk rv" style="--d:1"><b data-count="88">۰</b><div class="small"><strong>روز قطع اینترنت بین‌الملل</strong> از ۹ اسفند ۱۴۰۴؛ اینستاگرام، تلگرام و واتس‌اپ پس از بازگشایی هم فیلتر ماندند.</div><div class="src">Al Jazeera، ۲۰۲۶/۰۵/۳۱، <a href="https://www.aljazeera.com/news/2026/5/31/iran-reinstates-some-internet-access-but-restrictions-remain-for-most">منبع</a></div></div>
+    <div class="card fact rv" style="--d:2"><b data-count="55">۰</b><div class="small"><strong>و نیم میلیون کاربر فعال ماهانه‌ی روبیکا</strong>؛ ایتا ۴۰٫۴ و بله ۲۸٫۷ میلیون. بسترهای داخلی دیگر فرعی نیستند.</div><div class="src">سازمان فناوری اطلاعات، ۲۶ اسفند ۱۴۰۴، به نقل زومیت؛ آمار دولتی، <a href="https://www.zoomit.ir/tech-iran/416187-iranian-messengers-monthly-users/">منبع</a></div></div>
+    <div class="card fact rv" style="--d:3"><b data-count="58">۰</b><div class="small"><strong>درصد برندها</strong> در ۶۴۰ آزمون مستقل، با کمپین دستی بازده افزایشی بهتری از خرید خودکار متا گرفتند. عدد گزارش‌شده‌ی خود بستر اغراق می‌کند.</div><div class="src">Haus، ۲۰۲۵، <a href="https://www.haus.io/blog/the-meta-report-lessons-from-640-haus-incrementality-experiments">منبع</a></div></div>
+  </div>
+  <div class="card dark rv" style="margin-top:18px">
+    <h3>پس مشتری در واقع چه می‌خرد؟</h3>
+    <div class="grid g3 small" style="margin-top:8px">
+      <div><b style="color:var(--signal-hi)">امروز:</b> فهرست کانال، اسکرین‌شات، و امید.</div>
+      <div><b style="color:var(--signal-hi)">چیزی که می‌خواهد:</b> هدف مشخص در هر بستر، به‌موقع، با قیمت قابل دفاع.</div>
+      <div><b style="color:var(--signal-hi)">چیزی که کم است:</b> مدرک قابل بررسی، و برنامه‌ای که با قطعی اینترنت از کار نیفتد.</div>
+    </div>
+    <div class="src team">جای خالی پژوهش: هنوز با هیچ مشتری‌ای مصاحبه نکرده‌ایم. این فرض در اسپرینت ۱۰ روزه آزموده می‌شود (research/06).</div>
+  </div>
+</section>
+
+<!-- 2 DIFFERENTIATION -->
+<section id="c2">
+  <span class="num">۰۲</span>
+  <div class="eyebrow rv">تمایز</div>
+  <h2 class="rv">با همان کانال‌ها و اینفلوئنسرها کار می‌کنیم؛ فرق در اثبات و سرعت است.</h2>
+  <p class="lead rv">دسترسی به اینفلوئنسر مزیت نیست؛ همه دارند. مزیت ما چهار چیز است که با هم می‌آیند.</p>
+  <div class="grid g4" style="margin-top:26px">
+    <div class="card pillar rv" style="--d:0"><div class="ico"><svg viewBox="0 0 24 24"><path d="M11 11m-7 0a7 7 0 1 0 14 0a7 7 0 1 0-14 0M16 16l5 5M8 11l2 2 4-4"/></svg></div><h3>اثبات تحویل</h3><p class="small muted">هر عدد صورتحساب‌شده درجه‌ی شواهد دارد (A تا D). تأمین‌کننده بعد از پذیرش مدرک پول می‌گیرد. الگوی غیرعادی بازدید علامت می‌خورد.</p></div>
+    <div class="card pillar rv" style="--d:1"><div class="ico"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><h3>هزینه‌ی عملیات کمتر</h3><p class="small muted">عامل‌ها استعلام قیمت، پیگیری، پایش و گزارش را انجام می‌دهند. یک اپراتور چند کمپین هم‌زمان را می‌گرداند.</p></div>
+    <div class="card pillar rv" style="--d:2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 20h.01M3 3l18 18"/></svg></div><h3>تاب‌آوری در قطعی</h3><p class="small muted">برنامه بر بسترهای داخلی بنا می‌شود؛ تلگرام و اینستاگرام با بند قطعی و برنامه‌ی جایگزین امضاشده.</p></div>
+    <div class="card pillar rv" style="--d:3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19h16M6 16l4-5 3 3 5-7"/></svg></div><h3>داده‌ای که انباشته می‌شود</h3><p class="small muted">هر کمپین ثبت می‌کند کدام تأمین‌کننده، قالب و قلاب در هر صنعت واقعاً جواب داد. پیش‌بینی بعدی دقیق‌تر می‌شود.</p></div>
+  </div>
+  <div class="card rv" style="margin-top:18px">
+    <h3>در مقایسه با مدل‌های رایج <span class="team-flag team">ارزیابی ما؛ باید با مصاحبه تأیید شود</span></h3>
+    <div class="scroll-x"><table>
+      <thead><tr><th></th><th>راوی</th><th>آژانس سنتی</th><th>شبکه‌ی تبلیغاتی (مثل یکتانت)</th><th>پنل فروش بازدید</th></tr></thead>
+      <tbody>
+        <tr><td>برنامه‌ی چندبستری با هدف جداگانه</td><td class="us y">بله</td><td class="p">دستی</td><td class="p">در شبکه‌ی خودش</td><td class="n">نه</td></tr>
+        <tr><td>مدرک قابل بررسی برای هر جایگاه</td><td class="us y">بله، درجه‌بندی‌شده</td><td class="p">اسکرین‌شات</td><td class="y">برای کلیک و نمایش</td><td class="n">نه</td></tr>
+        <tr><td>پرداخت به تأمین‌کننده پس از شواهد</td><td class="us y">بله</td><td class="p">گاهی</td><td class="y">خودکار</td><td class="n">—</td></tr>
+        <tr><td>برنامه‌ی جایگزین در قطعی</td><td class="us y">از پیش امضاشده</td><td class="p">موردی</td><td class="p">محدود به شبکه</td><td class="n">نه</td></tr>
+        <tr><td>تعامل واقعی</td><td class="us y">فقط واقعی</td><td class="y">معمولاً</td><td class="y">بله</td><td class="n">جعلی</td></tr>
+        <tr><td>هزینه‌ی عملیات هر کمپین</td><td class="us y">کمتر با عامل‌ها</td><td class="n">بالا</td><td class="y">پایین</td><td class="y">پایین</td></tr>
+      </tbody></table></div>
+    <div class="src">شبکه‌های تبلیغاتی رقیب نیستند؛ تأمین‌کننده و منبع داده‌ی درجه‌ی A برای ورود به سایت‌اند.</div>
+  </div>
+</section>
+
+<!-- 3 HOW A CAMPAIGN RUNS -->
+<section id="c3">
+  <span class="num">۰۳</span>
+  <div class="eyebrow rv">یک کمپین از اول تا آخر</div>
+  <h2 class="rv">چه کسی، چه روزی، چه کاری می‌کند؟</h2>
+  <p class="lead rv">مثال نمایشی: معرفی یک محصول لبنی در ۱۴ روز. دکمه‌ی پخش را بزنید.</p>
+  <div class="scroll-x rv"><div class="lane-wrap"><div class="lanes" id="lanes"></div></div></div>
+  <div class="lane-ctl">
+    <button class="btn" id="play">▶ پخش</button><button class="btn ghost" id="prev">→</button><button class="btn ghost" id="next">←</button>
+    <div class="cap" id="cap">مرحله را انتخاب کنید.</div>
+    <div class="legend"><span><i style="background:#f6ecd8"></i>انسان</span><span><i style="background:#e3f1ec"></i>عامل</span><span><i style="background:#eee"></i>تأمین‌کننده</span><span><i style="background:#e7ecf4"></i>پول</span></div>
+  </div>
+
+  <h2 class="rv" style="font-size:clamp(24px,3vw,34px);margin-top:60px">«صد عامل هم‌زمان» یعنی چه؟</h2>
+  <p class="lead rv">اجرای صد عامل آسان است. سؤال این است که چه می‌کنند.</p>
+  <div class="agents">
+    <div class="card dark legit rv">
+      <span class="tag sig">کسب‌وکار ما</span>
+      <h3 style="margin-top:10px">صد عامل، صد ادمین واقعی</h3>
+      <p class="small muted">هر عامل با یک کانال یا سازنده‌ی واقعی برای قیمت، زمان و مدرک هماهنگ می‌کند. پست در یک ساعت روی ده‌ها جایگاه پولی واقعی می‌رود و هر جایگاه پایش می‌شود.</p>
+      <div class="field" id="fLegit"></div>
+      <div class="counter"><div><b id="cQ">۰</b><span>استعلام قیمت</span></div><div><b id="cB">۰</b><span>جایگاه رزروشده</span></div><div><b id="cL">۰</b><span>منتشرشده با مدرک</span></div></div>
+    </div>
+    <div class="card dark fake rv" style="--d:1">
+      <span class="tag risk">خط قرمز</span>
+      <h3 style="margin-top:10px">صد عامل، صد حساب جعلی</h3>
+      <p class="small muted">بازدید، لایک یا نظر از حساب‌های ساختگی. بسترها شناسایی می‌کنند، دسترسی پست را کم یا حساب را مسدود می‌کنند، و عدد مشتری بی‌ارزش می‌شود. این دقیقاً همان تقلبی است که محصول ما کشفش می‌کند.</p>
+      <div class="field" id="fFake"></div>
+      <div class="counter"><div><b id="cF">۰</b><span>تعامل جعلی</span></div><div><b id="cD">۰</b><span>حساب شناسایی‌شده</span></div><div><b>۰</b><span>ارزش برای مشتری</span></div></div>
+    </div>
+  </div>
+  <div class="lane-ctl"><button class="btn sig" id="runAgents">▶ اجرای مقایسه</button><span class="tiny muted">نمایش مفهومی؛ اعداد نمایشی است.</span></div>
+</section>
+
+<!-- 4 AGENT SYSTEM -->
+<section id="c4">
+  <span class="num">۰۴</span>
+  <div class="eyebrow rv">هوش مصنوعی در این سیستم</div>
+  <h2 class="rv">هفت عامل، یک دفتر کل، و انسان در نقطه‌های تصمیم.</h2>
+  <p class="lead rv">عامل‌ها پیش‌نویس می‌کنند، پیشنهاد می‌دهند و پایش می‌کنند. خرج پول، انتشار و پرداخت از دروازه‌ی قطعی و تأیید انسان می‌گذرد. روی هر عامل بزنید.</p>
+  <div class="amap">
+    <svg id="agentSvg" viewBox="0 0 520 480" class="rv"></svg>
+    <div class="card apanel rv" style="--d:1" id="apanel"></div>
+  </div>
+  <div class="guard rv"><span>بودجه‌ی رزروشده پیش از هر رزرو</span><span>کلید یکتایی برای انتشار و پرداخت</span><span>فقط حساب‌های خود مشتری</span><span>متن صفحه‌ها داده است، نه دستور</span><span>هر عدد گزارش از پرس‌وجو، نه از متن آزاد</span><span>تولید تصویر و ویدیو روی سیستم محلی</span></div>
+</section>
+
+<!-- 5 READINESS -->
+<section id="c5">
+  <span class="num">۰۵</span>
+  <div class="eyebrow rv">آمادگی</div>
+  <h2 class="rv">چقدر به خواسته‌ی مشتری نزدیکیم؟</h2>
+  <p class="lead rv">برای هر خواسته: وضعیت امروز، و آزمونی که فاصله را می‌بندد. <span class="team">درصدها قضاوت تیم است، نه اندازه‌گیری؛ بعد از اسپرینت به‌روز شود.</span></p>
+  <div class="gauge-row">
+    <svg id="gauge" viewBox="0 0 260 160" class="rv"></svg>
+    <div class="rv"><div class="small"><span class="tag ok">قابل ساخت اکنون</span> <span class="tag warn">نیازمند دسترسی یا شریک</span> <span class="tag risk">اثبات‌نشده</span></div>
+      <p class="small muted" style="margin-top:10px">قسمت‌های نرم‌افزاری آماده‌ی ساخت‌اند. چیزی که هنوز نمی‌دانیم بیرون از کد است: قیمت واقعی تأمین‌کنندگان، کیفیت مدرک‌شان، و اینکه مشتری برای «اثبات» پول بیشتری می‌دهد یا نه.</p></div>
+  </div>
+  <div class="ready" id="ready"></div>
+</section>
+
+<!-- 6 ECONOMICS -->
+<section id="c6">
+  <span class="num">۰۶</span>
+  <div class="eyebrow rv">اقتصاد یک کمپین</div>
+  <h2 class="rv">هر کمپین کی سود می‌دهد؟</h2>
+  <p class="lead rv">مدل ساده‌ی سهم سود یک کمپین. همه‌ی مقادیر پیش‌فرض نمایشی‌اند و باید با پیشنهادهای واقعی اسپرینت جایگزین شوند.</p>
+  <div class="econ">
+    <div class="card rv" id="sliders"></div>
+    <div class="card dark rv" style="--d:1">
+      <h3>نتیجه برای یک کمپین <small class="muted">میلیون تومان</small></h3>
+      <div class="out" id="out"></div>
+      <div class="bars" id="bars"></div>
+      <div class="src">سهم سود = کارمزد خدمت + حاشیه‌ی رسانه − (ساعت اپراتور × هزینه‌ی ساعت) − ابزار و هوش مصنوعی − ذخیره‌ی جبران کمبود. مالیات و هزینه‌ی فروش در نظر گرفته نشده.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 DECISIONS -->
+<section id="c7">
+  <span class="num">۰۷</span>
+  <div class="eyebrow rv">تصمیم‌ها</div>
+  <h2 class="rv team">تصمیم‌های باز، و شواهدی که برای هر کدام لازم است.</h2>
+  <h2 class="rv partner-only">چه پیشنهادی داریم، و از شریک چه می‌خواهیم.</h2>
+  <div class="dec team" id="dec"></div>
+  <div class="card dark offer rv">
+    <span class="tag sig">پیشنهاد پایلوت</span>
+    <h3 style="margin-top:10px">۳ برند پرداخت‌کننده، ۶ کمپین، یک صنعت، ۲ تا ۳ بستر، ۴ تا ۶ هفته</h3>
+    <div class="grid g2 small" style="margin-top:6px">
+      <div><b style="color:var(--signal-hi)">ما می‌آوریم</b><ul><li>برنامه‌ریزی، محتوای فارسی، رزرو و پایش</li><li>مدرک برای هر جایگاه صورتحساب‌شده</li><li>گزارش با منبع هر عدد</li><li>برنامه‌ی جایگزین برای قطعی</li></ul></div>
+      <div><b style="color:var(--signal-hi)">از شریک می‌خواهیم</b><ul><li>معرفی ۵ مشتری و همراهی در فروش</li><li>۳ پرونده‌ی کمپین قبلی (بی‌نام)</li><li>فهرست تأمین‌کنندگان فعلی و قیمت‌ها</li><li>یک نفر از عملیات برای ۴ هفته</li></ul></div>
+    </div>
+    <div class="src">معیار ادامه: سه مشتری واقعاً پرداخت کنند، هر جایگاه صورتحساب‌شده مدرک قابل قبول داشته باشد، هیچ خرج تأییدنشده‌ای نباشد، سهم سود مثبت باشد، و دست‌کم دو مشتری ادامه را بخرند. (research/03)</div>
+  </div>
+</section>
+
+<footer>
+  <div class="in">
+    <b style="color:#e5ede6">منابع و یادداشت‌ها</b>، نسخه‌ی ۱۱ آبان ۱۴۰۵. داده‌های کمپین، قیمت‌ها و درصدهای آمادگی نمایشی یا قضاوت تیم‌اند. جزئیات و منابع کامل در <code>research/05_desk_research_gaps.md</code>.
+    <ol>
+      <li><a href="https://www.aljazeera.com/news/2026/5/31/iran-reinstates-some-internet-access-but-restrictions-remain-for-most">Al Jazeera، ۲۰۲۶/۰۵/۳۱</a>: بازگشایی نسبی؛ فیلتر ماندن بسترهای خارجی</li>
+      <li><a href="https://www.iranintl.com/en/202610244351">Iran International، ۲۰۲۶/۱۰/۲۴</a>: اینترنت کند و گران؛ از کار افتادن فیلترشکن‌ها</li>
+      <li><a href="https://www.zoomit.ir/tech-iran/416187-iranian-messengers-monthly-users/">زومیت به نقل سازمان فناوری اطلاعات</a>: کاربران فعال ماهانه‌ی روبیکا، ایتا، بله (اسفند ۱۴۰۴)</li>
+      <li><a href="https://www.mashreghnews.ir/news/588827/">مشرق‌نیوز</a>: قیمت عضو جعلی تلگرام (بدون تاریخ)</li>
+      <li><a href="https://www.haus.io/blog/the-meta-report-lessons-from-640-haus-incrementality-experiments">Haus</a>: ۶۴۰ آزمون افزایشی Advantage+</li>
+      <li><a href="https://ads.tiktok.com/business/en-CA/blog/tiktok-one-creative-platform">TikTok One</a>: بازار سازندگان و Spark Ads (ادعای فروشنده)</li>
+    </ol>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const fa = (n) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+  const nf = (n) => fa(Math.round(n).toLocaleString("en-US")).replace(/,/g, "٬");
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const sleep = (ms) => new Promise((r) => setTimeout(r, reduce ? 0 : ms));
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, a = {}, parent) => { const n = document.createElementNS(NS, tag); for (const k in a) n.setAttribute(k, a[k]); if (parent) parent.appendChild(n); return n; };
+
+  /* ---------- mode ---------- */
+  const setMode = (m) => { document.body.classList.toggle("partner", m === "partner"); $$("[data-mode]").forEach((b) => b.classList.toggle("on", b.dataset.mode === m)); try { localStorage.setItem("ravi-room-mode", m); } catch (e) {} };
+  $$("[data-mode]").forEach((b) => (b.onclick = () => setMode(b.dataset.mode)));
+  let m0 = "team"; try { m0 = localStorage.getItem("ravi-room-mode") || "team"; } catch (e) {}
+  if (location.hash === "#partner") m0 = "partner";
+  setMode(m0);
+
+  /* ---------- chapter dots ---------- */
+  const secs = $$("section[id^=c]");
+  $("#dots").innerHTML = secs.map((s, i) => `<a href="#${s.id}" data-s="${s.id}">${fa(i + 1)}</a>`).join("");
+  const so = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) $$("#dots a").forEach((a) => a.classList.toggle("on", a.dataset.s === e.target.id)); }), { rootMargin: "-45% 0px -50% 0px" });
+  secs.forEach((s) => so.observe(s));
+
+  /* ---------- reveal + counters ---------- */
+  const ro = new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) return; e.target.classList.add("in"); ro.unobserve(e.target);
+    const c = e.target.querySelector("[data-count]"); if (c) countUp(c);
+    if (e.target.id === "gauge") drawGauge(); }), { threshold: 0.12 });
+  $$(".rv").forEach((n) => ro.observe(n));
+  async function countUp(n) { const t = +n.dataset.count; for (let i = 0; i <= 30; i++) { n.textContent = fa(Math.round((t * i) / 30)); await sleep(28); } }
+
+  /* ---------- hero art: many channels → proof check → client ---------- */
+  (function hero() {
+    const s = $("#heroArt");
+    const g = el("g", {}, s);
+    el("circle", { cx: 360, cy: 230, r: 62, fill: "rgba(233,182,95,.10)", stroke: "rgba(233,182,95,.6)", "stroke-width": 1.5 }, g);
+    const lbl = el("text", { x: 360, y: 226, fill: "#ffd98e", "font-family": "Vazirmatn", "font-size": 17, "font-weight": 900, "text-anchor": "middle" }, g); lbl.textContent = "مدرک";
+    const lbl2 = el("text", { x: 360, y: 248, fill: "#a9c2bb", "font-family": "Vazirmatn", "font-size": 12, "text-anchor": "middle" }, g); lbl2.textContent = "A، B، C، D";
+    el("rect", { x: 448, y: 205, width: 56, height: 50, rx: 14, fill: "#e9b65f" }, g);
+    const t3 = el("text", { x: 476, y: 236, fill: "#10383a", "font-family": "Vazirmatn", "font-size": 13, "font-weight": 900, "text-anchor": "middle" }, g); t3.textContent = "برند";
+    el("path", { d: "M422 230H448", stroke: "#e9b65f", "stroke-width": 2 }, g);
+    const names = ["روبیکا", "ایتا", "بله", "آپارات", "تلگرام", "اینستاگرام", "سایت‌ها"];
+    names.forEach((n, i) => {
+      const y = 40 + i * 64, x = 70;
+      const warn = i === 4 || i === 5;
+      el("path", { d: `M${x + 50} ${y}C200 ${y} 230 230 298 230`, stroke: warn ? "rgba(233,182,95,.35)" : "rgba(127,200,182,.45)", "stroke-width": 1.4, fill: "none", "stroke-dasharray": warn ? "4 5" : "" }, g);
+      el("rect", { x: x - 50, y: y - 16, width: 100, height: 32, rx: 16, fill: "rgba(255,255,255,.06)", stroke: warn ? "rgba(233,182,95,.5)" : "rgba(127,200,182,.5)" }, g);
+      const t = el("text", { x, y: y + 5, fill: "#dfeae5", "font-family": "Vazirmatn", "font-size": 13, "font-weight": 700, "text-anchor": "middle" }, g); t.textContent = n;
+      if (!reduce) for (let k = 0; k < 2; k++) {
+        const c = el("circle", { r: 4, fill: k ? "#ffd98e" : "#7fc8b6" }, g);
+        el("animateMotion", { dur: `${3 + (i % 3) * 0.6}s`, begin: `${-i * 0.5 - k * 1.6}s`, repeatCount: "indefinite", path: `M${x + 50} ${y}C200 ${y} 230 230 298 230` }, c);
+      }
+    });
+    if (!reduce) { const ring = el("circle", { cx: 360, cy: 230, r: 62, fill: "none", stroke: "#e9b65f", "stroke-width": 2, opacity: .7 }, g);
+      el("animate", { attributeName: "r", values: "62;84", dur: "2.4s", repeatCount: "indefinite" }, ring); el("animate", { attributeName: "opacity", values: ".7;0", dur: "2.4s", repeatCount: "indefinite" }, ring); }
+  })();
+
+  /* ---------- swimlane ---------- */
+  const COLS = ["روز ۰، بریف", "روز ۱، برنامه", "روز ۲، استعلام", "روز ۳، محتوا", "روز ۴، تأیید", "روز ۵ تا ۷، انتشار", "روز ۷ تا ۱۲، سنجش", "روز ۱۴، تسویه"];
+  const LANES = [["مشتری", "hu"], ["اپراتور", "hu"], ["عامل‌ها", "ag"], ["تأمین‌کنندگان", "su"], ["پول", "mo"]];
+  const EV = {
+    "0,0": "هدف، بودجه، مهلت", "0,2": "استخراج بریف و پرسیدن کمبودها",
+    "1,1": "انتخاب سناریو", "1,2": "سه سناریو با فرض صریح از پیشنهادهای قیمت واقعی", "1,4": "بودجه تأمین می‌شود",
+    "2,2": "پیام هم‌زمان به ۸۰ ادمین برای قیمت، زمان و نوع مدرک", "2,3": "پاسخ و پیشنهاد قیمت", "2,1": "مذاکره‌ی نهایی",
+    "3,2": "۲۰ نسخه‌ی فارسی؛ بررسی ادعا با قطب‌نمای برند", "3,1": "ویرایش و انتخاب",
+    "4,0": "تأیید محتوا و هزینه", "4,4": "رزرو بودجه پیش از رزرو جایگاه",
+    "5,3": "انتشار در جایگاه‌های پولی واقعی", "5,2": "ثبت شناسه‌ی پست، یادآوری، بررسی انتشار", "5,1": "رسیدگی به استثناها",
+    "6,2": "پایش ساعتی؛ علامت الگوی غیرعادی", "6,3": "ارسال خروجی آمار", "6,1": "بررسی شواهد و تصمیم جایگزین", "6,0": "داشبورد زنده",
+    "7,2": "گزارش با منبع هر عدد", "7,0": "دریافت گزارش", "7,4": "پرداخت فقط برای شواهد پذیرفته؛ جبران کمبود"
+  };
+  const CAP = ["مشتری هدف می‌دهد؛ عامل بریف را ساختارمند می‌کند و اطلاعات ناقص را می‌پرسد.", "عامل برنامه‌ریزی سه سناریو می‌سازد؛ اپراتور انتخاب می‌کند؛ بودجه تأمین می‌شود.", "اینجا صد عامل کمک می‌کنند: استعلام هم‌زمان از ده‌ها ادمین واقعی.", "عامل محتوا نسخه‌ها را می‌سازد و هر ادعا را با واقعیت تأییدشده‌ی برند می‌سنجد.", "بدون تأیید مشتری و رزرو بودجه، هیچ خرجی انجام نمی‌شود.", "انتشار روی جایگاه‌های واقعی؛ عامل شناسه‌ی هر پست را ثبت و پیگیری می‌کند.", "پایش و شواهد؛ ناهنجاری یعنی بررسی انسانی، نه اتهام.", "گزارش از داده ساخته می‌شود؛ پول فقط در برابر مدرک پذیرفته پرداخت می‌شود."];
+  const lanes = $("#lanes");
+  lanes.innerHTML = `<div class="h"></div>${COLS.map((c) => `<div class="h">${c}</div>`).join("")}` +
+    LANES.map(([n, k], li) => `<div class="lh">${n}</div>${COLS.map((_, ci) => `<div class="c" data-col="${ci}">${EV[ci + "," + li] ? `<div class="ev ${k}">${EV[ci + "," + li]}</div>` : ""}</div>`).join("")}`).join("");
+  let col = -1, timer = null;
+  const show = (c) => { col = (c + COLS.length) % COLS.length; $$(".c", lanes).forEach((x) => x.classList.toggle("on", +x.dataset.col === col)); $("#cap").textContent = fa(col + 1) + ". " + CAP[col]; };
+  $("#next").onclick = () => { stop(); show(col + 1); };
+  $("#prev").onclick = () => { stop(); show(col - 1); };
+  const stop = () => { clearInterval(timer); timer = null; $("#play").textContent = "▶ پخش"; };
+  $("#play").onclick = () => { if (timer) return stop(); $("#play").textContent = "❚❚ توقف"; show(col + 1); timer = setInterval(() => { if (col >= COLS.length - 1) return stop(); show(col + 1); }, 2600); };
+  show(0);
+
+  /* ---------- hundred agents ---------- */
+  const fl = $("#fLegit"), ff = $("#fFake");
+  fl.innerHTML = ff.innerHTML = Array.from({ length: 100 }, () => "<i></i>").join("");
+  let running = false;
+  $("#runAgents").onclick = async () => {
+    if (running) return; running = true;
+    const L = $$("i", fl), F = $$("i", ff); L.forEach((i) => (i.className = "")); F.forEach((i) => (i.className = ""));
+    ["cQ", "cB", "cL", "cF", "cD"].forEach((id) => ($("#" + id).textContent = "۰"));
+    for (let i = 0; i < 100; i++) { L[i].className = "go"; F[i].className = "go"; $("#cQ").textContent = fa(i + 1); $("#cF").textContent = nf((i + 1) * 40); if (i % 4 === 0) await sleep(30); }
+    await sleep(500);
+    const booked = [...Array(100).keys()].filter((i) => (i * 37) % 100 < 42);
+    for (let k = 0; k < booked.length; k++) { L[booked[k]].className = "live"; $("#cB").textContent = fa(k + 1); if (k % 2 === 0) await sleep(40); }
+    for (let k = 0; k < booked.length; k++) { $("#cL").textContent = fa(k + 1); await sleep(15); }
+    $$("i", fl).forEach((i, idx) => { if (!booked.includes(idx)) i.className = ""; });
+    for (let i = 0; i < 100; i++) { if ((i * 53) % 100 < 70) { F[i].className = "dead"; $("#cD").textContent = fa(F.filter((x) => x.className === "dead").length); } if (i % 5 === 0) await sleep(30); }
+    running = false;
+  };
+
+  /* ---------- agent map ---------- */
+  const AG = [
+    { n: "تحلیل بریف", in: "متن و پیام‌های مشتری", out: "هدف ساختارمند و فهرست کمبودها", no: "واقعیت محصول یا تأیید مشتری را جعل نمی‌کند", hu: "اپراتور بریف را تأیید می‌کند", ev: "دقت استخراج، کشف کمبودها" },
+    { n: "برنامه‌ریزی", in: "پیشنهادهای قیمت تاریخ‌دار و سابقه‌ی تحویل", out: "سه سناریو با بازه‌ی پیش‌بینی", no: "موجودی ساختگی نمی‌سازد؛ احتمال وایرال‌شدن نمی‌گوید", hu: "انتخاب سناریو و تأیید بودجه", ev: "پذیرش برنامه، زمان آماده‌سازی" },
+    { n: "استعلام و هماهنگی", in: "فهرست تأمین‌کنندگان تأییدشده", out: "پیام استعلام، پیگیری، یادآوری", no: "تعهد مالی یا قرارداد بدون تأیید نمی‌دهد", hu: "مذاکره‌ی نهایی و امضا", ev: "نرخ پاسخ، مهلت‌های ازدست‌رفته" },
+    { n: "محتوا", in: "واقعیت‌ها و لحن قطب‌نمای برند", out: "نسخه‌های فارسی برای هر جایگاه", no: "ادعای بی‌منبع یا جعل عمیق افراد واقعی نمی‌سازد", hu: "تأیید ویراستار و برند", ev: "کیفیت فارسی، آزمون واقعی" },
+    { n: "عملیات انتشار", in: "رزروهای تأییدشده", out: "انتشار از حساب مشتری، ثبت شناسه‌ی پست", no: "بدون بودجه‌ی رزروشده و نسخه‌ی تأییدشده منتشر نمی‌کند", hu: "رسیدگی به استثنا", ev: "انتشار تکراری صفر، به‌موقع بودن" },
+    { n: "سنجش و شواهد", in: "خروجی آمار، ضبط صفحه، API", out: "استخراج عدد، درجه‌ی مدرک، علامت ناهنجاری", no: "برآورد را به مدرک تبدیل نمی‌کند؛ اتهام تقلب نمی‌زند", hu: "پذیرش یا رد مدرک", ev: "دقت استخراج، هشدار کاذب" },
+    { n: "گزارش و بهینه‌سازی", in: "دفتر کل و مشاهدات تطبیق‌شده", out: "گزارش با منبع هر عدد؛ پیشنهاد جابه‌جایی بودجه", no: "خرید بدون محدودیت؛ عدد از متن آزاد", hu: "تأیید جابه‌جایی و ارسال گزارش", ev: "وفاداری عددی، اثر واقعی پیشنهادها" }
+  ];
+  const svgA = $("#agentSvg"), cx = 260, cy = 240, R = 175;
+  el("circle", { cx, cy, r: R + 38, fill: "none", stroke: "#10383a", "stroke-width": 1, "stroke-dasharray": "2 6", opacity: .5 }, svgA);
+  const gl = el("text", { x: cx, y: cy - R - 46, fill: "#1f5b5a", "font-size": 12 }, svgA); gl.textContent = "لایه‌ی محافظ: بودجه، مجوز، تأیید";
+  const nodes = AG.map((a, i) => { const ang = -Math.PI / 2 + (i * 2 * Math.PI) / AG.length; return { ...a, x: cx + R * Math.cos(ang), y: cy + R * Math.sin(ang) }; });
+  nodes.forEach((n) => { const p = el("path", { class: "spoke", d: `M${cx} ${cy}L${n.x} ${n.y}` }, svgA);
+    if (!reduce) { const d = el("circle", { r: 3.5, class: "pulse" }, svgA); el("animateMotion", { dur: "3.2s", begin: `${-Math.random() * 3}s`, repeatCount: "indefinite", path: `M${n.x} ${n.y}L${cx} ${cy}` }, d); } });
+  el("circle", { cx, cy, r: 62, fill: "#10383a" }, svgA);
+  const ct = el("text", { x: cx, y: cy - 4, style: "fill:#ffd98e;font-size:16px;font-weight:900" }, svgA); ct.textContent = "دفتر کل کمپین";
+  const ct2 = el("text", { x: cx, y: cy + 18, style: "fill:#a9c2bb;font-size:11px;font-weight:500" }, svgA); ct2.textContent = "وضعیت، بودجه، شواهد";
+  nodes.forEach((n, i) => { const g = el("g", { class: "node", tabindex: 0, role: "button", "data-i": i }, svgA);
+    el("circle", { cx: n.x, cy: n.y, r: 38 }, g);
+    const words = n.n.split(" "); words.forEach((w, k) => { const t = el("text", { x: n.x, y: n.y + 5 + (k - (words.length - 1) / 2) * 16 }, g); t.textContent = w; });
+    g.onclick = g.onkeydown = (e) => { if (e.type === "keydown" && e.key !== "Enter" && e.key !== " ") return; pick(i); }; });
+  function pick(i) { const a = AG[i]; $$(".node", svgA).forEach((g) => g.classList.toggle("on", +g.dataset.i === i));
+    $("#apanel").innerHTML = `<span class="tag sig">عامل ${fa(i + 1)} از ${fa(AG.length)}</span><h3 style="margin:10px 0 14px">${a.n}</h3><dl><dt>ورودی</dt><dd>${a.in}</dd><dt>خروجی</dt><dd>${a.out}</dd><dt>هرگز</dt><dd style="color:var(--risk)">${a.no}</dd><dt>انسان</dt><dd>${a.hu}</dd><dt>سنجش</dt><dd class="muted">${a.ev}</dd></dl>`; }
+  pick(2);
+
+  /* ---------- readiness ---------- */
+  const RD = [
+    { w: "رسیدن به هدف بازدید در روبیکا، ایتا، بله", s: "warn", p: 45, how: "جایگاه پولی واقعی با سابقه‌ی تحویل", t: "استعلام از ۱۰ ادمین؛ یک انتشار آزمایشی با خروجی آمار" },
+    { w: "رسیدن به هدف در اینستاگرام و تلگرام", s: "risk", p: 20, how: "فقط برآورد، با بند قطعی", t: "مقایسه‌ی بازدید پست‌های برندها پیش و پس از اسفند ۱۴۰۴" },
+    { w: "اثبات اینکه چه تحویل شد", s: "ok", p: 70, how: "درجه‌ی شواهد، شناسه‌ی پست، علامت ناهنجاری", t: "سنجش کامل‌بودن مدرک در ۳ پرونده‌ی کمپین قبلی شریک" },
+    { w: "برنامه و پیشنهاد سریع", s: "ok", p: 75, how: "عامل بریف و برنامه‌ریزی روی قیمت‌های تاریخ‌دار", t: "مقایسه‌ی زمان پیشنهاد با روند فعلی شریک" },
+    { w: "محتوای فارسی زیاد و متنوع", s: "ok", p: 65, how: "عامل محتوا + بررسی ادعا + ویراستار", t: "تأیید ۲۰ نسخه توسط یک برند واقعی" },
+    { w: "قیمت رقابتی با سود", s: "risk", p: 30, how: "کاهش ساعت اپراتور با عامل‌ها", t: "ثبت ساعت واقعی و هزینه در پایلوت" },
+    { w: "ادامه‌ی کمپین در قطعی اینترنت", s: "warn", p: 50, how: "برنامه‌ی جایگزین امضاشده؛ میزبانی داخلی", t: "پذیرش بند قطعی توسط مشتری در مصاحبه" },
+    { w: "اثر واقعی بر فروش", s: "risk", p: 25, how: "لینک برچسب‌دار، آزمون با گروه کنترل", t: "یک آزمون افزایشی ساده در پایلوت" }
+  ];
+  const lab = { ok: "قابل ساخت اکنون", warn: "نیازمند دسترسی", risk: "اثبات‌نشده" };
+  const col_ = { ok: "var(--ok)", warn: "var(--signal)", risk: "var(--risk)" };
+  $("#ready").innerHTML = `<div class="rrow rhead" style="background:none;border:0"><span>خواسته‌ی مشتری</span><span>وضعیت</span><span>فاصله</span><span class="team">آزمون اسپرینت</span></div>` +
+    RD.map((r, i) => `<div class="rrow rv" style="--d:${i % 4}"><div><b>${r.w}</b><div class="tiny muted">${r.how}</div></div><span class="tag ${r.s}">${lab[r.s]}</span><div class="meter"><u data-p="${r.p}" style="background:${col_[r.s]}"></u></div><div class="tiny team">${r.t}</div></div>`).join("");
+  $$("#ready .rrow.rv").forEach((n) => ro.observe(n));
+  const mo = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.style.width = e.target.dataset.p + "%"; mo.unobserve(e.target); } }), { threshold: .3 });
+  $$("#ready u").forEach((u) => mo.observe(u));
+  function drawGauge() {
+    const g = $("#gauge"); if (g.dataset.done) return; g.dataset.done = 1;
+    const avg = RD.reduce((s, r) => s + r.p, 0) / RD.length;
+    const arc = (p) => { const a = Math.PI * (1 - p); return `${130 + 100 * Math.cos(a)} ${140 - 100 * Math.sin(a)}`; };
+    el("path", { d: `M30 140A100 100 0 0 1 230 140`, fill: "none", stroke: "#e6ece7", "stroke-width": 18, "stroke-linecap": "round" }, g);
+    const fg = el("path", { d: `M30 140A100 100 0 0 1 ${arc(avg / 100)}`, fill: "none", stroke: "#e9b65f", "stroke-width": 18, "stroke-linecap": "round" }, g);
+    const len = fg.getTotalLength(); fg.style.strokeDasharray = len; fg.style.strokeDashoffset = len; fg.getBoundingClientRect(); fg.style.transition = "stroke-dashoffset 1.6s cubic-bezier(.22,1,.36,1)"; fg.style.strokeDashoffset = 0;
+    const t = el("text", { x: 130, y: 120, "text-anchor": "middle", "font-family": "Vazirmatn", "font-size": 40, "font-weight": 900, fill: "#10383a" }, g); t.textContent = fa(Math.round(avg)) + "٪";
+    const t2 = el("text", { x: 130, y: 150, "text-anchor": "middle", "font-family": "Vazirmatn", "font-size": 12.5, fill: "#566866" }, g); t2.textContent = "نزدیکی میانگین به خواسته‌ها";
+  }
+
+  /* ---------- economics ---------- */
+  const SL = [
+    ["media", "بودجه‌ی رسانه‌ی کمپین", 200, 5000, 1200, 50, "م.ت"],
+    ["fee", "کارمزد خدمت", 0, 30, 15, 1, "٪"],
+    ["margin", "حاشیه‌ی رسانه", 0, 25, 8, 1, "٪"],
+    ["hours", "ساعت اپراتور در هر کمپین", 5, 120, 30, 1, "ساعت"],
+    ["rate", "هزینه‌ی هر ساعت اپراتور", 0.2, 3, 0.8, 0.1, "م.ت"],
+    ["tools", "ابزار و هوش مصنوعی", 0, 100, 15, 1, "م.ت"],
+    ["make", "ذخیره‌ی جبران کمبود", 0, 15, 4, 1, "٪"]
+  ];
+  const V = {}; SL.forEach((s) => (V[s[0]] = s[4]));
+  $("#sliders").innerHTML = `<h3>فرض‌ها <span class="team-flag team">نمایشی</span></h3>` + SL.map(([k, l, mi, ma, v, st, u]) => `<div class="sl"><label>${l}<span id="v-${k}"></span></label><input type="range" min="${mi}" max="${ma}" step="${st}" value="${v}" data-k="${k}" aria-label="${l}"></div>`).join("") +
+    `<div class="row small" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" data-pre="old">بدون عامل (۸۰ ساعت)</button><button class="btn ghost" data-pre="new">با عامل (۳۰ ساعت)</button></div><div class="tiny muted team" style="margin-top:8px">کاهش ساعت با عامل‌ها فرضیه است؛ در پایلوت با ثبت ساعت واقعی سنجیده می‌شود.</div>`;
+  const unit = Object.fromEntries(SL.map((s) => [s[0], s[6]]));
+  function calc() {
+    SL.forEach(([k]) => ($("#v-" + k).textContent = (unit[k] === "٪" ? fa(V[k]) + "٪" : (k === "rate" ? fa(V[k].toFixed(1)) : nf(V[k])) + " " + unit[k]).replace(/([۰-۹])\.([۰-۹])/, "$1٫$2")));
+    const fee = V.media * V.fee / 100, mg = V.media * V.margin / 100, labor = V.hours * V.rate, make = V.media * V.make / 100;
+    const rev = fee + mg, cost = labor + V.tools + make, contrib = rev - cost;
+    const perH = contrib / V.hours, perMonth = Math.floor(160 / V.hours);
+    $("#out").innerHTML = `<div><b>${nf(rev)}</b><span>درآمد ما (کارمزد + حاشیه)</span></div><div><b>${nf(cost)}</b><span>هزینه‌ی مستقیم</span></div>
+      <div class="${contrib < 0 ? "neg" : ""}"><b>${nf(contrib)}</b><span>سهم سود هر کمپین</span></div><div><b>${fa(perMonth)}</b><span>کمپین در ماه برای یک اپراتور</span></div>`;
+    const mx = Math.max(rev, cost, 1);
+    $("#bars").innerHTML = [["کارمزد", fee, "#e9b65f"], ["حاشیه‌ی رسانه", mg, "#ffd98e"], ["نیروی انسانی", labor, "#f19b8c"], ["ابزار و AI", V.tools, "#c98b80"], ["جبران کمبود", make, "#a86a5e"]]
+      .map(([l, v, c]) => `<div class="br"><span>${l}</span><i style="width:${(v / mx) * 100}%;background:${c}"></i><span>${nf(v)}</span></div>`).join("");
+  }
+  $$("#sliders input").forEach((i) => (i.oninput = () => { V[i.dataset.k] = +i.value; calc(); }));
+  $$("[data-pre]").forEach((b) => (b.onclick = () => { V.hours = b.dataset.pre === "old" ? 80 : 30; $('[data-k="hours"]').value = V.hours; calc(); }));
+  calc();
+
+  /* ---------- decisions ---------- */
+  const DEC = [
+    { q: "اول خدمت مدیریت‌شده یا نرم‌افزار؟", o: ["خدمت مدیریت‌شده با ابزار داخلی", "نرم‌افزار سلف‌سرویس برای آژانس‌ها", "هر دو هم‌زمان"], l: 0, e: "آیا ۳ مشتری برای خدمت پول می‌دهند؟", w: "پایان اسپرینت" },
+    { q: "مدل قیمت‌گذاری", o: ["کارمزد ثابت + هزینه‌ی رسانه", "درصد از رسانه", "پایه + پاداش بر اساس شواهد"], l: 2, e: "تمایل مشتری به پرداخت برای «اثبات» در مصاحبه‌ها", w: "روز ۴ اسپرینت" },
+    { q: "بسترهای آغاز", o: ["روبیکا + ایتا + آپارات", "به‌علاوه‌ی تلگرام با بند قطعی", "اینستاگرام اول"], l: 0, e: "پیشنهاد قیمت و کیفیت مدرک از ۱۰ تأمین‌کننده", w: "روز ۶ اسپرینت" },
+    { q: "شکل همکاری با شریک رسانه‌ای", o: ["حق معرفی", "تقسیم درآمد", "سهام در شرکت مشترک"], l: 1, e: "سهم واقعی شریک در فروش و عملیات", w: "جلسه‌ی دوم" },
+    { q: "میزبانی", o: ["خارج از ایران", "داخل ایران", "داخلی برای داشبورد و مدرک، مدل‌ها جدا"], l: 2, e: "رفتار سرویس در قطعی بعدی؛ هزینه‌ی میزبانی داخلی", w: "پیش از ساخت MVP" },
+    { q: "اولین صنعت پایلوت", o: ["مواد غذایی و نوشیدنی", "فروشگاه آنلاین", "صنعتی و B2B"], l: 0, e: "فهرست ۵ مشتری شریک و بودجه‌هایشان", w: "روز ۲ اسپرینت" }
+  ];
+  $("#dec").innerHTML = DEC.map((d, i) => `<div class="card rv" style="--d:${i % 2}"><h3><span class="tag sig">${fa(i + 1)}</span>${d.q}</h3><div class="opts">${d.o.map((o, k) => `<span class="${k === d.l ? "lean" : ""}">${o}${k === d.l ? "، تمایل فعلی" : ""}</span>`).join("")}</div><div class="tiny"><b>شاهد لازم:</b> ${d.e}</div><div class="tiny muted"><b>موعد:</b> ${d.w}</div></div>`).join("");
+  $$("#dec .rv").forEach((n) => ro.observe(n));
+})();
+</script>
+</body>
+</html>
