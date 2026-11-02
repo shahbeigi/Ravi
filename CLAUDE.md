@@ -5,6 +5,7 @@
 ## Map
 | Path | What |
 |---|---|
+| `start-ravi.bat`, `index.html` | Windows launcher: serves the repo root on `0.0.0.0:7002` (needs Python 3) and opens the landing page linking dashboard, onboarding and Decision Room |
 | `research/` | **Current work** (2026-11-02): commercial pivot research, architecture, meeting brief, local agent-fleet assessment, Persian product guide |
 | `onboarding/` | **Partner onboarding journey** (`index.html`): cinematic 20-scene presentation of the campaign journey and the agent fleet; script in `research/07_partner_onboarding_script.md` |
 | `ravi/` | **Main dashboard** on the cinematic teal UI: commercial campaign flow + agent fleet, market radar, supplier quality index. Political version at `ravi/political.html` |
