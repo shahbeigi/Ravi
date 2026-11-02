@@ -79,7 +79,7 @@ Dataak reports ~33M Iranian Instagram accounts (year unclear), and notes this co
 
 **Fraud:** a visible retail market sells views, members and followers (e.g. "panel" apps listed on Cafe Bazaar such as [IraniView](https://cafebazaar.ir/app/ir.iraniview)) [vendor]. Dataak itself warns that follower counts and engagement rates are unreliable because of fake followers [excerpt]. No independent measurement of invalid-traffic share in Iran was found.
 
-**What this means:** prices must come from the field sprint (supplier quote template in `06_field_sprint_kit.md`). Ravi's evidence grades and baseline checks (views-per-follower curve, view velocity, comment quality) are a real selling point, because the buyer cannot otherwise tell paid views from bought views.
+**What this means:** prices must come from the field sprint (supplier quote template in `06_field_sprint_kit.md` §C). Ravi's evidence grades and baseline checks (views-per-follower curve, view velocity, comment quality) are a real selling point, because the buyer cannot otherwise tell paid views from bought views.
 
 Inflation note: any toman figure older than 12 months is not a planning input.
 
