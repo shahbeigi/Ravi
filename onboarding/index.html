@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b3032" />
+<title>سفر راوی</title>
+<meta name="description" content="سفر یک کمپین در راوی: از یک پیام برند تا عدد قابل اثبات، با صدها عامل هوش مصنوعی و تصمیم‌های انسانی." />
+<style>
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-400.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-500.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-700.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-900.woff2") format("woff2");font-weight:900}
+:root{--t950:#072628;--t900:#0b3032;--t800:#123f41;--sig:#e9b65f;--sig-hi:#ffd98e;--mint:#7fc8b6;--red:#f19b8c;--ink:#e8efea;--ink2:#a9c2bb;--glass:rgba(255,255,255,.055);--gl:rgba(255,255,255,.11)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden}
+html{background:#062224}
+body{background:radial-gradient(ellipse at 30% 45%,#174a4b 0,#0b3032 48%,#062224 100%);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
+button,a{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none}
+::selection{background:var(--sig);color:var(--t900)}
+#cv{position:fixed;inset:0;z-index:0;pointer-events:none}
+.shell{position:fixed;inset:0;z-index:1;display:grid;grid-template-rows:62px minmax(0,1fr) auto}
+/* hud */
+.hud{display:flex;align-items:center;gap:16px;padding:0 26px;border-bottom:1px solid rgba(255,255,255,.05)}
+.logo{font-weight:900;font-size:24px;display:flex;align-items:center;gap:8px}.logo i{width:9px;height:9px;border-radius:50%;background:var(--sig);box-shadow:0 0 0 5px rgba(233,182,95,.14)}
+#chap{color:var(--ink2);font-size:13.5px;font-weight:700}
+.grow{flex:1}
+.counter{display:flex;gap:18px;align-items:center;font-size:12.5px;color:var(--ink2);opacity:0;transition:opacity .6s}
+.counter.on{opacity:1}
+.counter b{font-size:20px;font-weight:900;color:var(--mint);margin-inline-end:5px}.counter .hb b{color:var(--sig)}
+.simtag{font-size:11.5px;font-weight:700;color:var(--sig-hi);border:1px solid rgba(233,182,95,.35);padding:3px 10px;border-radius:9px;opacity:0;transition:opacity .4s}
+.simtag.on{opacity:1}
+.hbtn{padding:6px 11px;border-radius:10px;border:1px solid var(--gl);font-size:12.5px;font-weight:700;color:var(--ink2)}
+.hbtn.on{background:rgba(255,255,255,.08);color:var(--ink)}
+/* body */
+.body{display:grid;grid-template-columns:minmax(380px,43%) minmax(0,1fr);gap:28px;padding:6px 34px 0;min-height:0}
+#panel{align-self:center;max-height:100%;overflow-y:auto;padding:12px 4px 12px 10px;scrollbar-width:thin;scrollbar-color:#2f5d5c transparent}
+#panel>*{animation:up .7s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes up{from{opacity:0;transform:translateY(16px)}}
+#art{position:relative;min-height:0;margin:14px 0}
+#artov{position:absolute;inset:0}
+/* typography */
+.kick{display:flex;align-items:center;gap:10px;color:var(--sig);font-size:13px;font-weight:700}
+.kick:before{content:"";width:24px;height:2px;background:var(--sig)}
+h1{font-size:clamp(34px,4.4vw,60px);font-weight:900;line-height:1.25;margin:14px 0 16px}
+h1 em,h2 em{font-style:normal;color:var(--sig)}
+h2{font-size:clamp(24px,2.6vw,36px);font-weight:900;line-height:1.4;margin:10px 0 14px}
+.lead{font-size:17px;line-height:1.9;color:#bcd2cb;margin:0 0 16px}
+.note{font-size:12.5px;color:var(--ink2);line-height:1.8;border-inline-start:2px solid rgba(233,182,95,.5);padding-inline-start:10px;margin-top:12px}
+.human{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:6px 12px;border-radius:10px;background:rgba(233,182,95,.13);color:var(--sig-hi);font-size:13px;font-weight:700}
+.human:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sig);box-shadow:0 0 0 4px rgba(233,182,95,.2)}
+.glass{background:var(--glass);border:1px solid var(--gl);border-radius:18px;padding:14px 16px;backdrop-filter:blur(6px)}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:13px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid var(--gl);text-decoration:none}
+.btn.sig{background:var(--sig);color:var(--t900);border-color:var(--sig);box-shadow:0 10px 30px rgba(233,182,95,.25)}
+.hint{font-size:12px;color:var(--ink2)}
+.rv{opacity:.12;transform:translateY(6px);transition:opacity .6s,transform .6s}.rv.on{opacity:1;transform:none}
+/* station header */
+.st{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--ink2);font-weight:700}
+.segs{display:flex;gap:4px;direction:rtl}.segs i{width:22px;height:4px;border-radius:2px;background:rgba(255,255,255,.12)}.segs i.d{background:var(--mint)}.segs i.c{background:var(--sig)}
+/* numbers */
+.nums{display:flex;gap:22px;flex-wrap:wrap;margin:6px 0 10px}
+.nums div b{display:block;font-size:34px;font-weight:900;color:var(--sig-hi);line-height:1.2}
+.nums div span{font-size:12.5px;color:var(--ink2)}
+.nums .m b{color:var(--mint)}.nums .r b{color:var(--red)}
+/* chat */
+.chat .who{font-size:12.5px;color:var(--ink2);margin-bottom:6px}.chat .who small{color:var(--sig)}
+.bubble{background:#f2f5ec;color:#132a2b;border-radius:20px 20px 20px 5px;padding:14px 18px;font-size:17px;line-height:1.9;min-height:96px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+/* facts */
+.facts{display:grid;gap:10px}
+.facts .f{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
+.facts .f b{font-size:24px;font-weight:900;color:var(--sig-hi);line-height:1.3}
+.facts .f.red b{color:var(--red)}
+.facts .f p{margin:0;font-size:14.5px;line-height:1.75}
+.facts .f small{display:block;font-size:11.5px;color:var(--ink2)}
+/* morph */
+.morph{display:grid;gap:7px}
+.morph div{display:grid;grid-template-columns:1fr 28px 1.25fr;align-items:center;gap:8px;font-size:14.5px}
+.morph s{color:var(--ink2);text-decoration:none;opacity:.75}
+.morph i{color:var(--sig);font-style:normal;text-align:center}
+.morph b{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.chips span{padding:6px 12px;border-radius:20px;font-size:13px;font-weight:700;border:1px solid rgba(233,182,95,.4);color:var(--sig-hi);background:rgba(233,182,95,.07)}
+.chips.q span{border-color:rgba(127,200,182,.4);color:var(--mint);background:rgba(127,200,182,.07)}
+/* brief card */
+.kv{display:grid;grid-template-columns:90px 1fr;gap:6px 12px;font-size:14.5px}
+.kv dt{color:var(--ink2);font-weight:700}.kv dd{margin:0}
+/* lists */
+ul.clean{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ul.clean li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.75}
+ul.clean li:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);margin-top:9px;flex:none}
+.trend{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.08);font-size:14.5px}
+.trend b{color:var(--mint)}
+.ticker{display:grid;gap:6px;max-height:186px;overflow:hidden}
+.ticker div{font-size:13px;padding:7px 10px;border-radius:10px;background:rgba(255,255,255,.05);animation:up .45s both}
+.ticker div em{font-style:normal;color:var(--mint);font-weight:700}
+.seg{display:flex;gap:6px;margin:4px 0 12px}
+.seg button{padding:8px 14px;border-radius:11px;border:1px solid var(--gl);font-size:13.5px;font-weight:700;color:var(--ink2)}
+.seg button.on{background:var(--sig);color:var(--t900);border-color:var(--sig)}
+.prob{display:flex;align-items:baseline;gap:12px}.prob b{font-size:54px;font-weight:900;color:var(--sig-hi);line-height:1}
+.alert{border:1px solid rgba(241,155,140,.5);background:rgba(241,155,140,.08);border-radius:16px;padding:12px 14px;margin-top:10px;display:none}
+.alert.on{display:block;animation:up .5s both}
+.alert b{color:var(--red)}
+.prod{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.prod span{width:28px;height:28px;border-radius:9px;background:var(--sig);color:var(--t900);display:grid;place-items:center;font-weight:900;font-size:13px}
+.prod b{display:block;font-size:15px}.prod small{color:var(--ink2);font-size:12.5px}
+.models{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.models div{padding:9px 11px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:12.5px;color:var(--ink2);line-height:1.6}
+.models b{display:block;color:var(--ink);font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.two h4{margin:0 0 6px;font-size:14px;color:var(--mint)}.two .no h4{color:var(--red)}
+.meter{height:10px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:6px}.meter u{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--sig));border-radius:6px;transition:width 1.6s cubic-bezier(.22,1,.36,1)}
+.big2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0}
+.big2 div{padding:16px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid var(--gl)}
+.big2 b{display:block;font-size:46px;font-weight:900;line-height:1.15;color:var(--mint)}.big2 .h b{color:var(--sig-hi)}
+.big2 span{font-size:13px;color:var(--ink2)}
+/* art labels */
+.lbl{position:absolute;transform:translate(-50%,-50%);font-size:12.5px;font-weight:700;color:#dfeae5;background:rgba(7,38,40,.72);padding:3px 10px;border-radius:10px;white-space:nowrap;pointer-events:none;border:1px solid rgba(255,255,255,.08);transition:opacity .5s}
+.lbl.big{font-size:clamp(18px,2vw,26px);font-weight:900;background:none;border:0;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.lbl.sig{color:var(--t900);background:var(--sig);border-color:var(--sig)}
+.lbl.red{color:var(--red)}
+.lbl.off{opacity:0}
+.hub{position:absolute;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd98e,#e9b65f);color:#10383a;display:grid;place-items:center;text-align:center;font-weight:900;font-size:13.5px;line-height:1.35;box-shadow:0 0 0 12px rgba(233,182,95,.08),0 0 60px rgba(233,182,95,.35);animation:hp 2.6s ease-in-out infinite}
+.hub.sm{width:72px;height:72px;font-size:12px}
+.hub.mint{background:radial-gradient(circle at 35% 30%,#bfe8dc,#7fc8b6);box-shadow:0 0 0 12px rgba(127,200,182,.08),0 0 50px rgba(127,200,182,.3)}
+@keyframes hp{50%{box-shadow:0 0 0 20px rgba(233,182,95,.04),0 0 80px rgba(233,182,95,.45)}}
+.vline{position:absolute;top:4%;bottom:8%;width:0;border-inline-start:2px dashed var(--sig)}
+.vline span{position:absolute;top:-4px;transform:translateX(50%);right:0;white-space:nowrap;font-size:12px;font-weight:900;color:var(--t900);background:var(--sig);padding:2px 9px;border-radius:8px}
+.axis{position:absolute;bottom:2%;font-size:11.5px;color:var(--ink2);transform:translateX(-50%)}
+.vgrid{position:absolute;left:5%;right:5%;top:4%;height:38%;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(3,1fr);gap:7px}
+.vgrid div{border-radius:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:11px;color:var(--ink2);display:grid;place-items:center;text-align:center;line-height:1.4;opacity:0;transform:scale(.7);transition:all .45s cubic-bezier(.22,1,.36,1)}
+.vgrid div.on{opacity:1;transform:none}
+.vgrid div.win{background:var(--sig);color:var(--t900);font-weight:900;border-color:var(--sig);box-shadow:0 0 30px rgba(233,182,95,.45)}
+.vgrid div.bad{background:rgba(241,155,140,.18);border-color:var(--red);color:var(--red);font-weight:700}
+.scan{position:absolute;top:2%;bottom:2%;width:3px;background:var(--sig);box-shadow:0 0 22px 4px rgba(233,182,95,.55);opacity:0}
+.divide{position:absolute;left:50%;top:6%;bottom:6%;border-left:1px dashed rgba(255,255,255,.18)}
+svg.chart{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+svg.chart path{fill:none;vector-effect:non-scaling-stroke}
+.tl{position:absolute;height:2px;background:linear-gradient(270deg,var(--sig),rgba(255,255,255,.15) 18%);left:6%;right:6%;top:45%}
+.ms{position:absolute;transform:translate(-50%,0);top:calc(45% + 18px);text-align:center;font-size:12.5px;width:140px;color:var(--ink2)}
+.ms b{display:block;color:var(--ink);font-size:13.5px}
+.ms.now b{color:var(--sig-hi)}
+.ms:before{content:"";position:absolute;top:-25px;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#2f5d5c;border:2px solid #0b3032}
+.ms.now:before{background:var(--sig);box-shadow:0 0 0 6px rgba(233,182,95,.2)}
+/* footer */
+.foot{padding:8px 26px 16px;display:grid;gap:10px}
+.cap{min-height:58px;max-width:1060px;margin:0 auto;text-align:center;font-size:clamp(14.5px,1.25vw,18px);line-height:1.85;color:#d9e6e0;transition:opacity .3s}
+.cap span{opacity:0;animation:w .5s forwards}
+@keyframes w{to{opacity:1}}
+body.nocap .cap{opacity:0}
+.ctl{display:flex;align-items:center;gap:10px;justify-content:center}
+.ctl button.cb{width:40px;height:40px;border-radius:12px;border:1px solid var(--gl);display:grid;place-items:center;font-size:15px}
+.ctl button.play{width:auto;padding:0 16px;background:var(--sig);color:var(--t900);border-color:var(--sig);font-weight:900}
+.prog{display:flex;gap:4px;flex:1;max-width:820px;direction:rtl}
+.prog button{flex:1;height:14px;display:grid;align-items:center;padding:0}
+.prog button i{display:block;height:4px;border-radius:2px;background:rgba(255,255,255,.14);transition:background .3s}
+.prog button.d i{background:var(--mint)}.prog button.c i{background:var(--sig);height:6px}
+.prog button.gap{margin-inline-start:8px}
+@media (max-width:900px){
+  html,body{overflow:auto;height:auto}
+  .segs{display:none}
+  .shell{position:relative;min-height:100%;grid-template-rows:56px auto auto}
+  .body{grid-template-columns:1fr;grid-template-rows:42vh auto;padding:0 16px}
+  #art{order:-1;margin:8px 0}
+  #panel{max-height:none;overflow:visible}
+  .hud{padding:0 14px;gap:10px}.hud #chap,.simtag,.hbtn.fs{display:none}
+  .counter b{font-size:16px}
+  .foot{padding:14px 12px 16px}
+  .cap{font-size:14px;min-height:0}
+  .facts .f{grid-template-columns:110px 1fr}
+  .two,.models,.big2{grid-template-columns:1fr}
+  .hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.cap span{opacity:1}}
+</style>
+</head>
+<body>
+<canvas id="cv" aria-hidden="true"></canvas>
+<div class="shell">
+  <header class="hud">
+    <div class="logo"><i></i>راوی</div>
+    <span id="chap"></span>
+    <span class="grow"></span>
+    <span class="simtag" id="sim">شبیه‌سازی نمایشی · اعداد نمونه</span>
+    <div class="counter" id="ctr"><span><b id="cT">۰</b>کار عامل‌ها</span><span class="hb"><b id="cH">۰</b>تصمیم انسانی</span></div>
+    <button class="hbtn on" id="capBtn" title="زیرنویس (C)">زیرنویس</button>
+    <button class="hbtn fs" id="fsBtn" title="تمام صفحه (F)">تمام‌صفحه</button>
+  </header>
+  <div class="body">
+    <main id="panel" aria-live="polite"></main>
+    <div id="art"><div id="artov"></div></div>
+  </div>
+  <footer class="foot">
+    <div class="cap" id="cap"></div>
+    <div class="ctl">
+      <button class="cb" id="prev" aria-label="صحنه‌ی قبل">→</button>
+      <button class="cb play" id="play" aria-label="پخش خودکار">▶ پخش</button>
+      <button class="cb" id="next" aria-label="صحنه‌ی بعد">←</button>
+      <div class="prog" id="prog"></div>
+    </div>
+  </footer>
+</div>
+<noscript>برای دیدن این سفر، جاوااسکریپت را فعال کنید.</noscript>
+<script>
+(() => {
+  "use strict";
+  /* ================= utilities ================= */
+  const $ = (s, e = document) => e.querySelector(s);
+  const $$ = (s, e = document) => [...e.querySelectorAll(s)];
+  const fa = (n) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+  const nf = (n) => fa(Math.round(n).toLocaleString("en-US")).replace(/,/g, "٬");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let seed = 1; const rs = (n) => (seed = n); const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+  const gauss = () => { let u = 0, v = 0; while (!u) u = rnd(); while (!v) v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+  const Phi = (z) => { const t = 1 / (1 + 0.2316419 * Math.abs(z)), d = 0.3989423 * Math.exp(-z * z / 2); const p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return z > 0 ? 1 - p : p; };
+  const ease = (u) => u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+  const MINT = [127, 200, 182], SIG = [233, 182, 95], RED = [241, 120, 100], DIM = [70, 112, 108], WHITE = [226, 236, 232], GREY = [80, 92, 92], AMBER = [214, 160, 80], TEAL = [80, 140, 128];
+
+  /* ================= canvas + particles ================= */
+  const cv = $("#cv"), g = cv.getContext("2d");
+  let W = 0, H = 0;
+  function resize() { const d = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight; cv.width = W * d; cv.height = H * d; cv.style.width = W + "px"; cv.style.height = H + "px"; g.setTransform(d, 0, 0, d, 0, 0); }
+  resize();
+  const N = innerWidth < 900 ? 480 : 640;
+  const P = Array.from({ length: N }, () => ({ x: Math.random() * W, y: Math.random() * H, tx: 0, ty: 0, r: 1.2, tr: 1.2, c: [...DIM], tc: DIM, a: 0, ta: .14, s: .02, j: 8, ph: Math.random() * 6.283, fn: null, d: 0 }));
+  let links = [];
+  function T(p, o) { if (o.x != null) p.tx = o.x; if (o.y != null) p.ty = o.y; if (o.c) p.tc = o.c; if (o.a != null) p.ta = o.a; if (o.r != null) p.tr = o.r; p.s = reduce ? 1 : (o.s || .07); p.j = reduce ? 0 : (o.j || 0); p.fn = o.fn || null; p.d = reduce ? 0 : (o.d || 0); }
+  function ambient(p) { T(p, { x: Math.random() * W, y: Math.random() * H, c: DIM, a: .13, r: 1.2, s: .012, j: 10 }); }
+  const art = () => { const r = $("#art").getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height, cx: r.left + r.width / 2, cy: r.top + r.height / 2, X: (f) => r.left + f * r.width, Y: (f) => r.top + f * r.height }; };
+  let last = performance.now();
+  function frame(t) {
+    const dt = Math.min(48, t - last); last = t;
+    g.clearRect(0, 0, W, H);
+    g.globalCompositeOperation = "source-over";
+    for (const L of links) {
+      const x2 = L.i != null ? P[L.i].x : L.x2, y2 = L.i != null ? P[L.i].y : L.y2;
+      g.strokeStyle = `rgba(${L.c || "127,200,182"},${L.a || .12})`; g.lineWidth = 1; g.beginPath(); g.moveTo(L.x1, L.y1); g.lineTo(x2, y2); g.stroke();
+    }
+    g.globalCompositeOperation = "lighter";
+    for (const p of P) {
+      if (p.d > 0) p.d -= dt;
+      else {
+        let tx = p.tx, ty = p.ty;
+        if (p.fn) { const q = p.fn(t, p); tx = q[0]; ty = q[1]; }
+        if (p.j) { tx += Math.sin(t * .0011 + p.ph) * p.j; ty += Math.cos(t * .0013 + p.ph * 1.7) * p.j; }
+        p.x += (tx - p.x) * p.s; p.y += (ty - p.y) * p.s;
+      }
+      const c = p.c, tc = p.tc; c[0] += (tc[0] - c[0]) * .08; c[1] += (tc[1] - c[1]) * .08; c[2] += (tc[2] - c[2]) * .08;
+      p.a += (p.ta - p.a) * .06; p.r += (p.tr - p.r) * .1;
+      if (p.a < .01) continue;
+      g.fillStyle = `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${p.a.toFixed(3)})`;
+      g.beginPath(); g.arc(p.x, p.y, Math.max(.4, p.r), 0, 6.283); g.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* text → points */
+  function textPts(str, cx, cy, size, max) {
+    const c = document.createElement("canvas"), x = c.getContext("2d");
+    x.font = `900 ${size}px Vazirmatn`; const w = Math.ceil(x.measureText(str).width) + 20, h = Math.ceil(size * 1.5);
+    c.width = w; c.height = h; x.font = `900 ${size}px Vazirmatn`; x.fillStyle = "#fff"; x.textAlign = "center"; x.textBaseline = "middle"; x.direction = "rtl"; x.fillText(str, w / 2, h / 2);
+    const d = x.getImageData(0, 0, w, h).data;
+    for (let step = 2; step < 30; step++) {
+      const pts = []; for (let y = 0; y < h; y += step) for (let xx = 0; xx < w; xx += step) if (d[(y * w + xx) * 4 + 3] > 140) pts.push([cx - w / 2 + xx, cy - h / 2 + y]);
+      if (pts.length <= max) { rs(9); for (let i = pts.length - 1; i > 0; i--) { const k = Math.floor(rnd() * (i + 1)); [pts[i], pts[k]] = [pts[k], pts[i]]; } return pts; }
+    }
+    return [];
+  }
+
+  /* ================= scene engine ================= */
+  let idx = 0, token = 0, playing = false, autoT = null;
+  const wait = (ms, tk) => new Promise((res, rej) => setTimeout(() => (tk === token ? res() : rej("stale")), reduce ? Math.min(ms, 40) : ms));
+  const alive = (tk) => tk === token;
+  const station = (n, name) => `<div class="st"><span>سفر یک کمپین · ایستگاه ${fa(n)} از ۱۰ · ${name}</span><div class="segs">${Array.from({ length: 10 }, (_, i) => `<i class="${i + 1 < n ? "d" : i + 1 === n ? "c" : ""}"></i>`).join("")}</div></div>`;
+  const lbl = (fx, fy, t, cls = "") => `<span class="lbl ${cls}" style="left:${fx * 100}%;top:${fy * 100}%">${t}</span>`;
+  async function count(el, to, ms, tk, from = 0) { if (!el) return; const n = Math.max(8, Math.round(ms / 40)); try { for (let i = 1; i <= n; i++) { el.textContent = nf(from + (to - from) * ease(i / n)); await wait(ms / n, tk); } } catch (e) {} }
+  const reveal = async (sel, gap, tk) => { for (const n of $$(sel)) { n.classList.add("on"); await wait(gap, tk); } };
+
+  /* shared live state for the live-ops chart */
+  const live = { H: 0, rec: false };
+
+  const S = [];
+
+  /* 0 · Title */
+  S.push({ ch: "آغاز", dur: 9000,
+    panel: `<div class="kick">معرفی راوی به شریک رسانه‌ای · ۱۱ آبان ۱۴۰۵</div><h1>از یک پیام،<br><em>تا عدد قابل اثبات.</em></h1><p class="lead">پلتفرم عملیات کمپین برای برندها. صدها عامل هوش مصنوعی کار سنگین را انجام می‌دهند؛ انسان‌ها تصمیم‌های مهم را می‌گیرند. هیچ عددی ساختگی نیست.</p><div class="row"><button class="btn sig" data-next>شروع سفر ←</button><span class="hint">کلید ← برای ادامه · فاصله برای پخش خودکار · C برای زیرنویس</span></div>`,
+    narr: "هر نقطه‌ای که می‌بینید یک عامل هوش مصنوعی است. امروز نشان می‌دهیم این عامل‌ها چطور یک درخواست ساده‌ی برند را به یک کمپین واقعی، قابل اندازه‌گیری و قابل اثبات تبدیل می‌کنند.",
+    layout(A) { const pts = textPts("راوی", A.cx, A.cy, Math.min(A.w * .36, A.h * .55), N - 60); P.forEach((p, i) => { if (i < pts.length) T(p, { x: pts[i][0], y: pts[i][1], c: i % 6 === 0 ? SIG : MINT, a: .95, r: 2.2, s: .045, j: 1.4, d: i * 2.2 }); else ambient(p); }); }
+  });
+
+  /* 1 · One message */
+  S.push({ ch: "یک پیام", dur: 13000,
+    panel: `<div class="kick">۱ · یک پیام</div><h2>هر هفته همین پیام را می‌گیرید.</h2><div class="chat"><div class="who">مدیر برند · لبنیات سپیدار <small>(نمایشی)</small></div><div class="bubble" id="bub"></div></div><p class="lead" style="margin-top:16px">سه سؤال در آن است: شدنی است؟ چقدر؟ از کجا بفهمیم واقعی است؟ امروز جواب هر سه حدس است: یک فهرست کانال، یک عدد، و چند اسکرین‌شات.</p>`,
+    art: lbl(.24, .2, "شدنیه؟", "big") + lbl(.74, .3, "چقدر؟", "big") + lbl(.46, .62, "واقعیه؟", "big"),
+    narr: "شما هر هفته این پیام را می‌گیرید. سه سؤال در آن است: شدنی است؟ چقدر هزینه دارد؟ از کجا بفهمیم واقعی است؟ امروز جواب هر سه حدس است. راوی ساخته شده تا جواب هر سه را با داده بدهد.",
+    layout(A) { rs(3); const C = [[.24, .3], [.74, .4], [.46, .74]]; P.forEach((p, i) => { if (i < 480) { const k = i % 3; T(p, { x: A.X(C[k][0]) + gauss() * A.w * .07, y: A.Y(C[k][1]) + gauss() * A.h * .07, c: k === 2 ? RED : WHITE, a: .5, r: 1.7, s: .035, j: 7 }); } else ambient(p); }); },
+    async run(tk) { const m = "سلام. برای ماست جدیدمون تا آخر ماه ۵۰۰ هزار بازدید واقعی می‌خوایم، توی روبیکا، ایتا و اینستاگرام. شدنیه؟ چقدر؟ از کجا بفهمیم واقعیه؟"; const b = $("#bub"); for (let i = 0; i <= m.length; i += 2) { b.textContent = m.slice(0, i); await wait(26, tk); } b.textContent = m; }
+  });
+
+  /* 2 · Market */
+  const FACTS = [
+    ["۳۰ تا ۸۰ هزار تومان", "قیمت هزار عضو جعلی تلگرام. بازار «بازدید تضمینی» آشکار است، پس مشتری به هر عددی شک دارد.", "مشرق‌نیوز، بدون تاریخ", "red"],
+    ["۸۸ روز", "قطع اینترنت بین‌الملل از ۹ اسفند ۱۴۰۴. اینستاگرام و تلگرام پس از بازگشایی هم فیلتر ماندند.", "Al Jazeera، ۳۱ مه ۲۰۲۶", "red"],
+    ["۵۵٫۵ میلیون", "کاربر فعال ماهانه‌ی روبیکا؛ ایتا ۴۰٫۴ و بله ۲۸٫۷ میلیون. مخاطب جابه‌جا شده.", "سازمان فناوری اطلاعات، اسفند ۱۴۰۴ (آمار دولتی)", ""],
+    ["۵۸٪", "برندهایی که در ۶۴۰ آزمون مستقل، با کمپین دستی بازده واقعی بهتری از خرید خودکار متا گرفتند. عدد گزارش‌شده‌ی خود بستر کافی نیست.", "Haus، ۲۰۲۵", ""]
+  ];
+  S.push({ ch: "بازار ۱۴۰۵", dur: 15000,
+    panel: `<div class="kick">۲ · بازار ۱۴۰۵</div><h2>بازار عوض شده.<br><em>برنده کسی است که بتواند ثابت کند.</em></h2><div class="facts">${FACTS.map((f) => `<div class="f rv ${f[3]}"><b>${f[0]}</b><p>${f[1]}<small>${f[2]}</small></p></div>`).join("")}</div>`,
+    art: lbl(.13, .03, "تلگرام و اینستاگرام") + lbl(.62, .03, "بسترهای داخلی") + lbl(.5, .97, "هر نقطه: یک کانال تبلیغاتی (نمادین)", "off") ,
+    narr: "بازار عوض شده. عدد جعلی را می‌شود خرید، پس مشتری به عدد شک دارد. اینترنت بین‌الملل ۸۸ روز قطع بود و اینستاگرام و تلگرام هنوز فیلترند. مخاطب به روبیکا، ایتا و بله رفته. و حتی در دنیا، عددی که خود پلتفرم گزارش می‌کند همیشه با نتیجه‌ی واقعی یکی نیست.",
+    layout(A) { rs(11); this.g = []; const cols = 24, rows = 14; P.forEach((p, i) => { if (i < cols * rows) { const c = i % cols, r = Math.floor(i / cols); const fake = rnd() < .16; this.g.push({ i, c, fake }); T(p, { x: A.X(.04 + .92 * c / (cols - 1)), y: A.Y(.1 + .82 * r / (rows - 1)), c: TEAL, a: .55, r: 2.4, s: .06, j: .6, d: (c + r) * 14 }); } else ambient(p); }); },
+    async run(tk) { const f = $$(".facts .f"), G = this.g; await wait(900, tk); $$(".lbl.off").forEach((n) => n.classList.remove("off"));
+      f[0].classList.add("on"); G.forEach((q) => q.fake && T(P[q.i], { c: RED, a: .95, r: 3, s: .1, j: 1.5 })); await wait(3000, tk);
+      f[1].classList.add("on"); G.forEach((q) => q.c < 6 && T(P[q.i], { c: GREY, a: .28, r: 2, s: .08 })); await wait(3000, tk);
+      f[2].classList.add("on"); G.forEach((q) => q.c >= 6 && !q.fake && T(P[q.i], { c: MINT, a: .95, r: 3, s: .08, j: .8 })); await wait(3000, tk);
+      f[3].classList.add("on"); G.forEach((q) => q.fake && T(P[q.i], { c: GREY, a: .25, r: 1.6 })); G.forEach((q) => q.c >= 6 && !q.fake && (q.i % 3 === 0) && T(P[q.i], { c: SIG, a: 1, r: 3.4 })); }
+  });
+
+  /* 3 · Expansion */
+  const OLD = [["رادار روایت", "رادار بازار و رقبا"], ["آزمایشگاه پیام", "پیش‌آزمون محتوا"], ["استودیو", "استودیو چندبستری فارسی"], ["قطب‌نما", "قطب‌نمای برند"], ["صف تأیید", "تأیید متصل به پول و دفتر کل"]];
+  const NEW = ["شاخص کیفیت رسانه", "پیش‌بینی تحویل", "استعلام و رزرو گسترده", "شواهد و تسویه", "تداوم در قطعی", "دستیار پس از کلیک"];
+  S.push({ ch: "گسترش ایده", dur: 13000,
+    panel: `<div class="kick">۳ · از کجا آمدیم</div><h2>همان موتورها،<br><em>یک مأموریت تازه.</em></h2><p class="lead">راوی اول برای ارتباطات سیاسی ساخته شد. بریف شما آن را به پلتفرم کمپین برندها تبدیل کرد.</p><div class="morph">${OLD.map((o) => `<div class="rv"><s>${o[0]}</s><i>←</i><b>${o[1]}</b></div>`).join("")}</div><div class="rv nw" style="margin-top:14px"><b style="font-size:14px">و شش ماژول تازه برای برندها:</b><div class="chips">${NEW.map((n) => `<span>${n}</span>`).join("")}</div></div>`,
+    art: lbl(.2, .76, "راوی ۱ · ارتباطات") + lbl(.62, .76, "راوی برای برندها", "sig") + NEW.map((n, k) => { const a = -Math.PI / 2 + k * Math.PI / 3; return lbl(.62 + .3 * Math.cos(a), .45 + .36 * Math.sin(a), n, "off sat"); }).join(""),
+    narr: "راوی اول برای ارتباطات سیاسی ساخته شد: رصد روایت‌ها، آزمودن پیام، تولید محتوا و تأیید انسانی. وقتی نیاز شما را شنیدیم، همان موتورها را نگه داشتیم و دورشان یک هسته‌ی تجاری ساختیم.",
+    layout(A) { rs(5); const o = [A.X(.2), A.Y(.45)], n = [A.X(.62), A.Y(.45)]; this.sat = [];
+      P.forEach((p, i) => {
+        if (i < 140) T(p, { x: o[0] + gauss() * A.w * .05, y: o[1] + gauss() * A.h * .06, c: DIM, a: .7, r: 2, s: .05, j: 3 });
+        else if (i < 300) { const ox = gauss() * 8, oy = gauss() * 8, sp = .00018 + rnd() * .0001, ph = rnd(); T(p, { c: MINT, a: .8, r: 1.8, s: .25, fn: (t) => { const u = (t * sp + ph) % 1; const mx = (o[0] + n[0]) / 2, my = o[1] - A.h * .28; const x = (1 - u) * (1 - u) * o[0] + 2 * (1 - u) * u * mx + u * u * n[0], y = (1 - u) * (1 - u) * o[1] + 2 * (1 - u) * u * my + u * u * n[1]; return [x + ox, y + oy]; } }); }
+        else if (i < 440) T(p, { x: n[0] + gauss() * A.w * .045, y: n[1] + gauss() * A.h * .055, c: SIG, a: .9, r: 2.3, s: .05, j: 2 });
+        else ambient(p);
+      });
+      for (let k = 0; k < 6; k++) { const a = -Math.PI / 2 + k * Math.PI / 3; this.sat.push([A.X(.62 + .3 * Math.cos(a)), A.Y(.45 + .36 * Math.sin(a))]); } },
+    async run(tk) { await wait(500, tk); await reveal(".morph .rv", 650, tk); $(".nw").classList.add("on");
+      for (let k = 0; k < 6; k++) { $$(".lbl.sat")[k].classList.remove("off"); const [sx, sy] = this.sat[k]; for (let j = 0; j < 22; j++) { const p = P[440 + k * 22 + j]; if (p) T(p, { x: sx + gauss() * 14, y: sy + gauss() * 14, c: SIG, a: .9, r: 2, s: .07, j: 2 }); } await wait(350, tk); } }
+  });
+
+  /* 4a · Brief */
+  S.push({ ch: "سفر · بریف", dur: 12000, sim: true, add: [14, 1],
+    panel: `${station(1, "بریف")}<h2>سه عامل، پیام را به <em>بریف دقیق</em> تبدیل می‌کنند.</h2><div class="glass"><dl class="kv">${[["هدف", "آشنایی با «سپیدار+»"], ["شاخص", "بازدید گزارش‌شده، جدا برای هر بستر"], ["هدف‌ها", "روبیکا ۳۰۰ هزار · ایتا ۱۵۰ هزار · اینستاگرام ۵۰ هزار (فقط برآورد)"], ["مخاطب", "خانواده‌های شهری ۲۵ تا ۴۵ سال"], ["مهلت", "۲۲ آبان"], ["بودجه", "۱٬۴۵۰ میلیون تومان"]].map((r) => `<dt class="rv">${r[0]}</dt><dd class="rv">${r[1]}</dd>`).join("")}</dl></div><div class="rv qs" style="margin-top:12px"><b style="font-size:13.5px">پرسش‌هایی که مشتری جا انداخته:</b><div class="chips q">${["مجوز ادعای سلامت؟", "لینک صفحه‌ی فرود؟", "تأییدکننده‌ی نهایی کیست؟", "رنگ و لحن تأییدشده؟"].map((x) => `<span>${x}</span>`).join("")}</div></div><div class="human rv hm">تصمیم انسانی: تأیید بریف</div>`,
+    art: `<div class="hub mint" style="left:50%;top:48%">پیام<br>برند</div>` + lbl(.5, .78, "۳ عامل: استخراج · کمبودها · قطب‌نمای برند"),
+    narr: "سه عامل پیام را می‌خوانند و آن را به یک بریف دقیق تبدیل می‌کنند: هدف هر بستر جدا، مخاطب، مهلت و بودجه. چهار سؤال هم می‌پرسند که مشتری جا انداخته. اولین تصمیم انسانی: تأیید بریف.",
+    layout(A) { const c = [A.X(.5), A.Y(.48)]; P.forEach((p, i) => { if (i < 3) { const r = 78, ph = i * 2.094; T(p, { c: SIG, a: 1, r: 5, s: .2, fn: (t) => [c[0] + Math.cos(t * .0012 + ph) * r, c[1] + Math.sin(t * .0012 + ph) * r * .8] }); } else if (i < 160) { rs(i); const a = rnd() * 6.283, rr = 140 + rnd() * Math.min(A.w, A.h) * .3; T(p, { x: c[0] + Math.cos(a) * rr, y: c[1] + Math.sin(a) * rr * .8, c: DIM, a: .3, r: 1.4, s: .03, j: 5 }); } else ambient(p); }); },
+    async run(tk) { await wait(400, tk); await reveal("dl.kv .rv", 260, tk); await wait(300, tk); $(".qs").classList.add("on"); await wait(900, tk); $(".hm").classList.add("on"); }
+  });
+
+  /* 4b · Market radar */
+  S.push({ ch: "سفر · رادار بازار", dur: 13000, sim: true, add: [3200, 0],
+    panel: `${station(2, "رادار بازار")}<h2>۵۰۰ عامل، یک شب،<br><em>کل صنعت غذا.</em></h2><div class="nums"><div class="m"><b id="n1">۰</b><span>پست عمومی خوانده‌شده</span></div><div><b>۵۰۰</b><span>کانال عمومی در روبیکا، ایتا، بله، آپارات</span></div></div><div class="glass"><b style="font-size:13.5px">صبح، روی میز شماست:</b>${[["ریلز دستور پخت زیر ۳۰ ثانیه", "+۴۲٪ بازدید میانه"], ["کانال‌های مادر و کودک در روبیکا", "+۲۸٪ عضو در ۳ ماه"], ["رقیب الف: ۱۲ تبلیغ در ایتا این ماه", "قالب: پست + سنجاق"]].map((x) => `<div class="trend rv"><span>${x[0]}</span><b>${x[1]}</b></div>`).join("")}</div><div class="note">فقط محتوای عمومی خوانده می‌شود. اعداد این صحنه نمونه است.</div>`,
+    art: `<div class="hub" style="left:50%;top:50%">رادار<br>بازار</div>`,
+    narr: "شب اول، پانصد عامل شنود محتوای عمومی صنعت غذا را در روبیکا، ایتا، بله و آپارات می‌خوانند: کدام قالب رشد کرده، کدام قلاب جواب داده، رقبا چه تبلیغی کرده‌اند. صبح، خلاصه روی میز است.",
+    layout(A) { rs(21); const c = [A.cx, A.cy]; P.forEach((p, i) => { if (i < 500) { const a = rnd() * 6.283, rr = .55 + rnd() * .45; const tx = c[0] + Math.cos(a) * A.w * .47 * rr, ty = c[1] + Math.sin(a) * A.h * .47 * rr; const sp = .0006 + rnd() * .0007, ph = rnd() * 6.283; T(p, { c: MINT, a: .9, r: 2.1, s: .18, fn: (t, q) => { const u = (1 - Math.cos(t * sp + ph)) / 2; q.tc = u > .88 ? SIG : MINT; return [c[0] + (tx - c[0]) * u, c[1] + (ty - c[1]) * u]; } }); } else ambient(p); }); },
+    async run(tk) { const c = count($("#n1"), 3200, 6000, tk); await wait(6400, tk); await reveal(".trend", 600, tk); await c; }
+  });
+
+  /* 4c · Supplier quality */
+  S.push({ ch: "سفر · کیفیت رسانه", dur: 14000, sim: true, add: [2400, 0],
+    panel: `${station(3, "شاخص کیفیت رسانه")}<h2>پیش از خرج یک ریال،<br><em>تقلب فیلتر می‌شود.</em></h2><div class="nums"><div class="m"><b id="q1">۰</b><span>کانال بررسی‌شده</span></div><div class="r"><b id="q2">۰</b><span>الگوی غیرعادی</span></div><div><b id="q3">۰</b><span>فهرست کوتاه</span></div></div><div class="glass"><b style="font-size:13.5px">چه می‌سنجیم، نه فقط تعداد عضو:</b><ul class="clean" style="margin-top:8px"><li>منحنی بازدید هر پست در ۲۴ ساعت</li><li>نسبت بازدید به عضو و جهش‌های ناگهانی عضو</li><li>کیفیت و تنوع نظرها</li><li>سابقه‌ی تحویل و نوع مدرکی که می‌دهد</li></ul></div><div class="note">علامت قرمز یعنی بررسی انسانی، نه اتهام تقلب.</div>`,
+    art: lbl(.42, .97, "هر نقطه: دو کانال · سبز: مدرک خوب · کهربایی: نامعلوم · قرمز: الگوی غیرعادی") + lbl(.92, .04, "فهرست کوتاه", "sig off sl"),
+    narr: "حالا مهم‌ترین قسمت: هزار و دویست کانال را بررسی می‌کنیم. نه تعداد عضو، بلکه رفتار واقعی بازدید. هشتاد و هفت کانال الگوی غیرعادی دارند و کنار می‌روند. پیش از خرج یک ریال، تقلب را فیلتر کرده‌ایم.",
+    layout(A) { rs(31); this.g = []; const cols = 30, rows = 20; P.forEach((p, i) => { if (i < 600) { const c = i % cols, r = Math.floor(i / cols); const u = rnd(); const k = u < .0725 ? "r" : u < .65 ? "g" : "a"; this.g.push({ i, c, k }); T(p, { x: A.X(.03 + .78 * c / (cols - 1)), y: A.Y(.05 + .86 * r / (rows - 1)), c: DIM, a: .45, r: 2.6, s: .08, d: r * 10 }); } else ambient(p); }); this.A = A; },
+    async run(tk) { const G = this.g, A = this.A; await wait(700, tk); count($("#q1"), 1200, 2600, tk);
+      for (let c = 29; c >= 0; c--) { G.filter((q) => q.c === c).forEach((q) => T(P[q.i], { c: q.k === "r" ? RED : q.k === "g" ? MINT : AMBER, a: q.k === "r" ? 1 : .85, r: q.k === "r" ? 3.8 : 2.9, s: .1 })); await wait(85, tk); }
+      count($("#q2"), 87, 1200, tk); await wait(1300, tk);
+      $(".lbl.sl").classList.remove("off"); const pick = G.filter((q) => q.k === "g").filter((_, k) => k % 11 === 0).slice(0, 30);
+      pick.forEach((q, k) => T(P[q.i], { x: A.X(.92) + (k % 2 ? 7 : -7), y: A.Y(.1 + .8 * Math.floor(k / 2) / 14), c: SIG, a: 1, r: 3.4, s: .06, d: k * 40 }));
+      await count($("#q3"), 60, 1600, tk); }
+  });
+
+  /* 4d · Plan simulation */
+  const SCN = [{ id: "c", t: "محتاط", m: 300, sd: 40, tg: 250, note: "فقط بسترهای داخلی با سابقه‌ی تحویل؛ هدف پایین‌تر" }, { id: "b", t: "متعادل", m: 338, sd: 49, tg: 300, note: "روبیکا، ایتا، آپارات با تعهد؛ اینستاگرام برآورد" }, { id: "e", t: "آزمایشی", m: 350, sd: 90, tg: 300, note: "۲۰٪ بودجه برای آزمون قلاب‌ها؛ بازه پهن‌تر" }];
+  let curScn = 1;
+  function layoutHist(A, sc, drop) {
+    rs(42); const lo = 100, hi = 500, bins = 30, n = Math.min(600, N - 20); const vals = []; for (let i = 0; i < n; i++) vals.push(Math.max(lo + 1, Math.min(hi - 1, sc.m + gauss() * sc.sd)));
+    const bi = (v) => Math.floor((v - lo) / (hi - lo) * bins); const cnt = new Array(bins).fill(0); vals.forEach((v) => cnt[bi(v)]++);
+    const maxRows = Math.ceil(Math.max(...cnt) / 2), step = Math.min(A.h * .7 / maxRows, 11), bw = .88 * A.w / bins, fill = new Array(bins).fill(0);
+    P.forEach((p, i) => { if (i < n) { const v = vals[i], b = bi(v), k = fill[b]++; const x = A.X(.06) + bw * (b + .5) + (k % 2 ? bw * .2 : -bw * .2), y = A.Y(.88) - Math.floor(k / 2) * step; if (drop) { p.x = x + gauss() * 20; p.y = A.y - 20 - rnd() * 80; } T(p, { x, y, c: v >= sc.tg ? SIG : TEAL, a: .95, r: 2.4, s: .09, d: drop ? i * 2.5 : 0 }); } else ambient(p); });
+    const tx = (.06 + .88 * (sc.tg - lo) / (hi - lo)) * 100; const vl = $(".vline"); if (vl) { vl.style.left = tx + "%"; vl.querySelector("span").textContent = "هدف " + fa(sc.tg) + " هزار"; }
+    const pr = Phi((sc.m - sc.tg) / sc.sd); $("#pv") && ($("#pv").textContent = fa(Math.round(pr * 100)) + "٪");
+    $("#pr") && ($("#pr").textContent = `بازه‌ی ۸۰٪: ${fa(Math.round(sc.m - 1.28 * sc.sd))} تا ${fa(Math.round(sc.m + 1.28 * sc.sd))} هزار بازدید · ${sc.note}`);
+    $$(".seg button").forEach((b) => b.classList.toggle("on", b.dataset.s === sc.id));
+  }
+  S.push({ ch: "سفر · شبیه‌سازی", dur: 15000, sim: true, add: [30, 1],
+    panel: `${station(4, "برنامه و شبیه‌سازی")}<h2>ده هزار بار اجرا،<br><em>پیش از یک بار خرج.</em></h2><div class="seg">${SCN.map((s) => `<button data-s="${s.id}">${s.t}</button>`).join("")}</div><div class="glass"><div class="prob"><b id="pv">۰</b><span>احتمال رسیدن به هدف روبیکا در ۷۲ ساعت</span></div><div class="small" id="pr" style="margin-top:8px;font-size:13.5px;color:#bcd2cb"></div></div><div class="note">بر اساس سابقه‌ی ۱۰ پست آخر همین کانال‌ها. برای کانال تازه، بازه پهن‌تر می‌شود. هر بستر جدا سنجیده می‌شود و اعداد بسترها جمع زده نمی‌شوند.</div><div class="human rv hm">تصمیم انسانی: انتخاب سناریو</div>`,
+    art: `<div class="vline" style="left:50%"><span>هدف</span></div><span class="axis" style="left:6%">۱۰۰ هزار</span><span class="axis" style="left:50%">بازدید گزارش‌شده‌ی روبیکا · ۱۰٬۰۰۰ اجرا</span><span class="axis" style="left:94%">۵۰۰ هزار</span>`,
+    narr: "برای هر سناریو ده هزار بار کمپین را شبیه‌سازی می‌کنیم، بر اساس سابقه‌ی واقعی همین کانال‌ها. نتیجه یک قول خشک نیست، یک بازه است. حالا مشتری می‌داند چه می‌خرد. دومین تصمیم انسانی: انتخاب سناریو.",
+    layout(A, first) { layoutHist(A, SCN[curScn], first !== false); $$(".seg button").forEach((b) => (b.onclick = () => { curScn = SCN.findIndex((s) => s.id === b.dataset.s); layoutHist(art(), SCN[curScn], false); })); },
+    async run(tk) { await wait(3200, tk); for (const k of [0, 2, 1]) { curScn = k; layoutHist(art(), SCN[k], false); await wait(2400, tk); } $(".hm").classList.add("on"); }
+  });
+
+  /* 4e · Outreach */
+  const TICK = ["<em>آشپزخانه‌ی ایرانی</em> (روبیکا): ۲۱۰ م.ت · سنجاق ۶ ساعت · خروجی آمار ۲۴ ساعته", "<em>سفره</em> (ایتا): ۱۵۰ م.ت · پست ۱۸ تا ۲۲ · ضبط صفحه", "<em>آشپزی با نگار</em> (آپارات): ۲۶۰ م.ت · ویدیو ۹۰ ثانیه · API", "<em>خانه و زندگی</em> (بله): ۱۳۰ م.ت · قابل لغو تا ۴۸ ساعت", "<em>مادران امروز</em> (روبیکا): فقط اسکرین‌شات → مدرک بهتر خواسته شد", "<em>غذای سالم</em> (اینستاگرام): ۱۸۰ م.ت · بدون تعهد تحویل", "<em>سلامت خانواده</em> (ایتا): ظرفیت تا ۱۲ آبان پر است"];
+  S.push({ ch: "سفر · استعلام", dur: 14000, sim: true, add: [300, 1],
+    panel: `${station(5, "استعلام و هماهنگی")}<h2>۶۰ گفت‌وگوی هم‌زمان<br><em>با ادمین‌های واقعی.</em></h2><div class="nums"><div><b>۶۰</b><span>گفت‌وگو</span></div><div class="m"><b id="o1">۰</b><span>پاسخ رسیده</span></div><div><b id="o2">۰:۰۰</b><span>ساعت</span></div></div><div class="ticker" id="tk"></div><div class="note">از حساب کسب‌وکار شناخته‌شده‌ی آژانس، با نام خودش. قرارداد و تعهد مالی را انسان می‌بندد.</div><div class="human rv hm">تصمیم انسانی: نهایی‌کردن قراردادها</div>`,
+    art: `<div class="hub sm" style="left:50%;top:50%">دفتر<br>عملیات</div>` + lbl(.5, .02, "۶۰ ادمین و سازنده‌ی واقعی"),
+    narr: "شصت عامل هم‌زمان با شصت ادمین و سازنده‌ی واقعی گفت‌وگو می‌کنند: قیمت، زمان، نوع مدرک. در دو ساعت چهل و هشت پاسخ رسیده؛ کاری که یک تیم را یک هفته مشغول می‌کرد. قرارداد و تعهد مالی را انسان می‌بندد.",
+    layout(A) { rs(51); const c = [A.cx, A.cy]; links = []; this.ad = [];
+      for (let k = 0; k < 60; k++) { const a = k / 60 * 6.283 + .05, rr = .9 + rnd() * .1; this.ad.push([c[0] + Math.cos(a) * A.w * .44 * rr, c[1] + Math.sin(a) * A.h * .42 * rr]); }
+      P.forEach((p, i) => {
+        if (i < 60) { const [tx, ty] = this.ad[i]; T(p, { x: tx, y: ty, c: WHITE, a: .55, r: 3.4, s: .08 }); links.push({ x1: c[0], y1: c[1], x2: tx, y2: ty, a: .07 }); }
+        else if (i < 120) { const [tx, ty] = this.ad[i - 60]; const sp = .0011 + rnd() * .0006, ph = rnd() * 6.283; T(p, { c: SIG, a: 1, r: 2.4, s: .25, fn: (t, q) => { const s = t * sp + ph, u = (1 - Math.cos(s)) / 2; q.tc = Math.sin(s) > 0 ? SIG : MINT; return [c[0] + (tx - c[0]) * u, c[1] + (ty - c[1]) * u]; } }); }
+        else ambient(p);
+      }); },
+    async run(tk) { rs(77); const order = [...Array(60).keys()].sort(() => rnd() - .5).slice(0, 48); const tkEl = $("#tk"); let ti = 0;
+      for (let k = 0; k < 48; k++) { T(P[order[k]], { c: MINT, a: 1, r: 4.6, s: .1 }); $("#o1").textContent = fa(k + 1); const mins = Math.round((k + 1) / 48 * 120); $("#o2").textContent = fa(Math.floor(mins / 60)) + ":" + fa(String(mins % 60).padStart(2, "0"));
+        if (k % 7 === 0 && ti < TICK.length) { tkEl.insertAdjacentHTML("afterbegin", `<div>${TICK[ti++]}</div>`); } await wait(150, tk); }
+      $(".hm").classList.add("on"); }
+  });
+
+  /* 4f · Creative */
+  S.push({ ch: "سفر · محتوا", dur: 15000, sim: true, add: [350, 1],
+    panel: `${station(6, "محتوا و پیش‌آزمون")}<h2>۲۴ نسخه، ۳۰۰ خواننده‌ی شبیه‌سازی‌شده،<br><em>۳ برنده.</em></h2><ul class="clean"><li class="rv">نسخه برای هر قالب: پست کانال، ریلز، استوری، ویدیوی آپارات</li><li class="rv">هر ادعا با واقعیت‌های تأییدشده‌ی برند بررسی می‌شود</li><li class="rv">تصویر، ویدیو و صدای فارسی روی GPU محلی ساخته می‌شود</li></ul><div class="note">پنل شبیه‌سازی‌شده وضوح و ابهام را نقد می‌کند؛ پیش‌بینی فروش نیست. برنده‌ها روی جایگاه‌های هم‌ارز واقعی آزموده می‌شوند.</div><div class="human rv hm">تصمیم انسانی: برند سه نسخه را تأیید می‌کند</div>`,
+    art: `<div class="vgrid">${Array.from({ length: 24 }, (_, i) => `<div>${["پست", "ریلز", "استوری", "ویدیو"][i % 4]}<br>${fa(i + 1)}</div>`).join("")}</div>` + lbl(.5, .47, "پنل ۳۰۰ خواننده‌ی شبیه‌سازی‌شده"),
+    narr: "عامل‌های محتوا بیست و چهار نسخه می‌سازند. یک پنل سیصد نفره‌ی شبیه‌سازی‌شده آن‌ها را از نظر وضوح نقد می‌کند. عامل بررسی ادعا جلوی یک ادعای سلامت بی‌مجوز را می‌گیرد. برند سه نسخه را تأیید می‌کند.",
+    layout(A) { this.pp = []; P.forEach((p, i) => { if (i < 300) { const c = i % 25, r = Math.floor(i / 25); this.pp.push(i); T(p, { x: A.X(.06 + .88 * c / 24), y: A.Y(.55 + .4 * r / 11), c: DIM, a: .5, r: 2.4, s: .07, d: i * 1.5 }); } else ambient(p); }); },
+    async run(tk) { await reveal(".vgrid div", 70, tk); await reveal("ul.clean .rv", 300, tk);
+      for (let w = 0; w < 3; w++) { rs(100 + w); this.pp.forEach((i) => { const u = rnd(); T(P[i], { c: u < .45 + w * .12 ? MINT : u < .8 ? DIM : RED, a: .95, r: 2.6, s: .12 }); }); await wait(900, tk); }
+      const v = $$(".vgrid div"); v[7].classList.add("bad"); v[7].innerHTML = "ادعای<br>سلامت ✕"; await wait(700, tk); [2, 10, 17].forEach((k) => v[k].classList.add("win")); await wait(600, tk); $(".hm").classList.add("on"); }
+  });
+
+  /* 4g · Launch */
+  const PLAT = [["روبیکا", 14, .2, .28], ["ایتا", 10, .5, .28], ["بله", 6, .8, .28], ["آپارات", 4, .2, .72], ["اینستاگرام (برآورد)", 4, .5, .72], ["سایت‌ها", 3, .8, .72]];
+  const VER = ["روبیکا · آشپزخانه‌ی ایرانی", "ایتا · سلامت خانواده", "آپارات · آشپزی با نگار", "روبیکا · مادران امروز", "بله · خانه و زندگی", "سایت‌ها · یکتانت همسان", "اینستاگرام · غذای سالم"];
+  S.push({ ch: "سفر · انتشار", dur: 13000, sim: true, add: [82, 1],
+    panel: `${station(7, "انتشار")}<h2>۴۱ جایگاه واقعی،<br><em>در یک ساعت.</em></h2><div class="nums"><div><b id="clk">۱۲:۰۰</b><span>ساعت</span></div><div class="m"><b id="l1">۰</b><span>منتشر و تطبیق‌شده</span></div></div><div class="ticker" id="vk"></div><div class="note">انتشار فقط از حساب خود برند یا جایگاه پولی واقعی. برای هر پست، شناسه، زمان و محتوای منتشرشده با نسخه‌ی تأییدشده مقایسه می‌شود.</div><div class="human rv hm on">تصمیم انسانی: فرمان انتشار</div>`,
+    art: PLAT.map((q) => lbl(q[2], q[3] + .17, `${q[0]} · ${fa(q[1])}`)).join(""),
+    narr: "ساعت دوازده، کمپین روی چهل و یک جایگاه واقعی منتشر می‌شود، همه در یک ساعت. برای هر پست، شناسه، زمان و محتوای منتشرشده ثبت و با نسخه‌ی تأییدشده مقایسه می‌شود.",
+    layout(A) { this.nodes = []; let i = 0; PLAT.forEach((q) => { const cols = Math.ceil(Math.sqrt(q[1] * 1.6)); for (let k = 0; k < q[1]; k++) { const c = k % cols, r = Math.floor(k / cols); this.nodes.push([A.X(q[2]) + (c - (cols - 1) / 2) * 22, A.Y(q[3]) + (r - 1) * 22]); } });
+      P.forEach((p, k) => { if (k < 41) T(p, { x: this.nodes[k][0], y: this.nodes[k][1], c: WHITE, a: .25, r: 5, s: .1 }); else ambient(p); }); },
+    async run(tk) { rs(8); const ord = [...Array(41).keys()].sort(() => rnd() - .5); const vk = $("#vk");
+      for (let k = 0; k < 41; k++) { const i = ord[k]; T(P[i], { c: SIG, a: 1, r: 7, s: .2 }); setTimeout(() => alive(tk) && T(P[i], { c: SIG, a: 1, r: 5, s: .1 }), 300);
+        const m = Math.round(k / 40 * 58); $("#clk").textContent = "۱۲:" + fa(String(m).padStart(2, "0")); $("#l1").textContent = fa(k + 1);
+        if (k % 6 === 0) vk.insertAdjacentHTML("afterbegin", `<div>✓ <em>${VER[(k / 6) % VER.length]}</em> · ۱۲:${fa(String(m).padStart(2, "0"))} · شناسه و محتوا تطبیق شد</div>`); await wait(150, tk); } }
+  });
+
+  /* 4h · Live operations */
+  const CUR = [{ n: "روبیکا", c: "#7fc8b6", f: (h) => 104 * (1 - Math.exp(-h / 15)) }, { n: "آپارات", c: "#a8dccd", f: (h) => 96 * (1 - Math.exp(-h / 20)) }, { n: "سایت", c: "#5fae9b", f: (h) => 92 * (1 - Math.exp(-h / 24)) }, { n: "ایتا", c: "#f19b8c", f: (h) => 70 * (1 - Math.exp(-h / 20)) + (live.rec && h > 24 ? 38 * (1 - Math.exp(-(h - 24) / 12)) : 0) }];
+  const E = (h) => 97 * (1 - Math.exp(-h / 18));
+  const cx_ = (h) => 80 + h / 72 * 880, cy_ = (v) => 540 - v / 120 * 480;
+  function drawChart() {
+    const s = $("#ch"); if (!s) return;
+    const pts = (f, H) => { let d = ""; for (let h = 0; h <= H; h += .5) d += (h ? "L" : "M") + cx_(h).toFixed(1) + " " + cy_(f(h)).toFixed(1); return d; };
+    let band = "M" + cx_(0) + " " + cy_(0); for (let h = 0; h <= 72; h += 1) band += "L" + cx_(h) + " " + cy_(E(h) * 1.1); for (let h = 72; h >= 0; h -= 1) band += "L" + cx_(h) + " " + cy_(E(h) * .9);
+    $("#band").setAttribute("d", band + "Z");
+    CUR.forEach((c, k) => $("#cu" + k).setAttribute("d", pts(c.f, Math.max(.5, live.H))));
+  }
+  S.push({ ch: "سفر · پایش زنده", dur: 18000, sim: true, add: [12128, 1],
+    panel: `${station(8, "پایش زنده")}<h2>۴۱ عامل پایش،<br><em>هر ۱۵ دقیقه.</em></h2><div class="chips q">${CUR.map((c) => `<span style="border-color:${c.c};color:${c.c}">${c.n}</span>`).join("")}<span style="border-color:rgba(233,182,95,.5);color:#ffd98e">بازه‌ی پیش‌بینی ایتا</span></div><div class="alert" id="al"><b>ساعت ۱۸ · ایتا <span id="ep"></span> و پایین‌تر از بازه‌ی پیش‌بینی</b><div style="font-size:13.5px;margin:6px 0 10px">پیشنهاد عامل بازیابی: فعال‌سازی رزرو جایگزین در بله · ۱۳۰ م.ت · قابل لغو تا ۴۸ ساعت</div><button class="btn sig" id="ok">تأیید با یک کلیک</button></div><div class="glass rv cm" style="margin-top:10px"><b style="font-size:13.5px">دستیار برند، با نام و نشان خودش، در صفحه‌ی برند:</b><div class="nums" style="margin:6px 0 0"><div class="m"><b id="cm1">۰</b><span>پاسخ به پرسش واقعی</span></div><div><b id="cm2">۰</b><span>سرنخ برای تیم فروش</span></div></div></div><div class="human rv hm">تصمیم انسانی: تأیید جایگزین</div>`,
+    art: `<svg class="chart" id="ch" viewBox="0 0 1000 600" preserveAspectRatio="none"><path d="M80 60V540H960" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path d="M80 ${cy_(100)}H960" stroke="rgba(233,182,95,.45)" stroke-width="1.5" stroke-dasharray="6 6"/><path id="band" fill="rgba(233,182,95,.10)" stroke="none" style="fill:rgba(233,182,95,.10)"/>${CUR.map((c, k) => `<path id="cu${k}" stroke="${c.c}" stroke-width="3" stroke-linecap="round"/>`).join("")}</svg>` + lbl(.04, cy_(100) / 600, "هدف") + ["۰", "۲۴", "۴۸", "۷۲ ساعت"].map((t, k) => `<span class="axis" style="left:${(80 + k * 24 / 72 * 880) / 10}%">${t}</span>`).join(""),
+    narr: "چهل و یک عامل پایش هر پانزده دقیقه آمار را می‌خوانند. ساعت هجدهم، ایتا از بازه‌ی پیش‌بینی عقب است. عامل بازیابی رزرو جایگزین در بله را پیشنهاد می‌دهد. یک کلیک انسانی، و کمپین به مسیر برمی‌گردد. هم‌زمان، دستیار برند با نام خودش به پرسش‌های واقعی جواب می‌دهد و سرنخ‌ها را به فروش می‌فرستد.",
+    layout(A) { rs(61); P.forEach((p, i) => { if (i < 41) { const k = i % 4, sp = .004 + rnd() * .004, ph = rnd() * 100; T(p, { c: [MINT, MINT, TEAL, RED][k], a: 1, r: 3, s: .3, fn: (t) => { const Hm = Math.max(.5, live.H); const h = ((t * sp / 10 + ph) % Hm); return [A.X(cx_(h) / 1000), A.Y(cy_(CUR[k].f(h)) / 600)]; } }); } else ambient(p); }); drawChart(); },
+    async run(tk) { live.H = 0; live.rec = false; drawChart();
+      for (let h = 0; h <= 18; h += .5) { live.H = h; drawChart(); await wait(70, tk); }
+      $("#ep").textContent = fa(Math.round(CUR[3].f(18))) + "٪ (بازه " + fa(Math.round(E(18) * .9)) + " تا " + fa(Math.round(E(18) * 1.1)) + "٪)"; $("#al").classList.add("on");
+      await new Promise((res) => { $("#ok").onclick = res; if (playing) setTimeout(res, 2600); }); if (!alive(tk)) return;
+      $("#ok").textContent = "تأیید شد ✓"; $("#ok").disabled = true; live.rec = true; $(".hm").classList.add("on"); $(".cm").classList.add("on");
+      count($("#cm1"), 320, 4000, tk); count($("#cm2"), 38, 4000, tk);
+      for (let h = 18; h <= 72; h += 1) { live.H = h; drawChart(); await wait(75, tk); } }
+  });
+
+  /* 4i · Evidence and settlement */
+  const COLS = [["A", "API", 140, MINT], ["B", "خروجی ناشر", 180, TEAL], ["C", "اسکرین‌شات", 68, AMBER], ["D", "برآورد", 12, GREY]];
+  S.push({ ch: "سفر · شواهد و تسویه", dur: 13000, sim: true, add: [90, 2],
+    panel: `${station(9, "شواهد و تسویه")}<h2>هر عدد صورتحساب‌شده،<br><em>مدرک دارد.</em></h2><div class="glass">${[["قابل پرداخت (A و B پذیرفته)", "۸۹۰ م.ت"], ["در بررسی (C) · مدرک بهتر خواسته شد", "۲۹۰ م.ت"], ["برآورد (D)", "قابل صورتحساب نیست"], ["گزارش مشتری", "۶۴ عدد · ۶۴ منبع"]].map((r) => `<div class="trend rv"><span>${r[0]}</span><b>${r[1]}</b></div>`).join("")}</div><div class="note">تأمین‌کننده وقتی پول می‌گیرد که مدرکش پذیرفته شود. کمبود تحویل با جایگاه جایگزین یا بازپرداخت جبران می‌شود، هرگز با تعامل جعلی.</div><div class="human rv hm">تصمیم انسانی: پذیرش یک مدرک علامت‌خورده · تأیید پرداخت‌ها</div>`,
+    art: COLS.map((c, k) => lbl(.12 + k * .2, .93, `${c[0]} · ${c[1]}`)).join("") + `<div class="hub sm" style="left:92%;top:22%">پرداخت</div>`,
+    narr: "هر عدد صورتحساب‌شده مدرک دارد و درجه‌ی مدرک معلوم است. تأمین‌کننده وقتی پول می‌گیرد که مدرکش پذیرفته شود. گزارش مشتری خودکار ساخته می‌شود و کنار هر عدد، منبعش.",
+    layout(A) { let i = 0; const per = 4, maxRows = Math.ceil(180 / per), step = Math.min(A.h * .7 / maxRows, 9); this.tops = [];
+      COLS.forEach((c, k) => { for (let j = 0; j < c[2]; j++, i++) { const x = A.X(.12 + k * .2) + (j % per - 1.5) * 10, y = A.Y(.86) - Math.floor(j / per) * step; T(P[i], { x, y, c: c[3], a: .95, r: 2.6, s: .07, d: i * 2 }); } this.tops.push([A.X(.12 + k * .2), A.Y(.86) - Math.ceil(c[2] / per) * step]); });
+      for (; i < N; i++) ambient(P[i]); this.A = A; this.start = i; },
+    async run(tk) { await wait(1800, tk); await reveal(".trend", 450, tk); const A = this.A, pay = [A.X(.92), A.Y(.22)]; rs(91);
+      for (let i = 400; i < Math.min(N, 520); i++) { const src = this.tops[i % 2], sp = .00035 + rnd() * .0002, ph = rnd(); T(P[i], { c: SIG, a: .95, r: 2.2, s: .3, fn: (t) => { const u = (t * sp + ph) % 1, mx = (src[0] + pay[0]) / 2, my = Math.min(src[1], pay[1]) - A.h * .15; return [(1 - u) * (1 - u) * src[0] + 2 * (1 - u) * u * mx + u * u * pay[0], (1 - u) * (1 - u) * src[1] + 2 * (1 - u) * u * my + u * u * pay[1]]; } }); }
+      await wait(800, tk); $(".hm").classList.add("on"); }
+  });
+
+  /* 4j · Learning */
+  S.push({ ch: "سفر · یادگیری", dur: 12000, sim: true, add: [100, 1],
+    panel: `${station(10, "یادگیری")}<h2>هر کمپین،<br><em>کمپین بعدی را دقیق‌تر می‌کند.</em></h2><div class="glass"><b style="font-size:13.5px">دفترچه‌ی صنعت غذا، به‌روزشده:</b><ul class="clean" style="margin-top:8px"><li class="rv">ریلز دستور پخت زیر ۳۰ ثانیه: بهترین قلاب این کمپین</li><li class="rv">کانال‌های مادر و کودک روبیکا: تحویل پایدار</li><li class="rv">ساعت ۲۰ تا ۲۲: بیشترین بازدید ۲۴ ساعته</li><li class="rv">سه کانال به‌خاطر مدرک ضعیف از فهرست خارج شدند</li></ul></div><div class="note">داده‌ای که هیچ رقیبی نمی‌تواند کپی کند. یادگیری بین مشتری‌ها فقط با اجازه و به‌صورت تجمیعی است.</div><div class="human rv hm">تصمیم انسانی: تأیید دفترچه</div>`,
+    art: lbl(.5, .08, "بازه‌ی پیش‌بینی · کمپین اول") + lbl(.5, .92, "کمپین پنجم (هدف): بازه‌ی باریک‌تر", "sig off nb"),
+    narr: "و کمپین بعدی دقیق‌تر است: هر کمپین یاد می‌دهد کدام کانال، کدام قالب و کدام قلاب در این صنعت واقعاً جواب داده. این داده‌ای است که هیچ رقیبی نمی‌تواند کپی کند.",
+    layout(A) { rs(71); this.z = []; P.forEach((p, i) => { if (i < 520) { const x = rnd(), z = gauss(); this.z.push(z); const base = A.Y(.62 - .25 * x); T(p, { x: A.X(.05 + .9 * x), y: base + z * A.h * .17, c: TEAL, a: .55, r: 1.8, s: .04, j: 1 }); p.bx = A.X(.05 + .9 * x); p.by = base; } else ambient(p); }); },
+    async run(tk) { await wait(1500, tk); await reveal("ul.clean .rv", 400, tk); P.forEach((p, i) => { if (i < 520) T(p, { x: p.bx, y: p.by + this.z[i] * art().h * .045, c: i % 3 ? MINT : SIG, a: .95, r: 2, s: .035, j: .6 }); }); $(".lbl.nb").classList.remove("off"); await wait(1200, tk); $(".hm").classList.add("on"); }
+  });
+
+  /* 4z · Journey summary */
+  S.push({ ch: "جمع‌بندی سفر", dur: 10000, sim: true,
+    panel: `<div class="kick">جمع‌بندی سفر</div><h2>عامل‌ها کار سنگین را انجام می‌دهند؛<br><em>شما تصمیم‌های مهم را می‌گیرید.</em></h2><div class="big2"><div><b id="z1">۰</b><span>کار انجام‌شده توسط عامل‌ها</span></div><div class="h"><b id="z2">۰</b><span>تصمیم انسانی</span></div></div><p class="lead">از یک پیام تا گزارش با منبع، در ۱۴ روز. هر تصمیمی که پول، انتشار یا ادعا را تغییر می‌دهد، با انسان است.</p><div class="note">اعداد یک کمپین نمایشی است.</div>`,
+    art: lbl(.5, .1, "کار عامل‌ها") + lbl(.5, .92, "تصمیم‌های انسانی", "sig"),
+    narr: "هجده هزار و هفتصد کار، نُه تصمیم انسانی. عامل‌ها کار سنگین را انجام می‌دهند؛ شما تصمیم‌های مهم را می‌گیرید.",
+    layout(A) { rs(81); P.forEach((p, i) => { if (i < 9) T(p, { x: A.X(.18 + i * .08), y: A.Y(.8), c: SIG, a: 1, r: 9, s: .06, j: 1, d: 600 + i * 120 }); else T(p, { x: A.cx + gauss() * A.w * .18, y: A.Y(.4) + gauss() * A.h * .12, c: i % 7 ? MINT : TEAL, a: .55, r: 1.6, s: .03, j: 4 }); }); },
+    async run(tk) { const tot = S.reduce((s, x) => s + (x.add ? x.add[0] : 0), 0), hum = S.reduce((s, x) => s + (x.add ? x.add[1] : 0), 0); count($("#z1"), tot, 2200, tk); await count($("#z2"), hum, 2200, tk); }
+  });
+
+  /* 5 · Engine */
+  const ST5 = [[.93, "رویداد"], [.76, "صف کارها"], [.6, "زمان‌بند"], [.42, "صدها کارگر موازی"], [.24, "اعتبارسنجی"], [.07, "دفتر کل کمپین"]];
+  S.push({ ch: "موتور", dur: 15000,
+    panel: `<div class="kick">۵ · موتور زیر کاپوت</div><h2>صدها عامل یعنی صدها کار موازی،<br><em>نه صدها حساب.</em></h2><div class="models">${[["مدل زبانی متن‌باز", "فارسی، استخراج، نوشتن؛ روی سرور خودمان"], ["مدل بینایی", "خواندن اسکرین‌شات و خروجی آمار"], ["پیش‌بینی آماری", "بازه‌ی تحویل از سابقه‌ی واقعی"], ["تشخیص ناهنجاری", "الگوی غیرعادی بازدید و عضو"], ["مدل برداری", "شباهت مخاطب کانال‌ها"], ["تولید رسانه‌ی محلی", "تصویر، ویدیو و صدای فارسی روی GPU"]].map((m) => `<div class="rv"><b>${m[0]}</b>${m[1]}</div>`).join("")}</div><div class="glass" style="margin-top:10px;font-size:14px;line-height:1.8">هزار کمپین فعال ≈ <b style="color:#ffd98e">۲۴٬۰۰۰ کار در روز</b> ≈ کمتر از ۲۰ کار هم‌زمان در اوج. سخت‌افزار لازم معقول است.<div class="note" style="margin-top:6px">برآورد نمونه از research/04، نه بنچمارک. داده‌ی مشتری روی سرور ما می‌ماند و به سرویس خارجی وابسته نیستیم.</div></div>`,
+    art: ST5.map((s) => lbl(s[0], .34, s[1], s[1].startsWith("صدها") ? "sig" : "")).join("") + `<div class="hub sm mint" style="left:42%;top:84%">سرویس<br>مدل‌ها</div>`,
+    narr: "صدها عامل یعنی صدها کار موازی، نه صدها حساب. هر کار کوچک، مشخص و قابل بررسی است، و همه روی چند سرور مدل مشترک اجرا می‌شوند. مدل‌های متن‌باز روی سرور خودمان، پس داده‌ی مشتری بیرون نمی‌رود. حتی با هزار کمپین فعال، سخت‌افزار لازم معقول است.",
+    layout(A) { rs(55); const xs = ST5.map((s) => A.X(s[0])), y0 = A.Y(.5), wk = [A.X(.42), y0], md = [A.X(.42), A.Y(.84)];
+      P.forEach((p, i) => {
+        if (i < 340) { const ox = gauss(), oy = gauss(), sp = .00009 + rnd() * .00005, ph = rnd(); T(p, { c: MINT, a: .85, r: 1.8, s: .22, fn: (t, q) => { const u = (t * sp + ph) % 1, f = u * 5, k = Math.min(4, Math.floor(f)), l = f - k; const x = xs[k] + (xs[k + 1] - xs[k]) * l; const near = Math.max(0, 1 - Math.abs(x - wk[0]) / (A.w * .1)); q.tc = k >= 4 ? SIG : MINT; return [x + ox * near * A.w * .05, y0 + oy * (6 + near * A.h * .1)]; } }); }
+        else if (i < 460) { const ox = gauss() * A.w * .05, oy = gauss() * A.h * .07, sp = .0012 + rnd() * .001, ph = rnd() * 6.283; T(p, { c: SIG, a: .9, r: 1.8, s: .25, fn: (t) => { const u = (1 - Math.cos(t * sp + ph)) / 2; return [wk[0] + ox * (1 - u), wk[1] + oy * (1 - u) + (md[1] - wk[1]) * u]; } }); }
+        else ambient(p);
+      }); },
+    async run(tk) { await wait(600, tk); await reveal(".models .rv", 380, tk); }
+  });
+
+  /* 6 · Red line */
+  S.push({ ch: "خط قرمز", dur: 14000,
+    panel: `<div class="kick">۶ · خط قرمز، مزیت ماست</div><h2>ما تقلب را نمی‌فروشیم؛<br><em>پیدایش می‌کنیم.</em></h2><ul class="clean"><li class="rv">بسترها تعامل جعلی را می‌گیرند و دسترسی پست یا حساب را کم می‌کنند (سیاست‌های اعلام‌شده‌ی X و متا).</li><li class="rv">عدد جعلی داده‌ی یادگیری را آلوده می‌کند و پیش‌بینی بعدی را خراب.</li><li class="rv">مشتری برای عددی که نمی‌شود ثابت کرد، دوباره پول نمی‌دهد.</li></ul><div class="glass rv lastl" style="margin-top:12px;font-size:14.5px">همین توانایی کشف، یک محصول است: <b style="color:#ffd98e">شاخص کیفیت رسانه</b>، برای هر برند و آژانسی که می‌خواهد بداند چه خریده.</div>`,
+    art: `<div class="divide"></div><div class="scan" id="scan"></div>` + lbl(.25, .05, "صد حساب جعلی", "red") + lbl(.75, .05, "صد عامل، جایگاه واقعی", "sig") + lbl(.25, .95, "شناسایی شد · ارزش برای مشتری: صفر", "off fl") + lbl(.75, .95, "هر بازگشت: یک مدرک"),
+    narr: "می‌شود صد عامل ساخت که بازدید و لایک جعلی بزنند. ما این کار را نمی‌کنیم، و این مزیت ماست. بسترها تقلب را می‌گیرند و عدد مشتری بی‌ارزش می‌شود. ما تقلب را نمی‌فروشیم؛ پیدایش می‌کنیم. همین توانایی، محصولی است که شما می‌توانید بفروشید.",
+    layout(A) { rs(66); this.fake = []; this.A = A; const hub = [A.X(.75), A.Y(.2)], ch = []; for (let k = 0; k < 30; k++) ch.push([A.X(.57 + .36 * (k % 6) / 5), A.Y(.4 + .45 * Math.floor(k / 6) / 4)]); links = [];
+      P.forEach((p, i) => {
+        if (i < 260) { this.fake.push(i); T(p, { x: A.X(.25) + gauss() * A.w * .09, y: A.Y(.5) + gauss() * A.h * .16, c: RED, a: .85, r: 2, s: .05, j: 5 }); }
+        else if (i < 290) { const [x, y] = ch[i - 260]; T(p, { x, y, c: WHITE, a: .6, r: 4, s: .08 }); }
+        else if (i < 450) { const [tx, ty] = ch[i % 30], sp = .001 + rnd() * .0006, ph = rnd() * 6.283; T(p, { c: MINT, a: .95, r: 2, s: .25, fn: (t, q) => { const s = t * sp + ph, u = (1 - Math.cos(s)) / 2; q.tc = Math.sin(s) > 0 ? MINT : SIG; return [hub[0] + (tx - hub[0]) * u, hub[1] + (ty - hub[1]) * u]; } }); }
+        else ambient(p);
+      }); },
+    async run(tk) { await wait(2200, tk); const A = this.A, sc = $("#scan"); sc.style.opacity = 1;
+      for (let f = .02; f <= .48; f += .01) { sc.style.left = f * 100 + "%"; const xl = A.X(f); this.fake.forEach((i) => { if (P[i].x < xl && P[i].tc !== GREY) T(P[i], { c: GREY, a: .5, r: 1.9, s: .05, j: 1 }); }); await wait(45, tk); }
+      sc.style.opacity = 0; $(".lbl.fl").classList.remove("off"); await reveal("ul.clean .rv", 500, tk); $(".lastl").classList.add("on"); }
+  });
+
+  /* 7 · For the partner */
+  const PROD = [["کمپین با تحویل اثبات‌شده", "هدف جدا برای هر بستر؛ پرداخت در برابر مدرک"], ["شاخص کیفیت رسانه", "اشتراک ماهانه برای برندها و آژانس‌ها"], ["برنامه‌ی تداوم در قطعی", "جایگزین امضاشده روی بسترهای داخلی"], ["استودیو محتوای فارسی", "نسخه‌های چندقالبی با پیش‌آزمون"], ["دستیار پس از کلیک", "پاسخ به پرسش واقعی و ارسال سرنخ، با نام برند"], ["داشبورد با نام شما", "برای مشتری‌های خودتان"]];
+  S.push({ ch: "برای شما", dur: 14000,
+    panel: `<div class="kick">۷ · برای شما</div><h2>شش چیز تازه برای فروش،<br><em>نه فقط جایگاه تبلیغ.</em></h2>${PROD.map((p, k) => `<div class="prod rv"><span>${fa(k + 1)}</span><div><b>${p[0]}</b><small>${p[1]}</small></div></div>`).join("")}<div class="glass rv hr" style="margin-top:12px;font-size:14px">ساعت اپراتور برای هر کمپین: حدود <b>۸۰</b> ← هدف <b style="color:#ffd98e">۳۰</b><div class="note" style="margin-top:6px">فرضیه؛ در پایلوت با ثبت ساعت واقعی سنجیده می‌شود.</div></div>`,
+    art: `<div class="hub" style="left:50%;top:50%;width:120px;height:120px;font-size:18px">شما</div>` + PROD.map((p, k) => { const a = -Math.PI / 2 + k * Math.PI / 3; return lbl(.5 + .38 * Math.cos(a), .5 + .4 * Math.sin(a), p[0], "off pl"); }).join(""),
+    narr: "برای شما این یعنی شش چیز تازه برای فروش، نه فقط جایگاه تبلیغ. و یعنی هر نفر از تیم عملیات شما کمپین‌های بیشتری را می‌گرداند؛ این را در پایلوت با ساعت واقعی می‌سنجیم. داشبورد می‌تواند با نام و نشان شما به مشتری‌هایتان برسد.",
+    layout(A) { rs(17); this.sat = PROD.map((_, k) => { const a = -Math.PI / 2 + k * Math.PI / 3; return [A.X(.5 + .38 * Math.cos(a)), A.Y(.5 + .4 * Math.sin(a))]; }); this.c = [A.cx, A.cy];
+      P.forEach((p, i) => { if (i < 360) { const k = i % 6; T(p, { x: this.sat[k][0] + gauss() * 10, y: this.sat[k][1] + gauss() * 10, c: DIM, a: .2, r: 1.6, s: .05 }); } else ambient(p); }); },
+    async run(tk) { const c = this.c; for (let k = 0; k < 6; k++) { $$(".prod")[k].classList.add("on"); $$(".lbl.pl")[k].classList.remove("off"); const [sx, sy] = this.sat[k];
+        for (let j = 0; j < 60; j++) { const p = P[k + j * 6]; const sp = .00025 + rnd() * .00015, ph = rnd(), w = gauss() * 8; T(p, { c: k % 2 ? MINT : SIG, a: .9, r: 2, s: .25, fn: (t) => { const u = ease((t * sp + ph) % 1); return [sx + (c[0] - sx) * u + w, sy + (c[1] - sy) * u - w]; } }); }
+        await wait(700, tk); } $(".hr").classList.add("on"); }
+  });
+
+  /* 8 · How close */
+  const MS = [[.9, "امروز", "پژوهش، معماری، داشبورد، این سفر", "now"], [.71, "۱۰ روز", "اسپرینت میدانی با شما"], [.52, "۴ هفته", "ابزار پایلوت مدیریت‌شده"], [.32, "۴ تا ۶ هفته", "MVP متصل به ۲ تا ۳ بستر"], [.12, "پس از داده", "پیش‌بینی و بهینه‌سازی"]];
+  S.push({ ch: "چقدر نزدیکیم", dur: 13000,
+    panel: `<div class="kick">۸ · چقدر نزدیکیم</div><h2>نرم‌افزار آماده‌ی ساخت است؛<br><em>مجهول‌ها بیرون از کدند.</em></h2><div class="two"><div class="glass rv"><h4>آماده</h4><ul class="clean"><li>پژوهش بازار با منبع</li><li>معماری و مدل داده</li><li>داشبورد کلیک‌پذیر</li><li>همین سفر و فیلمنامه‌ی ارائه</li></ul></div><div class="glass rv no"><h4>هنوز نمی‌دانیم</h4><ul class="clean"><li>قیمت واقعی تأمین‌کنندگان</li><li>کیفیت مدرک‌شان</li><li>تمایل مشتری به پرداخت برای «اثبات»</li><li>دسترسی API هر بستر</li></ul></div></div><div class="glass rv" style="margin-top:10px"><div class="row" style="justify-content:space-between;font-size:13.5px"><span>نزدیکی به خواسته‌ی مشتری</span><b style="color:#ffd98e">۴۸٪</b></div><div class="meter"><u id="mt"></u></div><div class="note" style="margin-top:8px">قضاوت تیم، نه اندازه‌گیری. جزئیات در اتاق تصمیم.</div></div>`,
+    art: `<div class="tl"></div>` + MS.map((m) => `<div class="ms ${m[3] || ""}" style="left:${m[0] * 100}%"><b>${m[1]}</b>${m[2]}</div>`).join(""),
+    narr: "امروز پژوهش، معماری و نمونه‌ی کلیک‌پذیر آماده است. چیزی که نداریم بیرون از کد است: قیمت واقعی تأمین‌کنندگان، کیفیت مدرک‌شان، و اینکه مشتری‌های شما برای «اثبات» حاضرند بیشتر بپردازند یا نه. این‌ها را در ده روز با هم می‌فهمیم.",
+    layout(A) { rs(88); P.forEach((p, i) => { if (i < 300) { const f = .06 + .88 * (i / 299); const done = f >= .88; T(p, { x: A.X(f), y: A.Y(.45) + gauss() * (done ? 6 : 3), c: done ? SIG : DIM, a: done ? 1 : .35, r: done ? 2.6 : 1.4, s: .06, d: (1 - f) * 900 }); } else ambient(p); }); },
+    async run(tk) { await wait(500, tk); await reveal(".two .rv, .glass.rv", 500, tk); $("#mt").style.width = "48%"; }
+  });
+
+  /* 9 · Ask */
+  S.push({ ch: "شروع", dur: 20000,
+    panel: `<div class="kick">۹ · شروع</div><h2>ده روز،<br><em>با هم.</em></h2><div class="prod rv"><span>۱</span><div><b>۵ مشتری برای گفت‌وگو</b><small>برندهایی که همین حالا هدف بازدید دارند</small></div></div><div class="prod rv"><span>۲</span><div><b>۳ پرونده‌ی کمپین قبلی، بدون نام</b><small>بریف، برنامه، فاکتور و گزارش</small></div></div><div class="prod rv"><span>۳</span><div><b>یک نفر از عملیات شما</b><small>کسی که کمپین را واقعاً اجرا می‌کند</small></div></div><p class="lead rv" style="margin-top:12px">خروجی ده روز: یک پیشنهاد پایلوت قیمت‌گذاری‌شده، با معیار روشن برای ادامه یا توقف.</p><div class="row rv"><a class="btn sig" href="../ravi/index.html">ورود به داشبورد ←</a><a class="btn" href="../decision-room/index.html">اتاق تصمیم</a><button class="btn" data-restart>از اول</button></div>`,
+    narr: "پیشنهاد ما ساده است: ده روز. پنج مشتری برای گفت‌وگو، سه پرونده‌ی کمپین قبلی بدون نام، و یک نفر از عملیات شما. در پایان ده روز، یک پیشنهاد پایلوت قیمت‌گذاری‌شده روی میز است، با معیارهای روشن برای ادامه یا توقف.",
+    layout(A) { const pts = textPts("۱۰ روز", A.cx, A.cy, Math.min(A.w * .26, A.h * .42), N - 40); P.forEach((p, i) => { if (i < pts.length) T(p, { x: pts[i][0], y: pts[i][1], c: i % 5 === 0 ? MINT : SIG, a: .95, r: 2.2, s: .045, j: 1.2, d: i * 2 }); else ambient(p); }); },
+    async run(tk) { await wait(600, tk); await reveal("#panel .rv", 450, tk); }
+  });
+
+  /* ================= navigation ================= */
+  const JSTART = S.findIndex((s) => s.add);
+  const prog = $("#prog");
+  prog.innerHTML = S.map((s, i) => `<button title="${s.ch}" data-i="${i}" class="${i === 1 || i === 2 || i === 3 || i === JSTART || s.ch === "موتور" || s.ch === "خط قرمز" || s.ch === "برای شما" || s.ch === "چقدر نزدیکیم" || s.ch === "شروع" ? "gap" : ""}"><i></i></button>`).join("");
+  $$("#prog button").forEach((b) => (b.onclick = () => go(+b.dataset.i)));
+  let shownT = 0, shownH = 0;
+  async function hud(i) {
+    $("#chap").textContent = S[i].ch; $("#sim").classList.toggle("on", !!S[i].sim);
+    $("#ctr").classList.toggle("on", i >= JSTART);
+    let t = 0, h = 0; for (let k = 0; k <= i; k++) if (S[k].add) { t += S[k].add[0]; h += S[k].add[1]; }
+    const t0 = shownT, h0 = shownH; shownT = t; shownH = h; const n = 20;
+    for (let k = 1; k <= n; k++) { const e = ease(k / n); $("#cT").textContent = nf(t0 + (t - t0) * e); $("#cH").textContent = nf(h0 + (h - h0) * e); await new Promise((r) => setTimeout(r, reduce ? 0 : 40)); }
+  }
+  function caption(txt) { const c = $("#cap"); c.innerHTML = txt.split(" ").map((w, k) => `<span style="animation-delay:${Math.min(k * 55, 2600)}ms">${w}</span>`).join(" "); }
+  function go(i) {
+    i = Math.max(0, Math.min(S.length - 1, i)); idx = i; token++; const tk = token; clearTimeout(autoT); links = [];
+    const sc = S[i]; const pn = $("#panel"); pn.innerHTML = sc.panel; [...pn.children].forEach((c, k) => c.style.setProperty("--i", k)); pn.scrollTop = 0;
+    $("#artov").innerHTML = sc.art || "";
+    caption(sc.narr); hud(i);
+    $$("#prog button").forEach((b, k) => { b.classList.toggle("d", k < i); b.classList.toggle("c", k === i); });
+    history.replaceState(null, "", "#s" + (i + 1));
+    requestAnimationFrame(() => { sc.layout(art(), true); if (sc.run) sc.run(tk).catch(() => {}); });
+    $$("[data-next]").forEach((b) => (b.onclick = () => go(idx + 1)));
+    $$("[data-restart]").forEach((b) => (b.onclick = () => { setPlay(false); shownT = shownH = 0; go(0); }));
+    if (playing) autoT = setTimeout(() => { if (tk === token) { if (idx < S.length - 1) go(idx + 1); else setPlay(false); } }, sc.dur);
+  }
+  function setPlay(on) { playing = on; $("#play").textContent = on ? "❚❚ توقف" : "▶ پخش"; clearTimeout(autoT); if (on) { const tk = token; autoT = setTimeout(() => { if (tk === token && idx < S.length - 1) go(idx + 1); }, Math.max(2500, S[idx].dur - 4000)); } }
+  $("#next").onclick = () => go(idx + 1);
+  $("#prev").onclick = () => go(idx - 1);
+  $("#play").onclick = () => setPlay(!playing);
+  $("#capBtn").onclick = () => { document.body.classList.toggle("nocap"); $("#capBtn").classList.toggle("on"); };
+  $("#fsBtn").onclick = () => { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen?.(); };
+  addEventListener("keydown", (e) => {
+    if (e.target.closest("input,textarea")) return;
+    if (e.key === "ArrowLeft" || e.key === "PageDown") { e.preventDefault(); go(idx + 1); }
+    else if (e.key === "ArrowRight" || e.key === "PageUp") { e.preventDefault(); go(idx - 1); }
+    else if (e.key === " ") { e.preventDefault(); setPlay(!playing); }
+    else if (e.key.toLowerCase() === "c") $("#capBtn").click();
+    else if (e.key.toLowerCase() === "f") $("#fsBtn").click();
+  });
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { resize(); links = []; S[idx].layout(art(), false); }, 200); });
+  const start = () => { const m = /#s(\d+)/.exec(location.hash); go(m ? +m[1] - 1 : 0); if (/autoplay/.test(location.search)) setPlay(true); };
+  (document.fonts && document.fonts.load ? Promise.all([document.fonts.load("900 80px Vazirmatn"), document.fonts.load("700 14px Vazirmatn")]).catch(() => {}) : Promise.resolve()).then(start);
+})();
+</script>
+</body>
+</html>
