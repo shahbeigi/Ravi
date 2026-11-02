@@ -10,7 +10,9 @@ The user has confirmed that the prospective media partner's strongest contributi
 2. [Architecture and product design](02_architecture_and_product.md): workflows, measurement, agents, data, reliability, interface, delivery plan.
 3. [Meeting brief](03_meeting_brief.md): positioning, partnership terms to explore, pilot, economics, and questions.
 4. [Local agent fleet assessment](04_local_agent_fleet.md): 24/7 worker groups, authorized interaction, synthetic engagement, capacity, and comparative experiments.
-5. [Animated technical walkthrough](../technical-walkthrough/walkthrough.html): six chapters with pause/scrub controls and implementation notes; fictional campaign and proposed screens.
+5. [Desk-research gaps](05_desk_research_gaps.md): 2026 shutdowns and what they change, platform usage figures, ad pricing and fraud, Iranian ad networks, models from abroad.
+6. [Field-sprint kit](06_field_sprint_kit.md): partner and Persian client interview guides, supplier quote template, pilot proposal template.
+7. [Animated technical walkthrough](../technical-walkthrough/walkthrough.html): six chapters with pause/scrub controls and implementation notes; fictional campaign and proposed screens.
 
 ## Session plan and research method
 
@@ -50,4 +52,4 @@ Days 9–10: Build a real costed pilot proposal, review supplier capacity, and d
 
 The earlier files contain broad competitive claims such as “nobody runs the full loop,” and precise forecast/cost assumptions without demonstrated data. They should not be repeated in the new pitch. Current vendor pages explicitly advertise integrated planning, content, publishing, measurement, and AI optimization. The old political-persona workflow, synthetic electorate, and GPU/customer cost estimates are not the baseline for this commercial product.
 
-Existing proposal and demo files were preserved. This folder is a research layer, not an implemented pivot.
+Existing proposal and demo files were preserved. The clickable prototype in `platform/` now shows the commercial campaign flow (brief → objective → plan → creative → approval → booking/publish → evidence → settlement) with a fictional brand; the political version is archived at `platform/political.html`.

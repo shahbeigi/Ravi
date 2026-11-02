@@ -10,7 +10,7 @@
 | `01_concept_and_research.md`, `03_v2_direction.md` | Original concept, research and v2 direction |
 | `04_platform_design.md` | Platform v1 design (Compass personalisation, flows, architecture) |
 | `05_cost_estimate.md` | AI cost brief. OpenAI prohibits political campaigning and doesn't serve Iran; self-hosted open-weight models are recommended |
-| `platform/` | Clickable Persian RTL prototype (static: `python -m http.server 8791 --directory platform`) |
+| `platform/` | Clickable Persian RTL prototype of the commercial campaign platform (static: `python -m http.server 8791 --directory platform`). Political version archived at `platform/political.html` |
 | `video/` | HyperFrames pitch film source (compositions, scripts). Rendered media, plates and voice takes are **not in git** |
 | `tools/` | Local media scripts (ComfyUI, Codex, Persian VO pipeline). Need the user's local GPU PC |
 
