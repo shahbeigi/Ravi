@@ -1,0 +1,93 @@
+<template>
+  <style>
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-900.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #EEEBE4; overflow: hidden; font-family: "Vazirmatn"; direction: rtl; color: #15171A; }
+    .shell { position: absolute; inset: 24px; border-radius: 26px; background: #F7F5F0; border: 1px solid #DAD5CA; overflow: hidden; }
+    .side { position: absolute; right: 0; top: 0; bottom: 0; width: 300px; background: #fff; border-left: 1px solid #DAD5CA; padding: 34px 26px; }
+    .logo { font-size: 54px; font-weight: 900; display: flex; align-items: center; gap: 12px; }
+    .logo i { width: 14px; height: 14px; border-radius: 50%; background: #E39B2D; }
+    .nav { margin-top: 40px; display: flex; flex-direction: column; gap: 6px; }
+    .nav div { position: relative; padding: 12px 18px; border-radius: 12px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    .nav div.on { background: #F4EBDB; color: #15171A; font-weight: 700; }
+    .nav div.on::after { content: ""; position: absolute; right: -26px; top: 10px; bottom: 10px; width: 5px; border-radius: 3px; background: #E39B2D; }
+    .nav h6 { margin: 18px 18px 4px; font-size: 28px; font-weight: 700; color: #9A6514; }
+    .top { position: absolute; right: 300px; left: 0; top: 0; height: 96px; border-bottom: 1px solid #DAD5CA; display: flex; align-items: center; gap: 18px; padding: 0 36px; }
+    .top h2 { font-size: 38px; font-weight: 900; }
+    .scale { margin-right: auto; display: flex; align-items: center; gap: 12px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    .scale i { width: 200px; height: 16px; border-radius: 8px; background: linear-gradient(270deg, #D5402B, #E39B2D 50%, #F1EDE4); }
+    #hm-map { position: absolute; left: 70px; top: 230px; width: 1060px; height: 640px; }
+    .hex { position: absolute; width: 110px; height: 127px; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: #F1EDE4; display: grid; place-items: center; font-size: 30px; font-weight: 900; color: #15171A; }
+    .pin { position: absolute; width: 54px; height: 54px; margin: -70px 0 0 -27px; border-radius: 50% 50% 50% 0; background: #15171A; border: 5px solid #fff; box-shadow: 0 8px 18px rgba(0,0,0,.25); }
+    #hm-side { position: absolute; left: 1120px; top: 150px; width: 440px; }
+    #hm-side h4 { font-size: 32px; font-weight: 900; margin-bottom: 14px; }
+    .tab { margin-bottom: 10px; padding: 14px 20px; border-radius: 14px; background: #fff; border: 1px solid #DAD5CA; font-size: 30px; font-weight: 700; color: #5C5F63; display: flex; justify-content: space-between; }
+    .tab.on { border: 2px solid #E39B2D; color: #15171A; }
+    .visit { margin-top: 12px; padding: 14px 20px; border-radius: 14px; background: #15171A; color: #F1EEE7; font-size: 28px; font-weight: 700; line-height: 1.45; }
+    .visit b { color: #E39B2D; font-weight: 900; }
+  </style>
+  <div id="root" data-composition-id="heatmap" data-width="1920" data-height="1080">
+    <div id="hm-shell" class="shell clip" data-start="0" data-duration="23">
+      <div class="side"><div class="logo"><i></i>راوی</div>
+        <div class="nav"><div>رادار روایت</div><div>شورای عامل‌ها</div><div>استودیو</div><h6>مزیت رقابتی</h6><div>رقیب‌سنج</div><div class="on">نقشه‌ی حوزه</div><div>نقشه‌ی نفوذ</div><div>آینه‌ی هوش مصنوعی</div></div>
+      </div>
+      <div class="top"><h2>نقشه‌ی حوزه · تهران، ۲۲ منطقه</h2><div class="scale">کم<i></i>زیاد</div></div>
+    </div>
+    <div id="hm-map" class="clip" data-start="0.3" data-duration="22.7" data-layout-allow-overflow></div>
+    <div id="hm-side" data-hold class="clip" data-start="0.5" data-duration="22.5">
+      <h4>نگرانی این هفته</h4>
+      <div class="tab" id="hm-t1">آلودگی هوا<span>۴۴٪</span></div>
+      <div class="tab" id="hm-t2">ترافیک<span>۲۷٪</span></div>
+      <div class="tab" id="hm-t3">مسکن<span>۱۹٪</span></div>
+      <h4 id="hm-vh" style="margin-top:26px">کجا باشید</h4>
+      <div class="visit" id="hm-v1"><b>سه‌شنبه</b> · منطقه ۱۵ · بازدید از ایستگاه پایش هوا</div>
+      <div class="visit" id="hm-v2"><b>چهارشنبه</b> · منطقه ۴ · جلسه با انجمن اولیا</div>
+      <div class="visit" id="hm-v3"><b>پنجشنبه</b> · منطقه ۱۸ · گفت‌وگو با رانندگان</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const fa = (n) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+      const cells = [[3,0],[4,0],[5,0],[6,0],[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[2,3],[3,3],[4,3],[5,3]];
+      const ids = [5,2,3,1,22,21,6,7,4,8,13,9,10,11,12,14,15,16,18,17,19,20];
+      const map = document.getElementById("hm-map");
+      const hexes = [];
+      cells.forEach(([c, r], i) => {
+        const h = document.createElement("div");
+        h.className = "hex";
+        const lx = c * 114 + (r % 2 ? 57 : 0) + 40, ty = r * 99 + 40;
+        h.style.left = lx + "px"; h.style.top = ty + "px";
+        h.textContent = fa(ids[i]);
+        map.appendChild(h);
+        hexes.push({ el: h, x: lx + 55, y: ty + 63 });
+      });
+      const air = [0.3,0.25,0.35,0.2,0.45,0.4,0.5,0.55,0.6,0.5,0.45,0.75,0.85,0.7,0.65,0.7,0.8,0.75,0.95,0.9,0.85,0.8];
+      const traffic = [0.6,0.7,0.8,0.5,0.4,0.55,0.9,0.85,0.7,0.5,0.4,0.3,0.4,0.6,0.95,0.8,0.5,0.4,0.6,0.7,0.35,0.3];
+      const col = (v) => v < 0.5 ? gsap.utils.interpolate("#F1EDE4", "#E39B2D", v / 0.5) : gsap.utils.interpolate("#E39B2D", "#D5402B", (v - 0.5) / 0.5);
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#hm-shell", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+      tl.fromTo(hexes.map((h) => h.el), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, stagger: 0.03, ease: "back.out(1.8)" }, 0.3);
+      tl.fromTo(["#hm-side h4", ".tab"], { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.1, ease: "expo.out" }, 0.5);
+      tl.set("#hm-vh", { opacity: 0 }, 0);
+      hexes.forEach((h, i) => tl.to(h.el, { backgroundColor: col(air[i]), color: air[i] > 0.8 ? "#fff" : "#15171A", duration: 0.5 }, 1.4 + i * 0.03));
+      tl.to("#hm-t1", { borderColor: "#E39B2D", borderWidth: 2, color: "#15171A", duration: 0.2 }, 1.4);
+      tl.to("#hm-t1", { borderColor: "#DAD5CA", borderWidth: 1, color: "#5C5F63", duration: 0.2 }, 3.8);
+      tl.to("#hm-t2", { borderColor: "#E39B2D", borderWidth: 2, color: "#15171A", duration: 0.2 }, 3.8);
+      hexes.forEach((h, i) => tl.to(h.el, { backgroundColor: col(traffic[i]), color: traffic[i] > 0.8 ? "#fff" : "#15171A", duration: 0.5 }, 3.9 + i * 0.02));
+      tl.to("#hm-t2", { borderColor: "#DAD5CA", borderWidth: 1, color: "#5C5F63", duration: 0.2 }, 5.6);
+      tl.to("#hm-t1", { borderColor: "#E39B2D", borderWidth: 2, color: "#15171A", duration: 0.2 }, 5.6);
+      hexes.forEach((h, i) => tl.to(h.el, { backgroundColor: col(air[i]), color: air[i] > 0.8 ? "#fff" : "#15171A", duration: 0.4 }, 5.7));
+      tl.fromTo("#hm-vh", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 6.0);
+      [16, 8, 18].forEach((hi, k) => {
+        const pin = document.createElement("div");
+        pin.className = "pin";
+        pin.style.left = hexes[hi].x + "px"; pin.style.top = hexes[hi].y + "px";
+        map.appendChild(pin);
+        tl.fromTo(pin, { y: -120, opacity: 0, rotation: -45 }, { y: 0, opacity: 1, rotation: -45, duration: 0.5, ease: "bounce.out" }, 6.2 + k * 0.45);
+        tl.fromTo("#hm-v" + (k + 1), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 6.3 + k * 0.45);
+      });
+      window.__timelines["heatmap"] = tl;
+    })();
+  </script>
+</template>

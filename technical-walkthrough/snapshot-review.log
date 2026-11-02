@@ -1,0 +1,91 @@
+◆  Capturing review frames (beats, seams, phone) from technical-walkthrough
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (AMD)" renderer="ANGLE (AMD, AMD Radeon(TM) Graphics (0x000013C0) Direct3D11 vs_5_0 ps_5_0, D3D11)")
+
+   Fonts: 2 loaded
+   Review: 12 beat(s) and 5 seam(s) within 0–180s
+[hyperframes] snapshot: frame 1/37 at 0.3s
+[hyperframes] snapshot: frame 2/37 at 13s
+[hyperframes] snapshot: frame 3/37 at 26.3s
+[hyperframes] snapshot: frame 4/37 at 42s
+[hyperframes] snapshot: frame 5/37 at 58.3s
+[hyperframes] snapshot: frame 6/37 at 72s
+[hyperframes] snapshot: frame 7/37 at 86.3s
+[hyperframes] snapshot: frame 8/37 at 101s
+[hyperframes] snapshot: frame 9/37 at 116.3s
+[hyperframes] snapshot: frame 10/37 at 133s
+[hyperframes] snapshot: frame 11/37 at 150.3s
+[hyperframes] snapshot: frame 12/37 at 165s
+[hyperframes] snapshot: frame 13/37 at 25.8s
+[hyperframes] snapshot: frame 14/37 at 25.9s
+[hyperframes] snapshot: frame 15/37 at 26s
+[hyperframes] snapshot: frame 16/37 at 26.1s
+[hyperframes] snapshot: frame 17/37 at 26.2s
+[hyperframes] snapshot: frame 18/37 at 57.8s
+[hyperframes] snapshot: frame 19/37 at 57.9s
+[hyperframes] snapshot: frame 20/37 at 58s
+[hyperframes] snapshot: frame 21/37 at 58.1s
+[hyperframes] snapshot: frame 22/37 at 58.2s
+[hyperframes] snapshot: frame 23/37 at 85.8s
+[hyperframes] snapshot: frame 24/37 at 85.9s
+[hyperframes] snapshot: frame 25/37 at 86s
+[hyperframes] snapshot: frame 26/37 at 86.1s
+[hyperframes] snapshot: frame 27/37 at 86.2s
+[hyperframes] snapshot: frame 28/37 at 115.8s
+[hyperframes] snapshot: frame 29/37 at 115.9s
+[hyperframes] snapshot: frame 30/37 at 116s
+[hyperframes] snapshot: frame 31/37 at 116.1s
+[hyperframes] snapshot: frame 32/37 at 116.2s
+[hyperframes] snapshot: frame 33/37 at 149.8s
+[hyperframes] snapshot: frame 34/37 at 149.9s
+[hyperframes] snapshot: frame 35/37 at 150s
+[hyperframes] snapshot: frame 36/37 at 150.1s
+[hyperframes] snapshot: frame 37/37 at 150.2s
+   Revision: none (inputs-changed)
+   State: C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\video-state.json
+
+◇  37 snapshots saved to C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-01-at-0.3s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-02-at-13s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-03-at-26.3s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-04-at-42s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-05-at-58.3s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-06-at-72s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-07-at-86.3s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-08-at-101s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-09-at-116.3s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-10-at-133s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-11-at-150.3s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\beat-12-at-165s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-01-1-at-25.8s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-01-2-at-25.9s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-01-3-at-26s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-01-4-at-26.1s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-01-5-at-26.2s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-02-1-at-57.8s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-02-2-at-57.9s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-02-3-at-58s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-02-4-at-58.1s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-02-5-at-58.2s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-03-1-at-85.8s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-03-2-at-85.9s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-03-3-at-86s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-03-4-at-86.1s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-03-5-at-86.2s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-04-1-at-115.8s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-04-2-at-115.9s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-04-3-at-116s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-04-4-at-116.1s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-04-5-at-116.2s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-05-1-at-149.8s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-05-2-at-149.9s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-05-3-at-150s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-05-4-at-150.1s.png
+   C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\seam-05-5-at-150.2s.png
+   Beat sheet (settled frame per scene): C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\review-beats.jpg
+     0.3s brief · 13s brief mid · 26.3s supply · 42s supply mid · 58.3s workers · 72s workers mid · 86.3s publish · 101s publish mid · 116.3s recover · 133s recover mid · 150.3s build · 165s build mid
+   Seam 1 at 26s (brief -> supply): C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\review-seam-01.jpg
+   Seam 2 at 58s (supply -> workers): C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\review-seam-02.jpg
+   Seam 3 at 86s (workers -> publish): C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\review-seam-03.jpg
+   Seam 4 at 116s (publish -> recover): C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\review-seam-04.jpg
+   Seam 5 at 150s (recover -> build): C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\review-seam-05.jpg
+   Phone sheet (beats at 360 px wide): C:\Users\hsar72\Documents\Projects\media_bible\technical-walkthrough\.hyperframes\artifacts\snapshots\cce24f49-b432-4a15-b0a9-fee30feafb34\review-phone.jpg

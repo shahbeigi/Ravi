@@ -1,0 +1,104 @@
+<template>
+  <style>
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-900.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #EEEBE4; overflow: hidden; font-family: "Vazirmatn"; direction: rtl; color: #15171A; }
+    .shell { position: absolute; inset: 24px; border-radius: 26px; background: #F7F5F0; border: 1px solid #DAD5CA; overflow: hidden; }
+    .side { position: absolute; right: 0; top: 0; bottom: 0; width: 300px; background: #fff; border-left: 1px solid #DAD5CA; padding: 34px 26px; }
+    .logo { font-size: 54px; font-weight: 900; display: flex; align-items: center; gap: 12px; }
+    .logo i { width: 14px; height: 14px; border-radius: 50%; background: #E39B2D; }
+    .nav { margin-top: 40px; display: flex; flex-direction: column; gap: 6px; }
+    .nav div { position: relative; padding: 12px 18px; border-radius: 12px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    .nav div.on { background: #F4EBDB; color: #15171A; font-weight: 700; }
+    .nav div.on::after { content: ""; position: absolute; right: -26px; top: 10px; bottom: 10px; width: 5px; border-radius: 3px; background: #E39B2D; }
+    .nav h6 { margin: 18px 18px 4px; font-size: 28px; font-weight: 700; color: #9A6514; }
+    .top { position: absolute; right: 300px; left: 0; top: 0; height: 96px; border-bottom: 1px solid #DAD5CA; display: flex; align-items: center; gap: 18px; padding: 0 36px; }
+    .top h2 { font-size: 38px; font-weight: 900; }
+    #in-net { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .in-lab { position: absolute; padding: 6px 14px; border-radius: 10px; background: #fff; border: 1px solid #DAD5CA; box-shadow: 0 8px 20px rgba(21,23,26,.08); font-size: 28px; font-weight: 700; white-space: nowrap; }
+    #in-mirror { position: absolute; left: 60px; top: 130px; width: 760px; }
+    #in-mirror h4 { font-size: 34px; font-weight: 900; }
+    #in-q { margin-top: 12px; padding: 16px 20px; border-radius: 16px; background: #15171A; color: #F1EEE7; font-size: 28px; font-weight: 700; line-height: 1.45; }
+    .in-ans { margin-top: 14px; padding: 16px 20px; border-radius: 16px; background: #fff; border: 1px solid #DAD5CA; }
+    .in-ans b { font-size: 28px; font-weight: 900; }
+    .in-ans p { margin-top: 4px; font-size: 28px; font-weight: 500; line-height: 1.45; color: #3A3D41; }
+    .in-ans span { display: inline-block; margin-top: 8px; padding: 2px 12px; border-radius: 9px; font-size: 28px; font-weight: 700; }
+    #in-score { margin-top: 16px; display: flex; gap: 14px; }
+    #in-score div { flex: 1; padding: 14px 18px; border-radius: 16px; background: #fff; border: 1px solid #DAD5CA; font-size: 28px; font-weight: 700; }
+    #in-score b { display: block; font-size: 52px; font-weight: 900; line-height: 1.1; }
+  </style>
+  <div id="root" data-composition-id="influence" data-width="1920" data-height="1080">
+    <div id="in-shell" class="shell clip" data-start="0" data-duration="25.5">
+      <div class="side"><div class="logo"><i></i>راوی</div>
+        <div class="nav"><div>رادار روایت</div><div>شورای عامل‌ها</div><div>استودیو</div><h6>مزیت رقابتی</h6><div>رقیب‌سنج</div><div class="on" id="in-nav1">نقشه‌ی نفوذ</div><div id="in-nav2">آینه‌ی هوش مصنوعی</div><div>قطب‌نما</div></div>
+      </div>
+      <div class="top"><h2 id="in-title">نقشه‌ی نفوذ · چه کسانی صدای واقعی هر جامعه‌اند</h2></div>
+    </div>
+    <svg id="in-net" class="clip" data-start="0.3" data-duration="25.2" viewBox="0 0 1920 1080" data-layout-ignore><g id="in-edges"></g><g id="in-nodes"></g></svg>
+    <div class="in-lab clip" id="in-l1" data-start="2.4" data-duration="23.1" style="right:1190px;top:330px">معلم‌های منطقه ۶</div>
+    <div class="in-lab clip" id="in-l2" data-start="2.7" data-duration="22.8" style="right:550px;top:300px">کانال محله‌ی نارمک</div>
+    <div class="in-lab clip" id="in-l3" data-start="3.0" data-duration="22.5" style="right:1080px;top:735px">انجمن اولیا</div>
+    <div class="in-lab clip" id="in-l4" data-start="3.3" data-duration="22.2" style="right:460px;top:755px">خبرنگار شهری</div>
+    <div id="in-mirror" data-hold class="clip" data-start="6.0" data-duration="19.5">
+      <h4>آینه‌ی هوش مصنوعی</h4>
+      <div id="in-q">پرسش: «برنامه‌ی خانم رادمهر برای آلودگی هوا چیست؟»</div>
+      <div class="in-ans" id="in-a1"><b>چت‌بات ۱</b><p>طرح پایش هوای مدارس و اطلاع‌رسانی روزانه را معرفی کرده است.</p><span style="background:#E3F0EC;color:#1F7A6C">دقیق ✓</span></div>
+      <div class="in-ans" id="in-a2"><b>چت‌بات ۲</b><p>به یک مصاحبه‌ی قدیمی سال ۱۴۰۱ استناد می‌کند.</p><span style="background:#FBF0DD;color:#9A6514">منبع قدیمی ⚠</span></div>
+      <div class="in-ans" id="in-a3"><b>چت‌بات بومی</b><p>برنامه را به رقیب الف نسبت می‌دهد.</p><span style="background:#FBE9E6;color:#D5402B">نادرست ✗ · اصلاح منبع</span></div>
+      <div id="in-score"><div>امتیاز آینه · شما<b style="color:#E39B2D">۶۸</b></div><div>رقیب الف<b style="color:#3D6B8C">۷۴</b></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      let seed = 21;
+      const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+      const gauss = () => Math.sqrt(-2 * Math.log(rnd() + 1e-9)) * Math.cos(2 * Math.PI * rnd());
+      const comms = [[630, 420, "#E39B2D"], [1270, 390, "#3D6B8C"], [740, 820, "#1F7A6C"], [1360, 840, "#8C3D5E"]];
+      const nodes = [];
+      comms.forEach(([cx, cy, c], ci) => {
+        nodes.push({ x: cx, y: cy, r: 22, c, ci, hub: true });
+        for (let i = 0; i < 16; i++) nodes.push({ x: cx + gauss() * 110, y: cy + gauss() * 85, r: 7 + rnd() * 6, c, ci, hub: false });
+      });
+      const edges = [];
+      nodes.forEach((n, i) => {
+        if (n.hub) return;
+        const hub = nodes.findIndex((m) => m.hub && m.ci === n.ci);
+        edges.push([hub, i, false]);
+        const j = nodes.findIndex((m, k) => k !== i && !m.hub && m.ci === n.ci && Math.hypot(m.x - n.x, m.y - n.y) < 90);
+        if (j >= 0) edges.push([i, j, false]);
+      });
+      [[0, 17, true], [0, 34, true], [17, 51, true], [34, 51, true]].forEach((e) => edges.push(e));
+      const NS = "http://www.w3.org/2000/svg";
+      const eg = document.getElementById("in-edges"), ng = document.getElementById("in-nodes");
+      const edgeEls = edges.map(([a, b, bridge]) => {
+        const l = document.createElementNS(NS, "line");
+        l.setAttribute("x1", nodes[a].x); l.setAttribute("y1", nodes[a].y); l.setAttribute("x2", nodes[b].x); l.setAttribute("y2", nodes[b].y);
+        l.setAttribute("stroke", bridge ? "#E39B2D" : "#CFC9BC"); l.setAttribute("stroke-width", bridge ? 5 : 2);
+        if (bridge) l.setAttribute("stroke-dasharray", "1000"), l.setAttribute("stroke-dashoffset", "1000");
+        eg.appendChild(l);
+        return { l, bridge };
+      });
+      const nodeEls = nodes.map((n) => {
+        const c = document.createElementNS(NS, "circle");
+        c.setAttribute("cx", n.x); c.setAttribute("cy", n.y); c.setAttribute("r", n.r); c.setAttribute("fill", n.c);
+        if (n.hub) { c.setAttribute("stroke", "#fff"); c.setAttribute("stroke-width", 6); }
+        ng.appendChild(c);
+        return c;
+      });
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#in-shell", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+      tl.fromTo(nodeEls, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.4, stagger: 0.02, ease: "back.out(2)" }, 0.3);
+      tl.fromTo(edgeEls.filter((e) => !e.bridge).map((e) => e.l), { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.01 }, 0.9);
+      edgeEls.filter((e) => e.bridge).forEach((e, i) => tl.to(e.l, { attr: { "stroke-dashoffset": 0 }, duration: 0.8, ease: "power2.inOut" }, 3.6 + i * 0.3));
+      ["#in-l1", "#in-l2", "#in-l3", "#in-l4"].forEach((l, i) => tl.fromTo(l, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 2.4 + i * 0.3));
+      tl.to(".in-lab", { opacity: 0, duration: 0.25 }, 5.5);
+      tl.to("#in-net", { scale: 0.6, transformOrigin: "1560px 560px", duration: 0.8, ease: "power3.inOut" }, 5.6);
+      tl.to("#in-nav1", { backgroundColor: "rgba(0,0,0,0)", color: "#5C5F63", duration: 0.2 }, 5.8);
+      tl.to("#in-nav2", { backgroundColor: "#F4EBDB", color: "#15171A", duration: 0.2 }, 5.8);
+      tl.fromTo("#in-mirror", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.6, ease: "expo.out" }, 6.0);
+      ["#in-q", "#in-a1", "#in-a2", "#in-a3", "#in-score"].forEach((e, i) => tl.fromTo(e, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 6.2 + i * 0.7));
+      window.__timelines["influence"] = tl;
+    })();
+  </script>
+</template>

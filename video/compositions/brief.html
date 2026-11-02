@@ -1,0 +1,84 @@
+<template>
+  <style>
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-900.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #EEEBE4; overflow: hidden; font-family: "Vazirmatn"; direction: rtl; color: #15171A; }
+    #bf-panel { position: absolute; left: 80px; top: 60px; width: 1040px; height: 960px; border-radius: 28px; overflow: hidden; background: #2a2622; }
+    #bf-plate { position: absolute; left: 0; top: 0; width: 1040px; height: 960px; object-fit: cover; }
+    #bf-cap { position: absolute; right: 40px; bottom: 40px; left: 40px; padding: 26px 30px; border-radius: 18px; background: rgba(21,23,26,.78); color: #F1EEE7; }
+    #bf-time { font-size: 120px; font-weight: 900; line-height: 1; }
+    #bf-meta { margin-top: 14px; font-size: 32px; font-weight: 500; color: #D9D4CA; }
+    #bf-meta b { color: #E39B2D; font-weight: 700; }
+    #bf-phone { position: absolute; right: 200px; top: 50px; width: 500px; height: 980px; border-radius: 60px; background: #15171A; padding: 12px; }
+    #bf-screen { position: absolute; inset: 12px; border-radius: 50px; overflow: hidden; background: #F7F5F0; }
+    #bf-lock { position: absolute; inset: 0; background: #1E2124; color: #F1EEE7; text-align: center; }
+    #bf-lock-time { margin-top: 120px; font-size: 130px; font-weight: 900; }
+    #bf-lock-date { font-size: 30px; font-weight: 500; color: #B9B4A8; }
+    #bf-notif { position: absolute; right: 22px; left: 22px; top: 430px; padding: 22px; border-radius: 26px; background: #F7F5F0; color: #15171A; text-align: right; }
+    #bf-notif b { display: block; font-size: 28px; font-weight: 700; color: #E39B2D; }
+    #bf-notif span { font-size: 30px; font-weight: 700; }
+    #bf-app { position: absolute; inset: 0; padding: 70px 28px 0; }
+    #bf-hello { font-size: 40px; font-weight: 900; }
+    #bf-date { font-size: 28px; font-weight: 500; color: #5C5F63; margin-top: 4px; }
+    #bf-player { margin-top: 26px; height: 96px; border-radius: 22px; background: #15171A; display: flex; align-items: center; gap: 6px; padding: 0 26px; direction: ltr; }
+    .bf-bar { width: 6px; height: 40px; border-radius: 3px; background: #E39B2D; }
+    #bf-dur { margin-left: auto; color: #F1EEE7; font-size: 28px; font-weight: 700; }
+    .bf-card { margin-top: 20px; padding: 22px 24px; border-radius: 22px; background: #fff; border: 1px solid #DAD5CA; box-shadow: 0 14px 36px rgba(21,23,26,.08); }
+    .bf-card i { font-style: normal; display: inline-block; padding: 2px 14px; border-radius: 9px; font-size: 28px; font-weight: 700; color: #fff; }
+    .bf-card p { margin-top: 10px; font-size: 30px; font-weight: 700; line-height: 1.35; }
+    .bf-card small { display: block; margin-top: 6px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+  </style>
+  <div id="root" data-composition-id="brief" data-width="1920" data-height="1080">
+    <div id="bf-panel">
+      <video id="bf-plate" class="clip" data-start="0" data-duration="26" src="assets/plates/tehran_dawn.mp4" muted playsinline></video>
+      <div id="bf-cap">
+        <div id="bf-time">۰۶:۰۰</div>
+        <div id="bf-meta">وقتی خواب بودید: <b>۱٫۲ میلیون</b> پست، کانال و کامنت خوانده شد</div>
+      </div>
+    </div>
+    <div id="bf-phone" data-hold class="clip" data-start="0" data-duration="26">
+      <div id="bf-screen">
+        <div id="bf-app">
+          <div id="bf-hello">صبح بخیر، خانم رادمهر</div>
+          <div id="bf-date">پنجشنبه ۱۰ آبان · گزارش ۳ دقیقه‌ای</div>
+          <div id="bf-player"></div>
+          <div class="bf-card" id="bf-c1"><i style="background:#E39B2D">روایت اول روز</i><p>آلودگی هوا و تعطیلی مدارس</p><small>۳۴۰٪ رشد در ۱۲ ساعت</small></div>
+          <div class="bf-card" id="bf-c2"><i style="background:#D5402B">خطر</i><p>شایعه‌ی «تعطیلی کل هفته» در تلگرام</p></div>
+          <div class="bf-card" id="bf-c3"><i style="background:#1F7A6C">فرصت</i><p>والدین دنبال یک منبع رسمی و روشن‌اند</p></div>
+        </div>
+        <div id="bf-lock">
+          <div id="bf-lock-time">۰۶:۰۰</div>
+          <div id="bf-lock-date">پنجشنبه ۱۰ آبان</div>
+          <div id="bf-notif"><b>راوی</b><span>گزارش صبحگاهی شما آماده است</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const player = document.getElementById("bf-player");
+      const bars = [];
+      for (let i = 0; i < 26; i++) { const b = document.createElement("div"); b.className = "bf-bar"; player.appendChild(b); bars.push(b); }
+      const dur = document.createElement("div"); dur.id = "bf-dur"; dur.textContent = "۳:۰۰"; player.appendChild(dur);
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#bf-panel", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 0);
+      tl.fromTo("#bf-plate", { scale: 1.05 }, { scale: 1.12, duration: 14, ease: "none" }, 0);
+      tl.fromTo("#bf-phone", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, 0.3);
+      tl.fromTo("#bf-notif", { opacity: 0, y: -40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 1.4);
+      tl.to("#bf-notif", { scale: 1.04, duration: 0.15, ease: "power2.out" }, 3.1);
+      tl.to("#bf-lock", { yPercent: -100, duration: 0.6, ease: "power3.inOut" }, 3.3);
+      tl.fromTo("#bf-hello", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 3.7);
+      tl.fromTo("#bf-date", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.9);
+      tl.fromTo("#bf-player", { opacity: 0, scaleX: 0.85 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out" }, 4.1);
+      const wave = { t: 0 };
+      tl.fromTo(wave, { t: 0 }, { t: 40, duration: 9.5, ease: "none", onUpdate: () => {
+        bars.forEach((b, i) => { b.style.height = (14 + 58 * Math.abs(Math.sin(wave.t * 0.9 + i * 0.7) * Math.cos(wave.t * 0.31 + i * 0.23))) + "px"; });
+      } }, 4.3);
+      tl.fromTo("#bf-c1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 8.4);
+      tl.fromTo("#bf-c2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 10.4);
+      tl.fromTo("#bf-c3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 11.4);
+      window.__timelines["brief"] = tl;
+    })();
+  </script>
+</template>

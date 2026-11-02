@@ -1,0 +1,867 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 7
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 180,
+    "samples": [
+      10,
+      30,
+      50,
+      70,
+      90,
+      110,
+      130,
+      150,
+      170
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      10,
+      50,
+      90,
+      130,
+      170
+    ],
+    "checked": 85,
+    "passed": 85
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 27,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 4 text elements stay under it for 0.5 s or more, the smallest \"RAVI / CAMPAIGNS / NEW CAMPAIGN\" at 23 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "RAVI / CAMPAIGNS / NEW CAMPAIGN",
+        "selector": "#brief > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/brief.html",
+        "bbox": {
+          "x": 152,
+          "y": 302,
+          "width": 442.09,
+          "height": 36
+        },
+        "time": 0,
+        "times": [
+          0,
+          0,
+          0,
+          8.414
+        ],
+        "fontPx": 23,
+        "floorPx": 28,
+        "seconds": 26.144,
+        "elements": [
+          {
+            "selector": "#brief > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "RAVI / CAMPAIGNS / NEW CAMPAIGN",
+            "fontPx": 23,
+            "time": 0,
+            "seconds": 26.144
+          },
+          {
+            "selector": "#brief > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "BEHIND THE SCREEN",
+            "fontPx": 24,
+            "time": 0,
+            "seconds": 26.144
+          },
+          {
+            "selector": "#brief > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "RAVI / TECHNICAL WALKTHROUGH / PROPOSED SYSTEM",
+            "fontPx": 25,
+            "time": 0,
+            "seconds": 26.144
+          },
+          {
+            "selector": "div.reveal.code",
+            "text": "metric: post_views window: 72h after posting evidence: agreed source unique_people: unknown",
+            "fontPx": 26,
+            "time": 8.414,
+            "seconds": 17.73
+          }
+        ]
+      },
+      {
+        "code": "film_silent",
+        "severity": "warning",
+        "message": "This 180 s film has no sound source (no <audio>, no <video> with sound): add a music bed and sounds on the visible actions unless the person asked for silence; see references/sound.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 3.31 s (3.61–6.91 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 3.606,
+        "seconds": 3.306,
+        "floorSeconds": 3,
+        "until": 6.912
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 3.30 s (8.71–12.02 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 8.715,
+        "seconds": 3.305,
+        "floorSeconds": 3,
+        "until": 12.02
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 4.21 s (12.62–16.83 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 12.621,
+        "seconds": 4.207,
+        "floorSeconds": 3,
+        "until": 16.828
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 8.11 s (17.73–25.84 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 17.73,
+        "seconds": 8.113,
+        "floorSeconds": 3,
+        "until": 25.843
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 4 text elements stay under it for 0.5 s or more, the smallest \"MEDIA PLAN / QUOTES AND CAPACITY\" at 23 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "MEDIA PLAN / QUOTES AND CAPACITY",
+        "selector": "#supply > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/supply.html",
+        "bbox": {
+          "x": 152,
+          "y": 302,
+          "width": 462.3,
+          "height": 36
+        },
+        "time": 26.144,
+        "times": [
+          26.144,
+          26.144,
+          26.144,
+          26.144
+        ],
+        "fontPx": 23,
+        "floorPx": 28,
+        "seconds": 32.154,
+        "elements": [
+          {
+            "selector": "#supply > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "MEDIA PLAN / QUOTES AND CAPACITY",
+            "fontPx": 23,
+            "time": 26.144,
+            "seconds": 32.154
+          },
+          {
+            "selector": "#supply > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(8)",
+            "text": "*Only after supplier acceptance of evidence and shortfall terms.",
+            "fontPx": 24,
+            "time": 26.144,
+            "seconds": 32.154
+          },
+          {
+            "selector": "#supply > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "BUYER + SOFTWARE",
+            "fontPx": 24,
+            "time": 26.144,
+            "seconds": 32.154
+          },
+          {
+            "selector": "#supply > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "RAVI / TECHNICAL WALKTHROUGH / PROPOSED SYSTEM",
+            "fontPx": 25,
+            "time": 26.144,
+            "seconds": 32.154
+          }
+        ]
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 3.30 s (32.76–36.06 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 32.755,
+        "seconds": 3.305,
+        "floorSeconds": 3,
+        "until": 36.06
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 4.21 s (39.67–43.87 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 39.666,
+        "seconds": 4.207,
+        "floorSeconds": 3,
+        "until": 43.873
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 10.22 s (47.78–58.00 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 47.78,
+        "seconds": 10.217,
+        "floorSeconds": 3,
+        "until": 57.997
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 8 text elements stay under it for 0.5 s or more, the smallest \"Facts + supplier history\" at 24 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "Facts + supplier history",
+        "selector": "#workers > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > small:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/workers.html",
+        "bbox": {
+          "x": 161.28,
+          "y": 388.77,
+          "width": 247.44,
+          "height": 38
+        },
+        "time": 59.199,
+        "times": [
+          58.297,
+          59.199,
+          61.302,
+          62.204,
+          65.209,
+          69.416,
+          69.416,
+          76.327
+        ],
+        "fontPx": 24,
+        "floorPx": 28,
+        "seconds": 27.045,
+        "elements": [
+          {
+            "selector": "#workers > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > small:nth-of-type(1)",
+            "text": "Facts + supplier history",
+            "fontPx": 24,
+            "time": 59.199,
+            "seconds": 27.045
+          },
+          {
+            "selector": "#workers > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(1)",
+            "text": "DURABLE QUEUE",
+            "fontPx": 24,
+            "time": 61.302,
+            "seconds": 24.942
+          },
+          {
+            "selector": "#workers > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > small:nth-of-type(1)",
+            "text": "Hooks + format variants",
+            "fontPx": 24,
+            "time": 62.204,
+            "seconds": 24.04
+          },
+          {
+            "selector": "#workers > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > small:nth-of-type(1)",
+            "text": "Extract + reconcile",
+            "fontPx": 24,
+            "time": 65.209,
+            "seconds": 21.035
+          },
+          {
+            "selector": "#workers > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5) > div:nth-of-type(1)",
+            "text": "APPROVAL GATE",
+            "fontPx": 24,
+            "time": 69.416,
+            "seconds": 16.828
+          },
+          {
+            "selector": "div.pill.ok",
+            "text": "Ready for execution",
+            "fontPx": 24,
+            "time": 76.327,
+            "seconds": 9.917
+          },
+          {
+            "selector": "#workers > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "RAVI / TECHNICAL WALKTHROUGH / PROPOSED SYSTEM",
+            "fontPx": 25,
+            "time": 58.297,
+            "seconds": 27.947
+          },
+          {
+            "selector": "div.mono",
+            "text": "hash + destination+ budget + time",
+            "fontPx": 27,
+            "time": 69.416,
+            "seconds": 16.828
+          }
+        ]
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 3.00 s (65.81–68.81 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 65.81,
+        "seconds": 3.005,
+        "floorSeconds": 3,
+        "until": 68.815
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 6.31 s (69.72–76.03 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 69.716,
+        "seconds": 6.311,
+        "floorSeconds": 3,
+        "until": 76.027
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 9.31 s (76.63–85.94 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 76.628,
+        "seconds": 9.315,
+        "floorSeconds": 3,
+        "until": 85.943
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 8 text elements stay under it for 0.5 s or more, the smallest \"CONNECTED ACCOUNT\" at 23 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "CONNECTED ACCOUNT",
+        "selector": "#publish > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/publish.html",
+        "bbox": {
+          "x": 745,
+          "y": 327.82,
+          "width": 265.45,
+          "height": 36
+        },
+        "time": 89.249,
+        "times": [
+          86.244,
+          86.244,
+          89.249,
+          89.249,
+          94.357,
+          94.357,
+          101.269,
+          107.279
+        ],
+        "fontPx": 23,
+        "floorPx": 28,
+        "seconds": 27.045,
+        "elements": [
+          {
+            "selector": "#publish > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "CONNECTED ACCOUNT",
+            "fontPx": 23,
+            "time": 89.249,
+            "seconds": 27.045
+          },
+          {
+            "selector": "#publish > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1)",
+            "text": "PUBLISHER HANDOFF",
+            "fontPx": 23,
+            "time": 94.357,
+            "seconds": 21.937
+          },
+          {
+            "selector": "#publish > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > small:nth-of-type(1)",
+            "text": "Exact asset + account",
+            "fontPx": 24,
+            "time": 86.244,
+            "seconds": 30.05
+          },
+          {
+            "selector": "#publish > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(3)",
+            "text": "Only supported permissions and formats",
+            "fontPx": 24,
+            "time": 89.249,
+            "seconds": 27.045
+          },
+          {
+            "selector": "#publish > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(3)",
+            "text": "Unconnected publisher accounts",
+            "fontPx": 24,
+            "time": 94.357,
+            "seconds": 21.937
+          },
+          {
+            "selector": "#publish > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(1)",
+            "text": "DELIVERY RECORD",
+            "fontPx": 24,
+            "time": 101.269,
+            "seconds": 15.025
+          },
+          {
+            "selector": "#publish > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5)",
+            "text": "Timeout? Verify before retrying.",
+            "fontPx": 24,
+            "time": 107.279,
+            "seconds": 9.015
+          },
+          {
+            "selector": "#publish > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "RAVI / TECHNICAL WALKTHROUGH / PROPOSED SYSTEM",
+            "fontPx": 25,
+            "time": 86.244,
+            "seconds": 30.05
+          }
+        ]
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 4.51 s (89.55–94.06 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 89.549,
+        "seconds": 4.508,
+        "floorSeconds": 3,
+        "until": 94.057
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 6.31 s (94.66–100.97 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 94.658,
+        "seconds": 6.31,
+        "floorSeconds": 3,
+        "until": 100.968
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 5.41 s (101.57–106.98 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 101.569,
+        "seconds": 5.409,
+        "floorSeconds": 3,
+        "until": 106.978
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 8.41 s (107.58–115.99 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 107.579,
+        "seconds": 8.414,
+        "floorSeconds": 3,
+        "until": 115.993
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 3 text elements stay under it for 0.5 s or more, the smallest \"CAMPAIGN / TELEGRAM DELIVERY\" at 23 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "CAMPAIGN / TELEGRAM DELIVERY",
+        "selector": "#recover > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/recover.html",
+        "bbox": {
+          "x": 152,
+          "y": 302,
+          "width": 414.69,
+          "height": 36
+        },
+        "time": 116.294,
+        "times": [
+          116.294,
+          116.294,
+          116.294
+        ],
+        "fontPx": 23,
+        "floorPx": 28,
+        "seconds": 33.957,
+        "elements": [
+          {
+            "selector": "#recover > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "CAMPAIGN / TELEGRAM DELIVERY",
+            "fontPx": 23,
+            "time": 116.294,
+            "seconds": 33.957
+          },
+          {
+            "selector": "#recover > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "RECOVERY WORKFLOW",
+            "fontPx": 24,
+            "time": 116.294,
+            "seconds": 33.957
+          },
+          {
+            "selector": "#recover > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "RAVI / TECHNICAL WALKTHROUGH / PROPOSED SYSTEM",
+            "fontPx": 25,
+            "time": 116.294,
+            "seconds": 33.957
+          }
+        ]
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 3.31 s (125.61–128.91 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 125.609,
+        "seconds": 3.306,
+        "floorSeconds": 3,
+        "until": 128.915
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 4.21 s (132.82–137.03 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 132.821,
+        "seconds": 4.207,
+        "floorSeconds": 3,
+        "until": 137.028
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 3.31 s (137.63–140.94 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 137.629,
+        "seconds": 3.306,
+        "floorSeconds": 3,
+        "until": 140.935
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 5.41 s (144.54–149.95 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 144.541,
+        "seconds": 5.409,
+        "floorSeconds": 3,
+        "until": 149.95
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 3 text elements stay under it for 0.5 s or more, the smallest \"IMPLEMENTATION / DEPENDENCIES\" at 23 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "IMPLEMENTATION / DEPENDENCIES",
+        "selector": "#build > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/build.html",
+        "bbox": {
+          "x": 152,
+          "y": 302,
+          "width": 433.78,
+          "height": 36
+        },
+        "time": 150.25,
+        "times": [
+          150.25,
+          150.25,
+          150.25
+        ],
+        "fontPx": 23,
+        "floorPx": 28,
+        "seconds": 29.75,
+        "elements": [
+          {
+            "selector": "#build > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "IMPLEMENTATION / DEPENDENCIES",
+            "fontPx": 23,
+            "time": 150.25,
+            "seconds": 29.75
+          },
+          {
+            "selector": "#build > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "THE DELIVERY COMMITMENT",
+            "fontPx": 24,
+            "time": 150.25,
+            "seconds": 29.75
+          },
+          {
+            "selector": "#build > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+            "text": "RAVI / TECHNICAL WALKTHROUGH / PROPOSED SYSTEM",
+            "fontPx": 25,
+            "time": 150.25,
+            "seconds": 29.75
+          }
+        ]
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 5.11 s (163.77–168.88 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 163.773,
+        "seconds": 5.108,
+        "floorSeconds": 3,
+        "until": 168.881
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 5.41 s (171.59–177.00 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 171.586,
+        "seconds": 5.414,
+        "floorSeconds": 3,
+        "until": 177
+      }
+    ],
+    "enabled": true,
+    "step": 0.3009999999999877,
+    "samples": 599
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "audio_none",
+        "severity": "info",
+        "message": "The film has no sound: no clip in it plays audio.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      }
+    ]
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

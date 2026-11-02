@@ -1,0 +1,108 @@
+<template>
+  <style>
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-900.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #EEEBE4; overflow: hidden; font-family: "Vazirmatn"; direction: rtl; color: #15171A; }
+    .shell { position: absolute; inset: 24px; border-radius: 26px; background: #F7F5F0; border: 1px solid #DAD5CA; overflow: hidden; }
+    .side { position: absolute; right: 0; top: 0; bottom: 0; width: 300px; background: #fff; border-left: 1px solid #DAD5CA; padding: 34px 26px; }
+    .logo { font-size: 54px; font-weight: 900; display: flex; align-items: center; gap: 12px; }
+    .logo i { width: 14px; height: 14px; border-radius: 50%; background: #E39B2D; }
+    .nav { margin-top: 40px; display: flex; flex-direction: column; gap: 6px; }
+    .nav div { position: relative; padding: 12px 18px; border-radius: 12px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    .nav div.on { background: #F4EBDB; color: #15171A; font-weight: 700; }
+    .nav div.on::after { content: ""; position: absolute; right: -26px; top: 10px; bottom: 10px; width: 5px; border-radius: 3px; background: #E39B2D; }
+    .top { position: absolute; right: 300px; left: 0; top: 0; height: 96px; border-bottom: 1px solid #DAD5CA; display: flex; align-items: center; gap: 18px; padding: 0 36px; }
+    .top h2 { font-size: 38px; font-weight: 900; }
+    .top span { margin-right: auto; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    #cp-plate-wrap { position: absolute; left: 60px; top: 140px; width: 660px; height: 880px; border-radius: 24px; overflow: hidden; background: #2a2622; }
+    #cp-plate { position: absolute; left: 0; top: 0; width: 660px; height: 880px; object-fit: cover; object-position: 62% center; }
+    #cp-cap { position: absolute; right: 28px; left: 28px; bottom: 28px; padding: 20px 24px; border-radius: 16px; background: rgba(21,23,26,.8); color: #F1EEE7; font-size: 32px; font-weight: 900; }
+    #cp-cap small { display: block; font-size: 28px; font-weight: 500; color: #D9D4CA; margin-top: 4px; }
+    #cp-card { position: absolute; left: 750px; top: 140px; width: 810px; height: 880px; padding: 30px 34px; border-radius: 24px; background: #fff; border: 1px solid #DAD5CA; box-shadow: 0 14px 36px rgba(21,23,26,.08); }
+    .sec { margin-bottom: 22px; }
+    .sec h4 { font-size: 30px; font-weight: 900; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
+    .sec h4 small { font-size: 28px; font-weight: 500; color: #5C5F63; }
+    .tp { display: flex; align-items: center; gap: 14px; padding: 10px 16px; margin-bottom: 8px; border-radius: 14px; border: 1px solid #DAD5CA; font-size: 30px; font-weight: 700; }
+    .tp i { width: 44px; height: 24px; border-radius: 12px; background: #1F7A6C; position: relative; flex: none; }
+    .tp i::after { content: ""; position: absolute; top: 4px; left: 4px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }
+    .tp span { margin-right: auto; color: #E39B2D; font-size: 30px; letter-spacing: 2px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip { padding: 6px 16px; border-radius: 22px; border: 1px solid #DAD5CA; font-size: 28px; font-weight: 700; }
+    .chip.red { background: #FBE9E6; border-color: #F2C9C2; color: #A8301F; }
+    .goal { padding: 14px 18px; margin-bottom: 10px; border-radius: 14px; border: 2px solid #E39B2D; background: #FFF9EF; font-size: 30px; font-weight: 900; }
+    #cp-steer { position: absolute; left: 60px; top: 140px; width: 660px; height: 880px; border-radius: 24px; background: #15171A; color: #F1EEE7; overflow: hidden; }
+    #cp-steer h4 { position: absolute; right: 34px; top: 30px; font-size: 34px; font-weight: 900; color: #E39B2D; }
+    #cp-lines { position: absolute; left: 0; top: 0; width: 660px; height: 880px; }
+    .tg { position: absolute; left: 60px; width: 330px; padding: 18px 22px; border-radius: 16px; background: #23272B; border: 1px solid #3A3F44; font-size: 32px; font-weight: 900; }
+    .tg small { display: block; font-size: 28px; font-weight: 500; color: #B9B4A8; }
+    #cp-needle { position: absolute; left: 470px; top: 400px; width: 120px; height: 120px; border-radius: 50%; border: 6px solid #E39B2D; }
+    #cp-needle b { position: absolute; left: 54px; top: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 46px solid #E39B2D; }
+    #cp-needle u { position: absolute; left: 54px; top: 54px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 46px solid #5C5F63; }
+  </style>
+  <div id="root" data-composition-id="compass" data-width="1920" data-height="1080">
+    <div id="cp-shell" class="shell clip" data-start="0" data-duration="32">
+      <div class="side"><div class="logo"><i></i>راوی</div>
+        <div class="nav"><div>گزارش صبحگاهی</div><div>رادار روایت</div><div>شورای عامل‌ها</div><div>استودیو</div><div>رقیب‌سنج</div><div class="on">قطب‌نما</div></div>
+      </div>
+      <div class="top"><h2>قطب‌نما</h2><span>همه‌ی عامل‌ها و جست‌وجوها در این جهت کار می‌کنند</span></div>
+    </div>
+    <div id="cp-plate-wrap">
+      <video id="cp-plate" class="clip" data-start="0" data-duration="32" src="assets/plates/leader_compass.mp4" muted playsinline></video>
+      <div id="cp-cap">تنظیم قطب‌نما · ۲۰ دقیقه، یک بار<small>و هر هفته، با پیشنهاد عامل‌ها</small></div>
+    </div>
+    <div id="cp-card" class="clip" data-start="0.6" data-duration="31.4">
+      <div class="sec" id="cp-s1"><h4>موضوع‌های تمرکز<small>اولویت با ستاره</small></h4>
+        <div class="tp" id="cp-t1"><i></i>آلودگی هوا و سلامت<span>★★★</span></div>
+        <div class="tp" id="cp-t2"><i></i>حمل‌ونقل عمومی<span>★★</span></div>
+        <div class="tp" id="cp-t3"><i></i>مدارس و خانواده‌ها<span>★★</span></div></div>
+      <div class="sec" id="cp-s2"><h4>رقبا و فهرست پایش</h4><div class="chips"><span class="chip">رقیب الف</span><span class="chip">رقیب ب</span><span class="chip">۱۴ خبرنگار</span><span class="chip">۴۰ کانال</span></div></div>
+      <div class="sec" id="cp-s3"><h4>خط قرمزها</h4><div class="chips"><span class="chip red">حمله‌ی شخصی</span><span class="chip red">عدد تأییدنشده</span><span class="chip red">قاب‌بندی قومی</span></div></div>
+      <div class="sec" id="cp-s4"><h4>جهت‌ها<small>جایگاهی که می‌خواهید داشته باشید</small></h4>
+        <div class="goal" id="cp-g1">شفاف‌ترین مدیر شهری در آلودگی هوا</div>
+        <div class="goal" id="cp-g2">صدای خانواده‌ها در شورا</div></div>
+    </div>
+    <div id="cp-steer" class="clip" data-start="13.6" data-duration="18.4" data-layout-allow-overflow>
+      <h4>قطب‌نما هدایت می‌کند</h4>
+      <svg id="cp-lines" viewBox="0 0 660 880">
+        <path class="cp-ln" d="M530 460 C 470 460, 450 210, 390 210" fill="none" stroke="#E39B2D" stroke-width="4" />
+        <path class="cp-ln" d="M530 460 C 470 460, 450 380, 390 380" fill="none" stroke="#E39B2D" stroke-width="4" />
+        <path class="cp-ln" d="M530 460 C 470 460, 450 550, 390 550" fill="none" stroke="#E39B2D" stroke-width="4" />
+        <path class="cp-ln" d="M530 460 C 470 460, 450 720, 390 720" fill="none" stroke="#E39B2D" stroke-width="4" />
+      </svg>
+      <div class="tg" id="cp-x1" style="top:160px">خزنده‌ها<small>اولویت ۴۸۰ منبع</small></div>
+      <div class="tg" id="cp-x2" style="top:330px">رادار روایت<small>رتبه‌بندی روایت‌ها</small></div>
+      <div class="tg" id="cp-x3" style="top:500px">عامل‌ها<small>امتیاز هر گزینه</small></div>
+      <div class="tg" id="cp-x4" style="top:670px">استودیو<small>لحن و خط قرمزها</small></div>
+      <div id="cp-needle"><b></b><u></u></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#cp-shell", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+      tl.fromTo("#cp-plate-wrap", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 0.1);
+      tl.fromTo("#cp-plate", { scale: 1.08 }, { scale: 1.0, duration: 14, ease: "none" }, 0);
+      tl.fromTo("#cp-cap", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 1.0);
+      tl.fromTo("#cp-card", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 0.6);
+      tl.fromTo("#cp-s1 h4", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.4);
+      ["#cp-t1", "#cp-t2", "#cp-t3"].forEach((t, i) => tl.fromTo(t, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 3.4 + i * 0.35));
+      tl.fromTo("#cp-s2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 5.0);
+      tl.fromTo("#cp-s3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 6.2);
+      tl.fromTo("#cp-s4 h4", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.6);
+      ["#cp-g1", "#cp-g2"].forEach((g, i) => tl.fromTo(g, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 9.0 + i * 0.6));
+      tl.to("#cp-plate-wrap", { opacity: 0, duration: 0.4, ease: "power2.in" }, 13.4);
+      tl.fromTo("#cp-steer", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 13.6);
+      tl.fromTo("#cp-needle", { rotation: -120 }, { rotation: 20, duration: 1.4, ease: "elastic.out(1, 0.5)" }, 13.8);
+      document.querySelectorAll(".cp-ln").forEach((p, i) => {
+        const len = p.getTotalLength();
+        tl.fromTo(p, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 14.6 + i * 0.35);
+      });
+      ["#cp-x1", "#cp-x2", "#cp-x3", "#cp-x4"].forEach((x, i) => {
+        tl.fromTo(x, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 15.0 + i * 0.35);
+        tl.to(x, { backgroundColor: "#3A2E18", borderColor: "#E39B2D", duration: 0.3 }, 15.3 + i * 0.35);
+      });
+      window.__timelines["compass"] = tl;
+    })();
+  </script>
+</template>

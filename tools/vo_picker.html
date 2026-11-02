@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ravi VO Picker</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg: #EEEBE4; --card: #fff; --ink: #15171A; --mute: #5C5F63; --line: #DAD5CA; --acc: #E39B2D; --ok: #1F7A6C; --soft: #F4EBDB; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Vazirmatn", system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 16px; padding: 14px 24px; background: var(--ink); color: #F1EEE7; }
+  header h1 { margin: 0; font-size: 20px; font-weight: 800; }
+  header .hint { color: #B9B4A8; font-size: 14px; }
+  header button { margin-left: auto; }
+  button { font: inherit; border: 0; border-radius: 10px; padding: 8px 14px; cursor: pointer; font-weight: 600; }
+  .primary { background: var(--acc); color: var(--ink); }
+  .primary:disabled { opacity: .5; cursor: wait; }
+  #status { font-size: 14px; color: #B9B4A8; min-width: 160px; text-align: right; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 80px; }
+  .scene { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; margin-bottom: 18px; }
+  .scene-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .scene-head h2 { margin: 0; font-size: 18px; font-weight: 800; text-transform: capitalize; }
+  .scene-head button { background: var(--ink); color: #F1EEE7; font-size: 14px; }
+  .sent { border-top: 1px solid #EFEBE3; padding: 14px 0 10px; }
+  .text { direction: rtl; text-align: right; font-size: 21px; font-weight: 600; line-height: 1.7; margin-bottom: 10px; }
+  .takes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .take { display: flex; align-items: center; gap: 8px; border: 1.5px solid var(--line); border-radius: 12px; padding: 6px 8px 6px 6px; background: #FBFAF7; }
+  .take.chosen { border-color: var(--ok); background: #E9F4F0; }
+  .take.playing { box-shadow: 0 0 0 3px rgba(227,155,45,.45); }
+  .play { width: 34px; height: 34px; padding: 0; border-radius: 50%; background: var(--ink); color: #fff; font-size: 13px; }
+  .meta { font-size: 13px; line-height: 1.25; color: var(--mute); min-width: 88px; }
+  .meta b { color: var(--ink); font-size: 14px; }
+  .star { color: var(--acc); font-weight: 800; }
+  .use { background: var(--soft); color: var(--ink); font-size: 13px; padding: 6px 10px; }
+  .take.chosen .use { background: var(--ok); color: #fff; }
+  .good { color: var(--ok); font-weight: 700; } .warn { color: #9A6514; font-weight: 700; } .bad { color: #D5402B; font-weight: 700; }
+  .meta { min-width: 120px; }
+  .legend { font-size: 13px; color: var(--mute); margin: 0 0 16px; }
+  @media (max-width: 640px) { header { flex-wrap: wrap; } .text { font-size: 18px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Ravi · Voice-over picker</h1>
+  <span class="hint">▶ listen · “Use” to choose · then rebuild</span>
+  <button class="primary" id="rebuild">Rebuild voice-over</button>
+  <span id="status"></span>
+</header>
+<main>
+  <p class="legend"><span class="star">★</span> = my automatic pick (Whisper clarity score). Score = how closely the speech matches the script (1.00 = perfect); pace = letters per second. Ending: ↘ = the pitch falls like a finished sentence (good), ↗ = it rises and sounds unfinished, ✂ = the take was cut off mid-word.</p>
+  <div id="list"></div>
+</main>
+<audio id="player"></audio>
+<script>
+  const player = document.getElementById("player");
+  const status = document.getElementById("status");
+  let playingEl = null;
+  function play(url, el) {
+    if (playingEl === el && !player.paused) { player.pause(); return; }
+    player.src = url; player.play();
+    if (playingEl) playingEl.classList.remove("playing");
+    playingEl = el; if (el) el.classList.add("playing");
+  }
+  player.addEventListener("ended", () => { if (playingEl) playingEl.classList.remove("playing"); playingEl = null; });
+  player.addEventListener("pause", () => { if (playingEl) playingEl.classList.remove("playing"); });
+
+  async function load() {
+    const { picks, order } = await (await fetch("/data")).json();
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+    order.forEach(([sid, n]) => {
+      const sc = document.createElement("section");
+      sc.className = "scene";
+      sc.innerHTML = `<div class="scene-head"><h2>${sid}</h2><button>▶ Play whole scene</button></div>`;
+      sc.querySelector("button").onclick = (e) => play(`/scene/${sid}.wav?t=${Date.now()}`, e.target);
+      for (let i = 0; i < n; i++) {
+        const key = `${sid}_${String(i).padStart(2, "0")}`;
+        const p = picks[key];
+        if (!p) continue;
+        const chosen = p.override || p.takes[0].file;
+        const auto = p.takes[0].file;
+        const s = document.createElement("div");
+        s.className = "sent";
+        s.innerHTML = `<div class="text">${p.text}</div><div class="takes"></div>`;
+        const box = s.querySelector(".takes");
+        p.takes.forEach((t, k) => {
+          const el = document.createElement("div");
+          el.className = "take" + (t.file === chosen ? " chosen" : "");
+          el.innerHTML = `<button class="play">▶</button>
+            <div class="meta"><b>${t.label ? t.label : t.file.endsWith("_v2pick.flac") ? "Your v2 pick" : "Take " + (k + 1)}</b> ${t.file === auto ? '<span class="star">★</span>' : ""}<br>score ${t.cer.toFixed(2)} · pace ${t.pace}
+              ${t.end === undefined ? "" : `<br><span class="${t.tail > -45 ? "bad" : t.end < -1 ? "good" : t.end <= 1 ? "warn" : "bad"}">${t.tail > -45 ? "✂ cut off" : t.end < -1 ? "↘ ending falls" : t.end <= 1 ? "→ ending flat" : "↗ ending rises"} (${t.end > 0 ? "+" : ""}${t.end} st)</span>`}</div>
+            <button class="use">${t.file === chosen ? "✓ Using" : "Use"}</button>`;
+          el.querySelector(".play").onclick = () => play(`/take/${t.file}`, el);
+          el.querySelector(".use").onclick = async () => {
+            await fetch("/choose", { method: "POST", body: JSON.stringify({ key, file: t.file }) });
+            box.querySelectorAll(".take").forEach((x) => { x.classList.remove("chosen"); x.querySelector(".use").textContent = "Use"; });
+            el.classList.add("chosen"); el.querySelector(".use").textContent = "✓ Using";
+            status.textContent = "Changed · rebuild to hear scenes";
+          };
+          box.appendChild(el);
+        });
+        sc.appendChild(s);
+      }
+      list.appendChild(sc);
+    });
+  }
+  document.getElementById("rebuild").onclick = async (e) => {
+    e.target.disabled = true; status.textContent = "Rebuilding…";
+    const r = await fetch("/assemble", { method: "POST" });
+    e.target.disabled = false;
+    status.textContent = r.ok ? "Rebuilt ✓ · play scenes to check" : "Rebuild failed";
+  };
+  load();
+</script>
+</body>
+</html>

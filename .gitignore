@@ -1,0 +1,29 @@
+# Heavy / generated media stays on the local PC (regenerate with tools/ + ComfyUI)
+renders/
+shots/
+work/
+listen/
+keyframes/*.log
+video/assets/plates/
+video/assets/music/
+video/assets/vo/
+video/assets/vo_gooya/
+video/assets/vo_norm/
+video/assets/sfx/
+video/node_modules/
+video/.hyperframes/
+video/.waveform-cache/
+.snap*/
+*.mp4
+*.mov
+*.wav
+*.flac
+*.mp3
+# local tool state
+__pycache__/
+*.pyc
+.claude/launch.json
+
+# HyperFrames scratch artifacts
+**/.hyperframes/artifacts/
+**/.hyperframes/preview/

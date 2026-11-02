@@ -1,0 +1,92 @@
+[
+ {
+  "id": "noise",
+  "start": 0.0,
+  "slot": 11.0,
+  "vo": 9.63
+ },
+ {
+  "id": "problem",
+  "start": 11.0,
+  "slot": 9.0,
+  "vo": 7.97
+ },
+ {
+  "id": "reveal",
+  "start": 20.0,
+  "slot": 10.0,
+  "vo": 6.72
+ },
+ {
+  "id": "compass",
+  "start": 30.0,
+  "slot": 19.0,
+  "vo": 17.23
+ },
+ {
+  "id": "brief",
+  "start": 49.0,
+  "slot": 14.03,
+  "vo": 12.83
+ },
+ {
+  "id": "radar",
+  "start": 63.03,
+  "slot": 22.26,
+  "vo": 21.06
+ },
+ {
+  "id": "council",
+  "start": 85.29,
+  "slot": 17.97,
+  "vo": 16.87
+ },
+ {
+  "id": "electorate",
+  "start": 103.26,
+  "slot": 18.53,
+  "vo": 17.43
+ },
+ {
+  "id": "studio",
+  "start": 121.79,
+  "slot": 12.93,
+  "vo": 11.93
+ },
+ {
+  "id": "leverage",
+  "start": 134.72,
+  "slot": 4.5,
+  "vo": 2.24
+ },
+ {
+  "id": "rival",
+  "start": 139.22,
+  "slot": 17.0,
+  "vo": 14.64
+ },
+ {
+  "id": "influence",
+  "start": 156.22,
+  "slot": 13.5,
+  "vo": 10.78
+ },
+ {
+  "id": "approve",
+  "start": 169.72,
+  "slot": 12.5,
+  "vo": 10.21
+ },
+ {
+  "id": "loop",
+  "start": 182.22,
+  "slot": 6.81,
+  "vo": 5.91
+ },
+ {
+  "id": "close",
+  "start": 189.03,
+  "slot": 13.0,
+  "vo": 8.25
+ }
+]

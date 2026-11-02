@@ -1,0 +1,74 @@
+<template>
+  <style>
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-900.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #111312; overflow: hidden; font-family: "Vazirmatn"; direction: rtl; }
+    #noise-wall { position: absolute; inset: -40px -400px; display: flex; flex-direction: column; justify-content: space-between; padding: 30px 0; }
+    .nz-row { display: flex; gap: 22px; white-space: nowrap; will-change: transform; }
+    .nz-frag { flex: none; display: flex; align-items: center; gap: 14px; padding: 12px 22px; border: 1px solid #2A2E2C; border-radius: 12px; background: #161917; color: #8A8F8B; font-size: 30px; font-weight: 500; }
+    .nz-frag b { font-weight: 500; font-size: 22px; color: #5E6360; padding: 2px 10px; border: 1px solid #2A2E2C; border-radius: 8px; }
+    #noise-shade { position: absolute; inset: 0; background: #111312; opacity: 0; }
+    #noise-title { position: absolute; right: 160px; top: 330px; width: 1500px; color: #F1EEE7; font-weight: 900; font-size: 128px; line-height: 1.12; }
+    #noise-title span { display: inline-block; }
+    #noise-born { position: absolute; right: 330px; top: 455px; display: flex; align-items: center; gap: 24px; padding: 26px 40px; background: #1A1710; border: 2px solid #E39B2D; border-radius: 18px; color: #F6E7CC; font-size: 60px; font-weight: 500; }
+    #noise-born b { font-weight: 500; font-size: 32px; color: #111312; background: #E39B2D; padding: 4px 14px; border-radius: 8px; }
+    #noise-born i { font-style: normal; font-size: 32px; color: #E39B2D; }
+    #noise-point { position: absolute; left: 954px; top: 534px; width: 12px; height: 12px; border-radius: 50%; background: #E39B2D; }
+  </style>
+  <div id="root" data-composition-id="noise" data-width="1920" data-height="1080">
+    <div id="noise-wall" class="clip" data-start="0" data-duration="23" data-layout-allow-overflow data-layout-ignore></div>
+    <div id="noise-shade" class="clip" data-start="0" data-duration="23" data-layout-ignore></div>
+    <h1 id="noise-title" class="clip" data-start="0.6" data-duration="5.4"><span id="nt1">هر دقیقه،</span> <span id="nt2">میلیون‌ها صدا</span><br /><span id="nt3">حرف می‌زنند.</span></h1>
+    <div id="noise-born" class="clip" data-start="6.2" data-duration="16.8"><b>تلگرام</b>مدارس تهران تا آخر هفته تعطیل است!<i>۴۸ هزار بازدید</i></div>
+    <div id="noise-point" class="clip" data-start="10.2" data-duration="12.8"></div>
+  </div>
+  <script>
+    (function () {
+      const posts = [
+        ["تلگرام", "خبر فوری از جلسه‌ی امروز شورا"], ["اینستاگرام", "این ترافیک دیگه قابل تحمل نیست"], ["ایکس", "کسی می‌دونه فردا مترو کار می‌کنه؟"],
+        ["ایتا", "گزارش تصویری از افتتاح پارک"], ["روبیکا", "قیمت بلیت اتوبوس دوباره؟"], ["آپارات", "ویدیوی کامل مصاحبه"], ["تلگرام", "هوای امروز ناسالم برای همه"],
+        ["اینستاگرام", "#آلودگی_هوا"], ["ایکس", "چرا کسی جواب نمی‌ده؟"], ["بله", "اطلاعیه‌ی جدید منطقه ۶"], ["تلگرام", "این عکس رو ببینید"],
+        ["اینستاگرام", "نظر شما چیه؟ کامنت کنید"], ["ایکس", "#تهران"], ["ایتا", "پاسخ مسئولان به انتقادها"], ["روبیکا", "لایو امشب ساعت ۹"],
+        ["تلگرام", "شایعه یا واقعیت؟"], ["اینستاگرام", "بچه‌ها رو امروز نفرستادیم مدرسه"], ["ایکس", "آمار جدید منتشر شد"], ["آپارات", "خلاصه‌ی بحث داغ دیشب"],
+        ["تلگرام", "فوری | فوری | فوری"], ["اینستاگرام", "ماسک یادتون نره"], ["ایکس", "این وعده‌ها چی شد؟"], ["بله", "نظرسنجی هفته"]
+      ];
+      let seed = 7;
+      const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+      const wall = document.getElementById("noise-wall");
+      const rows = [];
+      for (let r = 0; r < 11; r++) {
+        const row = document.createElement("div");
+        row.className = "nz-row";
+        for (let i = 0; i < 14; i++) {
+          const p = posts[Math.floor(rnd() * posts.length)];
+          const f = document.createElement("div");
+          f.className = "nz-frag";
+          f.innerHTML = "<b>" + p[0] + "</b>" + p[1];
+          row.appendChild(f);
+        }
+        wall.appendChild(row);
+        rows.push(row);
+      }
+      const tl = gsap.timeline({ paused: true });
+      rows.forEach((row, i) => {
+        const dir = i % 2 ? 1 : -1;
+        const speed = 120 + rnd() * 160;
+        tl.fromTo(row, { x: dir * -200, opacity: 0.55 }, { x: dir * (speed * 6), opacity: 1, duration: 6, ease: "power1.in" }, i * 0.06);
+        tl.to(row, { x: "+=" + dir * 1800, duration: 4.8, ease: "power2.in" }, 6);
+      });
+      tl.fromTo("#noise-shade", { opacity: 0.15 }, { opacity: 0.55, duration: 0.6, ease: "power2.out" }, 0.6);
+      tl.to("#noise-shade", { opacity: 0.2, duration: 0.5, ease: "power2.inOut" }, 5.6);
+      tl.to("#noise-shade", { opacity: 0.88, duration: 0.8, ease: "power2.inOut" }, 6.3);
+      tl.to("#noise-shade", { opacity: 1, duration: 0.6, ease: "power2.in" }, 9.6);
+      tl.fromTo("#nt1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 0.6);
+      tl.fromTo("#nt2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 1.4);
+      tl.fromTo("#nt3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 2.2);
+      tl.to("#noise-title", { opacity: 0, duration: 0.3, ease: "power2.in" }, 5.6);
+      tl.fromTo("#noise-born", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "expo.out" }, 6.2);
+      tl.to("#noise-born", { scale: 1.12, duration: 3.0, ease: "none" }, 6.9);
+      tl.to("#noise-born", { scale: 0.02, opacity: 0, duration: 0.5, ease: "power3.in" }, 10.0);
+      tl.fromTo("#noise-point", { scale: 0 }, { scale: 1, duration: 0.3, ease: "expo.out" }, 10.25);
+      window.__timelines["noise"] = tl;
+    })();
+  </script>
+</template>

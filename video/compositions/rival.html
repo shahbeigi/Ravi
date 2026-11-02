@@ -1,0 +1,138 @@
+<template>
+  <style>
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-900.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #EEEBE4; overflow: hidden; font-family: "Vazirmatn"; direction: rtl; color: #15171A; }
+    .shell { position: absolute; inset: 24px; border-radius: 26px; background: #F7F5F0; border: 1px solid #DAD5CA; overflow: hidden; }
+    .side { position: absolute; right: 0; top: 0; bottom: 0; width: 300px; background: #fff; border-left: 1px solid #DAD5CA; padding: 34px 26px; }
+    .logo { font-size: 54px; font-weight: 900; display: flex; align-items: center; gap: 12px; }
+    .logo i { width: 14px; height: 14px; border-radius: 50%; background: #E39B2D; }
+    .nav { margin-top: 40px; display: flex; flex-direction: column; gap: 6px; }
+    .nav div { position: relative; padding: 12px 18px; border-radius: 12px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    .nav div.on { background: #F4EBDB; color: #15171A; font-weight: 700; }
+    .nav div.on::after { content: ""; position: absolute; right: -26px; top: 10px; bottom: 10px; width: 5px; border-radius: 3px; background: #E39B2D; }
+    .nav h6 { margin: 18px 18px 4px; font-size: 28px; font-weight: 700; color: #9A6514; }
+    .top { position: absolute; right: 300px; left: 0; top: 0; height: 96px; border-bottom: 1px solid #DAD5CA; display: flex; align-items: center; gap: 18px; padding: 0 36px; }
+    .top h2 { font-size: 38px; font-weight: 900; }
+    .leg { margin-right: auto; display: flex; gap: 24px; font-size: 28px; font-weight: 700; }
+    .leg i { display: inline-block; width: 16px; height: 16px; border-radius: 4px; margin-left: 8px; }
+    .card { position: absolute; padding: 26px 30px; border-radius: 22px; background: #fff; border: 1px solid #DAD5CA; box-shadow: 0 14px 36px rgba(21,23,26,.08); }
+    .card h4 { font-size: 32px; font-weight: 900; }
+    .card h4 small { font-size: 28px; font-weight: 500; color: #5C5F63; margin-right: 12px; }
+    #rv-sov { left: 60px; top: 140px; width: 900px; height: 520px; }
+    #rv-sov svg { position: absolute; left: 30px; top: 100px; width: 840px; height: 340px; overflow: visible; }
+    #rv-sov .ax { position: absolute; bottom: 26px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    #rv-own { left: 990px; top: 140px; width: 560px; height: 520px; }
+    #rv-own svg { position: absolute; left: 30px; top: 80px; width: 500px; height: 420px; overflow: visible; }
+    #rv-own text { font-family: "Vazirmatn"; font-size: 28px; font-weight: 700; fill: #15171A; }
+    #rv-kpis { left: 60px; top: 690px; width: 1490px; height: 330px; display: flex; gap: 22px; padding: 0; background: none; border: 0; box-shadow: none; }
+    .kpi { flex: 1; padding: 24px 28px; border-radius: 22px; background: #fff; border: 1px solid #DAD5CA; }
+    .kpi b { display: block; font-size: 64px; font-weight: 900; line-height: 1.15; }
+    .kpi span { font-size: 28px; font-weight: 500; color: #5C5F63; line-height: 1.45; }
+    #rv-ws { position: absolute; left: 60px; top: 130px; width: 1490px; height: 890px; border-radius: 22px; background: #fff; border: 1px solid #DAD5CA; overflow: hidden; }
+    #rv-ws h4 { position: absolute; right: 36px; top: 26px; font-size: 36px; font-weight: 900; }
+    #rv-ws h4 small { font-size: 28px; font-weight: 500; color: #5C5F63; margin-right: 12px; }
+    .bub { position: absolute; border-radius: 50%; display: grid; place-items: center; text-align: center; font-weight: 700; line-height: 1.3; padding: 10px; }
+    #rv-gold { border: 4px dashed #E39B2D; background: #FFF8EC; color: #15171A; font-size: 34px; font-weight: 900; }
+    .gold-ring { position: absolute; border-radius: 50%; border: 3px solid #E39B2D; }
+    #rv-call { position: absolute; left: 70px; top: 300px; width: 520px; padding: 28px 30px; border-radius: 22px; background: #15171A; color: #F1EEE7; }
+    #rv-call b { display: block; font-size: 36px; font-weight: 900; color: #E39B2D; }
+    #rv-call p { margin-top: 10px; font-size: 30px; font-weight: 500; line-height: 1.5; }
+    #rv-call div { margin-top: 18px; padding: 14px 18px; border-radius: 14px; background: #E39B2D; color: #15171A; font-size: 30px; font-weight: 900; text-align: center; }
+  </style>
+  <div id="root" data-composition-id="rival" data-width="1920" data-height="1080">
+    <div id="rv-shell" class="shell clip" data-start="0" data-duration="29">
+      <div class="side"><div class="logo"><i></i>راوی</div>
+        <div class="nav"><div>رادار روایت</div><div>شورای عامل‌ها</div><div>استودیو</div><h6>مزیت رقابتی</h6><div class="on">رقیب‌سنج</div><div>نقشه‌ی نفوذ</div><div>آینه‌ی هوش مصنوعی</div><div>قطب‌نما</div></div>
+      </div>
+      <div class="top"><h2>رقیب‌سنج</h2>
+        <div class="leg"><span><i style="background:#E39B2D"></i>شما</span><span><i style="background:#3D6B8C"></i>رقیب الف</span><span><i style="background:#8C3D5E"></i>رقیب ب</span></div>
+      </div>
+    </div>
+    <div id="rv-sov" class="card clip" data-start="0.4" data-duration="8.2">
+      <h4>سهم از گفت‌وگو<small>۳۰ روز گذشته · همه‌ی بسترها</small></h4>
+      <svg viewBox="0 0 840 340" id="rv-stream"><defs><clipPath id="rv-clip"><rect id="rv-cliprect" x="0" y="-20" width="0" height="380" /></clipPath></defs><g clip-path="url(#rv-clip)" id="rv-layers"></g></svg>
+      <div class="ax" style="right:30px">امروز</div><div class="ax" style="left:30px">۳۰ روز پیش</div>
+    </div>
+    <div id="rv-own" class="card clip" data-start="0.7" data-duration="7.9">
+      <h4>مالکیت موضوع‌ها</h4>
+      <svg viewBox="-250 -210 500 420" id="rv-spider"></svg>
+    </div>
+    <div id="rv-kpis" class="card clip" data-start="1.0" data-duration="7.6">
+      <div class="kpi" id="rv-k1"><b style="color:#E39B2D">۳۸٪</b><span>سهم شما از گفت‌وگو<br />۱۱+ واحد در این ماه</span></div>
+      <div class="kpi" id="rv-k2"><b>۲ ساعت</b><span>میانگین زمان پاسخ شما<br />رقیب الف: ۹ ساعت</span></div>
+      <div class="kpi" id="rv-k3"><b style="color:#3D6B8C">مسکن</b><span>موضوعی که رقیب الف<br />این هفته تصاحب کرد</span></div>
+    </div>
+    <div id="rv-ws" data-hold class="clip" data-start="8.2" data-duration="20.8">
+      <h4>فضای خالی<small>اهمیت برای مردم × مالکیت سیاسی</small></h4>
+      <div class="bub" id="rv-b1" style="left:980px;top:150px;width:260px;height:260px;background:#E39B2D;color:#fff;font-size:32px">آلودگی هوا<br />شما</div>
+      <div class="bub" id="rv-b2" style="left:1240px;top:430px;width:220px;height:220px;background:#3D6B8C;color:#fff;font-size:30px">مسکن<br />رقیب الف</div>
+      <div class="bub" id="rv-b3" style="left:900px;top:560px;width:190px;height:190px;background:#8C3D5E;color:#fff;font-size:28px">ترافیک<br />رقیب ب</div>
+      <div class="bub" id="rv-b4" style="left:1290px;top:200px;width:150px;height:150px;background:#EFECE5;color:#5C5F63;font-size:28px">فضای سبز</div>
+      <div class="bub" id="rv-b5" style="left:1110px;top:740px;width:140px;height:140px;background:#EFECE5;color:#5C5F63;font-size:28px">ورزش محله</div>
+      <div class="gold-ring clip" id="rv-ring" data-start="10.2" data-duration="18.8" style="left:620px;top:310px;width:340px;height:340px"></div>
+      <div class="bub" id="rv-gold" style="left:620px;top:310px;width:340px;height:340px">حمل‌ونقل شبانه<br /><span style="font-size:28px;color:#5C5F63">بدون صاحب</span></div>
+      <div id="rv-call"><b>فرصت طلایی</b><p>۶۱٪ مردم این موضوع را مهم می‌دانند،<br />و هیچ سیاستمداری درباره‌اش حرف نزده است.</p><div>ساخت برنامه‌ی محتوا ←</div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const fa = (n) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+      const N = 31, W = 840, H = 340;
+      const you = [], ra = [], rb = [];
+      for (let i = 0; i < N; i++) {
+        you.push(0.22 + 0.16 * (i / N) + 0.05 * Math.sin(i * 0.7) + (i > 24 ? 0.06 : 0));
+        ra.push(0.34 - 0.06 * (i / N) + 0.05 * Math.cos(i * 0.5));
+        rb.push(0.24 + 0.04 * Math.sin(i * 0.9 + 1));
+      }
+      const x = (i) => (i / (N - 1)) * W;
+      const area = (lo, hi) => {
+        let d = "M" + x(0) + " " + (H - hi[0] * H);
+        for (let i = 1; i < N; i++) d += " L" + x(i).toFixed(1) + " " + (H - hi[i] * H).toFixed(1);
+        for (let i = N - 1; i >= 0; i--) d += " L" + x(i).toFixed(1) + " " + (H - lo[i] * H).toFixed(1);
+        return d + "Z";
+      };
+      const z = new Array(N).fill(0);
+      const s1 = you.map((v) => v), s2 = you.map((v, i) => v + rb[i]), s3 = you.map((v, i) => v + rb[i] + ra[i]);
+      const norm = (a) => a.map((v, i) => v / s3[i]);
+      const layers = document.getElementById("rv-layers");
+      [[z, norm(s1), "#E39B2D"], [norm(s1), norm(s2), "#8C3D5E"], [norm(s2), norm(s3), "#3D6B8C"]].forEach(([lo, hi, c]) => {
+        const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        p.setAttribute("d", area(lo, hi)); p.setAttribute("fill", c); p.setAttribute("stroke", "#fff"); p.setAttribute("stroke-width", "2");
+        layers.appendChild(p);
+      });
+      const axes = ["آلودگی هوا", "حمل‌ونقل", "مسکن", "اشتغال جوانان", "فضای سبز"];
+      const sp = document.getElementById("rv-spider");
+      const R = 150, ang = (k) => -Math.PI / 2 + (k * 2 * Math.PI) / 5;
+      let grid = "";
+      [0.33, 0.66, 1].forEach((f) => { grid += '<polygon points="' + axes.map((_, k) => (Math.cos(ang(k)) * R * f).toFixed(1) + "," + (Math.sin(ang(k)) * R * f).toFixed(1)).join(" ") + '" fill="none" stroke="#E7E2D7" stroke-width="2"/>'; });
+      axes.forEach((a, k) => {
+        const lx = Math.cos(ang(k)) * (R + 40), ly = Math.sin(ang(k)) * (R + 40);
+        grid += '<line x1="0" y1="0" x2="' + (Math.cos(ang(k)) * R).toFixed(1) + '" y2="' + (Math.sin(ang(k)) * R).toFixed(1) + '" stroke="#E7E2D7" stroke-width="2"/>';
+        grid += '<text x="' + lx.toFixed(1) + '" y="' + (ly + 9).toFixed(1) + '" text-anchor="middle">' + a + "</text>";
+      });
+      const vals = { you: [0.92, 0.35, 0.3, 0.55, 0.7], a: [0.4, 0.5, 0.88, 0.35, 0.3], b: [0.3, 0.8, 0.4, 0.45, 0.25] };
+      const poly = (v) => v.map((f, k) => (Math.cos(ang(k)) * R * f).toFixed(1) + "," + (Math.sin(ang(k)) * R * f).toFixed(1)).join(" ");
+      grid += '<polygon class="rv-poly" points="' + poly(vals.a) + '" fill="rgba(61,107,140,.18)" stroke="#3D6B8C" stroke-width="4"/>';
+      grid += '<polygon class="rv-poly" points="' + poly(vals.b) + '" fill="rgba(140,61,94,.16)" stroke="#8C3D5E" stroke-width="4"/>';
+      grid += '<polygon class="rv-poly" points="' + poly(vals.you) + '" fill="rgba(227,155,45,.25)" stroke="#E39B2D" stroke-width="5"/>';
+      sp.innerHTML = grid;
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#rv-shell", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+      tl.fromTo("#rv-sov", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 0.4);
+      tl.fromTo("#rv-cliprect", { attr: { width: 0 } }, { attr: { width: 860 }, duration: 2.2, ease: "power2.inOut" }, 0.8);
+      tl.fromTo("#rv-own", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 0.7);
+      tl.fromTo(".rv-poly", { scale: 0, svgOrigin: "0 0" }, { scale: 1, svgOrigin: "0 0", duration: 0.9, stagger: 0.5, ease: "expo.out" }, 3.2);
+      ["#rv-k1", "#rv-k2", "#rv-k3"].forEach((k, i) => tl.fromTo(k, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 4.8 + i * 0.5));
+      tl.to(["#rv-sov", "#rv-own", "#rv-kpis"], { opacity: 0, y: -30, duration: 0.4, ease: "power2.in" }, 8.0);
+      tl.fromTo("#rv-ws", { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" }, 8.2);
+      ["#rv-b1", "#rv-b2", "#rv-b3", "#rv-b4", "#rv-b5"].forEach((b, i) => tl.fromTo(b, { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 8.6 + i * 0.15));
+      tl.fromTo("#rv-gold", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.6)" }, 9.9);
+      for (let k = 0; k < 4; k++) tl.fromTo("#rv-ring", { scale: 1, opacity: 0.9 }, { scale: 1.35, opacity: 0, duration: 1.6, ease: "power1.out" }, 10.2 + k * 1.6);
+      tl.fromTo("#rv-call", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "expo.out" }, 11.2);
+      tl.fromTo("#rv-call div", { scale: 1 }, { scale: 0.96, duration: 0.12, yoyo: true, repeat: 1 }, 14.6);
+      window.__timelines["rival"] = tl;
+    })();
+  </script>
+</template>

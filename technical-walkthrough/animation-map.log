@@ -1,0 +1,168 @@
+[BrowserManager] Browser launched (Chrome/156.0.8078.79, screenshot, gl=--use-gl=angle --use-angle=swiftshader, headlessShell=true, platform=win32)
+[initSession:screenshot] page.goto start (0ms)
+[initSession:screenshot] page.goto complete (88ms)
+[initSession:screenshot] GSAP proxy flush complete (92ms)
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"default","rawFpsSource":"default","rawFps":30,"fallbackReason":"missing"}
+[non-blocking] Failed to load resource: the server responded with a status of 404 (Not Found)
+[initSession:screenshot] pollHfReady complete (235ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (237ms)
+[initSession:screenshot] applyVideoMetadataHints complete (237ms)
+[initSession:screenshot] media + fonts + tailwind ready (239ms)
+[initSession:screenshot] static-frame dedup: 4014/4014 predicted frame(s) reusable (outcome=verified, runs=57/57, screenshots=251, seeks=252, elapsedMs=12648) (13178ms)
+
+Animation map: 147/147 tweens (skipped 0 micro-tweens)
+  invisible: 2
+  collision: 121
+  degenerate: 3
+  staggers: 14 elements stagger with uneven intervals (0ms, 951ms, 49ms, 0ms, 0ms, 951ms, 49ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms); 4 elements stagger with uneven intervals (0ms, 1000ms, 1000ms); 11 elements stagger with uneven intervals (49ms, 0ms, 0ms, 0ms, 951ms, 49ms, 0ms, 0ms, 0ms, 0ms); 7 elements stagger with uneven intervals (0ms, 1000ms, 0ms, 951ms, 49ms, 0ms); 5 elements stagger with uneven intervals (0ms, 0ms, 0ms, 2000ms); 6 elements stagger with uneven intervals (951ms, 49ms, 0ms, 1000ms, 0ms); 5 elements stagger with uneven intervals (2000ms, 0ms, 0ms, 0ms); 5 elements stagger with uneven intervals (49ms, 0ms, 951ms, 49ms); 4 elements stagger with uneven intervals (49ms, 951ms, 49ms); 4 elements stagger with uneven intervals (49ms, 1951ms, 49ms); 4 elements stagger with uneven intervals (49ms, 1951ms, 49ms); 4 elements stagger with uneven intervals (49ms, 4951ms, 49ms); 4 elements stagger with uneven intervals (49ms, 1951ms, 49ms); 4 elements stagger with uneven intervals (49ms, 951ms, 49ms); 4 elements stagger with uneven intervals (0ms, 49ms, 0ms); 4 elements stagger with uneven intervals (49ms, 1951ms, 49ms)
+  dead zones: 0-1s, 20-21s, 22-25s, 26-27.5s, 30-31.5s, 33-35.5s, 40-43.5s, 45-46.5s, 48-58.5s, 63-64.5s, 70-75.5s, 77-87.5s, 90-93.5s, 95-99.5s, 102-106.5s, 108-118.5s, 122-123.5s, 126-128.5s, 133-136.5s, 138-140.5s, 142-143.5s, 145-150.5s, 155-156.5s, 161-162.5s, 164-168.5s, 172-180s
+Timeline (180.0s, each char ≈ 3.00s):
+  0s                                                    180s
+  ┼───────────────────────────────────────────────────────────┤
+  █                                                             div.step.reveal opacity+y
+  █                                                             div.row.reveal opacity+y
+  █                                                             div.reveal.body opacity+y
+  █                                                             div.reveal.body opacity+y
+  █                                                             div.reveal.body opacity+y
+  █                                                             div.row.reveal opacity+y
+  ██                                                            path.draw strokeDashoffset
+  ██                                                            path.draw strokeDashoffset
+   █                                                            div.row.reveal opacity+y
+   █                                                            div.row.reveal opacity+y
+   █                                                            div.row.reveal opacity+y
+   █                                                            div.body.reveal opacity+y
+   █                                                            div.panel.dark opacity+y
+   █                                                            div.panel.reveal opacity+y
+   █                                                            div.reveal opacity+y
+   █                                                            div.body.reveal opacity+y
+   █                                                            div.fill scaleX
+   █                                                            div.step.reveal opacity+y
+   █                                                            div.row.reveal opacity+y
+   █                                                            div.body.reveal opacity+y
+    █                                                           div.row.reveal opacity+y
+    █                                                           div.row.reveal opacity+y
+    █                                                           div.row.reveal opacity+y
+    █                                                           div.row.reveal opacity+y
+    █                                                           div.step.reveal opacity+y
+    █                                                           div.row.reveal opacity+y
+    █                                                           div.reveal.code opacity+y
+    █                                                           div.reveal.code opacity+y
+    █                                                           div.reveal.code opacity+y
+    █                                                           div.panel.reveal opacity+y
+    █                                                           div.reveal opacity+y
+    █                                                           div.body.reveal opacity+y
+    ██                                                          div.fill scaleX
+     █                                                          path.draw strokeDashoffset
+     █                                                          div.row.reveal opacity+y
+     █                                                          div.row.reveal opacity+y
+     █                                                          div.body.reveal opacity+y
+     █                                                          div.panel.reveal opacity+y
+      █                                                         div.reveal.callout opacity+y
+      █                                                         div.reveal.callout opacity+y
+      █                                                         div.reveal.callout opacity+y
+      █                                                         div.row.reveal opacity+y
+      █                                                         div.reveal opacity+y
+      █                                                         div.row.reveal opacity+y
+      █                                                         div.body.reveal opacity+y
+      █                                                         div.fill scaleX
+      ██                                                        path.draw strokeDashoffset
+       █                                                        div.panel.dark opacity+y
+       █                                                        div.body.reveal opacity+y
+       █                                                        div.reveal.body opacity+y
+       █                                                        div.reveal.body opacity+y
+       █                                                        div.reveal.body opacity+y
+        █                                                       div.reveal.callout opacity+y
+        █                                                       div.pill.ok opacity+y
+        █                                                       div.reveal.callout opacity+y
+         █                                                      div.body.reveal opacity+y
+         █                                                      div.reveal.pill opacity+y
+         █                                                      div.body.reveal opacity+y
+         █                                                      div.body.reveal opacity+y
+          █                                                     div.reveal.callout opacity+y
+           █                                                    div.row.reveal opacity+y
+           █                                                    div.row.reveal opacity+y
+           █                                                    div.body.reveal opacity+y
+           █                                                    div.body.reveal opacity+y
+           █                                                    div.body.reveal opacity+y
+            █                                                   div.row.reveal opacity+y
+            █                                                   div.row.reveal opacity+y
+              █                                                 div.row.reveal opacity+y
+              █                                                 div.row.reveal opacity+y
+              █                                                 div.body.reveal opacity+y
+              █                                                 div.body.reveal opacity+y
+               █                                                div.row.reveal opacity+y
+               █                                                div.row.reveal opacity+y
+                █                                               div.reveal.callout opacity+y
+                █                                               div.reveal.callout opacity+y
+                 █                                              div.body.reveal opacity+y
+                 █                                              div.body.reveal opacity+y
+                     █                                          div.step.reveal opacity+y
+                     █                                          div.step.reveal opacity+y
+                      █                                         path.draw strokeDashoffset
+                      █                                         path.draw strokeDashoffset
+                      █                                         div.panel.dark opacity+y
+                      █                                         div.panel.dark opacity+y
+                      █                                         div.step.reveal opacity+y
+                      █                                         div.step.reveal opacity+y
+                       █                                        div.step.reveal opacity+y
+                       █                                        div.step.reveal opacity+y
+                        █                                       path.draw strokeDashoffset
+                        █                                       path.draw strokeDashoffset
+                         █                                      div.panel.reveal opacity+y
+                         █                                      div.panel.reveal opacity+y
+                           █                                    div.pill.ok opacity+y
+                           █                                    div.pill.ok opacity+y
+                               █                                path.draw strokeDashoffset
+                               █                                path.draw strokeDashoffset
+                               █                                div.panel.reveal opacity+y
+                               █                                div.panel.reveal opacity+y
+                                 █                              div.panel.reveal opacity+y
+                                 █                              div.panel.reveal opacity+y
+                                   █                            path.draw strokeDashoffset
+                                   █                            path.draw strokeDashoffset
+                                   █                            div.panel.dark opacity+y
+                                   █                            div.panel.dark opacity+y
+                                     █                          div.reveal.pill opacity+y
+                                     █                          div.reveal.pill opacity+y
+                                         █                      div.reveal opacity+y
+                                         █                      div.reveal opacity+y
+                                         ██                     div.fill scaleX
+                                         ██                     div.fill scaleX
+                                          █                     div.body.reveal opacity+y
+                                          █                     div.body.reveal opacity+y
+                                           █                    div.reveal opacity+y
+                                           █                    div.reveal opacity+y
+                                           █                    div.fill scaleX
+                                           █                    div.fill scaleX
+                                             █                  div.reveal opacity+y
+                                             █                  div.reveal opacity+y
+                                             █                  div.fill scaleX
+                                             █                  div.fill scaleX
+                                              █                 div.body.reveal opacity+y
+                                              █                 div.body.reveal opacity+y
+                                               █                div.body.reveal opacity+y
+                                               █                div.body.reveal opacity+y
+                                                 █              div.reveal.callout opacity+y
+                                                 █              div.reveal.callout opacity+y
+                                                  █             div.body.reveal opacity+y
+                                                  █             div.body.reveal opacity+y
+                                                    █           div.row.reveal opacity+y
+                                                    █           div.row.reveal opacity+y
+                                                     █          div.body.reveal opacity+y
+                                                     █          div.body.reveal opacity+y
+                                                     █          div.row.reveal opacity+y
+                                                     █          div.row.reveal opacity+y
+                                                      █         div.row.reveal opacity+y
+                                                      █         div.row.reveal opacity+y
+                                                      █         div.body.reveal opacity+y
+                                                      █         div.body.reveal opacity+y
+                                                       █        div.row.reveal opacity+y
+                                                       █        div.row.reveal opacity+y
+                                                        █       div.row.reveal opacity+y
+                                                        █       div.body.reveal opacity+y
+                                                        █       div.row.reveal opacity+y
+                                                        █       div.body.reveal opacity+y
+                                                          █     div.reveal.callout opacity+y
+                                                          █     div.reveal.callout opacity+y
+                                                           █    div.body.reveal opacity+y
+                                                           █    div.body.reveal opacity+y

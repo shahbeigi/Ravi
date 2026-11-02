@@ -1,0 +1,101 @@
+<template>
+  <style>
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-900.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #EEEBE4; overflow: hidden; font-family: "Vazirmatn"; direction: rtl; color: #15171A; }
+    .shell { position: absolute; inset: 24px; border-radius: 26px; background: #F7F5F0; border: 1px solid #DAD5CA; overflow: hidden; }
+    .side { position: absolute; right: 0; top: 0; bottom: 0; width: 300px; background: #fff; border-left: 1px solid #DAD5CA; padding: 34px 26px; }
+    .logo { font-size: 54px; font-weight: 900; display: flex; align-items: center; gap: 12px; }
+    .logo i { width: 14px; height: 14px; border-radius: 50%; background: #E39B2D; }
+    .nav { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
+    .nav div { position: relative; padding: 14px 18px; border-radius: 12px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    .nav div.on { background: #F4EBDB; color: #15171A; font-weight: 700; }
+    .nav div.on::after { content: ""; position: absolute; right: -26px; top: 10px; bottom: 10px; width: 5px; border-radius: 3px; background: #E39B2D; }
+    .top { position: absolute; right: 300px; left: 0; top: 0; height: 96px; border-bottom: 1px solid #DAD5CA; display: flex; align-items: center; gap: 18px; padding: 0 36px; }
+    .top h2 { font-size: 38px; font-weight: 900; }
+    .top .leg { margin-right: auto; display: flex; gap: 22px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    .top .leg i { display: inline-block; width: 14px; height: 14px; border-radius: 50%; margin-left: 8px; }
+    #el-msgs { position: absolute; left: 60px; top: 150px; width: 560px; }
+    .el-m { margin-bottom: 16px; padding: 20px 24px; border-radius: 18px; background: #fff; border: 1px solid #DAD5CA; opacity: 0.55; }
+    .el-m b { font-size: 28px; font-weight: 700; color: #5C5F63; }
+    .el-m p { margin-top: 6px; font-size: 29px; font-weight: 700; line-height: 1.45; }
+    #el-note { margin-top: 26px; padding: 18px 22px; border-radius: 16px; background: #F4EBDB; font-size: 28px; font-weight: 500; line-height: 1.5; }
+    #el-note b { font-weight: 900; }
+    #el-grid { position: absolute; left: 670px; top: 150px; width: 900px; height: 780px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .el-seg { position: relative; padding: 20px 22px; border-radius: 20px; background: #fff; border: 2px solid #DAD5CA; }
+    .el-seg h5 { font-size: 30px; font-weight: 900; display: flex; justify-content: space-between; }
+    .el-seg h5 span { font-weight: 700; color: #1F7A6C; }
+    .el-dots { margin-top: 14px; display: grid; grid-template-columns: repeat(16, 15px); gap: 8px; direction: ltr; }
+    .el-dot { width: 15px; height: 15px; border-radius: 50%; background: #B9B4A8; }
+    .el-win { position: absolute; left: 22px; top: -38px; padding: 4px 14px; border-radius: 9px; background: #E39B2D; color: #15171A; font-size: 28px; font-weight: 700; }
+    #el-sum { position: absolute; left: 670px; top: 948px; width: 900px; padding: 16px 24px; border-radius: 16px; background: #15171A; color: #F1EEE7; font-size: 28px; font-weight: 700; }
+  </style>
+  <div id="root" data-composition-id="electorate" data-width="1920" data-height="1080">
+    <div id="el-shell" class="shell clip" data-start="0" data-duration="29.5">
+      <div class="side"><div class="logo"><i></i>راوی</div>
+        <div class="nav"><div>گزارش صبحگاهی</div><div>رادار روایت</div><div>شورای عامل‌ها</div><div class="on">جامعه‌ی مصنوعی</div><div>استودیو</div><div>قطب‌نما</div></div>
+      </div>
+      <div class="top"><h2>جامعه‌ی مصنوعی · آزمون پیام</h2>
+        <div class="leg"><span><i style="background:#1F7A6C"></i>قانع شد</span><span><i style="background:#B9B4A8"></i>بی‌تفاوت</span><span><i style="background:#D5402B"></i>مخالف</span></div>
+      </div>
+    </div>
+    <div id="el-msgs" class="clip" data-start="0.5" data-duration="29">
+      <div class="el-m" id="el-m1"><b>پیام ۱ · تکذیب</b><p>«مدارس فردا باز هستند؛ شایعات را باور نکنید.»</p></div>
+      <div class="el-m" id="el-m2"><b>پیام ۲ · روال شفاف</b><p>«هر روز ساعت ۱۸، تصمیم فردا را همین‌جا اعلام می‌کنم.»</p></div>
+      <div class="el-m" id="el-m3"><b>پیام ۳ · همدلی</b><p>«من هم مادرم. نفس بچه‌های ما از هر برنامه‌ای مهم‌تر است.»</p></div>
+      <div id="el-note">پرسوناها ساخته‌شده از <b>۲۴٬۰۰۰ نظر واقعی</b> مخاطبان شما · کالیبره با ۳۸ کمپین گذشته</div>
+    </div>
+    <div id="el-grid" class="clip" data-start="0.8" data-duration="28.7">
+      <div class="el-seg" id="el-s0"><h5>جوانان شهری<span id="el-p0"></span></h5><div class="el-dots"></div><div class="el-win" id="el-w0">برنده: پیام ۲</div></div>
+      <div class="el-seg" id="el-s1"><h5>والدین<span id="el-p1"></span></h5><div class="el-dots"></div><div class="el-win" id="el-w1">برنده: پیام ۳</div></div>
+      <div class="el-seg" id="el-s2"><h5>بازنشستگان<span id="el-p2"></span></h5><div class="el-dots"></div></div>
+      <div class="el-seg" id="el-s3"><h5>کسب‌وکارهای محلی<span id="el-p3"></span></h5><div class="el-dots"></div></div>
+    </div>
+    <div id="el-sum" data-hold class="clip" data-start="14.3" data-duration="15.2">ترکیب پیشنهادی: پیام ۲ برای ریلز جوانان · پیام ۳ برای کانال والدین</div>
+  </div>
+  <script>
+    (function () {
+      const fa = (n) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+      let seed = 99;
+      const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+      const segs = [];
+      document.querySelectorAll(".el-dots").forEach((box) => {
+        const arr = [];
+        for (let i = 0; i < 180; i++) { const d = document.createElement("div"); d.className = "el-dot"; box.appendChild(d); arr.push({ el: d, r: rnd() }); }
+        segs.push(arr);
+      });
+      const P = [[0.22, 0.35, 0.55, 0.40], [0.78, 0.52, 0.48, 0.58], [0.50, 0.84, 0.62, 0.45]];
+      const Q = [[0.45, 0.30, 0.15, 0.20], [0.08, 0.15, 0.15, 0.12], [0.15, 0.04, 0.10, 0.18]];
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#el-shell", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+      tl.fromTo(".el-m", { opacity: 0, x: -30 }, { opacity: 0.55, x: 0, duration: 0.5, stagger: 0.12, ease: "expo.out" }, 0.5);
+      tl.fromTo(".el-seg", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: "expo.out" }, 0.8);
+      segs.forEach((arr, s) => tl.fromTo(arr.map((d) => d.el), { scale: 0 }, { scale: 1, duration: 0.3, stagger: 0.006, ease: "back.out(2)" }, 1.1 + s * 0.2));
+      tl.fromTo(".el-win", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+      tl.fromTo("#el-note", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 6.2);
+      const fire = (m, t) => {
+        tl.to(".el-m", { opacity: 0.55, borderColor: "#DAD5CA", duration: 0.3 }, t);
+        tl.to("#el-m" + (m + 1), { opacity: 1, borderColor: "#E39B2D", duration: 0.3 }, t);
+        segs.forEach((arr, s) => {
+          const g = [], r = [], n = [];
+          arr.forEach((d) => (d.r < P[m][s] ? g : d.r > 1 - Q[m][s] ? r : n).push(d.el));
+          tl.to(g, { backgroundColor: "#1F7A6C", duration: 0.25, stagger: 0.004 }, t + 0.3);
+          tl.to(r, { backgroundColor: "#D5402B", duration: 0.25, stagger: 0.004 }, t + 0.3);
+          tl.to(n, { backgroundColor: "#B9B4A8", duration: 0.25, stagger: 0.004 }, t + 0.3);
+          const o = { v: m ? P[m - 1][s] * 100 : 0 };
+          tl.to(o, { v: P[m][s] * 100, duration: 0.9, ease: "power2.out", onUpdate: () => { document.getElementById("el-p" + s).textContent = "قانع: " + fa(Math.round(o.v)) + "٪"; } }, t + 0.3);
+        });
+      };
+      fire(0, 3.0);
+      fire(1, 9.3);
+      tl.to("#el-s0", { borderColor: "#E39B2D", duration: 0.3 }, 10.2);
+      tl.fromTo("#el-w0", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 10.4);
+      fire(2, 12.6);
+      tl.to("#el-s1", { borderColor: "#E39B2D", duration: 0.3 }, 13.5);
+      tl.fromTo("#el-w1", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 13.7);
+      tl.fromTo("#el-sum", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 14.3);
+      window.__timelines["electorate"] = tl;
+    })();
+  </script>
+</template>

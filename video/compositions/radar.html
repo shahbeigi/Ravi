@@ -1,0 +1,145 @@
+<template>
+  <style>
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-500.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-700.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "Vazirmatn"; src: url("assets/fonts/vazirmatn-900.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; background: #EEEBE4; overflow: hidden; font-family: "Vazirmatn"; direction: rtl; color: #15171A; }
+    .shell { position: absolute; inset: 24px; border-radius: 26px; background: #F7F5F0; border: 1px solid #DAD5CA; overflow: hidden; }
+    .side { position: absolute; right: 0; top: 0; bottom: 0; width: 300px; background: #fff; border-left: 1px solid #DAD5CA; padding: 34px 26px; }
+    .logo { font-size: 54px; font-weight: 900; display: flex; align-items: center; gap: 12px; }
+    .logo i { width: 14px; height: 14px; border-radius: 50%; background: #E39B2D; }
+    .nav { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
+    .nav div { position: relative; padding: 14px 18px; border-radius: 12px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    .nav div.on { background: #F4EBDB; color: #15171A; font-weight: 700; }
+    .nav div.on::after { content: ""; position: absolute; right: -26px; top: 10px; bottom: 10px; width: 5px; border-radius: 3px; background: #E39B2D; }
+    .top { position: absolute; right: 300px; left: 0; top: 0; height: 96px; border-bottom: 1px solid #DAD5CA; display: flex; align-items: center; gap: 18px; padding: 0 36px; }
+    .top h2 { font-size: 38px; font-weight: 900; }
+    .live { display: flex; align-items: center; gap: 10px; padding: 6px 16px; border-radius: 10px; background: #FBE9E6; color: #D5402B; font-size: 28px; font-weight: 700; }
+    .live i { width: 12px; height: 12px; border-radius: 50%; background: #D5402B; }
+    .srcs { margin-right: auto; display: flex; gap: 10px; }
+    .srcs span { padding: 6px 14px; border-radius: 10px; border: 1px solid #DAD5CA; background: #fff; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    #rd-view { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; clip-path: inset(121px 325px 25px 25px round 0 0 0 26px); }
+    #rd-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #rd-field { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .rd-dot { position: absolute; left: 0; top: 0; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: #B9B4A8; }
+    .rd-label { position: absolute; padding: 8px 18px; border-radius: 12px; background: #fff; border: 1px solid #DAD5CA; box-shadow: 0 10px 26px rgba(21,23,26,.08); font-size: 28px; font-weight: 700; white-space: nowrap; transform: translate(50%, -50%); }
+    .rd-label small { font-size: 28px; font-weight: 500; color: #5C5F63; margin-right: 8px; }
+    #rd-lab-hot { border: 2px solid #D5402B; color: #D5402B; }
+    .rd-ring { position: absolute; left: 1180px; top: 560px; width: 260px; height: 260px; margin: -130px 0 0 -130px; border-radius: 50%; border: 3px solid #D5402B; }
+    #rd-links { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .rd-node { position: absolute; left: 120px; width: 420px; padding: 14px 20px; border-radius: 14px; background: #fff; border: 1px solid #DAD5CA; font-size: 28px; font-weight: 700; }
+    .rd-node small { display: block; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    #rd-panel { position: absolute; left: 56px; top: 130px; width: 600px; padding: 34px; border-radius: 22px; background: #fff; border: 1px solid #DAD5CA; box-shadow: 0 24px 60px rgba(21,23,26,.12); }
+    #rd-panel h3 { font-size: 40px; font-weight: 900; }
+    #rd-panel h3 em { font-style: normal; color: #D5402B; }
+    .rd-life { position: relative; margin-top: 28px; display: flex; justify-content: space-between; font-size: 28px; font-weight: 700; color: #5C5F63; }
+    .rd-life::before { content: ""; position: absolute; right: 8px; left: 8px; top: -18px; height: 6px; border-radius: 3px; background: #E7E2D7; }
+    #rd-life-mark { position: absolute; top: -26px; right: 0; width: 22px; height: 22px; border-radius: 50%; background: #D5402B; border: 4px solid #fff; box-shadow: 0 0 0 2px #D5402B; }
+    #rd-prob { margin-top: 36px; display: flex; align-items: baseline; gap: 18px; }
+    #rd-prob b { font-size: 108px; font-weight: 900; color: #D5402B; line-height: 1; }
+    #rd-prob span { font-size: 30px; font-weight: 700; line-height: 1.35; }
+    .rd-src { margin-top: 16px; display: grid; grid-template-columns: 150px 1fr 70px; align-items: center; gap: 14px; font-size: 28px; font-weight: 700; }
+    .rd-src div { height: 14px; border-radius: 7px; background: #E39B2D; transform-origin: right center; }
+    #rd-src-h { margin-top: 30px; font-size: 28px; font-weight: 500; color: #5C5F63; }
+    #rd-send { margin-top: 18px; padding: 16px 20px; border-radius: 14px; background: #15171A; color: #F1EEE7; font-size: 28px; font-weight: 700; text-align: center; }
+    #rd-bots { margin-top: 26px; padding: 16px 20px; border-radius: 14px; background: #FBE9E6; color: #A8301F; font-size: 28px; font-weight: 700; }
+  </style>
+  <div id="root" data-composition-id="radar" data-width="1920" data-height="1080">
+    <div id="rd-shell" class="shell clip" data-start="0" data-duration="32.5">
+      <div class="side"><div class="logo"><i></i>راوی</div>
+        <div class="nav"><div>گزارش صبحگاهی</div><div class="on">رادار روایت</div><div>شورای عامل‌ها</div><div>جامعه‌ی مصنوعی</div><div>استودیو</div><div>قطب‌نما</div></div>
+      </div>
+      <div class="top"><h2>رادار روایت</h2><div class="live"><i></i>زنده</div>
+        <div class="srcs"><span>اینستاگرام</span><span>تلگرام</span><span>ایکس</span><span>ایتا</span><span>روبیکا</span><span>آپارات</span><span>خبرگزاری‌ها</span><span>چت‌بات‌ها</span></div>
+      </div>
+    </div>
+    <div id="rd-view" data-layout-allow-overflow>
+    <div id="rd-cam" data-layout-allow-overflow>
+    <svg id="rd-links" class="clip" data-start="4.6" data-duration="6" viewBox="0 0 1920 1080" data-layout-ignore>
+      <path class="rd-link" d="M1180 560 C 900 560, 760 300, 560 300" fill="none" stroke="#E39B2D" stroke-width="4" />
+      <path class="rd-link" d="M1180 560 C 900 560, 760 520, 560 520" fill="none" stroke="#E39B2D" stroke-width="4" />
+      <path class="rd-link" d="M1180 560 C 900 560, 760 740, 560 740" fill="none" stroke="#E39B2D" stroke-width="4" />
+    </svg>
+    <div id="rd-field" class="clip" data-start="0.8" data-duration="31.7" data-layout-ignore></div>
+    <div class="rd-ring clip" id="rd-ring1" data-start="8" data-duration="24.5" data-layout-ignore></div>
+    <div class="rd-ring clip" id="rd-ring2" data-start="8" data-duration="24.5" data-layout-ignore></div>
+    <div class="rd-label clip" data-layout-allow-overlap id="rd-lab-hot" data-start="3.8" data-duration="28.7" style="right:740px;top:420px">تعطیلی مدارس<small>۴۸٬۲۰۰ پست</small></div>
+    <div class="rd-label clip" data-layout-allow-overlap id="rd-lab-2" data-start="3.9" data-duration="28.6" style="right:1100px;top:225px">طرح ترافیک جدید<small>۱۹٬۴۰۰</small></div>
+    <div class="rd-label clip" data-layout-allow-overlap id="rd-lab-3" data-start="4.0" data-duration="28.5" style="right:500px;top:205px">مترو خط ۱۰<small>۸٬۱۰۰</small></div>
+    <div class="rd-label clip" data-layout-allow-overlap id="rd-lab-4" data-start="4.1" data-duration="28.4" style="right:1060px;top:930px">فضای سبز محله‌ها<small>۱۱٬۷۰۰</small></div>
+    <div class="rd-label clip" data-layout-allow-overlap id="rd-lab-5" data-start="4.2" data-duration="28.3" style="right:520px;top:975px">قیمت بلیت اتوبوس<small>۱۵٬۳۰۰</small></div>
+    <div class="rd-node clip" id="rd-n1" data-start="5" data-duration="5.6" style="top:262px">کانال ۸۰ هزار نفری<small>نقطه‌ی تولد · ۲۳:۴۰ دیشب</small></div>
+    <div class="rd-node clip" id="rd-n2" data-start="5.4" data-duration="5.2" style="top:482px">۳ صفحه‌ی خبری محلی<small>بازنشر · ۴ میلیون مخاطب</small></div>
+    <div class="rd-node clip" id="rd-n3" data-start="5.8" data-duration="4.8" style="top:702px">۲۳ حساب تازه‌ساز<small>الگوی انتشار هماهنگ</small></div>
+    </div>
+    </div>
+    <div id="rd-panel" data-hold class="clip" data-start="10.3" data-duration="22.2">
+      <h3>شایعه‌ی <em>تعطیلی مدارس</em></h3>
+      <div class="rd-life" style="margin-top:46px"><i id="rd-life-mark"></i><span>تولد</span><span>شتاب</span><span>اوج</span><span>افول</span></div>
+      <div id="rd-prob"><b id="rd-pct">۰٪</b><span>احتمال فراگیر شدن<br />تا ۱۸ ساعت آینده</span></div>
+      <div id="rd-src-h">سهم بسترها</div>
+      <div class="rd-src" id="rd-s1"><span>تلگرام</span><div style="width:100%"></div><span>۵۸٪</span></div>
+      <div class="rd-src" id="rd-s2"><span>اینستاگرام</span><div style="width:41%"></div><span>۲۴٪</span></div>
+      <div class="rd-src" id="rd-s3"><span>ایکس</span><div style="width:19%"></div><span>۱۱٪</span></div>
+      <div class="rd-src" id="rd-s4"><span>ایتا</span><div style="width:12%"></div><span>۷٪</span></div>
+      <div id="rd-bots">۱۲٪ حساب‌ها هماهنگ عمل می‌کنند · احتمال ربات</div>
+      <div id="rd-send">ارسال به شورای عامل‌ها ←</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const fa = (n) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+      let seed = 42;
+      const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+      const gauss = () => Math.sqrt(-2 * Math.log(rnd() + 1e-9)) * Math.cos(2 * Math.PI * rnd());
+      const clusters = [[1180, 560, 110, 80], [820, 330, 55, 60], [1420, 300, 40, 50], [860, 800, 50, 58], [1400, 850, 65, 62]];
+      const field = document.getElementById("rd-field");
+      const dots = [];
+      clusters.forEach((c, ci) => {
+        for (let i = 0; i < c[2]; i++) {
+          const d = document.createElement("div");
+          d.className = "rd-dot";
+          field.appendChild(d);
+          dots.push({ el: d, ci, sx: 80 + rnd() * 1500, sy: 130 + rnd() * 880, tx: c[0] + gauss() * c[3], ty: c[1] + gauss() * c[3] * 0.75 });
+        }
+      });
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#rd-shell", { opacity: 0, scale: 1.03 }, { opacity: 1, scale: 1, duration: 0.7, ease: "expo.out" }, 0);
+      dots.forEach((d, i) => {
+        tl.fromTo(d.el, { x: d.sx, y: d.sy, opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, (i % 40) * 0.02);
+        tl.fromTo(d.el, { x: d.sx, y: d.sy }, { x: d.tx, y: d.ty, duration: 1.6, ease: "power3.inOut", immediateRender: false }, 1.4 + (i % 30) * 0.02);
+      });
+      const hot = dots.filter((d) => d.ci === 0).map((d) => d.el);
+      const cold = dots.filter((d) => d.ci !== 0).map((d) => d.el);
+      tl.to(hot, { backgroundColor: "#D5402B", scale: 1.25, duration: 0.6, ease: "power2.out" }, 8);
+      tl.to(cold, { opacity: 0.35, duration: 0.6, ease: "power2.out" }, 8);
+      tl.fromTo("#rd-cam", { scale: 1, x: 0, y: 0 }, { scale: 1.45, x: -260, y: -10, transformOrigin: "1180px 560px", duration: 0.8, ease: "power2.inOut" }, 7.9);
+      tl.to("#rd-cam", { scale: 1.0, x: 60, y: 0, duration: 0.8, ease: "power2.inOut" }, 9.9);
+      tl.to(["#rd-lab-2", "#rd-lab-3", "#rd-lab-4", "#rd-lab-5"], { opacity: 0.4, duration: 0.6 }, 8);
+      ["#rd-lab-hot", "#rd-lab-2", "#rd-lab-3", "#rd-lab-4", "#rd-lab-5"].forEach((l, i) => {
+        tl.fromTo(l, { opacity: 0, scale: 0.8 }, { opacity: i ? 1 : 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 3.8 + i * 0.1);
+      });
+      [["#rd-ring1", 8], ["#rd-ring2", 8.9]].forEach(([r, t0]) => {
+        for (let k = 0; k < 7; k++) tl.fromTo(r, { scale: 0.4, opacity: 0.8 }, { scale: 1.5, opacity: 0, duration: 1.8, ease: "power1.out" }, t0 + k * 1.8);
+      });
+      document.querySelectorAll(".rd-link").forEach((p, i) => {
+        const len = p.getTotalLength();
+        tl.fromTo(p, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 4.7 + i * 0.4);
+      });
+      ["#rd-n1", "#rd-n2", "#rd-n3"].forEach((n, i) => tl.fromTo(n, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 5 + i * 0.4));
+      tl.to(["#rd-n1", "#rd-n2", "#rd-n3", "#rd-links"], { opacity: 0, duration: 0.3 }, 10.0);
+      tl.fromTo("#rd-panel", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 10.3);
+      tl.fromTo("#rd-life-mark", { x: 0 }, { x: -170, duration: 0.9, ease: "power3.inOut" }, 10.9);
+      const pct = { v: 0 };
+      tl.fromTo(pct, { v: 0 }, { v: 72, duration: 1.4, ease: "power2.out", onUpdate: () => { document.getElementById("rd-pct").textContent = fa(Math.round(pct.v)) + "٪"; } }, 11.4);
+      ["#rd-s1", "#rd-s2", "#rd-s3", "#rd-s4"].forEach((s, i) => {
+        tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 13.2 + i * 0.25);
+        tl.fromTo(s + " div", { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "expo.out" }, 13.2 + i * 0.25);
+      });
+      tl.fromTo("#rd-bots", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 15.6);
+      tl.fromTo("#rd-send", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 17.4);
+      tl.to("#rd-send", { scale: 0.97, duration: 0.12, yoyo: true, repeat: 1 }, 19.3);
+      window.__timelines["radar"] = tl;
+    })();
+  </script>
+</template>
