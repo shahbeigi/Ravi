@@ -12,6 +12,23 @@ A steel company asks for 400,000 real views and 100 price enquiries from contrac
 2. **"The AI system is real, big and safe."** Hundreds of parallel agents do the operational work; humans approve money, publication and claims; nothing is faked.
 3. **"The first step is small and concrete."** 10 days, 5 client conversations, 3 old campaign files, then a paid pilot with go/no-go gates.
 
+## Recommended format: the short showcase (8–10 minutes)
+
+The full journey below is long for a first meeting. For the partner meeting, use **`showcase/index.html`**: one page, six features, switched with the tabs or the keys ۱–۶ while the speaker talks. Open the dashboard only at the end (button in the top bar and on the last slide). Keep the full journey and the Decision Room as backup for questions.
+
+| Key | Feature | What the screen does | Talk track (about one minute each) |
+|---|---|---|---|
+| ۰ | Cover | Points form «راوی» | «ما به برندها کمک می‌کنیم هدف بازدید و استعلامشان را واقعاً بگیرند، و برای هر عدد مدرک داشته باشند.» |
+| ۱ | از هدف تا برنامه | Histogram of 10,000 runs; click a scenario | «پیش از خرج، احتمال رسیدن به هدف را نشان می‌دهیم، بر اساس سابقه‌ی واقعی همان کانال‌ها. مشتری می‌داند چه می‌خرد.» Click محتاط, then متعادل. |
+| ۲ | کیفیت رسانه | Channel grid is scanned; normal vs suspicious view curve | «بازدید جعلی را پیش از خرید پیدا می‌کنیم. این همان چیزی است که امروز در بازار کسی تضمین نمی‌کند.» |
+| ۳ | استودیو محتوا | One idea fans out into four formats; a claim is blocked | «یک ایده، همه‌ی قالب‌ها، به فارسی. ادعای «مقاوم‌ترین میلگرد ایران» بدون مدرک منتشر نمی‌شود.» |
+| ۴ | ناوگان عامل‌ها | Hundreds of points flow between the ledger and agent groups | «صدها عامل کار عملیات را هم‌زمان انجام می‌دهند: حدود ۱۸ هزار کار در یک کمپین، و فقط ۹ تصمیم با انسان.» |
+| ۵ | پایش زنده | Delivery curves; at hour 18 Eitaa lags; click «تأیید» | «وقتی بستری عقب بماند، جایگزین واقعی با یک کلیک فعال می‌شود. در قطعی اینترنت، برنامه‌ی جایگزین امضاشده اجرا می‌شود.» |
+| ۶ | پرداخت با مدرک | Evidence grades A–D; money flows only from A and B | «تأمین‌کننده وقتی پول می‌گیرد که مدرکش پذیرفته شود. هر عدد گزارش منبع دارد.» |
+| ✦ | شروع همکاری | Points form «۱۰ روز»; dashboard button | «ده روز با هم: پنج مشتری، سه پرونده‌ی قبلی، یک نفر از عملیات.» Then open the dashboard. |
+
+Keys: ← next, → previous, ۱–۶ jump to a feature, Home cover, End last slide, F full screen. Each feature has a small «این بخش در داشبورد» link for questions.
+
 ## The example client
 
 The demo campaign uses a **fictional steel company, «فولاد سپیدار»**, launching A4 rebar (میلگرد A4) to contractors, structural engineers and steel distributors. The partner named steel as one of its client sectors. It also shows the B2B version of the promise: separate view targets per platform **plus logged price enquiries with project names** (استعلام قیمت ثبت‌شده), which matter more to an industrial client than raw reach. All names, channels and numbers are invented; do not present them as a real company or real results.

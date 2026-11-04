@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b3032" />
+<title>راوی · ارائه</title>
+<meta name="description" content="ارائه‌ی کوتاه راوی: شش قابلیت اصلی پلتفرم عملیات کمپین، برای گوینده‌ای که هنگام صحبت بین آن‌ها جابه‌جا می‌شود." />
+<style>
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-400.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-500.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-700.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-900.woff2") format("woff2");font-weight:900}
+:root{--t950:#062224;--t900:#0b3032;--sig:#e9b65f;--sig-hi:#ffd98e;--mint:#7fc8b6;--red:#f19b8c;--ink:#e8efea;--ink2:#a9c2bb;--gl:rgba(255,255,255,.11);--glass:rgba(255,255,255,.055);--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#062224}
+body{background:radial-gradient(ellipse at 28% 50%,#174a4b 0,#0b3032 48%,#062224 100%);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
+button,a{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none}
+::selection{background:var(--sig);color:var(--t900)}
+#cv{position:fixed;inset:0;z-index:0;pointer-events:none}
+.shell{position:fixed;inset:0;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:72px minmax(0,1fr) 48px}
+
+/* top bar */
+.top{display:flex;align-items:center;gap:18px;padding:0 28px}
+.logo{display:flex;align-items:center;gap:9px;font-size:26px;font-weight:900;white-space:nowrap}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--sig);box-shadow:0 0 0 6px rgba(233,182,95,.14)}
+.tabs{flex:1;min-width:0;display:flex;justify-content:center;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:14px;border:1px solid transparent;color:var(--ink2);font-size:14px;font-weight:700;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.tab b{display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:rgba(255,255,255,.08);font-size:12px;transition:.3s}
+.tab:hover{color:var(--ink);border-color:var(--gl)}
+.tab.on{background:rgba(233,182,95,.14);border-color:rgba(233,182,95,.45);color:var(--sig-hi)}
+.tab.on b{background:var(--sig);color:var(--t900)}
+.cta{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:14px;background:var(--sig);color:var(--t900);font-weight:900;font-size:14px;text-decoration:none;white-space:nowrap;box-shadow:0 10px 30px rgba(233,182,95,.25);transition:transform .25s}
+.cta:hover{transform:translateY(-2px)}
+
+/* stage */
+.stage{position:relative;min-height:0}
+.f{position:absolute;inset:0;display:grid;grid-template-columns:minmax(360px,.9fr) minmax(0,1.1fr);gap:40px;align-items:center;padding:0 56px;opacity:0;pointer-events:none;transform:translateY(18px);transition:opacity .55s var(--ease),transform .7s var(--ease)}
+.f.on{opacity:1;pointer-events:auto;transform:none}
+.txt>*{opacity:0;transform:translateY(14px)}
+.f.on .txt>*{animation:up .7s var(--ease) both;animation-delay:calc(var(--i,0)*75ms + 120ms)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.kick{display:flex;align-items:center;gap:10px;color:var(--sig);font-size:14px;font-weight:700}
+.kick:before{content:"";width:26px;height:2px;background:var(--sig)}
+h1{font-size:clamp(38px,5vw,72px);font-weight:900;line-height:1.22;margin:16px 0}
+h2{font-size:clamp(30px,3.4vw,50px);font-weight:900;line-height:1.3;margin:14px 0}
+h1 em,h2 em{font-style:normal;color:var(--sig)}
+.lead{font-size:clamp(16px,1.25vw,19px);line-height:1.95;color:#bcd2cb;margin:0 0 20px;max-width:620px}
+.pts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none}
+.pts li{padding:7px 14px;border-radius:20px;font-size:14px;font-weight:700;background:rgba(127,200,182,.08);border:1px solid rgba(127,200,182,.3);color:#cfe9e1}
+.stat{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap}
+.stat div b{display:block;font-size:clamp(44px,4.6vw,68px);font-weight:900;line-height:1;color:var(--sig-hi);font-variant-numeric:tabular-nums}
+.stat div.m b{color:var(--mint)}
+.stat div span{font-size:13.5px;color:var(--ink2)}
+.deep{display:inline-flex;margin-top:20px;font-size:13px;color:var(--ink2);text-decoration:none;border-bottom:1px dashed rgba(169,194,187,.5)}
+.deep:hover{color:var(--sig-hi)}
+.vis{position:relative;height:min(64vh,540px);border-radius:28px}
+.vis.card{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--gl);box-shadow:0 30px 80px rgba(0,0,0,.25);padding:26px;overflow:hidden}
+.agenda{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
+.agenda button{text-align:right;padding:12px 14px;border-radius:16px;background:var(--glass);border:1px solid var(--gl);font-size:14px;font-weight:700;transition:border-color .25s,transform .25s}
+.agenda button:hover{border-color:var(--sig);transform:translateY(-2px)}
+.agenda button small{display:block;color:var(--sig);font-size:12px}
+.lbl{position:absolute;transform:translate(-50%,-50%);font-size:12.5px;font-weight:700;color:#dfeae5;background:rgba(7,38,40,.75);padding:4px 11px;border-radius:10px;white-space:nowrap;pointer-events:none;border:1px solid rgba(255,255,255,.09)}
+.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd98e,#e9b65f);color:#10383a;display:grid;place-items:center;text-align:center;font-weight:900;font-size:15px;line-height:1.4;box-shadow:0 0 0 14px rgba(233,182,95,.08),0 0 70px rgba(233,182,95,.4);animation:hp 2.8s ease-in-out infinite}
+@keyframes hp{50%{box-shadow:0 0 0 24px rgba(233,182,95,.04),0 0 90px rgba(233,182,95,.5)}}
+
+/* 1 · histogram */
+.hist{position:absolute;left:26px;right:26px;top:60px;bottom:110px;display:flex;align-items:flex-end;gap:4px;direction:ltr}
+.hist i{flex:1;border-radius:5px 5px 2px 2px;background:#3f7f74;height:0;transition:height .9s var(--ease),background .5s;transition-delay:calc(var(--k)*18ms)}
+.hist i.hit{background:linear-gradient(#ffd98e,#e9b65f)}
+.tline{position:absolute;top:34px;bottom:96px;border-left:2px dashed var(--sig);transition:left .8s var(--ease)}
+.tline span{position:absolute;top:-6px;left:0;transform:translateX(-50%);white-space:nowrap;font-size:12.5px;font-weight:900;color:var(--t900);background:var(--sig);padding:3px 10px;border-radius:8px}
+.axis{position:absolute;bottom:80px;font-size:12px;color:var(--ink2);direction:rtl}
+.scn{position:absolute;left:26px;right:26px;bottom:24px;display:flex;justify-content:center;gap:8px}
+.scn button{padding:9px 18px;border-radius:12px;border:1px solid var(--gl);font-weight:700;font-size:14px;color:var(--ink2);transition:.25s}
+.scn button.on{background:var(--sig);border-color:var(--sig);color:var(--t900)}
+
+/* 2 · quality grid */
+.qgrid{position:absolute;left:26px;right:26px;top:26px;height:52%;display:grid;grid-template-columns:repeat(20,1fr);grid-template-rows:repeat(8,1fr);gap:6px;direction:ltr}
+.qgrid i{width:clamp(8px,1.25vw,17px);aspect-ratio:1;justify-self:center;align-self:center;border-radius:50%;background:#2c5553;transition:background .35s,transform .35s,box-shadow .35s}
+.qgrid i.g{background:var(--mint)}.qgrid i.a{background:#c9984e}
+.qgrid i.r{background:#e96f5d;box-shadow:0 0 14px rgba(233,111,93,.7);transform:scale(1.15)}
+.qscan{position:absolute;top:18px;height:calc(52% + 16px);width:3px;background:var(--sig);box-shadow:0 0 20px 4px rgba(233,182,95,.5);opacity:0}
+.curves{position:absolute;left:26px;right:26px;bottom:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.curves div{padding:12px 14px;border-radius:16px;background:rgba(0,0,0,.18);border:1px solid var(--gl)}
+.curves b{display:block;font-size:13.5px;margin-bottom:4px}.curves .bad b{color:var(--red)}
+.curves small{font-size:12px;color:var(--ink2)}
+.curves svg{width:100%;height:58px;display:block;margin-top:4px}
+.curves polyline{fill:none;stroke:var(--mint);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.6s var(--ease)}
+.curves .bad polyline{stroke:var(--red)}
+.curves.play polyline{stroke-dashoffset:0}
+
+/* 3 · studio */
+.idea{position:absolute;left:50%;top:15%;transform:translate(-50%,-50%);padding:12px 20px;border-radius:16px;background:var(--sig);color:var(--t900);font-weight:900;font-size:15px;white-space:nowrap;box-shadow:0 14px 40px rgba(233,182,95,.35);z-index:2}
+.fcard{position:absolute;left:50%;top:46%;width:min(230px,42%);padding:14px 16px;border-radius:18px;background:#f2f5ec;color:#173839;box-shadow:0 20px 50px rgba(0,0,0,.3);opacity:0;transform:translate(-50%,-50%) scale(.6);transition:transform .9s var(--ease),opacity .6s;transition-delay:calc(var(--k)*110ms)}
+.fcard em{display:block;font-style:normal;font-size:11.5px;font-weight:900;color:#9a6514;margin-bottom:4px}
+.fcard p{margin:0;font-size:13.5px;line-height:1.75}
+.play .fcard{opacity:1;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) rotate(var(--r))}
+.claims{position:absolute;left:26px;right:26px;bottom:22px;display:grid;gap:8px;z-index:3}
+.claims div{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;font-size:13.5px;background:rgba(0,0,0,.25);border:1px solid var(--gl);opacity:0;transform:translateY(10px);transition:.6s var(--ease)}
+.claims div.on{opacity:1;transform:none}
+.claims b{display:grid;place-items:center;width:24px;height:24px;border-radius:8px;flex:none}
+.claims .ok b{background:var(--mint);color:#10383a}.claims .no b{background:#e96f5d;color:#fff}
+.claims .no span{text-decoration:line-through;text-decoration-color:rgba(241,155,140,.8)}
+.claims small{margin-inline-start:auto;color:var(--ink2);font-size:12px}
+
+/* 5 · live chart */
+svg.chart{position:absolute;left:18px;right:18px;top:20px;width:calc(100% - 36px);height:calc(100% - 110px);overflow:visible}
+svg.chart path{fill:none;vector-effect:non-scaling-stroke}
+.alert{position:absolute;top:26px;right:26px;width:min(310px,60%);padding:14px 16px;border-radius:18px;background:rgba(40,20,18,.82);border:1px solid rgba(241,155,140,.55);backdrop-filter:blur(8px);opacity:0;transform:translateY(-8px) scale(.97);transition:.5s var(--ease);pointer-events:none}
+.alert.on{opacity:1;transform:none;pointer-events:auto}
+.alert b{display:block;color:var(--red);font-size:14px}
+.alert p{margin:6px 0 10px;font-size:13px;line-height:1.7;color:#ecdcd8}
+.alert button{padding:9px 16px;border-radius:12px;background:var(--sig);color:var(--t900);font-weight:900;font-size:14px;animation:pulse 1.4s infinite}
+.alert button:disabled{animation:none;background:var(--mint)}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(233,182,95,.18)}}
+.conn{position:absolute;left:26px;right:26px;bottom:22px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px}
+.conn span{padding:5px 11px;border-radius:10px;background:rgba(127,200,182,.1);border:1px solid rgba(127,200,182,.3);color:#cfe9e1}
+.conn span.w{background:rgba(233,182,95,.1);border-color:rgba(233,182,95,.4);color:var(--sig-hi)}
+.conn em{font-style:normal;color:var(--ink2);margin-inline-start:6px}
+.hours{position:absolute;bottom:84px;font-size:11.5px;color:var(--ink2);transform:translateX(-50%);white-space:nowrap}
+.legend{position:absolute;top:22px;left:26px;display:flex;gap:12px;font-size:12px;color:var(--ink2)}
+.legend span{display:flex;align-items:center;gap:6px}.legend i{width:16px;height:3px;border-radius:2px}
+
+/* 6 · proof */
+.cols{position:absolute;left:26px;width:64%;top:40px;bottom:120px;display:flex;align-items:flex-end;gap:16px;direction:ltr}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+.col i{display:block;width:100%;border-radius:12px 12px 4px 4px;height:0;transition:height 1.1s var(--ease);transition-delay:calc(var(--k)*140ms)}
+.col b{font-size:22px;font-weight:900}
+.col small{font-size:11.5px;color:var(--ink2);text-align:center;line-height:1.5;direction:rtl}
+.pay{position:absolute;right:30px;top:40px;width:96px;height:96px}
+svg.flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.report{position:absolute;left:26px;right:26px;bottom:20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-radius:16px;background:rgba(0,0,0,.22);border:1px solid var(--gl);opacity:0;transform:translateY(10px);transition:.7s var(--ease)}
+.report.on{opacity:1;transform:none}
+.report b{font-size:20px;font-weight:900;color:var(--sig-hi)}
+.report span{padding:4px 10px;border-radius:9px;background:rgba(255,255,255,.07);font-size:12.5px;color:#cfe0da}
+.report span.ok{background:rgba(127,200,182,.16);color:var(--mint)}
+
+/* close */
+.asks{display:grid;gap:10px;margin:6px 0 24px}
+.asks>div{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;font-size:16px}
+.asks span{width:32px;height:32px;border-radius:10px;background:var(--sig);color:var(--t900);display:grid;place-items:center;font-weight:900}
+.asks small{display:block;color:var(--ink2);font-size:13px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:14px;font-weight:700;text-decoration:none;background:rgba(255,255,255,.07);border:1px solid var(--gl)}
+.btn.big{background:var(--sig);color:var(--t900);border-color:var(--sig);font-weight:900;font-size:17px;padding:16px 28px;box-shadow:0 14px 40px rgba(233,182,95,.3)}
+
+/* footer */
+.foot{display:flex;align-items:center;gap:16px;padding:0 28px;font-size:12px;color:var(--ink2)}
+.dots{display:flex;gap:6px;direction:rtl}
+.dots button{width:26px;height:6px;border-radius:3px;background:rgba(255,255,255,.14);transition:.3s}
+.dots button.on{background:var(--sig);width:40px}
+.dots button.d{background:rgba(127,200,182,.6)}
+.foot .grow{flex:1}
+.foot kbd{font-family:inherit;padding:1px 6px;border-radius:5px;border:1px solid var(--gl);font-size:11px}
+
+@media (max-width:1100px){.f{padding:0 28px;gap:24px}.tab span{display:none}.agenda{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){
+  html,body{overflow:hidden}
+  .shell{grid-template-rows:auto minmax(0,1fr) 40px}
+  .top{flex-wrap:wrap;padding:10px 14px;gap:10px}.tabs{order:3;flex-basis:100%;justify-content:flex-start}.tab span{display:inline}
+  .cta{margin-inline-start:auto;padding:8px 14px}
+  .f{display:block;overflow-y:auto;padding:12px 16px 30px}
+  .vis{height:46vh;margin-bottom:18px}
+  .txt{padding-bottom:20px}
+  .agenda{grid-template-columns:1fr}
+  .foot .hint{display:none}
+  .fcard{width:46%}
+  .cols{width:58%}
+  .vis{overflow:hidden}
+  .legend{display:none}
+  .foot>span:last-child{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.txt>*{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="cv" aria-hidden="true"></canvas>
+<div class="shell">
+  <header class="top">
+    <button class="logo" data-go="0" aria-label="بازگشت به آغاز"><i></i>راوی</button>
+    <nav class="tabs" id="tabs" aria-label="قابلیت‌ها"></nav>
+    <a class="cta" href="../ravi/index.html">ورود به داشبورد ←</a>
+  </header>
+
+  <main class="stage" id="stage">
+
+    <!-- 0 · cover -->
+    <section class="f" data-i="0" aria-label="آغاز">
+      <div class="txt">
+        <div class="kick">پلتفرم عملیات کمپین برای برندها</div>
+        <h1>از هدف برند،<br><em>تا عدد قابل اثبات.</em></h1>
+        <p class="lead">برنامه، محتوا، اجرا، پایش و تسویه‌ی کمپین در روبیکا، ایتا، بله، آپارات، تلگرام و اینستاگرام؛ با صدها عامل هوش مصنوعی و تصمیم انسانی.</p>
+        <div class="agenda" id="agenda"></div>
+      </div>
+      <div class="vis" data-art="title"></div>
+    </section>
+
+    <!-- 1 · goal to plan -->
+    <section class="f" data-i="1" aria-label="از هدف تا برنامه">
+      <div class="txt">
+        <div class="kick">۱ · از هدف تا برنامه</div>
+        <h2>پیش از خرج،<br><em>احتمال موفقیت را ببینید.</em></h2>
+        <p class="lead">هدف برند به برنامه‌ای با بازه‌ی پیش‌بینی تبدیل می‌شود: ده هزار بار شبیه‌سازی، بر اساس سابقه‌ی واقعی همان کانال‌ها.</p>
+        <ul class="pts"><li>هدف جدا برای هر بستر</li><li>سه سناریو با فرض آشکار</li><li>بازه‌ی صادقانه، نه قول خشک</li></ul>
+        <div class="stat"><div><b id="prob">۷۸٪</b><span>احتمال رسیدن به هدف روبیکا در ۷۲ ساعت</span></div></div>
+        <a class="deep" href="../ravi/index.html#/brief">این بخش در داشبورد ←</a>
+      </div>
+      <div class="vis card">
+        <span class="tline" id="tl"><span>هدف ۲۲۰ هزار</span></span>
+        <div class="hist" id="hist"></div>
+        <span class="axis" style="left:26px">۵۰ هزار</span><span class="axis" style="left:50%;transform:translateX(-50%)">بازدید روبیکا · ۱۰٬۰۰۰ اجرا</span><span class="axis" style="right:26px">۴۰۰ هزار</span>
+        <div class="scn" id="scn"><button data-s="0">محتاط</button><button data-s="1" class="on">متعادل</button><button data-s="2">آزمایشی</button></div>
+      </div>
+    </section>
+
+    <!-- 2 · supplier quality -->
+    <section class="f" data-i="2" aria-label="کیفیت رسانه">
+      <div class="txt">
+        <div class="kick">۲ · کیفیت رسانه</div>
+        <h2>بازدید جعلی را<br><em>پیش از خرید پیدا می‌کنیم.</em></h2>
+        <p class="lead">هر کانال بر اساس رفتار واقعی بازدید امتیاز می‌گیرد، نه تعداد عضو: منحنی ۲۴ ساعته‌ی هر پست، نسبت بازدید به عضو و جهش‌های ناگهانی.</p>
+        <ul class="pts"><li>۱٬۲۰۰ کانال بررسی‌شده</li><li>فقط کانال‌های سالم تعهد تحویل می‌گیرند</li><li>علامت یعنی بررسی انسانی، نه اتهام</li></ul>
+        <div class="stat"><div><b id="qn">۰</b><span>کانال با الگوی غیرعادی، پیش از خرج یک ریال</span></div></div>
+        <a class="deep" href="../ravi/index.html#/quality">این بخش در داشبورد ←</a>
+      </div>
+      <div class="vis card">
+        <div class="qgrid" id="qgrid"></div><span class="qscan" id="qscan"></span>
+        <div class="curves" id="curves">
+          <div><b>منحنی طبیعی</b><small>رشد تدریجی در ساعت‌های اول</small><svg viewBox="0 0 220 60" preserveAspectRatio="none"><polyline points="4,56 26,48 48,38 70,30 92,24 114,19 136,15 158,12 180,10 214,8"/></svg></div>
+          <div class="bad"><b>منحنی مشکوک</b><small>۷۰٪ بازدید در ساعت اول، بعد صاف</small><svg viewBox="0 0 220 60" preserveAspectRatio="none"><polyline points="4,56 14,16 40,12 70,11 100,10 130,10 160,9 214,9"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · studio -->
+    <section class="f" data-i="3" aria-label="استودیو محتوا">
+      <div class="txt">
+        <div class="kick">۳ · استودیو محتوا</div>
+        <h2>یک ایده، همه‌ی قالب‌ها،<br><em>بدون ادعای بی‌پشتوانه.</em></h2>
+        <p class="lead">پست، ریلز، استوری و ویدیو به فارسی، برای هر بستر جدا. هر ادعا با واقعیت‌های تأییدشده‌ی برند سنجیده می‌شود و برند نسخه‌ی نهایی را تأیید می‌کند.</p>
+        <ul class="pts"><li>نسخه‌های متنوع در چند دقیقه</li><li>پیش‌آزمون با پنل شبیه‌سازی‌شده</li><li>تصویر و ویدیو روی GPU محلی</li></ul>
+        <div class="stat"><div><b>۲۴</b><span>نسخه‌ی ساخته‌شده</span></div><div class="m"><b>۳</b><span>برنده‌ی تأییدشده</span></div></div>
+        <a class="deep" href="../ravi/index.html#/studio">این بخش در داشبورد ←</a>
+      </div>
+      <div class="vis card" id="studio">
+        <div class="idea">ایده: «برگه‌ی آزمون برای هر محموله»</div>
+        <div class="fcard" style="--k:0;--x:-128px;--y:-46px;--r:-5deg"><em>پست کانال · روبیکا</em><p>هر محموله‌ی میلگرد A4 با برگه‌ی آزمون کشش خودش می‌رسد. #تبلیغ</p></div>
+        <div class="fcard" style="--k:1;--x:128px;--y:-46px;--r:5deg"><em>ریلز · ۲۰ ثانیه</em><p>از کوره تا کارگاه: آزمون کشش را با چشم خودتان ببینید.</p></div>
+        <div class="fcard" style="--k:2;--x:-118px;--y:70px;--r:-2deg"><em>استوری · نظرسنجی</em><p>پیش از خرید میلگرد، برگه‌ی آزمون را می‌خواهید؟ بله / نه</p></div>
+        <div class="fcard" style="--k:3;--x:118px;--y:70px;--r:3deg"><em>ویدیو · آپارات</em><p>۹۰ ثانیه در خط نورد و آزمایشگاه؛ همکاری تبلیغاتی با فولاد سپیدار.</p></div>
+        <div class="claims"><div class="ok"><b>✓</b><span>«برگه‌ی آزمون کشش برای هر محموله»</span><small>رویه‌ی کنترل کیفیت</small></div><div class="no"><b>✕</b><span>«مقاوم‌ترین میلگرد ایران»</span><small>بدون مقایسه‌ی مستقل · متوقف شد</small></div></div>
+      </div>
+    </section>
+
+    <!-- 4 · agent fleet -->
+    <section class="f" data-i="4" aria-label="ناوگان عامل‌ها">
+      <div class="txt">
+        <div class="kick">۴ · ناوگان عامل‌ها</div>
+        <h2>صدها عامل، هم‌زمان؛<br><em>تصمیم با شما.</em></h2>
+        <p class="lead">عامل‌ها با ده‌ها ادمین واقعی هم‌زمان هماهنگ می‌کنند، هر پست را هر ۱۵ دقیقه می‌پایند و گزارش را با منبع می‌نویسند. پول، انتشار و ادعا فقط با تأیید انسان.</p>
+        <ul class="pts"><li>۶۰ گفت‌وگوی هم‌زمان با ادمین‌ها</li><li>مدل‌های متن‌باز روی سرور خودمان</li><li>بدون حساب جعلی؛ فقط جایگاه واقعی</li></ul>
+        <div class="stat"><div class="m"><b id="ft">۰</b><span>کار عامل‌ها در یک کمپین</span></div><div><b id="fh">۰</b><span>تصمیم انسانی</span></div></div>
+        <a class="deep" href="../ravi/index.html#/fleet">این بخش در داشبورد ←</a>
+      </div>
+      <div class="vis" data-art="fleet"><div class="hub">دفتر کل<br>کمپین</div><div id="fnodes"></div></div>
+    </section>
+
+    <!-- 5 · live operations -->
+    <section class="f" data-i="5" aria-label="پایش زنده">
+      <div class="txt">
+        <div class="kick">۵ · پایش زنده</div>
+        <h2>کمپین عقب افتاد؟<br><em>با یک کلیک برمی‌گردد.</em></h2>
+        <p class="lead">هر جایگاه زیر پایش است. وقتی بستری از بازه‌ی پیش‌بینی عقب بماند، عامل بازیابی جایگزین واقعی پیشنهاد می‌دهد. در قطعی اینترنت، برنامه‌ی جایگزین امضاشده اجرا می‌شود.</p>
+        <ul class="pts"><li>۴۱ جایگاه، هر ۱۵ دقیقه</li><li>جایگزین با هزینه و مهلت لغو</li><li>تداوم روی بسترهای داخلی</li></ul>
+        <a class="deep" href="../ravi/index.html#/campaigns">این بخش در داشبورد ←</a>
+      </div>
+      <div class="vis card">
+        <svg class="chart" viewBox="0 0 1000 600" preserveAspectRatio="none" id="ch" aria-hidden="true"><path d="M60 40V560H980" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path id="tgt" stroke="rgba(233,182,95,.55)" stroke-width="1.5" stroke-dasharray="6 6"/><path id="band" style="fill:rgba(233,182,95,.10)" stroke="none"/><path id="c0" stroke="#7fc8b6" stroke-width="3.5" stroke-linecap="round"/><path id="c1" stroke="#a8dccd" stroke-width="3.5" stroke-linecap="round"/><path id="c2" stroke="#f19b8c" stroke-width="3.5" stroke-linecap="round"/></svg>
+        <span class="hours" style="left:8%">۰</span><span class="hours" style="left:37%">۲۴</span><span class="hours" style="left:66%">۴۸</span><span class="hours" style="left:94%">۷۲ ساعت</span>
+        <div class="legend"><span><i style="background:#7fc8b6"></i>روبیکا</span><span><i style="background:#a8dccd"></i>آپارات</span><span><i style="background:#f19b8c"></i>ایتا</span><span><i style="background:rgba(233,182,95,.5)"></i>بازه‌ی پیش‌بینی ایتا</span></div>
+        <div class="alert" id="alert"><b>ساعت ۱۸ · ایتا پایین‌تر از بازه‌ی پیش‌بینی</b><p>پیشنهاد عامل بازیابی: رزرو جایگزین در بله · ۱۳۰ م.ت · قابل لغو تا ۴۸ ساعت</p><button id="ok">تأیید با یک کلیک</button></div>
+        <div class="conn"><span>روبیکا ✓</span><span>ایتا ✓</span><span>بله ✓</span><span>آپارات ✓</span><span class="w">تلگرام · فیلترشکن</span><span class="w">اینستاگرام · فیلترشکن</span><em>جایگزین امضاشده برای قطعی</em></div>
+      </div>
+    </section>
+
+    <!-- 6 · pay on proof -->
+    <section class="f" data-i="6" aria-label="پرداخت در برابر مدرک">
+      <div class="txt">
+        <div class="kick">۶ · پرداخت در برابر مدرک</div>
+        <h2>هر عدد در گزارش،<br><em>مدرک دارد.</em></h2>
+        <p class="lead">هر بازدید و هر استعلام قیمت درجه‌ی مدرک دارد، از اتصال مستقیم تا اسکرین‌شات. تأمین‌کننده وقتی پول می‌گیرد که مدرکش پذیرفته شود.</p>
+        <ul class="pts"><li>درجه‌ی A تا D برای هر عدد</li><li>استعلام قیمت با نام پروژه</li><li>کمبود هرگز با تعامل جعلی جبران نمی‌شود</li></ul>
+        <div class="stat"><div><b>۶۴ / ۶۴</b><span>عدد در گزارش مشتری، با منبع</span></div><div class="m"><b>۷۴</b><span>استعلام ثبت‌شده</span></div></div>
+        <a class="deep" href="../ravi/index.html#/finance">این بخش در داشبورد ←</a>
+      </div>
+      <div class="vis card" id="proof">
+        <div class="cols" id="cols"></div>
+        <div class="hub pay" style="left:auto;transform:none;right:30px;top:40px;width:100px;height:100px;font-size:14px">پرداخت</div>
+        <svg class="flow" id="flow"></svg>
+        <div class="report" id="report"><b>۱۱۸٬۰۰۰</b>بازدید در ۷۲ ساعت<span>منبع: خروجی ادمین + ضبط صفحه</span><span>درجه‌ی B</span><span class="ok">قابل پرداخت ✓</span></div>
+      </div>
+    </section>
+
+    <!-- 7 · close -->
+    <section class="f" data-i="7" aria-label="شروع همکاری">
+      <div class="txt">
+        <div class="kick">شروع همکاری</div>
+        <h2>ده روز،<br><em>با هم.</em></h2>
+        <div class="asks">
+          <div><span>۱</span><div>۵ مشتری برای گفت‌وگو<small>برندهایی که همین حالا هدف بازدید یا استعلام دارند</small></div></div>
+          <div><span>۲</span><div>۳ پرونده‌ی کمپین قبلی، بدون نام<small>بریف، برنامه، فاکتور و گزارش</small></div></div>
+          <div><span>۳</span><div>یک نفر از عملیات شما<small>کسی که کمپین را واقعاً اجرا می‌کند</small></div></div>
+        </div>
+        <p class="lead">خروجی: یک پیشنهاد پایلوت قیمت‌گذاری‌شده، با معیار روشن برای ادامه یا توقف.</p>
+        <div class="btns"><a class="btn big" href="../ravi/index.html">ورود به داشبورد ←</a><a class="btn" href="../onboarding/index.html">سفر کامل راوی</a><a class="btn" href="../decision-room/index.html">اتاق تصمیم</a></div>
+      </div>
+      <div class="vis" data-art="ten"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="dots" id="dots"></div>
+    <span class="grow"></span>
+    <span class="hint"><kbd>۱</kbd>–<kbd>۶</kbd> قابلیت‌ها · <kbd>←</kbd><kbd>→</kbd> بعدی و قبلی · <kbd>F</kbd> تمام‌صفحه</span>
+    <span>نام برند ساختگی · اعداد نمایشی</span>
+  </footer>
+</div>
+<noscript>برای دیدن این ارائه، جاوااسکریپت را فعال کنید.</noscript>
+<script>
+(() => {
+  "use strict";
+  const $ = (s, e = document) => e.querySelector(s);
+  const $$ = (s, e = document) => [...e.querySelectorAll(s)];
+  const fa = (n) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+  const nf = (n) => fa(Math.round(n).toLocaleString("en-US")).replace(/,/g, "٬");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let seed = 1; const rs = (n) => (seed = n); const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+  const Phi = (z) => { const t = 1 / (1 + 0.2316419 * Math.abs(z)), d = 0.3989423 * Math.exp(-z * z / 2); const p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return z > 0 ? 1 - p : p; };
+  const ease = (u) => u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+  const MINT = [127, 200, 182], SIG = [233, 182, 95], DIM = [70, 112, 108];
+
+  const FEAT = [["۱", "از هدف تا برنامه"], ["۲", "کیفیت رسانه"], ["۳", "استودیو محتوا"], ["۴", "ناوگان عامل‌ها"], ["۵", "پایش زنده"], ["۶", "پرداخت با مدرک"]];
+  $("#tabs").innerHTML = FEAT.map((f, k) => `<button class="tab" data-go="${k + 1}"><b>${f[0]}</b><span>${f[1]}</span></button>`).join("") + `<button class="tab" data-go="7"><b>✦</b><span>شروع همکاری</span></button>`;
+  $("#agenda").innerHTML = FEAT.map((f, k) => `<button data-go="${k + 1}"><small>${f[0]}</small>${f[1]}</button>`).join("");
+  const SECS = $$(".f"), LAST = SECS.length - 1;
+  $("#dots").innerHTML = SECS.map((s, k) => `<button data-go="${k}" aria-label="${s.getAttribute("aria-label")}"></button>`).join("");
+
+  /* ================= background particles ================= */
+  const cv = $("#cv"), g = cv.getContext("2d"); let W = 0, H = 0;
+  function resize() { const d = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight; cv.width = W * d; cv.height = H * d; cv.style.width = W + "px"; cv.style.height = H + "px"; g.setTransform(d, 0, 0, d, 0, 0); }
+  resize();
+  const N = innerWidth < 860 ? 300 : 460;
+  const P = Array.from({ length: N }, () => ({ x: Math.random() * W, y: Math.random() * H, tx: 0, ty: 0, r: 1.2, tr: 1.2, c: [...DIM], tc: DIM, a: 0, ta: .12, s: .02, j: 8, ph: Math.random() * 6.283, fn: null, d: 0 }));
+  function T(p, o) { if (o.x != null) p.tx = o.x; if (o.y != null) p.ty = o.y; if (o.c) p.tc = o.c; if (o.a != null) p.ta = o.a; if (o.r != null) p.tr = o.r; p.s = reduce ? 1 : (o.s || .07); p.j = reduce ? 0 : (o.j || 0); p.fn = o.fn || null; p.d = reduce ? 0 : (o.d || 0); }
+  const ambient = (p, i) => T(p, { x: Math.random() * W, y: Math.random() * H, c: i % 9 ? DIM : MINT, a: i % 9 ? .12 : .22, r: 1.2, s: .012, j: 12 });
+  let last = performance.now();
+  (function frame(t) {
+    const dt = Math.min(48, t - last); last = t; g.clearRect(0, 0, W, H); g.globalCompositeOperation = "lighter";
+    for (const p of P) {
+      if (p.d > 0) p.d -= dt; else { let tx = p.tx, ty = p.ty; if (p.fn) { const q = p.fn(t, p); tx = q[0]; ty = q[1]; } if (p.j) { tx += Math.sin(t * .0011 + p.ph) * p.j; ty += Math.cos(t * .0013 + p.ph * 1.7) * p.j; } p.x += (tx - p.x) * p.s; p.y += (ty - p.y) * p.s; }
+      const c = p.c, tc = p.tc; c[0] += (tc[0] - c[0]) * .08; c[1] += (tc[1] - c[1]) * .08; c[2] += (tc[2] - c[2]) * .08; p.a += (p.ta - p.a) * .06; p.r += (p.tr - p.r) * .1;
+      if (p.a < .01) continue; g.fillStyle = `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${p.a.toFixed(3)})`; g.beginPath(); g.arc(p.x, p.y, Math.max(.4, p.r), 0, 6.283); g.fill();
+    }
+    requestAnimationFrame(frame);
+  })(last);
+  function textPts(str, cx, cy, size, max) {
+    const c = document.createElement("canvas"), x = c.getContext("2d"); x.font = `900 ${size}px Vazirmatn`;
+    const w = Math.ceil(x.measureText(str).width) + 20, h = Math.ceil(size * 1.5); c.width = w; c.height = h;
+    x.font = `900 ${size}px Vazirmatn`; x.fillStyle = "#fff"; x.textAlign = "center"; x.textBaseline = "middle"; x.direction = "rtl"; x.fillText(str, w / 2, h / 2);
+    const d = x.getImageData(0, 0, w, h).data;
+    for (let step = 2; step < 30; step++) { const pts = []; for (let y = 0; y < h; y += step) for (let xx = 0; xx < w; xx += step) if (d[(y * w + xx) * 4 + 3] > 140) pts.push([cx - w / 2 + xx, cy - h / 2 + y]);
+      if (pts.length <= max) { rs(9); for (let i = pts.length - 1; i > 0; i--) { const k = Math.floor(rnd() * (i + 1)); [pts[i], pts[k]] = [pts[k], pts[i]]; } return pts; } }
+    return [];
+  }
+  const NODES = ["برنامه‌ریزی", "کیفیت رسانه", "استعلام", "محتوا", "انتشار", "پایش", "دستیار برند", "مالی و گزارش"];
+  $("#fnodes").innerHTML = NODES.map((n, k) => { const a = -Math.PI / 2 + k * Math.PI / 4; return `<span class="lbl" style="left:${50 + 44 * Math.cos(a)}%;top:${50 + 42 * Math.sin(a)}%">${n}</span>`; }).join("");
+  function layoutParticles(i) {
+    const vis = SECS[i].querySelector(".vis"), r = vis.getBoundingClientRect(), A = { x: r.left, y: r.top, w: r.width, h: r.height, cx: r.left + r.width / 2, cy: r.top + r.height / 2 };
+    const art = vis.dataset.art;
+    if (art === "title" || art === "ten") {
+      const pts = art === "title" ? textPts("راوی", A.cx, A.cy, Math.min(A.w * .4, A.h * .6), N - 60) : textPts("۱۰ روز", A.cx, A.cy, Math.min(A.w * .27, A.h * .42), N - 60);
+      P.forEach((p, k) => { if (k < pts.length) T(p, { x: pts[k][0], y: pts[k][1], c: k % 6 ? (art === "ten" ? SIG : MINT) : (art === "ten" ? MINT : SIG), a: .95, r: 2.2, s: .05, j: 1.2, d: k * 1.6 }); else ambient(p, k); });
+    } else if (art === "fleet") {
+      rs(5); const c = [A.cx, A.cy];
+      P.forEach((p, k) => { if (k < 340) { const n = k % 8, a = -Math.PI / 2 + n * Math.PI / 4; const tx = A.x + (.5 + .44 * Math.cos(a)) * A.w + (rnd() - .5) * 26, ty = A.y + (.5 + .42 * Math.sin(a)) * A.h + (rnd() - .5) * 22; const sp = .0007 + rnd() * .0008, ph = rnd() * 6.283;
+        T(p, { c: MINT, a: .9, r: 1.9, s: .22, fn: (t, q) => { const s = t * sp + ph, u = (1 - Math.cos(s)) / 2; q.tc = Math.sin(s) > 0 ? MINT : SIG; return [c[0] + (tx - c[0]) * u, c[1] + (ty - c[1]) * u]; } }); } else ambient(p, k); });
+    } else P.forEach(ambient);
+  }
+
+  /* ================= feature visuals ================= */
+  const SCN = [{ m: 215, sd: 28, tg: 180 }, { m: 248, sd: 36, tg: 220 }, { m: 260, sd: 65, tg: 220 }];
+  const hist = $("#hist"); hist.innerHTML = Array.from({ length: 32 }, (_, k) => `<i style="--k:${k}"></i>`).join("");
+  function drawHist(s, zero) {
+    const sc = SCN[s], lo = 50, hi = 400, bars = $$("i", hist);
+    bars.forEach((b, k) => { const v = lo + (k + .5) * (hi - lo) / bars.length; const pdf = Math.exp(-((v - sc.m) ** 2) / (2 * sc.sd * sc.sd)); b.style.height = zero ? "0%" : (4 + 92 * pdf) + "%"; b.classList.toggle("hit", v >= sc.tg); });
+    const box = hist.getBoundingClientRect(), vis = hist.parentElement.getBoundingClientRect();
+    const fx = (sc.tg - lo) / (hi - lo); $("#tl").style.left = (box.left - vis.left + fx * box.width) + "px"; $("#tl span").textContent = "هدف " + fa(sc.tg) + " هزار";
+    $("#prob").textContent = fa(Math.round(Phi((sc.m - sc.tg) / sc.sd) * 100)) + "٪";
+    $$("#scn button").forEach((b) => b.classList.toggle("on", +b.dataset.s === s));
+  }
+  let scn = 1; $$("#scn button").forEach((b) => (b.onclick = () => { scn = +b.dataset.s; drawHist(scn); }));
+
+  rs(31); const QG = $("#qgrid"); QG.innerHTML = Array.from({ length: 160 }, () => { const u = rnd(); return `<i data-k="${u < .07 ? "r" : u < .66 ? "g" : "a"}"></i>`; }).join("");
+
+  const CUR = [(h) => 104 * (1 - Math.exp(-h / 15)), (h) => 96 * (1 - Math.exp(-h / 20)), (h) => 70 * (1 - Math.exp(-h / 20)) + (live.rec && h > 20 ? 38 * (1 - Math.exp(-(h - 20) / 12)) : 0)];
+  const E = (h) => 97 * (1 - Math.exp(-h / 18)); const X = (h) => 60 + h / 72 * 920, Y = (v) => 560 - v / 120 * 500;
+  const live = { H: 0, rec: false };
+  function drawChart() {
+    const path = (f, Hm) => { let d = ""; for (let h = 0; h <= Hm; h += .5) d += (h ? "L" : "M") + X(h).toFixed(1) + " " + Y(f(h)).toFixed(1); return d; };
+    let band = "M" + X(0) + " " + Y(0); for (let h = 0; h <= 72; h++) band += "L" + X(h) + " " + Y(E(h) * 1.1); for (let h = 72; h >= 0; h--) band += "L" + X(h) + " " + Y(E(h) * .9);
+    $("#band").setAttribute("d", band + "Z"); $("#tgt").setAttribute("d", `M60 ${Y(100)}H980`);
+    CUR.forEach((f, k) => $("#c" + k).setAttribute("d", path(f, Math.max(.5, live.H))));
+  }
+
+  const COLS = [["A", "اتصال مستقیم (API)", 35, "#7fc8b6"], ["B", "خروجی ناشر", 45, "#5fae9b"], ["C", "اسکرین‌شات · موقت", 17, "#c9984e"], ["D", "برآورد · غیرقابل پرداخت", 4, "#5c6f6b"]];
+  $("#cols").innerHTML = COLS.map((c, k) => `<div class="col"><i style="--k:${k};background:${c[3]}" data-h="${c[2] * 1.9}"></i><b style="color:${c[3]}">${c[0]}</b><small>${c[1]}</small></div>`).join("");
+
+  /* ================= navigation ================= */
+  let idx = -1, token = 0, timers = [];
+  const later = (fn, ms, tk) => { const h = setTimeout(() => tk === token && fn(), reduce ? 0 : ms); timers.push(h); };
+  const tick = (fn, ms) => { const h = setInterval(fn, ms); timers.push(h); };
+  async function countUp(el, to, ms, tk) { const n = 30; for (let k = 1; k <= n; k++) { if (tk !== token) return; el.textContent = nf(to * ease(k / n)); await new Promise((r) => setTimeout(r, reduce ? 0 : ms / n)); } }
+
+  const ENTER = {
+    1: (tk) => { drawHist(scn, true); later(() => drawHist(scn), 250, tk); },
+    2: (tk) => { const cells = $$("i", QG), sc = $("#qscan"), vis = QG.parentElement; cells.forEach((c) => (c.className = "")); $("#curves").classList.remove("play"); $("#qn").textContent = "۰";
+      const box = QG.getBoundingClientRect(), vb = vis.getBoundingClientRect(); sc.style.opacity = 0;
+      for (let col = 19; col >= 0; col--) later(() => { sc.style.opacity = 1; sc.style.left = (box.left - vb.left + (col + .5) / 20 * box.width) + "px"; cells.forEach((c, k) => { if (k % 20 === col) c.className = c.dataset.k; }); if (col === 0) later(() => (sc.style.opacity = 0), 300, tk); }, 500 + (19 - col) * 90, tk);
+      later(() => { $("#curves").classList.add("play"); countUp($("#qn"), 87, 900, tk); }, 2400, tk); },
+    3: (tk) => { const st = $("#studio"); st.classList.remove("play"); $$(".claims div").forEach((d) => d.classList.remove("on")); later(() => st.classList.add("play"), 200, tk); later(() => $(".claims .ok").classList.add("on"), 1200, tk); later(() => $(".claims .no").classList.add("on"), 1800, tk); },
+    4: (tk) => { countUp($("#ft"), 18694, 2200, tk); countUp($("#fh"), 9, 2200, tk); },
+    5: (tk) => { live.H = 0; live.rec = false; drawChart(); const al = $("#alert"), ok = $("#ok"); al.classList.remove("on"); ok.disabled = false; ok.textContent = "تأیید با یک کلیک";
+      let phase = 0; const resume = () => { if (phase !== 1) return; phase = 2; live.rec = true; ok.disabled = true; ok.textContent = "تأیید شد ✓"; later(() => al.classList.remove("on"), 1600, tk); };
+      ok.onclick = resume;
+      tick(() => { if (tk !== token) return; if (phase === 0) { live.H += .6; if (live.H >= 18) { live.H = 18; phase = 1; al.classList.add("on"); later(resume, 6500, tk); } } else if (phase === 2 && live.H < 72) live.H = Math.min(72, live.H + .8); drawChart(); }, reduce ? 200 : 60); },
+    6: (tk) => { const bars = $$("#cols i"), fl = $("#flow"), rep = $("#report"); bars.forEach((b) => (b.style.height = "0")); rep.classList.remove("on"); fl.innerHTML = "";
+      later(() => bars.forEach((b) => (b.style.height = b.dataset.h + "%")), 150, tk);
+      later(() => { const vis = $("#proof").getBoundingClientRect(), pay = $(".pay").getBoundingClientRect(); fl.setAttribute("viewBox", `0 0 ${vis.width} ${vis.height}`);
+        const px = pay.left - vis.left + pay.width / 2, py = pay.top - vis.top + pay.height / 2; let html = "";
+        bars.slice(0, 2).forEach((b, k) => { const r = b.getBoundingClientRect(), sx = r.left - vis.left + r.width / 2, sy = r.top - vis.top; const d = `M${sx} ${sy} C ${sx} ${py - 40}, ${px - 120} ${py}, ${px} ${py}`;
+          html += `<path d="${d}" fill="none" stroke="rgba(233,182,95,.35)" stroke-width="2" stroke-dasharray="5 7"/>`; for (let j = 0; j < 4; j++) html += `<circle r="4.5" fill="#ffd98e"><animateMotion dur="${2.2 + k * .4}s" begin="${-j * .6}s" repeatCount="indefinite" path="${d}"/></circle>`; });
+        fl.innerHTML = html; rep.classList.add("on"); }, 1500, tk); }
+  };
+
+  function go(i, push = true) {
+    i = Math.max(0, Math.min(LAST, i)); if (i === idx) return;
+    idx = i; token++; const tk = token; timers.forEach((h) => { clearTimeout(h); clearInterval(h); }); timers = [];
+    SECS.forEach((s, k) => s.classList.toggle("on", k === i));
+    $$(".tab").forEach((b) => b.classList.toggle("on", +b.dataset.go === i));
+    $$("#dots button").forEach((b, k) => { b.classList.toggle("on", k === i); b.classList.toggle("d", k < i); });
+    const on = $(".tab.on"); if (on) on.scrollIntoView({ block: "nearest", inline: "center", behavior: reduce ? "auto" : "smooth" });
+    $$(".txt > *", SECS[i]).forEach((n, k) => n.style.setProperty("--i", k));
+    if (push) history.replaceState(null, "", "#" + i);
+    requestAnimationFrame(() => { layoutParticles(i); if (ENTER[i]) ENTER[i](tk); });
+  }
+  document.addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) go(+b.dataset.go); });
+  addEventListener("keydown", (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const k = e.key;
+    if (k === "ArrowLeft" || k === "PageDown" || k === " ") { e.preventDefault(); go(idx + 1); }
+    else if (k === "ArrowRight" || k === "PageUp") { e.preventDefault(); go(idx - 1); }
+    else if (k === "Home" || k === "0" || k === "۰") go(0);
+    else if (k === "End") go(LAST);
+    else if (/^[1-7۱-۷]$/.test(k)) go("۰۱۲۳۴۵۶۷".includes(k) ? "۰۱۲۳۴۵۶۷".indexOf(k) : +k);
+    else if (k.toLowerCase() === "f") { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen?.(); }
+  });
+  let rt; const relayout = () => { clearTimeout(rt); rt = setTimeout(() => { resize(); layoutParticles(idx); if (idx === 1) drawHist(scn); }, 150); };
+  addEventListener("resize", relayout);
+  SECS.forEach((s) => s.addEventListener("scroll", relayout, { passive: true }));
+  const start = () => { const m = /#(\d)/.exec(location.hash); go(m ? +m[1] : 0, false); };
+  (document.fonts && document.fonts.load ? Promise.all([document.fonts.load("900 80px Vazirmatn"), document.fonts.load("700 14px Vazirmatn")]).catch(() => {}) : Promise.resolve()).then(start);
+})();
+</script>
+</body>
+</html>

@@ -5,8 +5,9 @@
 ## Map
 | Path | What |
 |---|---|
-| `start-ravi.bat`, `index.html` | Windows launcher: serves the repo root on `0.0.0.0:7002` (needs Python 3) and opens the landing page linking dashboard, onboarding and Decision Room |
+| `start-ravi.bat`, `index.html` | Windows launcher: serves the repo root on `0.0.0.0:7002` (needs Python 3) and opens the landing page linking the showcase, dashboard, onboarding and Decision Room |
 | `research/` | **Current work** (2026-11-02): commercial pivot research, architecture, meeting brief, local agent-fleet assessment, Persian product guide |
+| `showcase/` | **Short presentation** (`index.html`): one page, six features the speaker switches between (tabs or keys ۱–۶), dashboard button at the end. Recommended for partner meetings; talk track in `research/07` |
 | `onboarding/` | **Partner onboarding journey** (`index.html`): cinematic 20-scene presentation of the campaign journey and the agent fleet; script in `research/07_partner_onboarding_script.md` |
 | `ravi/` | **Main dashboard** on the cinematic teal UI: commercial campaign flow + agent fleet, market radar, supplier quality index. Political version at `ravi/political.html` |
 | `decision-room/` | Decision Room (`index.html`): team appendix with readiness map, unit economics and open decisions (team/partner modes) |
