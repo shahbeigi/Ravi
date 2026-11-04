@@ -3,330 +3,147 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#0b3032" />
-<title>راوی · ارائه</title>
-<meta name="description" content="ارائه‌ی کوتاه راوی: شش قابلیت اصلی پلتفرم عملیات کمپین، برای گوینده‌ای که هنگام صحبت بین آن‌ها جابه‌جا می‌شود." />
+<meta name="theme-color" content="#071f21" />
+<title>راوی · نقشه‌ی زنده‌ی کمپین</title>
+<meta name="description" content="ارائه‌ی راوی به شکل یک نقشه‌ی زنده‌ی کمپین: هفت لنز روی همان نقشه، برای گوینده‌ای که هنگام صحبت بین قابلیت‌ها جابه‌جا می‌شود." />
 <style>
 @font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-400.woff2") format("woff2");font-weight:400}
 @font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-500.woff2") format("woff2");font-weight:500}
 @font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-700.woff2") format("woff2");font-weight:700}
 @font-face{font-family:"Vazirmatn";src:url("../ravi/fonts/vazirmatn-900.woff2") format("woff2");font-weight:900}
-:root{--t950:#062224;--t900:#0b3032;--sig:#e9b65f;--sig-hi:#ffd98e;--mint:#7fc8b6;--red:#f19b8c;--ink:#e8efea;--ink2:#a9c2bb;--gl:rgba(255,255,255,.11);--glass:rgba(255,255,255,.055);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--sig:#e9b65f;--sig-hi:#ffd98e;--mint:#7fc8b6;--red:#f19b8c;--ink:#e8efea;--ink2:#a2bab3;--gl:rgba(255,255,255,.1);--ease:cubic-bezier(.22,1,.36,1)}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;overflow:hidden;background:#062224}
-body{background:radial-gradient(ellipse at 28% 50%,#174a4b 0,#0b3032 48%,#062224 100%);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
-button,a{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none}
-::selection{background:var(--sig);color:var(--t900)}
-#cv{position:fixed;inset:0;z-index:0;pointer-events:none}
-.shell{position:fixed;inset:0;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:72px minmax(0,1fr) 48px}
+html,body{margin:0;height:100%;overflow:hidden;background:#061c1e}
+body{background:radial-gradient(ellipse at 32% 48%,#15474a 0,#0a2e30 42%,#061c1e 100%);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
+button,a,input{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none}
+::selection{background:var(--sig);color:#0b3032}
+#cv{position:fixed;inset:0;z-index:0;cursor:default}
+.ui{position:fixed;inset:0;z-index:1;pointer-events:none}
+.ui>*{pointer-events:auto}
+#fade{position:fixed;inset:0;z-index:5;background:#061c1e;opacity:0;pointer-events:none;transition:opacity 1s ease}
 
-/* top bar */
-.top{display:flex;align-items:center;gap:18px;padding:0 28px}
-.logo{display:flex;align-items:center;gap:9px;font-size:26px;font-weight:900;white-space:nowrap}
+/* top */
+.top{position:absolute;top:0;left:0;right:0;height:68px;display:flex;align-items:center;gap:18px;padding:0 28px;pointer-events:none}
+.top>*{pointer-events:auto}
+.logo{display:flex;align-items:center;gap:9px;font-size:25px;font-weight:900;white-space:nowrap}
 .logo i{width:10px;height:10px;border-radius:50%;background:var(--sig);box-shadow:0 0 0 6px rgba(233,182,95,.14)}
-.tabs{flex:1;min-width:0;display:flex;justify-content:center;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px}
-.tabs::-webkit-scrollbar{display:none}
-.tab{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:14px;border:1px solid transparent;color:var(--ink2);font-size:14px;font-weight:700;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
-.tab b{display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:rgba(255,255,255,.08);font-size:12px;transition:.3s}
-.tab:hover{color:var(--ink);border-color:var(--gl)}
-.tab.on{background:rgba(233,182,95,.14);border-color:rgba(233,182,95,.45);color:var(--sig-hi)}
-.tab.on b{background:var(--sig);color:var(--t900)}
-.cta{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:14px;background:var(--sig);color:var(--t900);font-weight:900;font-size:14px;text-decoration:none;white-space:nowrap;box-shadow:0 10px 30px rgba(233,182,95,.25);transition:transform .25s}
+.logo small{font-size:13px;font-weight:500;color:var(--ink2)}
+.grow{flex:1}
+.live{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink2);white-space:nowrap}
+.live b{color:var(--mint);font-size:16px;font-variant-numeric:tabular-nums}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:lp 1.6s infinite}
+@keyframes lp{70%{box-shadow:0 0 0 7px rgba(127,200,182,0)}0%{box-shadow:0 0 0 0 rgba(127,200,182,.5)}}
+.cta{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:14px;background:var(--sig);color:#0b3032;font-weight:900;font-size:14px;white-space:nowrap;box-shadow:0 10px 30px rgba(233,182,95,.25);transition:transform .25s}
 .cta:hover{transform:translateY(-2px)}
 
-/* stage */
-.stage{position:relative;min-height:0}
-.f{position:absolute;inset:0;display:grid;grid-template-columns:minmax(360px,.9fr) minmax(0,1.1fr);gap:40px;align-items:center;padding:0 56px;opacity:0;pointer-events:none;transform:translateY(18px);transition:opacity .55s var(--ease),transform .7s var(--ease)}
-.f.on{opacity:1;pointer-events:auto;transform:none}
-.txt>*{opacity:0;transform:translateY(14px)}
-.f.on .txt>*{animation:up .7s var(--ease) both;animation-delay:calc(var(--i,0)*75ms + 120ms)}
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.kick{display:flex;align-items:center;gap:10px;color:var(--sig);font-size:14px;font-weight:700}
-.kick:before{content:"";width:26px;height:2px;background:var(--sig)}
-h1{font-size:clamp(38px,5vw,72px);font-weight:900;line-height:1.22;margin:16px 0}
-h2{font-size:clamp(30px,3.4vw,50px);font-weight:900;line-height:1.3;margin:14px 0}
-h1 em,h2 em{font-style:normal;color:var(--sig)}
-.lead{font-size:clamp(16px,1.25vw,19px);line-height:1.95;color:#bcd2cb;margin:0 0 20px;max-width:620px}
-.pts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none}
-.pts li{padding:7px 14px;border-radius:20px;font-size:14px;font-weight:700;background:rgba(127,200,182,.08);border:1px solid rgba(127,200,182,.3);color:#cfe9e1}
-.stat{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap}
-.stat div b{display:block;font-size:clamp(44px,4.6vw,68px);font-weight:900;line-height:1;color:var(--sig-hi);font-variant-numeric:tabular-nums}
-.stat div.m b{color:var(--mint)}
-.stat div span{font-size:13.5px;color:var(--ink2)}
-.deep{display:inline-flex;margin-top:20px;font-size:13px;color:var(--ink2);text-decoration:none;border-bottom:1px dashed rgba(169,194,187,.5)}
+/* legend */
+.legend{position:absolute;top:76px;left:28px;display:flex;gap:14px;font-size:12px;color:var(--ink2);pointer-events:none}
+.legend span{display:flex;align-items:center;gap:6px}.legend i{width:9px;height:9px;border-radius:50%}
+
+/* panel */
+.panel{position:absolute;right:28px;top:86px;bottom:104px;width:min(420px,33vw);display:flex;flex-direction:column;justify-content:center;pointer-events:none}
+.card{pointer-events:auto;max-height:100%;overflow-y:auto;scrollbar-width:none;padding:26px 26px 22px;border-radius:26px;background:linear-gradient(160deg,rgba(12,44,46,.86),rgba(7,30,32,.82));border:1px solid var(--gl);box-shadow:0 30px 80px rgba(0,0,0,.35);backdrop-filter:blur(10px)}
+.card::-webkit-scrollbar{display:none}
+.card>*{animation:up .6s var(--ease) both;animation-delay:calc(var(--i,0)*60ms)}
+@keyframes up{from{opacity:0;transform:translateY(12px)}}
+.kick{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;font-weight:700;color:var(--sig)}
+.kick span{color:var(--ink2);font-weight:500}
+.card h1{font-size:clamp(30px,3vw,44px);font-weight:900;line-height:1.3;margin:10px 0 8px}
+.card h1 em{font-style:normal;color:var(--sig)}
+.card h2{font-size:clamp(34px,3.4vw,50px);font-weight:900;line-height:1.15;margin:12px 0 2px;letter-spacing:-.5px}
+.card .sub{font-size:14px;font-weight:700;color:var(--sig-hi)}
+.card .line{font-size:15.5px;line-height:1.9;color:#c3d6d0;margin:12px 0 14px}
+.specs{display:grid;margin:4px 0 14px}
+.specs div{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid rgba(255,255,255,.08);font-size:13.5px}
+.specs div:last-child{border-bottom:1px solid rgba(255,255,255,.08)}
+.specs span{color:var(--ink2);white-space:nowrap}.specs b{text-align:left;font-weight:700}
+.ctrl{margin-top:4px}
+.nums{display:flex;gap:20px;flex-wrap:wrap;margin:6px 0 4px}
+.nums div b{display:block;font-size:30px;font-weight:900;line-height:1.15;color:var(--sig-hi);font-variant-numeric:tabular-nums}
+.nums div.m b{color:var(--mint)}.nums div.r b{color:var(--red)}
+.nums div span{font-size:12px;color:var(--ink2)}
+.hint{font-size:12.5px;color:var(--ink2);margin-top:8px;display:flex;align-items:center;gap:6px}
+.hint:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sig)}
+.deep{display:inline-flex;margin-top:14px;font-size:12.5px;color:var(--ink2);text-decoration:none;border-bottom:1px dashed rgba(162,186,179,.5)}
 .deep:hover{color:var(--sig-hi)}
-.vis{position:relative;height:min(64vh,540px);border-radius:28px}
-.vis.card{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--gl);box-shadow:0 30px 80px rgba(0,0,0,.25);padding:26px;overflow:hidden}
-.agenda{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
-.agenda button{text-align:right;padding:12px 14px;border-radius:16px;background:var(--glass);border:1px solid var(--gl);font-size:14px;font-weight:700;transition:border-color .25s,transform .25s}
-.agenda button:hover{border-color:var(--sig);transform:translateY(-2px)}
-.agenda button small{display:block;color:var(--sig);font-size:12px}
-.lbl{position:absolute;transform:translate(-50%,-50%);font-size:12.5px;font-weight:700;color:#dfeae5;background:rgba(7,38,40,.75);padding:4px 11px;border-radius:10px;white-space:nowrap;pointer-events:none;border:1px solid rgba(255,255,255,.09)}
-.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd98e,#e9b65f);color:#10383a;display:grid;place-items:center;text-align:center;font-weight:900;font-size:15px;line-height:1.4;box-shadow:0 0 0 14px rgba(233,182,95,.08),0 0 70px rgba(233,182,95,.4);animation:hp 2.8s ease-in-out infinite}
-@keyframes hp{50%{box-shadow:0 0 0 24px rgba(233,182,95,.04),0 0 90px rgba(233,182,95,.5)}}
+.range{display:grid;gap:6px;margin:8px 0}
+.range label{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700}
+.range label b{color:var(--sig-hi)}
+input[type=range]{width:100%;accent-color:var(--sig);direction:ltr}
+.box{padding:12px 14px;border-radius:16px;background:rgba(0,0,0,.22);border:1px solid var(--gl);font-size:13.5px;line-height:1.8;margin-top:8px}
+.box b{color:var(--sig-hi)}
+.claim{display:flex;align-items:center;gap:8px;font-size:13.5px;padding:7px 0}
+.claim i{display:grid;place-items:center;width:22px;height:22px;border-radius:7px;font-style:normal;font-weight:900;flex:none}
+.claim.ok i{background:var(--mint);color:#0b3032}.claim.no i{background:#e96f5d;color:#fff}.claim.no span{text-decoration:line-through;text-decoration-color:rgba(241,155,140,.8)}
+.alert{display:none;border-color:rgba(241,155,140,.5);background:rgba(60,22,18,.4)}
+.alert.on{display:block;animation:up .5s var(--ease) both}
+.alert b{color:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:12px;background:var(--sig);color:#0b3032;font-weight:900;font-size:13.5px;margin-top:8px}
+.btn:disabled{background:var(--mint);cursor:default}
+.btn.big{padding:14px 24px;font-size:16px;box-shadow:0 14px 40px rgba(233,182,95,.3)}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding:11px 14px;border-radius:14px;border:1px solid var(--gl);font-size:13.5px;font-weight:700;width:100%;text-align:right}
+.switch u{position:relative;width:40px;height:22px;border-radius:12px;background:rgba(255,255,255,.15);flex:none;transition:.25s}
+.switch u:after{content:"";position:absolute;top:3px;right:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.25s}
+.switch.on{border-color:rgba(241,155,140,.5)}.switch.on u{background:#e96f5d}.switch.on u:after{right:21px}
+.ledger{display:grid;gap:6px;margin-top:8px}
+.ledger div{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.05);font-size:13px;animation:up .4s var(--ease) both}
+.ledger em{font-style:normal;font-weight:900;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:12px;flex:none}
+.ledger small{margin-inline-start:auto;font-size:12px}
+.g-A em,.g-B em{background:var(--mint);color:#0b3032}.g-C em{background:#c9984e;color:#0b3032}
+.g-A small,.g-B small{color:var(--mint)}.g-C small{color:var(--sig-hi)}
+.leads div{display:block}.leads div b{display:block;font-size:13.5px}.leads div span{font-size:12px;color:var(--ink2)}
+.name{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--gl);background:rgba(0,0,0,.25);outline:none;font-size:15px;margin-top:6px}
+.name:focus{border-color:var(--sig)}
+.sw{display:flex;gap:10px;margin:12px 0 4px}
+.sw button{width:30px;height:30px;border-radius:50%;border:2px solid transparent;transition:transform .2s}
+.sw button.on{border-color:#fff;transform:scale(1.12)}
+.brandx{font-size:22px;font-weight:900;margin:12px 0 4px}.brandx em{font-style:normal;color:var(--sig)}
 
-/* 1 · histogram */
-.hist{position:absolute;left:26px;right:26px;top:60px;bottom:110px;display:flex;align-items:flex-end;gap:4px;direction:ltr}
-.hist i{flex:1;border-radius:5px 5px 2px 2px;background:#3f7f74;height:0;transition:height .9s var(--ease),background .5s;transition-delay:calc(var(--k)*18ms)}
-.hist i.hit{background:linear-gradient(#ffd98e,#e9b65f)}
-.tline{position:absolute;top:34px;bottom:96px;border-left:2px dashed var(--sig);transition:left .8s var(--ease)}
-.tline span{position:absolute;top:-6px;left:0;transform:translateX(-50%);white-space:nowrap;font-size:12.5px;font-weight:900;color:var(--t900);background:var(--sig);padding:3px 10px;border-radius:8px}
-.axis{position:absolute;bottom:80px;font-size:12px;color:var(--ink2);direction:rtl}
-.scn{position:absolute;left:26px;right:26px;bottom:24px;display:flex;justify-content:center;gap:8px}
-.scn button{padding:9px 18px;border-radius:12px;border:1px solid var(--gl);font-weight:700;font-size:14px;color:var(--ink2);transition:.25s}
-.scn button.on{background:var(--sig);border-color:var(--sig);color:var(--t900)}
+/* lens bar */
+.lenses{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:4px;padding:6px;border-radius:20px;background:rgba(6,26,28,.78);border:1px solid var(--gl);backdrop-filter:blur(10px);max-width:calc(100vw - 32px);overflow-x:auto;scrollbar-width:none}
+.lenses::-webkit-scrollbar{display:none}
+.lenses button{display:flex;align-items:center;gap:7px;padding:9px 13px;border-radius:14px;font-size:13.5px;font-weight:700;color:var(--ink2);white-space:nowrap;transition:background .25s,color .25s}
+.lenses button svg{width:17px;height:17px;flex:none}
+.lenses button:hover{color:var(--ink)}
+.lenses button.on{background:var(--sig);color:#0b3032}
+.lenses .sep{width:1px;background:var(--gl);margin:6px 2px}
+.keys{position:absolute;bottom:34px;left:28px;font-size:11.5px;color:var(--ink2);pointer-events:none}
+.keys kbd{font-family:inherit;padding:1px 6px;border-radius:5px;border:1px solid var(--gl)}
+.note{position:absolute;bottom:34px;right:28px;font-size:11.5px;color:var(--ink2);pointer-events:none}
+#tip{position:fixed;z-index:3;min-width:200px;max-width:280px;padding:12px 14px;border-radius:16px;background:rgba(8,30,32,.94);border:1px solid var(--gl);box-shadow:0 20px 50px rgba(0,0,0,.4);font-size:13px;line-height:1.75;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+#tip.on{opacity:1;transform:none}
+#tip b{display:block;font-size:14.5px}
+#tip .r{color:var(--red)}#tip .m{color:var(--mint)}#tip .s{color:var(--sig-hi)}
 
-/* 2 · quality grid */
-.qgrid{position:absolute;left:26px;right:26px;top:26px;height:52%;display:grid;grid-template-columns:repeat(20,1fr);grid-template-rows:repeat(8,1fr);gap:6px;direction:ltr}
-.qgrid i{width:clamp(8px,1.25vw,17px);aspect-ratio:1;justify-self:center;align-self:center;border-radius:50%;background:#2c5553;transition:background .35s,transform .35s,box-shadow .35s}
-.qgrid i.g{background:var(--mint)}.qgrid i.a{background:#c9984e}
-.qgrid i.r{background:#e96f5d;box-shadow:0 0 14px rgba(233,111,93,.7);transform:scale(1.15)}
-.qscan{position:absolute;top:18px;height:calc(52% + 16px);width:3px;background:var(--sig);box-shadow:0 0 20px 4px rgba(233,182,95,.5);opacity:0}
-.curves{position:absolute;left:26px;right:26px;bottom:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.curves div{padding:12px 14px;border-radius:16px;background:rgba(0,0,0,.18);border:1px solid var(--gl)}
-.curves b{display:block;font-size:13.5px;margin-bottom:4px}.curves .bad b{color:var(--red)}
-.curves small{font-size:12px;color:var(--ink2)}
-.curves svg{width:100%;height:58px;display:block;margin-top:4px}
-.curves polyline{fill:none;stroke:var(--mint);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.6s var(--ease)}
-.curves .bad polyline{stroke:var(--red)}
-.curves.play polyline{stroke-dashoffset:0}
-
-/* 3 · studio */
-.idea{position:absolute;left:50%;top:15%;transform:translate(-50%,-50%);padding:12px 20px;border-radius:16px;background:var(--sig);color:var(--t900);font-weight:900;font-size:15px;white-space:nowrap;box-shadow:0 14px 40px rgba(233,182,95,.35);z-index:2}
-.fcard{position:absolute;left:50%;top:46%;width:min(230px,42%);padding:14px 16px;border-radius:18px;background:#f2f5ec;color:#173839;box-shadow:0 20px 50px rgba(0,0,0,.3);opacity:0;transform:translate(-50%,-50%) scale(.6);transition:transform .9s var(--ease),opacity .6s;transition-delay:calc(var(--k)*110ms)}
-.fcard em{display:block;font-style:normal;font-size:11.5px;font-weight:900;color:#9a6514;margin-bottom:4px}
-.fcard p{margin:0;font-size:13.5px;line-height:1.75}
-.play .fcard{opacity:1;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) rotate(var(--r))}
-.claims{position:absolute;left:26px;right:26px;bottom:22px;display:grid;gap:8px;z-index:3}
-.claims div{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;font-size:13.5px;background:rgba(0,0,0,.25);border:1px solid var(--gl);opacity:0;transform:translateY(10px);transition:.6s var(--ease)}
-.claims div.on{opacity:1;transform:none}
-.claims b{display:grid;place-items:center;width:24px;height:24px;border-radius:8px;flex:none}
-.claims .ok b{background:var(--mint);color:#10383a}.claims .no b{background:#e96f5d;color:#fff}
-.claims .no span{text-decoration:line-through;text-decoration-color:rgba(241,155,140,.8)}
-.claims small{margin-inline-start:auto;color:var(--ink2);font-size:12px}
-
-/* 5 · live chart */
-svg.chart{position:absolute;left:18px;right:18px;top:20px;width:calc(100% - 36px);height:calc(100% - 110px);overflow:visible}
-svg.chart path{fill:none;vector-effect:non-scaling-stroke}
-.alert{position:absolute;top:26px;right:26px;width:min(310px,60%);padding:14px 16px;border-radius:18px;background:rgba(40,20,18,.82);border:1px solid rgba(241,155,140,.55);backdrop-filter:blur(8px);opacity:0;transform:translateY(-8px) scale(.97);transition:.5s var(--ease);pointer-events:none}
-.alert.on{opacity:1;transform:none;pointer-events:auto}
-.alert b{display:block;color:var(--red);font-size:14px}
-.alert p{margin:6px 0 10px;font-size:13px;line-height:1.7;color:#ecdcd8}
-.alert button{padding:9px 16px;border-radius:12px;background:var(--sig);color:var(--t900);font-weight:900;font-size:14px;animation:pulse 1.4s infinite}
-.alert button:disabled{animation:none;background:var(--mint)}
-@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(233,182,95,.18)}}
-.conn{position:absolute;left:26px;right:26px;bottom:22px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px}
-.conn span{padding:5px 11px;border-radius:10px;background:rgba(127,200,182,.1);border:1px solid rgba(127,200,182,.3);color:#cfe9e1}
-.conn span.w{background:rgba(233,182,95,.1);border-color:rgba(233,182,95,.4);color:var(--sig-hi)}
-.conn em{font-style:normal;color:var(--ink2);margin-inline-start:6px}
-.hours{position:absolute;bottom:84px;font-size:11.5px;color:var(--ink2);transform:translateX(-50%);white-space:nowrap}
-.legend{position:absolute;top:22px;left:26px;display:flex;gap:12px;font-size:12px;color:var(--ink2)}
-.legend span{display:flex;align-items:center;gap:6px}.legend i{width:16px;height:3px;border-radius:2px}
-
-/* 6 · proof */
-.cols{position:absolute;left:26px;width:64%;top:40px;bottom:120px;display:flex;align-items:flex-end;gap:16px;direction:ltr}
-.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
-.col i{display:block;width:100%;border-radius:12px 12px 4px 4px;height:0;transition:height 1.1s var(--ease);transition-delay:calc(var(--k)*140ms)}
-.col b{font-size:22px;font-weight:900}
-.col small{font-size:11.5px;color:var(--ink2);text-align:center;line-height:1.5;direction:rtl}
-.pay{position:absolute;right:30px;top:40px;width:96px;height:96px}
-svg.flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.report{position:absolute;left:26px;right:26px;bottom:20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-radius:16px;background:rgba(0,0,0,.22);border:1px solid var(--gl);opacity:0;transform:translateY(10px);transition:.7s var(--ease)}
-.report.on{opacity:1;transform:none}
-.report b{font-size:20px;font-weight:900;color:var(--sig-hi)}
-.report span{padding:4px 10px;border-radius:9px;background:rgba(255,255,255,.07);font-size:12.5px;color:#cfe0da}
-.report span.ok{background:rgba(127,200,182,.16);color:var(--mint)}
-
-/* close */
-.asks{display:grid;gap:10px;margin:6px 0 24px}
-.asks>div{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;font-size:16px}
-.asks span{width:32px;height:32px;border-radius:10px;background:var(--sig);color:var(--t900);display:grid;place-items:center;font-weight:900}
-.asks small{display:block;color:var(--ink2);font-size:13px}
-.btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:14px;font-weight:700;text-decoration:none;background:rgba(255,255,255,.07);border:1px solid var(--gl)}
-.btn.big{background:var(--sig);color:var(--t900);border-color:var(--sig);font-weight:900;font-size:17px;padding:16px 28px;box-shadow:0 14px 40px rgba(233,182,95,.3)}
-
-/* footer */
-.foot{display:flex;align-items:center;gap:16px;padding:0 28px;font-size:12px;color:var(--ink2)}
-.dots{display:flex;gap:6px;direction:rtl}
-.dots button{width:26px;height:6px;border-radius:3px;background:rgba(255,255,255,.14);transition:.3s}
-.dots button.on{background:var(--sig);width:40px}
-.dots button.d{background:rgba(127,200,182,.6)}
-.foot .grow{flex:1}
-.foot kbd{font-family:inherit;padding:1px 6px;border-radius:5px;border:1px solid var(--gl);font-size:11px}
-
-@media (max-width:1100px){.f{padding:0 28px;gap:24px}.tab span{display:none}.agenda{grid-template-columns:1fr 1fr}}
+@media (max-width:1180px){.keys,.note{display:none}.lenses button span{display:none}.lenses button.on span{display:inline}}
 @media (max-width:860px){
-  html,body{overflow:hidden}
-  .shell{grid-template-rows:auto minmax(0,1fr) 40px}
-  .top{flex-wrap:wrap;padding:10px 14px;gap:10px}.tabs{order:3;flex-basis:100%;justify-content:flex-start}.tab span{display:inline}
-  .cta{margin-inline-start:auto;padding:8px 14px}
-  .f{display:block;overflow-y:auto;padding:12px 16px 30px}
-  .vis{height:46vh;margin-bottom:18px}
-  .txt{padding-bottom:20px}
-  .agenda{grid-template-columns:1fr}
-  .foot .hint{display:none}
-  .fcard{width:46%}
-  .cols{width:58%}
-  .vis{overflow:hidden}
-  .legend{display:none}
-  .foot>span:last-child{display:none}
+  .top{height:58px;padding:0 14px;gap:10px}.logo small,.live span{display:none}
+  .legend{top:62px;left:14px;flex-wrap:wrap;gap:8px 12px}
+  .panel{left:12px;right:12px;width:auto;top:auto;bottom:80px;max-height:44vh}
+  .card{padding:18px}
+  .card h2{font-size:30px}.card h1{font-size:26px}
+  .lenses{bottom:12px}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.txt>*{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<canvas id="cv" aria-hidden="true"></canvas>
-<div class="shell">
+<canvas id="cv" aria-label="نقشه‌ی زنده‌ی کمپین"></canvas>
+<div id="fade"></div>
+<div class="ui">
   <header class="top">
-    <button class="logo" data-go="0" aria-label="بازگشت به آغاز"><i></i>راوی</button>
-    <nav class="tabs" id="tabs" aria-label="قابلیت‌ها"></nav>
-    <a class="cta" href="../ravi/index.html">ورود به داشبورد ←</a>
-  </header>
-
-  <main class="stage" id="stage">
-
-    <!-- 0 · cover -->
-    <section class="f" data-i="0" aria-label="آغاز">
-      <div class="txt">
-        <div class="kick">پلتفرم عملیات کمپین برای برندها</div>
-        <h1>از هدف برند،<br><em>تا عدد قابل اثبات.</em></h1>
-        <p class="lead">برنامه، محتوا، اجرا، پایش و تسویه‌ی کمپین در روبیکا، ایتا، بله، آپارات، تلگرام و اینستاگرام؛ با صدها عامل هوش مصنوعی و تصمیم انسانی.</p>
-        <div class="agenda" id="agenda"></div>
-      </div>
-      <div class="vis" data-art="title"></div>
-    </section>
-
-    <!-- 1 · goal to plan -->
-    <section class="f" data-i="1" aria-label="از هدف تا برنامه">
-      <div class="txt">
-        <div class="kick">۱ · از هدف تا برنامه</div>
-        <h2>پیش از خرج،<br><em>احتمال موفقیت را ببینید.</em></h2>
-        <p class="lead">هدف برند به برنامه‌ای با بازه‌ی پیش‌بینی تبدیل می‌شود: ده هزار بار شبیه‌سازی، بر اساس سابقه‌ی واقعی همان کانال‌ها.</p>
-        <ul class="pts"><li>هدف جدا برای هر بستر</li><li>سه سناریو با فرض آشکار</li><li>بازه‌ی صادقانه، نه قول خشک</li></ul>
-        <div class="stat"><div><b id="prob">۷۸٪</b><span>احتمال رسیدن به هدف روبیکا در ۷۲ ساعت</span></div></div>
-        <a class="deep" href="../ravi/index.html#/brief">این بخش در داشبورد ←</a>
-      </div>
-      <div class="vis card">
-        <span class="tline" id="tl"><span>هدف ۲۲۰ هزار</span></span>
-        <div class="hist" id="hist"></div>
-        <span class="axis" style="left:26px">۵۰ هزار</span><span class="axis" style="left:50%;transform:translateX(-50%)">بازدید روبیکا · ۱۰٬۰۰۰ اجرا</span><span class="axis" style="right:26px">۴۰۰ هزار</span>
-        <div class="scn" id="scn"><button data-s="0">محتاط</button><button data-s="1" class="on">متعادل</button><button data-s="2">آزمایشی</button></div>
-      </div>
-    </section>
-
-    <!-- 2 · supplier quality -->
-    <section class="f" data-i="2" aria-label="کیفیت رسانه">
-      <div class="txt">
-        <div class="kick">۲ · کیفیت رسانه</div>
-        <h2>بازدید جعلی را<br><em>پیش از خرید پیدا می‌کنیم.</em></h2>
-        <p class="lead">هر کانال بر اساس رفتار واقعی بازدید امتیاز می‌گیرد، نه تعداد عضو: منحنی ۲۴ ساعته‌ی هر پست، نسبت بازدید به عضو و جهش‌های ناگهانی.</p>
-        <ul class="pts"><li>۱٬۲۰۰ کانال بررسی‌شده</li><li>فقط کانال‌های سالم تعهد تحویل می‌گیرند</li><li>علامت یعنی بررسی انسانی، نه اتهام</li></ul>
-        <div class="stat"><div><b id="qn">۰</b><span>کانال با الگوی غیرعادی، پیش از خرج یک ریال</span></div></div>
-        <a class="deep" href="../ravi/index.html#/quality">این بخش در داشبورد ←</a>
-      </div>
-      <div class="vis card">
-        <div class="qgrid" id="qgrid"></div><span class="qscan" id="qscan"></span>
-        <div class="curves" id="curves">
-          <div><b>منحنی طبیعی</b><small>رشد تدریجی در ساعت‌های اول</small><svg viewBox="0 0 220 60" preserveAspectRatio="none"><polyline points="4,56 26,48 48,38 70,30 92,24 114,19 136,15 158,12 180,10 214,8"/></svg></div>
-          <div class="bad"><b>منحنی مشکوک</b><small>۷۰٪ بازدید در ساعت اول، بعد صاف</small><svg viewBox="0 0 220 60" preserveAspectRatio="none"><polyline points="4,56 14,16 40,12 70,11 100,10 130,10 160,9 214,9"/></svg></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3 · studio -->
-    <section class="f" data-i="3" aria-label="استودیو محتوا">
-      <div class="txt">
-        <div class="kick">۳ · استودیو محتوا</div>
-        <h2>یک ایده، همه‌ی قالب‌ها،<br><em>بدون ادعای بی‌پشتوانه.</em></h2>
-        <p class="lead">پست، ریلز، استوری و ویدیو به فارسی، برای هر بستر جدا. هر ادعا با واقعیت‌های تأییدشده‌ی برند سنجیده می‌شود و برند نسخه‌ی نهایی را تأیید می‌کند.</p>
-        <ul class="pts"><li>نسخه‌های متنوع در چند دقیقه</li><li>پیش‌آزمون با پنل شبیه‌سازی‌شده</li><li>تصویر و ویدیو روی GPU محلی</li></ul>
-        <div class="stat"><div><b>۲۴</b><span>نسخه‌ی ساخته‌شده</span></div><div class="m"><b>۳</b><span>برنده‌ی تأییدشده</span></div></div>
-        <a class="deep" href="../ravi/index.html#/studio">این بخش در داشبورد ←</a>
-      </div>
-      <div class="vis card" id="studio">
-        <div class="idea">ایده: «برگه‌ی آزمون برای هر محموله»</div>
-        <div class="fcard" style="--k:0;--x:-128px;--y:-46px;--r:-5deg"><em>پست کانال · روبیکا</em><p>هر محموله‌ی میلگرد A4 با برگه‌ی آزمون کشش خودش می‌رسد. #تبلیغ</p></div>
-        <div class="fcard" style="--k:1;--x:128px;--y:-46px;--r:5deg"><em>ریلز · ۲۰ ثانیه</em><p>از کوره تا کارگاه: آزمون کشش را با چشم خودتان ببینید.</p></div>
-        <div class="fcard" style="--k:2;--x:-118px;--y:70px;--r:-2deg"><em>استوری · نظرسنجی</em><p>پیش از خرید میلگرد، برگه‌ی آزمون را می‌خواهید؟ بله / نه</p></div>
-        <div class="fcard" style="--k:3;--x:118px;--y:70px;--r:3deg"><em>ویدیو · آپارات</em><p>۹۰ ثانیه در خط نورد و آزمایشگاه؛ همکاری تبلیغاتی با فولاد سپیدار.</p></div>
-        <div class="claims"><div class="ok"><b>✓</b><span>«برگه‌ی آزمون کشش برای هر محموله»</span><small>رویه‌ی کنترل کیفیت</small></div><div class="no"><b>✕</b><span>«مقاوم‌ترین میلگرد ایران»</span><small>بدون مقایسه‌ی مستقل · متوقف شد</small></div></div>
-      </div>
-    </section>
-
-    <!-- 4 · agent fleet -->
-    <section class="f" data-i="4" aria-label="ناوگان عامل‌ها">
-      <div class="txt">
-        <div class="kick">۴ · ناوگان عامل‌ها</div>
-        <h2>صدها عامل، هم‌زمان؛<br><em>تصمیم با شما.</em></h2>
-        <p class="lead">عامل‌ها با ده‌ها ادمین واقعی هم‌زمان هماهنگ می‌کنند، هر پست را هر ۱۵ دقیقه می‌پایند و گزارش را با منبع می‌نویسند. پول، انتشار و ادعا فقط با تأیید انسان.</p>
-        <ul class="pts"><li>۶۰ گفت‌وگوی هم‌زمان با ادمین‌ها</li><li>مدل‌های متن‌باز روی سرور خودمان</li><li>بدون حساب جعلی؛ فقط جایگاه واقعی</li></ul>
-        <div class="stat"><div class="m"><b id="ft">۰</b><span>کار عامل‌ها در یک کمپین</span></div><div><b id="fh">۰</b><span>تصمیم انسانی</span></div></div>
-        <a class="deep" href="../ravi/index.html#/fleet">این بخش در داشبورد ←</a>
-      </div>
-      <div class="vis" data-art="fleet"><div class="hub">دفتر کل<br>کمپین</div><div id="fnodes"></div></div>
-    </section>
-
-    <!-- 5 · live operations -->
-    <section class="f" data-i="5" aria-label="پایش زنده">
-      <div class="txt">
-        <div class="kick">۵ · پایش زنده</div>
-        <h2>کمپین عقب افتاد؟<br><em>با یک کلیک برمی‌گردد.</em></h2>
-        <p class="lead">هر جایگاه زیر پایش است. وقتی بستری از بازه‌ی پیش‌بینی عقب بماند، عامل بازیابی جایگزین واقعی پیشنهاد می‌دهد. در قطعی اینترنت، برنامه‌ی جایگزین امضاشده اجرا می‌شود.</p>
-        <ul class="pts"><li>۴۱ جایگاه، هر ۱۵ دقیقه</li><li>جایگزین با هزینه و مهلت لغو</li><li>تداوم روی بسترهای داخلی</li></ul>
-        <a class="deep" href="../ravi/index.html#/campaigns">این بخش در داشبورد ←</a>
-      </div>
-      <div class="vis card">
-        <svg class="chart" viewBox="0 0 1000 600" preserveAspectRatio="none" id="ch" aria-hidden="true"><path d="M60 40V560H980" stroke="rgba(255,255,255,.15)" stroke-width="1"/><path id="tgt" stroke="rgba(233,182,95,.55)" stroke-width="1.5" stroke-dasharray="6 6"/><path id="band" style="fill:rgba(233,182,95,.10)" stroke="none"/><path id="c0" stroke="#7fc8b6" stroke-width="3.5" stroke-linecap="round"/><path id="c1" stroke="#a8dccd" stroke-width="3.5" stroke-linecap="round"/><path id="c2" stroke="#f19b8c" stroke-width="3.5" stroke-linecap="round"/></svg>
-        <span class="hours" style="left:8%">۰</span><span class="hours" style="left:37%">۲۴</span><span class="hours" style="left:66%">۴۸</span><span class="hours" style="left:94%">۷۲ ساعت</span>
-        <div class="legend"><span><i style="background:#7fc8b6"></i>روبیکا</span><span><i style="background:#a8dccd"></i>آپارات</span><span><i style="background:#f19b8c"></i>ایتا</span><span><i style="background:rgba(233,182,95,.5)"></i>بازه‌ی پیش‌بینی ایتا</span></div>
-        <div class="alert" id="alert"><b>ساعت ۱۸ · ایتا پایین‌تر از بازه‌ی پیش‌بینی</b><p>پیشنهاد عامل بازیابی: رزرو جایگزین در بله · ۱۳۰ م.ت · قابل لغو تا ۴۸ ساعت</p><button id="ok">تأیید با یک کلیک</button></div>
-        <div class="conn"><span>روبیکا ✓</span><span>ایتا ✓</span><span>بله ✓</span><span>آپارات ✓</span><span class="w">تلگرام · فیلترشکن</span><span class="w">اینستاگرام · فیلترشکن</span><em>جایگزین امضاشده برای قطعی</em></div>
-      </div>
-    </section>
-
-    <!-- 6 · pay on proof -->
-    <section class="f" data-i="6" aria-label="پرداخت در برابر مدرک">
-      <div class="txt">
-        <div class="kick">۶ · پرداخت در برابر مدرک</div>
-        <h2>هر عدد در گزارش،<br><em>مدرک دارد.</em></h2>
-        <p class="lead">هر بازدید و هر استعلام قیمت درجه‌ی مدرک دارد، از اتصال مستقیم تا اسکرین‌شات. تأمین‌کننده وقتی پول می‌گیرد که مدرکش پذیرفته شود.</p>
-        <ul class="pts"><li>درجه‌ی A تا D برای هر عدد</li><li>استعلام قیمت با نام پروژه</li><li>کمبود هرگز با تعامل جعلی جبران نمی‌شود</li></ul>
-        <div class="stat"><div><b>۶۴ / ۶۴</b><span>عدد در گزارش مشتری، با منبع</span></div><div class="m"><b>۷۴</b><span>استعلام ثبت‌شده</span></div></div>
-        <a class="deep" href="../ravi/index.html#/finance">این بخش در داشبورد ←</a>
-      </div>
-      <div class="vis card" id="proof">
-        <div class="cols" id="cols"></div>
-        <div class="hub pay" style="left:auto;transform:none;right:30px;top:40px;width:100px;height:100px;font-size:14px">پرداخت</div>
-        <svg class="flow" id="flow"></svg>
-        <div class="report" id="report"><b>۱۱۸٬۰۰۰</b>بازدید در ۷۲ ساعت<span>منبع: خروجی ادمین + ضبط صفحه</span><span>درجه‌ی B</span><span class="ok">قابل پرداخت ✓</span></div>
-      </div>
-    </section>
-
-    <!-- 7 · close -->
-    <section class="f" data-i="7" aria-label="شروع همکاری">
-      <div class="txt">
-        <div class="kick">شروع همکاری</div>
-        <h2>ده روز،<br><em>با هم.</em></h2>
-        <div class="asks">
-          <div><span>۱</span><div>۵ مشتری برای گفت‌وگو<small>برندهایی که همین حالا هدف بازدید یا استعلام دارند</small></div></div>
-          <div><span>۲</span><div>۳ پرونده‌ی کمپین قبلی، بدون نام<small>بریف، برنامه، فاکتور و گزارش</small></div></div>
-          <div><span>۳</span><div>یک نفر از عملیات شما<small>کسی که کمپین را واقعاً اجرا می‌کند</small></div></div>
-        </div>
-        <p class="lead">خروجی: یک پیشنهاد پایلوت قیمت‌گذاری‌شده، با معیار روشن برای ادامه یا توقف.</p>
-        <div class="btns"><a class="btn big" href="../ravi/index.html">ورود به داشبورد ←</a><a class="btn" href="../onboarding/index.html">سفر کامل راوی</a><a class="btn" href="../decision-room/index.html">اتاق تصمیم</a></div>
-      </div>
-      <div class="vis" data-art="ten"></div>
-    </section>
-  </main>
-
-  <footer class="foot">
-    <div class="dots" id="dots"></div>
+    <button class="logo" data-lens="0" aria-label="آغاز"><i></i><span id="logoName">راوی</span><small>نقشه‌ی زنده‌ی کمپین</small></button>
     <span class="grow"></span>
-    <span class="hint"><kbd>۱</kbd>–<kbd>۶</kbd> قابلیت‌ها · <kbd>←</kbd><kbd>→</kbd> بعدی و قبلی · <kbd>F</kbd> تمام‌صفحه</span>
-    <span>نام برند ساختگی · اعداد نمایشی</span>
-  </footer>
+    <span class="live"><i></i><b id="liveN">۱۶۲</b><span>عامل فعال</span></span>
+    <button class="cta" data-dash>ورود به داشبورد ←</button>
+  </header>
+  <div class="legend" aria-hidden="true"><span><i style="background:#7fc8b6"></i>کار عامل</span><span><i style="background:#e9b65f" id="lgAcc"></i>عدد اثبات‌شده · پرداخت</span><span><i style="background:#e96f5d"></i>مشکوک</span><span><i style="background:#5e7472"></i>برآورد · قطع</span></div>
+  <aside class="panel"><div class="card" id="card"></div></aside>
+  <nav class="lenses" id="lenses" aria-label="لنزها"></nav>
+  <div class="keys"><kbd>۱</kbd>–<kbd>۷</kbd> لنزها · <kbd>←</kbd><kbd>→</kbd> بعدی و قبلی · <kbd>F</kbd> تمام‌صفحه</div>
+  <div class="note">نام برند ساختگی · اعداد نمایشی</div>
 </div>
+<div id="tip"></div>
 <noscript>برای دیدن این ارائه، جاوااسکریپت را فعال کنید.</noscript>
 <script>
 (() => {
@@ -336,141 +153,283 @@ svg.flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
   const fa = (n) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
   const nf = (n) => fa(Math.round(n).toLocaleString("en-US")).replace(/,/g, "٬");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let seed = 1; const rs = (n) => (seed = n); const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+  let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
   const Phi = (z) => { const t = 1 / (1 + 0.2316419 * Math.abs(z)), d = 0.3989423 * Math.exp(-z * z / 2); const p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return z > 0 ? 1 - p : p; };
-  const ease = (u) => u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
-  const MINT = [127, 200, 182], SIG = [233, 182, 95], DIM = [70, 112, 108];
+  const ease = (u) => (u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2);
+  const MINT = [127, 200, 182], WHITE = [226, 236, 232], RED = [233, 111, 93], GREY = [94, 116, 114], AMBER = [214, 160, 80], TEAL = [74, 132, 122], DIMC = [64, 104, 100];
+  const rgba = (c, a) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${a})`;
 
-  const FEAT = [["۱", "از هدف تا برنامه"], ["۲", "کیفیت رسانه"], ["۳", "استودیو محتوا"], ["۴", "ناوگان عامل‌ها"], ["۵", "پایش زنده"], ["۶", "پرداخت با مدرک"]];
-  $("#tabs").innerHTML = FEAT.map((f, k) => `<button class="tab" data-go="${k + 1}"><b>${f[0]}</b><span>${f[1]}</span></button>`).join("") + `<button class="tab" data-go="7"><b>✦</b><span>شروع همکاری</span></button>`;
-  $("#agenda").innerHTML = FEAT.map((f, k) => `<button data-go="${k + 1}"><small>${f[0]}</small>${f[1]}</button>`).join("");
-  const SECS = $$(".f"), LAST = SECS.length - 1;
-  $("#dots").innerHTML = SECS.map((s, k) => `<button data-go="${k}" aria-label="${s.getAttribute("aria-label")}"></button>`).join("");
+  /* ================= the campaign map (map units, brand at 0,0) ================= */
+  const CH = [
+    { n: "روبیکا", sup: 14, dom: true, fmt: "پست", fc: "۱۷۵ تا ۲۴۰ هزار", st: "۸۶٪ هدف", ver: "هر محموله‌ی میلگرد A4 با برگه‌ی آزمون کشش خودش می‌رسد. #تبلیغ" },
+    { n: "ایتا", sup: 12, dom: true, fmt: "پست", fc: "۹۵ تا ۱۴۰ هزار", st: "۵۳٪ هدف", ver: "پیش از خرید میلگرد، برگه‌ی آزمون کشش محموله را بخواهید. #تبلیغ" },
+    { n: "بله", sup: 8, dom: true, fmt: "پست", fc: "رزرو جایگزین", st: "رزرو", ver: "استعلام قیمت روز میلگرد A4 برای پروژه‌ی شما؛ تحویل در ۱۲ استان. #تبلیغ" },
+    { n: "آپارات", sup: 6, dom: true, fmt: "ویدیو", fc: "۵۰ تا ۸۰ هزار", st: "۶۲٪ هدف", ver: "۹۰ ثانیه از خط نورد تا کارگاه؛ همکاری تبلیغاتی با فولاد سپیدار." },
+    { n: "سایت‌ها", sup: 6, dom: true, fmt: "بنر", fc: "۲٬۴۰۰ تا ۳٬۳۰۰ ورود", st: "۶۵٪ هدف", ver: "میلگرد A4 با برگه‌ی آزمون هر محموله · استعلام قیمت" },
+    { n: "اینستاگرام", sup: 8, dom: false, fmt: "ریلز", fc: "فقط برآورد", st: "برآورد", ver: "از کوره تا کارگاه در ۲۰ ثانیه." },
+    { n: "تلگرام", sup: 10, dom: false, fmt: "پست", fc: "فقط برآورد", st: "برآورد", ver: "قیمت روز و برگه‌ی آزمون، در یک پیام. #تبلیغ" }
+  ];
+  const FLAGS = [["آهن ارزان امروز", "جهش ۴۰ هزار عضو در یک روز"], ["بازار داغ آهن", "۷۰٪ بازدید در ساعت اول، بعد صاف"], ["تخفیف مصالح", "بازدید یکسان برای همه‌ی پست‌ها"], ["آهن‌آلات فوری", "نسبت بازدید به عضو ۲٪"], ["میلگرد ارزان", "نظرهای تکراری و یکسان"], ["مصالح ویژه", "عضو زیاد، بازدید ناچیز"], ["قیمت لحظه‌ای ۲۴", "۷۰٪ بازدید در ساعت اول"]];
+  const B = [0, 0], HUBR = .62;
+  const mkPath = (pts) => { let L = 0; const seg = []; for (let i = 1; i < pts.length; i++) { const d = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); seg.push(d); L += d; } return { pts, seg, L }; };
+  const at = (pa, u) => { let d = Math.max(0, Math.min(1, u)) * pa.L; for (let i = 0; i < pa.seg.length; i++) { if (d <= pa.seg[i] || i === pa.seg.length - 1) { const f = pa.seg[i] ? Math.min(1, d / pa.seg[i]) : 0, a = pa.pts[i], b = pa.pts[i + 1]; return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]; } d -= pa.seg[i]; } return pa.pts[pa.pts.length - 1]; };
+  const H = CH.map((c, k) => { const a = -Math.PI / 2 + k * 2 * Math.PI / CH.length; return [Math.cos(a) * HUBR, Math.sin(a) * HUBR, a]; });
+  let fi = 0;
+  const SUP = CH.map((c, k) => { const a0 = H[k][2], out = []; for (let j = 0; j < c.sup; j++) { const a = a0 + (j / (c.sup - 1) - .5) * 0.95 + (rnd() - .5) * .06, r = HUBR + .12 + (j % 3) * .07 + rnd() * .03; const p = [Math.cos(a) * r, Math.sin(a) * r]; const flag = c.dom ? rnd() < .1 : rnd() < .16; const s = { k, p, flag, name: null, why: null, score: 0, q: rnd() < .72 ? "g" : "a" }; if (flag) { const f = FLAGS[fi++ % FLAGS.length]; s.name = f[0]; s.why = f[1]; s.score = 12 + Math.floor(rnd() * 30); } else s.score = 62 + Math.floor(rnd() * 35); s.out = mkPath([B, [H[k][0], H[k][1]], p]); s.in = mkPath([p, [H[k][0], H[k][1]], B]); out.push(s); } return out; });
+  const ALLS = SUP.flat();
+  const FAM = ["برنامه‌ریزی", "کیفیت رسانه", "استعلام", "محتوا", "انتشار", "پایش", "دستیار برند", "مالی و گزارش"].map((n, f) => { const a = -Math.PI / 2 + Math.PI / 8 + f * Math.PI / 4; return { n, p: [Math.cos(a) * .3, Math.sin(a) * .3] }; });
+  const SALES = [0, .36];
 
-  /* ================= background particles ================= */
-  const cv = $("#cv"), g = cv.getContext("2d"); let W = 0, H = 0;
-  function resize() { const d = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight; cv.width = W * d; cv.height = H * d; cv.style.width = W + "px"; cv.style.height = H + "px"; g.setTransform(d, 0, 0, d, 0, 0); }
+  /* ================= state ================= */
+  const LENS = ["intro", "quality", "forecast", "fleet", "studio", "watch", "proof", "answer", "end"];
+  const ST = { lens: 0, mapA: 0, mapT: 0, scanned: false, scan: null, tg: 220, prob: .78, lag: false, recovered: false, cut: false, accent: [233, 182, 95], zoom: 1, zoomT: 1, ordered: false, joinUntil: 0, studioK: -1 };
+  const ACC = () => ST.accent;
+  let chips = [], timers = [], token = 0;
+
+  /* ================= canvas, camera, projection ================= */
+  const cv = $("#cv"), g = cv.getContext("2d");
+  let W = 0, H2 = 0; const V = { cx: 0, cy: 0, R: 1 };
+  const cam = { tilt: 1.0, rot: 0, mx: 0, my: 0 };
+  function resize() {
+    const d = Math.min(2, devicePixelRatio || 1); W = innerWidth; H2 = innerHeight; cv.width = W * d; cv.height = H2 * d; cv.style.width = W + "px"; cv.style.height = H2 + "px"; g.setTransform(d, 0, 0, d, 0, 0);
+    if (W > 860) { const panelW = Math.min(420, W * .33) + 56, mw = W - panelW; V.cx = mw / 2 + 10; V.cy = H2 * .5 + 6; V.R = Math.min(mw * .43, H2 * .66); }
+    else { V.cx = W / 2; V.cy = H2 * .29; V.R = Math.min(W * .36, H2 * .24); }
+  }
   resize();
-  const N = innerWidth < 860 ? 300 : 460;
-  const P = Array.from({ length: N }, () => ({ x: Math.random() * W, y: Math.random() * H, tx: 0, ty: 0, r: 1.2, tr: 1.2, c: [...DIM], tc: DIM, a: 0, ta: .12, s: .02, j: 8, ph: Math.random() * 6.283, fn: null, d: 0 }));
-  function T(p, o) { if (o.x != null) p.tx = o.x; if (o.y != null) p.ty = o.y; if (o.c) p.tc = o.c; if (o.a != null) p.ta = o.a; if (o.r != null) p.tr = o.r; p.s = reduce ? 1 : (o.s || .07); p.j = reduce ? 0 : (o.j || 0); p.fn = o.fn || null; p.d = reduce ? 0 : (o.d || 0); }
-  const ambient = (p, i) => T(p, { x: Math.random() * W, y: Math.random() * H, c: i % 9 ? DIM : MINT, a: i % 9 ? .12 : .22, r: 1.2, s: .012, j: 12 });
+  function proj(x, y, z = 0) {
+    const c = Math.cos(cam.rot), s = Math.sin(cam.rot), xr = x * c - y * s, yr = x * s + y * c, t = cam.tilt + cam.my * .06;
+    const k = 3 / (3 - yr * Math.sin(t)), R = V.R * ST.zoom;
+    return [V.cx + xr * R * k, V.cy + (yr * Math.cos(t) - z) * R * k, k];
+  }
+
+  /* ================= particles ================= */
+  const N = W < 860 ? 380 : 620;
+  const P = Array.from({ length: N }, (_, i) => ({ i, mode: "free", x: Math.random() * W, y: Math.random() * H2, tx: 0, ty: 0, c: [...GREY], tc: GREY, a: 0, ta: .3, r: 1.4, tr: 1.4, ph: Math.random() * 6.283, j: 0, path: null, u: 0, sp: .2, type: "", oa: 0, or: 0, osp: 0, life: 0, k: 0 }));
+  function noise(p) { const u = Math.random(); p.mode = "free"; p.tx = Math.random() * W; p.ty = Math.random() * H2; p.tc = u < .25 ? RED : u < .6 ? WHITE : GREY; p.ta = .18 + Math.random() * .3; p.tr = 1 + Math.random() * 1.6; p.j = 16; }
+  function pickChannel() {
+    const L = LENS[ST.lens]; let tot = 0;
+    const w = CH.map((c, k) => { let v = c.sup; if (ST.cut && !c.dom) v = 0; if (L === "watch" && ST.lag && k === 1) v *= .3; if (L === "watch" && ST.recovered && k === 2) v *= 3.2; tot += v; return v; });
+    let r = Math.random() * tot; for (let k = 0; k < w.length; k++) if ((r -= w[k]) <= 0) return k; return 0;
+  }
+  function pickSup(k) { const l = SUP[k].filter((s) => !(ST.scanned && s.flag)); return l[Math.floor(Math.random() * l.length)] || SUP[k][0]; }
+  const famPaths = new Map();
+  function assign(p) {
+    const L = LENS[ST.lens];
+    if (L === "end") { p.mode = "orbit"; p.oa = Math.random() * 6.283; p.or = .05 + Math.random() * .3; p.osp = .6 + Math.random(); p.tc = Math.random() < .5 ? ACC() : MINT; p.ta = .9; p.tr = 1.6; p.life = 1e9; return; }
+    if (L === "forecast" && Math.random() < .3) { p.mode = "orbit"; p.oa = Math.random() * 6.283; p.or = .16 + Math.random() * .07; p.osp = .35 + Math.random() * .45; p.tc = Math.random() < ST.prob ? ACC() : TEAL; p.ta = .9; p.tr = 1.7; p.life = 2 + Math.random() * 3; return; }
+    const active = L === "fleet" ? 1 : L === "intro" ? .75 : .62;
+    if (p.i > N * active) { p.mode = "free"; p.tx = Math.random() * W; p.ty = Math.random() * H2; p.tc = DIMC; p.ta = .12; p.tr = 1.1; p.j = 10; return; }
+    const k = pickChannel(), s = pickSup(k);
+    let type = Math.random() < .55 ? "out" : "in";
+    if (L === "proof") type = Math.random() < .8 ? "in" : "out";
+    if (L === "answer") type = Math.random() < .55 ? "q" : (Math.random() < .5 ? "out" : "in");
+    let path;
+    if (L === "fleet") { const f = FAM[Math.floor(Math.random() * FAM.length)], dir = type === "out" ? "o" : "i", key = f.n + "|" + ALLS.indexOf(s) + "|" + dir; path = famPaths.get(key); if (!path) { path = dir === "o" ? mkPath([f.p, [H[k][0], H[k][1]], s.p]) : mkPath([s.p, [H[k][0], H[k][1]], f.p]); famPaths.set(key, path); } }
+    else path = type === "out" ? s.out : s.in;
+    p.mode = "flow"; p.path = path; p.u = 0; p.type = type; p.k = k; p.snap = true;
+    p.sp = (L === "fleet" ? .42 : .2) + Math.random() * .16;
+    p.tc = type === "out" ? MINT : type === "q" ? WHITE : (L === "watch" && ST.lag && !ST.recovered && k === 1 ? RED : ACC());
+    if (!CH[k].dom && type === "in" && L !== "intro") p.tc = GREY;
+    p.ta = L === "fleet" ? .95 : .82; p.tr = L === "fleet" ? 1.6 : 1.8; p.j = 0;
+  }
+  function reassign(randomU) { P.forEach((p) => { assign(p); if (randomU && p.mode === "flow") p.u = Math.random(); }); }
+
+  /* ================= chips (content, receipts, questions, enquiries, pulses) ================= */
+  function chip(o) { const c = { u: 0, sp: .5, ...o }; chips.push(c); return c; }
+
+  /* ================= drawing helpers ================= */
+  const rr = (x, y, w, h, r) => { g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, r); else { g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); } };
+  function tag(x, y, text, o = {}) {
+    const size = o.size || 12; g.font = `${o.w || 700} ${size}px Vazirmatn`; g.direction = "rtl"; g.textAlign = "center"; g.textBaseline = "middle";
+    const w = g.measureText(text).width + (o.pad || 16), h = size + 11;
+    if (o.bg !== false) { g.fillStyle = o.bg || "rgba(7,34,36,.82)"; rr(x - w / 2, y - h / 2, w, h, o.rad || 9); g.fill(); if (o.stroke) { g.strokeStyle = o.stroke; g.lineWidth = 1; g.stroke(); } }
+    g.fillStyle = o.color || "#e3ece8"; g.fillText(text, x, y + 1); return w;
+  }
+  function ring(r, alpha, color, dash) { g.beginPath(); for (let i = 0; i <= 80; i++) { const a = i / 80 * 6.283, q = proj(Math.cos(a) * r, Math.sin(a) * r); i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1]); } g.strokeStyle = rgba(color, alpha); g.lineWidth = 1; g.setLineDash(dash || []); g.stroke(); g.setLineDash([]); }
+  function arc(r, a0, a1, color, alpha, width) { g.beginPath(); const n = Math.max(2, Math.ceil(Math.abs(a1 - a0) / .05)); for (let i = 0; i <= n; i++) { const a = a0 + (a1 - a0) * i / n, q = proj(Math.cos(a) * r, Math.sin(a) * r); i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1]); } g.strokeStyle = rgba(color, alpha); g.lineWidth = width; g.lineCap = "round"; g.stroke(); }
+  const supColor = (s) => { if (ST.cut && !CH[s.k].dom) return [GREY, .3]; if (ST.scanned || s.scanned) { if (s.flag) return [RED, .95]; return [s.q === "g" ? MINT : AMBER, .85]; } return [[150, 190, 182], .6]; };
+
+  /* ================= frame ================= */
   let last = performance.now();
-  (function frame(t) {
-    const dt = Math.min(48, t - last); last = t; g.clearRect(0, 0, W, H); g.globalCompositeOperation = "lighter";
+  function frame(t) {
+    const dt = Math.min(50, t - last); last = t;
+    ST.mapA += (ST.mapT - ST.mapA) * .04; ST.zoom += (ST.zoomT - ST.zoom) * .05;
+    cam.rot = Math.sin(t * .00006) * .07 + cam.mx * .05;
+    g.clearRect(0, 0, W, H2);
+    const A = ST.mapA, L = LENS[ST.lens];
+    if (A > .01) {
+      [.2, .45, .7, .98].forEach((r, i) => ring(r, .06 * A, [160, 200, 190], i === 3 ? [3, 6] : null));
+      CH.forEach((c, k) => {
+        const h = proj(H[k][0], H[k][1]), b = proj(0, 0); const cut = ST.cut && !c.dom, lag = L === "watch" && ST.lag && k === 1 && !ST.recovered, boost = L === "watch" && ST.recovered && k === 2;
+        g.beginPath(); g.moveTo(b[0], b[1]); g.lineTo(h[0], h[1]); g.setLineDash(cut ? [4, 7] : !c.dom ? [6, 5] : []);
+        g.strokeStyle = cut ? rgba(GREY, .25 * A) : lag ? rgba(RED, .7 * A) : boost ? rgba(ACC(), .8 * A) : rgba([160, 210, 198], .26 * A); g.lineWidth = boost ? 2.4 : 1.4; g.stroke(); g.setLineDash([]);
+        SUP[k].forEach((s) => { if (ST.scanned && s.flag) return; const q = proj(s.p[0], s.p[1]); g.beginPath(); g.moveTo(h[0], h[1]); g.lineTo(q[0], q[1]); g.strokeStyle = rgba(cut ? GREY : [160, 210, 198], (cut ? .07 : .12) * A); g.lineWidth = 1; g.stroke(); });
+      });
+    }
+    if (ST.scan != null && A > .01) { const a = ST.scan, b = proj(0, 0); g.beginPath(); g.moveTo(b[0], b[1]); for (let i = 0; i <= 16; i++) { const aa = a - .35 + i / 16 * .35, q = proj(Math.cos(aa) * 1.02, Math.sin(aa) * 1.02); g.lineTo(q[0], q[1]); } g.closePath(); const gr = g.createRadialGradient(b[0], b[1], 0, b[0], b[1], V.R * 1.1); gr.addColorStop(0, "rgba(233,182,95,0)"); gr.addColorStop(1, "rgba(233,182,95,.24)"); g.fillStyle = gr; g.fill(); }
+    if (L === "forecast" && A > .01) { arc(.2, -Math.PI / 2, Math.PI * 1.5, [255, 255, 255], .08, 7); arc(.2, -Math.PI / 2, -Math.PI / 2 + ST.prob * 6.283, ACC(), .9, 7); }
+    g.globalCompositeOperation = "lighter";
+    const joining = t < ST.joinUntil;
     for (const p of P) {
-      if (p.d > 0) p.d -= dt; else { let tx = p.tx, ty = p.ty; if (p.fn) { const q = p.fn(t, p); tx = q[0]; ty = q[1]; } if (p.j) { tx += Math.sin(t * .0011 + p.ph) * p.j; ty += Math.cos(t * .0013 + p.ph * 1.7) * p.j; } p.x += (tx - p.x) * p.s; p.y += (ty - p.y) * p.s; }
-      const c = p.c, tc = p.tc; c[0] += (tc[0] - c[0]) * .08; c[1] += (tc[1] - c[1]) * .08; c[2] += (tc[2] - c[2]) * .08; p.a += (p.ta - p.a) * .06; p.r += (p.tr - p.r) * .1;
-      if (p.a < .01) continue; g.fillStyle = `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${p.a.toFixed(3)})`; g.beginPath(); g.arc(p.x, p.y, Math.max(.4, p.r), 0, 6.283); g.fill();
+      let tx = p.x, ty = p.y;
+      if (p.mode === "flow") { p.u += p.sp * dt / 1000 / p.path.L; if (p.u >= 1) assign(p); if (p.mode === "flow") { const m = at(p.path, p.u), q = proj(m[0] + Math.sin(t * .002 + p.ph) * .006, m[1] + Math.cos(t * .0023 + p.ph) * .006, Math.sin(Math.PI * p.u) * .035); tx = q[0]; ty = q[1]; if (p.snap && !joining) { p.x = tx; p.y = ty; p.a = 0; } p.snap = false; } }
+      if (p.mode === "orbit") { p.oa += p.osp * dt / 1000; p.life -= dt / 1000; const q = proj(Math.cos(p.oa) * p.or, Math.sin(p.oa) * p.or, .02); tx = q[0]; ty = q[1]; if (p.life <= 0) assign(p); }
+      if (p.mode === "free") { tx = p.tx + Math.sin(t * .0011 + p.ph) * p.j; ty = p.ty + Math.cos(t * .0013 + p.ph * 1.7) * p.j; }
+      const kk = p.mode === "free" ? .02 : joining ? .05 : .32; p.x += (tx - p.x) * kk; p.y += (ty - p.y) * kk;
+      const c = p.c, tc = p.tc; c[0] += (tc[0] - c[0]) * .08; c[1] += (tc[1] - c[1]) * .08; c[2] += (tc[2] - c[2]) * .08; p.a += (p.ta - p.a) * .07; p.r += (p.tr - p.r) * .1;
+      if (p.a < .01) continue; g.fillStyle = rgba(c, p.a.toFixed(3)); g.beginPath(); g.arc(p.x, p.y, Math.max(.4, p.r), 0, 6.283); g.fill();
+    }
+    g.globalCompositeOperation = "source-over";
+    if (A > .01) {
+      ALLS.forEach((s) => { const q = proj(s.p[0], s.p[1]), [col, al] = supColor(s); g.globalAlpha = A; g.beginPath(); g.arc(q[0], q[1], 3.3 * q[2], 0, 6.283); g.fillStyle = rgba(col, al); g.fill();
+        if ((ST.scanned || s.scanned) && s.flag && !(ST.cut && !CH[s.k].dom)) { g.strokeStyle = rgba(RED, .8); g.lineWidth = 1.4; g.beginPath(); g.arc(q[0], q[1], 8 * q[2], 0, 6.283); g.stroke(); const d = 3 * q[2]; g.beginPath(); g.moveTo(q[0] - d, q[1] - d); g.lineTo(q[0] + d, q[1] + d); g.moveTo(q[0] + d, q[1] - d); g.lineTo(q[0] - d, q[1] + d); g.strokeStyle = "#fff"; g.lineWidth = 1.3; g.stroke(); }
+        g.globalAlpha = 1; });
+      if (L === "fleet") FAM.forEach((f) => { const q = proj(f.p[0], f.p[1]); g.beginPath(); g.arc(q[0], q[1], 4.5, 0, 6.283); g.fillStyle = rgba(MINT, .95 * A); g.fill(); tag(q[0], q[1] - 15, f.n, { size: 11, color: "#cfe9e1" }); });
+      if (L === "answer") { const q = proj(SALES[0], SALES[1]); g.beginPath(); g.arc(q[0], q[1], 11, 0, 6.283); g.fillStyle = rgba(ACC(), .95); g.fill(); tag(q[0], q[1] + 22, "واحد فروش", { size: 11.5, color: "#0b3032", bg: rgba(ACC(), .95) }); }
+      CH.forEach((c, k) => {
+        const q = proj(H[k][0], H[k][1]), cut = ST.cut && !c.dom, lag = L === "watch" && ST.lag && k === 1 && !ST.recovered, boost = L === "watch" && ST.recovered && k === 2;
+        g.globalAlpha = A; g.beginPath(); g.arc(q[0], q[1], 11 * q[2], 0, 6.283); g.fillStyle = "#0d3436"; g.fill(); g.lineWidth = 2.2;
+        g.strokeStyle = cut ? rgba(GREY, .8) : lag ? rgba(RED, 1) : boost ? rgba(ACC(), 1) : !c.dom ? rgba(AMBER, .8) : rgba(MINT, .9); g.stroke();
+        if (lag || boost) { g.beginPath(); g.arc(q[0], q[1], (16 + Math.sin(t * .006) * 3) * q[2], 0, 6.283); g.strokeStyle = lag ? rgba(RED, .45) : rgba(ACC(), .45); g.lineWidth = 1.5; g.stroke(); }
+        g.globalAlpha = 1;
+        const ly = q[1] - 24 * q[2];
+        tag(q[0], ly, c.n, { size: 12.5, color: cut ? "#8aa29d" : "#eef4f1", stroke: k === ST.studioK && L === "studio" ? "rgba(233,182,95,.9)" : null });
+        let sub = null, col = "#cfe0da";
+        if (L === "forecast") sub = c.fc;
+        if (L === "watch") { sub = cut ? "قطع · جایگزین داخلی" : lag ? "۵۳٪ · پایین‌تر از بازه" : boost ? "جایگزین فعال شد" : c.st; col = cut ? "#8aa29d" : lag ? "#f19b8c" : boost ? "#ffd98e" : "#cfe0da"; }
+        if (L === "studio") sub = c.fmt;
+        if (sub && A > .3 && W > 860) tag(q[0], ly + 21, sub, { size: 11, color: col, bg: "rgba(7,34,36,.6)" });
+      });
+      const b = proj(0, 0), pr = 26 + Math.sin(t * .003) * 2, gr = g.createRadialGradient(b[0] - 6, b[1] - 8, 2, b[0], b[1], pr * 2.4);
+      gr.addColorStop(0, rgba([255, 236, 190], A)); gr.addColorStop(.35, rgba(ACC(), A)); gr.addColorStop(1, rgba(ACC(), 0)); g.fillStyle = gr; g.beginPath(); g.arc(b[0], b[1], pr * 2.4, 0, 6.283); g.fill();
+      g.beginPath(); g.arc(b[0], b[1], pr, 0, 6.283); g.fillStyle = rgba(ACC(), A); g.fill();
+      tag(b[0], b[1] + pr + 18, "فولاد سپیدار", { size: 13, w: 900, color: "#0b3032", bg: rgba(ACC(), .95 * A) });
+      if (L === "forecast") tag(b[0], b[1] - pr - 30, "احتمال هدف روبیکا " + fa(Math.round(ST.prob * 100)) + "٪", { size: 12.5, color: "#0b3032", bg: rgba(ACC(), .95) });
+    }
+    for (let i = chips.length - 1; i >= 0; i--) {
+      const c = chips[i]; c.u += c.sp * dt / 1000 / c.path.L;
+      const m = at(c.path, c.u), q = proj(m[0], m[1], Math.sin(Math.PI * Math.min(1, c.u)) * .05);
+      if (c.kind === "pulse") { g.globalCompositeOperation = "lighter"; g.beginPath(); g.arc(q[0], q[1], 5, 0, 6.283); g.fillStyle = rgba(c.col || MINT, .95); g.fill(); g.beginPath(); g.arc(q[0], q[1], 11, 0, 6.283); g.fillStyle = rgba(c.col || MINT, .18); g.fill(); g.globalCompositeOperation = "source-over"; }
+      else if (c.kind === "coin") { g.beginPath(); g.arc(q[0], q[1], 6, 0, 6.283); g.fillStyle = rgba(ACC(), 1); g.fill(); g.strokeStyle = "rgba(255,240,200,.9)"; g.lineWidth = 1.4; g.stroke(); }
+      else tag(q[0], q[1], c.label, { size: c.size || 12, color: c.fg || "#0b3032", bg: c.bg || "#f2f5ec", rad: 10, pad: 18, stroke: c.stroke });
+      if (c.u >= 1) { chips.splice(i, 1); c.done && c.done(); }
     }
     requestAnimationFrame(frame);
-  })(last);
-  function textPts(str, cx, cy, size, max) {
-    const c = document.createElement("canvas"), x = c.getContext("2d"); x.font = `900 ${size}px Vazirmatn`;
-    const w = Math.ceil(x.measureText(str).width) + 20, h = Math.ceil(size * 1.5); c.width = w; c.height = h;
-    x.font = `900 ${size}px Vazirmatn`; x.fillStyle = "#fff"; x.textAlign = "center"; x.textBaseline = "middle"; x.direction = "rtl"; x.fillText(str, w / 2, h / 2);
-    const d = x.getImageData(0, 0, w, h).data;
-    for (let step = 2; step < 30; step++) { const pts = []; for (let y = 0; y < h; y += step) for (let xx = 0; xx < w; xx += step) if (d[(y * w + xx) * 4 + 3] > 140) pts.push([cx - w / 2 + xx, cy - h / 2 + y]);
-      if (pts.length <= max) { rs(9); for (let i = pts.length - 1; i > 0; i--) { const k = Math.floor(rnd() * (i + 1)); [pts[i], pts[k]] = [pts[k], pts[i]]; } return pts; } }
-    return [];
-  }
-  const NODES = ["برنامه‌ریزی", "کیفیت رسانه", "استعلام", "محتوا", "انتشار", "پایش", "دستیار برند", "مالی و گزارش"];
-  $("#fnodes").innerHTML = NODES.map((n, k) => { const a = -Math.PI / 2 + k * Math.PI / 4; return `<span class="lbl" style="left:${50 + 44 * Math.cos(a)}%;top:${50 + 42 * Math.sin(a)}%">${n}</span>`; }).join("");
-  function layoutParticles(i) {
-    const vis = SECS[i].querySelector(".vis"), r = vis.getBoundingClientRect(), A = { x: r.left, y: r.top, w: r.width, h: r.height, cx: r.left + r.width / 2, cy: r.top + r.height / 2 };
-    const art = vis.dataset.art;
-    if (art === "title" || art === "ten") {
-      const pts = art === "title" ? textPts("راوی", A.cx, A.cy, Math.min(A.w * .4, A.h * .6), N - 60) : textPts("۱۰ روز", A.cx, A.cy, Math.min(A.w * .27, A.h * .42), N - 60);
-      P.forEach((p, k) => { if (k < pts.length) T(p, { x: pts[k][0], y: pts[k][1], c: k % 6 ? (art === "ten" ? SIG : MINT) : (art === "ten" ? MINT : SIG), a: .95, r: 2.2, s: .05, j: 1.2, d: k * 1.6 }); else ambient(p, k); });
-    } else if (art === "fleet") {
-      rs(5); const c = [A.cx, A.cy];
-      P.forEach((p, k) => { if (k < 340) { const n = k % 8, a = -Math.PI / 2 + n * Math.PI / 4; const tx = A.x + (.5 + .44 * Math.cos(a)) * A.w + (rnd() - .5) * 26, ty = A.y + (.5 + .42 * Math.sin(a)) * A.h + (rnd() - .5) * 22; const sp = .0007 + rnd() * .0008, ph = rnd() * 6.283;
-        T(p, { c: MINT, a: .9, r: 1.9, s: .22, fn: (t, q) => { const s = t * sp + ph, u = (1 - Math.cos(s)) / 2; q.tc = Math.sin(s) > 0 ? MINT : SIG; return [c[0] + (tx - c[0]) * u, c[1] + (ty - c[1]) * u]; } }); } else ambient(p, k); });
-    } else P.forEach(ambient);
   }
 
-  /* ================= feature visuals ================= */
-  const SCN = [{ m: 215, sd: 28, tg: 180 }, { m: 248, sd: 36, tg: 220 }, { m: 260, sd: 65, tg: 220 }];
-  const hist = $("#hist"); hist.innerHTML = Array.from({ length: 32 }, (_, k) => `<i style="--k:${k}"></i>`).join("");
-  function drawHist(s, zero) {
-    const sc = SCN[s], lo = 50, hi = 400, bars = $$("i", hist);
-    bars.forEach((b, k) => { const v = lo + (k + .5) * (hi - lo) / bars.length; const pdf = Math.exp(-((v - sc.m) ** 2) / (2 * sc.sd * sc.sd)); b.style.height = zero ? "0%" : (4 + 92 * pdf) + "%"; b.classList.toggle("hit", v >= sc.tg); });
-    const box = hist.getBoundingClientRect(), vis = hist.parentElement.getBoundingClientRect();
-    const fx = (sc.tg - lo) / (hi - lo); $("#tl").style.left = (box.left - vis.left + fx * box.width) + "px"; $("#tl span").textContent = "هدف " + fa(sc.tg) + " هزار";
-    $("#prob").textContent = fa(Math.round(Phi((sc.m - sc.tg) / sc.sd) * 100)) + "٪";
-    $$("#scn button").forEach((b) => b.classList.toggle("on", +b.dataset.s === s));
-  }
-  let scn = 1; $$("#scn button").forEach((b) => (b.onclick = () => { scn = +b.dataset.s; drawHist(scn); }));
-
-  rs(31); const QG = $("#qgrid"); QG.innerHTML = Array.from({ length: 160 }, () => { const u = rnd(); return `<i data-k="${u < .07 ? "r" : u < .66 ? "g" : "a"}"></i>`; }).join("");
-
-  const CUR = [(h) => 104 * (1 - Math.exp(-h / 15)), (h) => 96 * (1 - Math.exp(-h / 20)), (h) => 70 * (1 - Math.exp(-h / 20)) + (live.rec && h > 20 ? 38 * (1 - Math.exp(-(h - 20) / 12)) : 0)];
-  const E = (h) => 97 * (1 - Math.exp(-h / 18)); const X = (h) => 60 + h / 72 * 920, Y = (v) => 560 - v / 120 * 500;
-  const live = { H: 0, rec: false };
-  function drawChart() {
-    const path = (f, Hm) => { let d = ""; for (let h = 0; h <= Hm; h += .5) d += (h ? "L" : "M") + X(h).toFixed(1) + " " + Y(f(h)).toFixed(1); return d; };
-    let band = "M" + X(0) + " " + Y(0); for (let h = 0; h <= 72; h++) band += "L" + X(h) + " " + Y(E(h) * 1.1); for (let h = 72; h >= 0; h--) band += "L" + X(h) + " " + Y(E(h) * .9);
-    $("#band").setAttribute("d", band + "Z"); $("#tgt").setAttribute("d", `M60 ${Y(100)}H980`);
-    CUR.forEach((f, k) => $("#c" + k).setAttribute("d", path(f, Math.max(.5, live.H))));
-  }
-
-  const COLS = [["A", "اتصال مستقیم (API)", 35, "#7fc8b6"], ["B", "خروجی ناشر", 45, "#5fae9b"], ["C", "اسکرین‌شات · موقت", 17, "#c9984e"], ["D", "برآورد · غیرقابل پرداخت", 4, "#5c6f6b"]];
-  $("#cols").innerHTML = COLS.map((c, k) => `<div class="col"><i style="--k:${k};background:${c[3]}" data-h="${c[2] * 1.9}"></i><b style="color:${c[3]}">${c[0]}</b><small>${c[1]}</small></div>`).join("");
-
-  /* ================= navigation ================= */
-  let idx = -1, token = 0, timers = [];
-  const later = (fn, ms, tk) => { const h = setTimeout(() => tk === token && fn(), reduce ? 0 : ms); timers.push(h); };
-  const tick = (fn, ms) => { const h = setInterval(fn, ms); timers.push(h); };
-  async function countUp(el, to, ms, tk) { const n = 30; for (let k = 1; k <= n; k++) { if (tk !== token) return; el.textContent = nf(to * ease(k / n)); await new Promise((r) => setTimeout(r, reduce ? 0 : ms / n)); } }
-
-  const ENTER = {
-    1: (tk) => { drawHist(scn, true); later(() => drawHist(scn), 250, tk); },
-    2: (tk) => { const cells = $$("i", QG), sc = $("#qscan"), vis = QG.parentElement; cells.forEach((c) => (c.className = "")); $("#curves").classList.remove("play"); $("#qn").textContent = "۰";
-      const box = QG.getBoundingClientRect(), vb = vis.getBoundingClientRect(); sc.style.opacity = 0;
-      for (let col = 19; col >= 0; col--) later(() => { sc.style.opacity = 1; sc.style.left = (box.left - vb.left + (col + .5) / 20 * box.width) + "px"; cells.forEach((c, k) => { if (k % 20 === col) c.className = c.dataset.k; }); if (col === 0) later(() => (sc.style.opacity = 0), 300, tk); }, 500 + (19 - col) * 90, tk);
-      later(() => { $("#curves").classList.add("play"); countUp($("#qn"), 87, 900, tk); }, 2400, tk); },
-    3: (tk) => { const st = $("#studio"); st.classList.remove("play"); $$(".claims div").forEach((d) => d.classList.remove("on")); later(() => st.classList.add("play"), 200, tk); later(() => $(".claims .ok").classList.add("on"), 1200, tk); later(() => $(".claims .no").classList.add("on"), 1800, tk); },
-    4: (tk) => { countUp($("#ft"), 18694, 2200, tk); countUp($("#fh"), 9, 2200, tk); },
-    5: (tk) => { live.H = 0; live.rec = false; drawChart(); const al = $("#alert"), ok = $("#ok"); al.classList.remove("on"); ok.disabled = false; ok.textContent = "تأیید با یک کلیک";
-      let phase = 0; const resume = () => { if (phase !== 1) return; phase = 2; live.rec = true; ok.disabled = true; ok.textContent = "تأیید شد ✓"; later(() => al.classList.remove("on"), 1600, tk); };
-      ok.onclick = resume;
-      tick(() => { if (tk !== token) return; if (phase === 0) { live.H += .6; if (live.H >= 18) { live.H = 18; phase = 1; al.classList.add("on"); later(resume, 6500, tk); } } else if (phase === 2 && live.H < 72) live.H = Math.min(72, live.H + .8); drawChart(); }, reduce ? 200 : 60); },
-    6: (tk) => { const bars = $$("#cols i"), fl = $("#flow"), rep = $("#report"); bars.forEach((b) => (b.style.height = "0")); rep.classList.remove("on"); fl.innerHTML = "";
-      later(() => bars.forEach((b) => (b.style.height = b.dataset.h + "%")), 150, tk);
-      later(() => { const vis = $("#proof").getBoundingClientRect(), pay = $(".pay").getBoundingClientRect(); fl.setAttribute("viewBox", `0 0 ${vis.width} ${vis.height}`);
-        const px = pay.left - vis.left + pay.width / 2, py = pay.top - vis.top + pay.height / 2; let html = "";
-        bars.slice(0, 2).forEach((b, k) => { const r = b.getBoundingClientRect(), sx = r.left - vis.left + r.width / 2, sy = r.top - vis.top; const d = `M${sx} ${sy} C ${sx} ${py - 40}, ${px - 120} ${py}, ${px} ${py}`;
-          html += `<path d="${d}" fill="none" stroke="rgba(233,182,95,.35)" stroke-width="2" stroke-dasharray="5 7"/>`; for (let j = 0; j < 4; j++) html += `<circle r="4.5" fill="#ffd98e"><animateMotion dur="${2.2 + k * .4}s" begin="${-j * .6}s" repeatCount="indefinite" path="${d}"/></circle>`; });
-        fl.innerHTML = html; rep.classList.add("on"); }, 1500, tk); }
+  /* ================= lens content ================= */
+  const IC = {
+    quality: "M11 11m-7 0a7 7 0 1 0 14 0a7 7 0 1 0-14 0M16 16l5 5M8 11l2 2 4-4", forecast: "M4 20V12M9 20V8M14 20V4M19 20v-6M3 20h18",
+    fleet: "M6 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M18 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M12 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M7.5 7.5l3.5 9M16.5 7.5l-3.5 9M8 6h8",
+    studio: "M12 3l9 5-9 5-9-5zM3 13l9 5 9-5", watch: "M3 12h4l2-5 4 10 2-5h6", proof: "M6 3h9l4 4v14H6zM9 13l2 2 4-4", answer: "M4 5h16v11H8l-4 4z",
+    end: "M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"
+  };
+  const svg = (k) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="${IC[k]}"/></svg>`;
+  const specs = (rows) => `<div class="specs">${rows.map((r) => `<div><span>${r[0]}</span><b>${r[1]}</b></div>`).join("")}</div>`;
+  const head = (n, name, sub) => `<div class="kick">لنز ${fa(n)} از ۷<span>فولاد سپیدار · نمایشی</span></div><h2>${name}</h2><div class="sub">${sub}</div>`;
+  const deep = (route) => `<a class="deep" href="../ravi/index.html#/${route}">این بخش در داشبورد ←</a>`;
+  const CARD = {
+    intro: () => `<div class="kick">پلتفرم عملیات کمپین برای برندها</div><h1>از هیاهوی بازار،<br><em>تا عدد قابل اثبات.</em></h1><p class="line">این نقشه‌ی زنده‌ی یک کمپین است: برند در مرکز، کانال‌های واقعی در اطراف، و عامل‌های هوش مصنوعی که بینشان کار می‌کنند. هر قابلیت راوی یک لنز روی همین نقشه است.</p>${specs([["بسترها", "روبیکا، ایتا، بله، آپارات، سایت‌ها، تلگرام، اینستاگرام"], ["مشتری نمونه", "فولاد سپیدار · میلگرد A4"], ["هدف", "۴۰۰ هزار بازدید و ۱۰۰ استعلام"]])}<button class="btn" data-lens="1">شروع با لنز اول ←</button>`,
+    quality: () => `${head(1, "سنجه", "شاخص کیفیت رسانه")}<p class="line">پیش از خرید تبلیغ، رفتار واقعی بازدید هر کانال سنجیده می‌شود. کانال‌هایی که الگوی جعلی دارند از برنامه بیرون می‌روند.</p>${specs([["نشانه‌ها", "منحنی ۲۴ ساعته، نسبت بازدید به عضو، جهش عضو"], ["خروجی", "امتیاز ۰ تا ۱۰۰ برای هر کانال"], ["قاعده", "فقط کانال سالم تعهد تحویل می‌گیرد"]])}<div class="ctrl"><div class="nums"><div class="m"><b id="q1">۰</b><span>کانال بررسی‌شده</span></div><div class="r"><b id="q2">۰</b><span>الگوی غیرعادی</span></div></div><div class="hint">روی یک نقطه‌ی قرمز بزنید تا دلیلش را ببینید</div></div>${deep("quality")}`,
+    forecast: () => `${head(2, "پیش‌نما", "پیش‌بینی تحویل")}<p class="line">پیش از خرج، برای هر بستر بازه‌ی تحویل و احتمال رسیدن به هدف نشان داده می‌شود؛ بر اساس سابقه‌ی واقعی همان کانال‌ها.</p>${specs([["مبنا", "سابقه‌ی ۱۰ پست آخر هر کانال"], ["اجرا", "۱۰٬۰۰۰ شبیه‌سازی برای هر سناریو"], ["تصمیم", "انتخاب سناریو با انسان"]])}<div class="ctrl range"><label>هدف روبیکا در ۷۲ ساعت <b id="tgv">۲۲۰ هزار</b></label><input type="range" id="tg" min="150" max="320" step="10" value="${ST.tg}" aria-label="هدف روبیکا"><div class="nums"><div><b id="pv">${fa(Math.round(ST.prob * 100))}٪</b><span>احتمال رسیدن به هدف</span></div></div></div>${deep("brief")}`,
+    fleet: () => `${head(3, "ناوگان", "عامل‌های هوش مصنوعی")}<p class="line">صدها عامل کار عملیات را هم‌زمان انجام می‌دهند: استعلام از ادمین‌ها، پایش هر پست، خواندن مدرک‌ها و نوشتن گزارش. پول، انتشار و ادعا فقط با تأیید انسان.</p>${specs([["خانواده‌ها", "۸ گروه عامل، روی یک دفتر کل"], ["مدل‌ها", "متن‌باز، روی سرور خودمان"], ["مرز", "بدون حساب جعلی؛ فقط جایگاه واقعی"]])}<div class="ctrl nums"><div class="m"><b id="f1">۰</b><span>کار در یک کمپین</span></div><div><b id="f2">۰</b><span>تصمیم انسانی</span></div></div>${deep("fleet")}`,
+    studio: () => `${head(4, "استودیو", "محتوای فارسی چندقالبی")}<p class="line">یک ایده برای هر بستر به قالب خودش تبدیل می‌شود: پست، ریلز، ویدیو، بنر. هر ادعا با واقعیت‌های تأییدشده‌ی برند سنجیده می‌شود.</p>${specs([["ایده", "«برگه‌ی آزمون برای هر محموله»"], ["پیش‌آزمون", "پنل شبیه‌سازی‌شده، سپس آزمون واقعی"], ["تولید رسانه", "روی GPU محلی"]])}<div class="ctrl"><div class="claim ok"><i>✓</i><span>«برگه‌ی آزمون کشش برای هر محموله»</span></div><div class="claim no"><i>✕</i><span>«مقاوم‌ترین میلگرد ایران»</span></div><div class="box" id="ver">روی یک بستر بزنید تا نسخه‌ی آن را ببینید.</div></div>${deep("studio")}`,
+    watch: () => `${head(5, "دیده‌بان", "پایش زنده و بازیابی")}<p class="line">هر جایگاه زیر نظر است. وقتی بستری از بازه‌ی پیش‌بینی عقب بماند، جایگزین واقعی پیشنهاد می‌شود؛ در قطعی اینترنت، برنامه‌ی جایگزین امضاشده اجرا می‌شود.</p>${specs([["پایش", "۴۱ جایگاه، هر ۱۵ دقیقه"], ["بازیابی", "جایگزین با هزینه و مهلت لغو"], ["قطعی", "تداوم روی بسترهای داخلی"]])}<div class="ctrl"><div class="box alert" id="al"><b>ایتا پایین‌تر از بازه‌ی پیش‌بینی است</b><br>پیشنهاد: رزرو جایگزین در بله · ۱۳۰ م.ت · قابل لغو تا ۴۸ ساعت<br><button class="btn" id="ok">تأیید با یک کلیک</button></div><button class="switch ${ST.cut ? "on" : ""}" id="cut"><span>قطع اینترنت بین‌الملل</span><u></u></button></div>${deep("campaigns")}`,
+    proof: () => `${head(6, "سند", "پرداخت در برابر مدرک")}<p class="line">هر عدد که از کانال‌ها برمی‌گردد درجه‌ی مدرک دارد. پول فقط برای مدرک پذیرفته به تأمین‌کننده برمی‌گردد و هر عدد گزارش منبعش را دارد.</p>${specs([["درجه‌ها", "A اتصال مستقیم · B خروجی ناشر · C اسکرین‌شات"], ["پرداخت", "فقط برای A و B"], ["کمبود", "جایگزین یا بازپرداخت، هرگز تعامل جعلی"]])}<div class="ctrl ledger" id="led"></div>${deep("finance")}`,
+    answer: () => `${head(7, "پاسخ", "دستیار برند و استعلام")}<p class="line">به پرسش‌های فنی و قیمت مخاطبان، با نام و نشان خود برند جواب می‌دهد و استعلام‌ها را با نام پروژه به واحد فروش می‌فرستد.</p>${specs([["پاسخ", "فقط از واقعیت‌های تأییدشده"], ["خروجی", "استعلام با نام پروژه و استان"], ["شمارش", "پاسخ دستیار جزو تعامل مخاطب نیست"]])}<div class="ctrl"><div class="nums"><div class="m"><b id="a1">۰</b><span>پاسخ داده‌شده</span></div><div><b id="a2">۰</b><span>استعلام برای فروش</span></div></div><div class="ledger leads" id="leads"></div></div>${deep("evidence")}`,
+    end: () => `<div class="kick">نسخه‌ی شما<span>هر هفت لنز، با نام شما</span></div><h1>داشبورد،<br><em>با برند شما.</em></h1><p class="line">همین نقشه و همه‌ی قابلیت‌ها، با نام و رنگ شما برای مشتری‌هایتان. برای شروع، ده روز با هم: پنج مشتری، سه پرونده‌ی کمپین قبلی، و یک نفر از عملیات شما.</p><input class="name" id="pname" placeholder="نام آژانس شما" aria-label="نام آژانس"><div class="sw" id="sw">${[[233, 182, 95], [92, 170, 230], [224, 100, 90], [111, 207, 151], [190, 140, 240]].map((c, i) => `<button data-c="${c.join(",")}" style="background:rgb(${c.join(",")})" class="${c.join(",") === ST.accent.join(",") ? "on" : ""}" aria-label="رنگ ${fa(i + 1)}"></button>`).join("")}</div><div class="brandx" id="bx">راوی <em>×</em> <span id="bxn">آژانس شما</span></div><button class="btn big" data-dash>ورود به داشبورد ←</button>`
   };
 
-  function go(i, push = true) {
-    i = Math.max(0, Math.min(LAST, i)); if (i === idx) return;
-    idx = i; token++; const tk = token; timers.forEach((h) => { clearTimeout(h); clearInterval(h); }); timers = [];
-    SECS.forEach((s, k) => s.classList.toggle("on", k === i));
-    $$(".tab").forEach((b) => b.classList.toggle("on", +b.dataset.go === i));
-    $$("#dots button").forEach((b, k) => { b.classList.toggle("on", k === i); b.classList.toggle("d", k < i); });
-    const on = $(".tab.on"); if (on) on.scrollIntoView({ block: "nearest", inline: "center", behavior: reduce ? "auto" : "smooth" });
-    $$(".txt > *", SECS[i]).forEach((n, k) => n.style.setProperty("--i", k));
-    if (push) history.replaceState(null, "", "#" + i);
-    requestAnimationFrame(() => { layoutParticles(i); if (ENTER[i]) ENTER[i](tk); });
+  /* ================= lens behaviour ================= */
+  const later = (fn, ms, tk) => { const h = setTimeout(() => tk === token && fn(), reduce ? Math.min(ms, 50) : ms); timers.push(h); };
+  const every = (fn, ms, tk) => { const h = setInterval(() => tk === token && fn(), ms); timers.push(h); };
+  async function countUp(el, to, ms, tk) { if (!el) return; const n = 28; for (let k = 1; k <= n; k++) { if (tk !== token) return; el.textContent = nf(to * ease(k / n)); await new Promise((r) => setTimeout(r, reduce ? 0 : ms / n)); } }
+  const RECEIPTS = [[0, "روبیکا · ۱۱۸٬۰۰۰ بازدید", "B"], [3, "آپارات · ۳۷٬۰۰۰ بازدید", "A"], [1, "ایتا · ۶۴٬۰۰۰ بازدید", "C"], [4, "سایت‌ها · ۷۴ استعلام", "A"], [0, "روبیکا · ۷۲٬۰۰۰ بازدید", "B"], [5, "اینستاگرام · ۲۱٬۰۰۰ پخش", "C"]];
+  const LEADS = [["پروژه‌ی مسکونی ۱۲ طبقه", "اصفهان · ۸۰ تن"], ["انبوه‌ساز مجتمع اداری", "شیراز · ۲۲۰ تن"], ["پیمانکار پل شهری", "تبریز · ۱۴۰ تن"], ["بنکدار آهن‌آلات", "مشهد · ۳۰۰ تن"], ["پروژه‌ی بیمارستان", "اهواز · ۱۸۰ تن"]];
+  const ENTER = {
+    intro: (tk, replay) => { if (replay || !ST.ordered) { ST.mapT = 0; ST.scanned = false; ALLS.forEach((s) => (s.scanned = false)); P.forEach(noise); later(() => { ST.ordered = true; ST.mapT = 1; ST.joinUntil = performance.now() + 1500; reassign(true); }, 1600, tk); } else { ST.mapT = 1; reassign(true); } },
+    quality: (tk) => { ST.scanned = false; ALLS.forEach((s) => (s.scanned = false)); reassign(true); let a = -Math.PI / 2; ST.scan = a; const start = performance.now(), dur = reduce ? 10 : 3600;
+      every(() => { const u = Math.min(1, (performance.now() - start) / dur); a = -Math.PI / 2 + u * 6.283; ST.scan = a; ALLS.forEach((s) => { let sa = Math.atan2(s.p[1], s.p[0]); while (sa < -Math.PI / 2) sa += 6.283; if (sa <= a) s.scanned = true; });
+        if (u >= 1 && ST.scan != null) { ST.scan = null; ST.scanned = true; countUp($("#q2"), 87, 900, tk); } }, 30, tk);
+      countUp($("#q1"), 1200, dur, tk); },
+    forecast: () => { reassign(true); const inp = $("#tg"); const upd = () => { ST.tg = +inp.value; ST.prob = Phi((248 - ST.tg) / 36); $("#tgv").textContent = fa(ST.tg) + " هزار"; $("#pv").textContent = fa(Math.round(ST.prob * 100)) + "٪"; }; inp.oninput = upd; upd(); },
+    fleet: (tk) => { reassign(true); countUp($("#f1"), 18694, 2200, tk); countUp($("#f2"), 9, 2200, tk); },
+    studio: (tk) => { reassign(true); let k = 0; const send = () => { const kk = k % CH.length, c = CH[kk]; if (!(ST.cut && !c.dom)) chip({ path: mkPath([B, [H[kk][0], H[kk][1]]]), label: c.fmt + " · " + c.n, sp: .42, bg: "#f2f5ec" }); k++; }; send(); every(send, 900, tk); },
+    watch: (tk) => { ST.lag = false; ST.recovered = false; reassign(true);
+      every(() => { CH.forEach((c, k) => { if (ST.cut && !c.dom) return; const lag = ST.lag && k === 1 && !ST.recovered; chip({ kind: "pulse", path: mkPath([[H[k][0], H[k][1]], B]), sp: lag ? .25 : .55, col: lag ? RED : !c.dom ? AMBER : MINT }); }); }, 1300, tk);
+      later(() => { ST.lag = true; reassign(true); $("#al") && $("#al").classList.add("on"); }, 2200, tk);
+      const ok = $("#ok"); ok.onclick = () => { ST.recovered = true; ok.disabled = true; ok.textContent = "تأیید شد ✓ · جایگزین بله فعال"; reassign(true); };
+      const sw = $("#cut"); sw.onclick = () => { ST.cut = !ST.cut; sw.classList.toggle("on", ST.cut); reassign(true); }; },
+    proof: (tk) => { reassign(true); let i = 0; const led = $("#led");
+      const send = () => { const r = RECEIPTS[i++ % RECEIPTS.length], k = r[0]; if (ST.cut && !CH[k].dom) return;
+        chip({ path: mkPath([[H[k][0], H[k][1]], B]), label: r[1] + " · " + r[2], sp: .3, bg: r[2] === "C" ? "#f3dfb9" : "#e3f3ee", done: () => {
+          if (tk !== token) return; const ok = r[2] !== "C";
+          if (ok) for (let j = 0; j < 3; j++) setTimeout(() => tk === token && chip({ kind: "coin", path: mkPath([B, [H[k][0], H[k][1]]]), sp: .55 }), j * 180);
+          if (led) { led.insertAdjacentHTML("afterbegin", `<div class="g-${r[2]}"><em>${r[2]}</em><span>${r[1]}</span><small>${ok ? "پرداخت شد ✓" : "در بررسی · مدرک بهتر خواسته شد"}</small></div>`); while (led.children.length > 5) led.lastElementChild.remove(); } } }); };
+      send(); every(send, 1500, tk); },
+    answer: (tk) => { reassign(true); let n = 0, l = 0, li = 0; const leads = $("#leads");
+      const ask = () => { const s = pickSup(pickChannel()); chip({ path: mkPath([s.p, B]), label: "؟", size: 13, sp: .4, bg: "rgba(255,255,255,.92)", done: () => { if (tk !== token) return; n++; $("#a1").textContent = nf(n * 4);
+        if (n % 3 === 0) { const ld = LEADS[li++ % LEADS.length]; chip({ path: mkPath([B, SALES]), label: "استعلام · " + ld[1], sp: .22, bg: rgba(ACC(), 1), done: () => { if (tk !== token) return; l++; $("#a2").textContent = nf(l); if (leads) { leads.insertAdjacentHTML("afterbegin", `<div><b>${ld[0]}</b><span>${ld[1]} · ثبت با نام پروژه</span></div>`); while (leads.children.length > 3) leads.lastElementChild.remove(); } } }); } } }); };
+      ask(); every(ask, 700, tk); },
+    end: () => { reassign(true); const inp = $("#pname"); inp.oninput = () => { const v = inp.value.trim() || "آژانس شما"; $("#bxn").textContent = v; $("#logoName").textContent = inp.value.trim() ? "راوی × " + v : "راوی"; };
+      $$("#sw button").forEach((b) => (b.onclick = () => { ST.accent = b.dataset.c.split(",").map(Number); $$("#sw button").forEach((x) => x.classList.toggle("on", x === b)); $("#lgAcc").style.background = `rgb(${b.dataset.c})`; reassign(true); })); }
+  };
+
+  /* ================= navigation ================= */
+  const BAR = [["quality", "سنجه"], ["forecast", "پیش‌نما"], ["fleet", "ناوگان"], ["studio", "استودیو"], ["watch", "دیده‌بان"], ["proof", "سند"], ["answer", "پاسخ"]];
+  $("#lenses").innerHTML = BAR.map((b, i) => `<button data-lens="${i + 1}" title="${fa(i + 1)}">${svg(b[0])}<span>${b[1]}</span></button>`).join("") + `<i class="sep"></i><button data-lens="8">${svg("end")}<span>نسخه‌ی شما</span></button>`;
+  function go(i, replay) {
+    i = Math.max(0, Math.min(LENS.length - 1, i)); if (i === ST.lens && !replay) return;
+    token++; const tk = token; timers.forEach((h) => { clearTimeout(h); clearInterval(h); }); timers = []; chips = []; hideTip();
+    const prev = LENS[ST.lens]; ST.lens = i; const L = LENS[i];
+    if (prev === "watch" && L !== "watch") { ST.cut = false; ST.lag = false; ST.recovered = false; }
+    if (L !== "quality") ST.scan = null;
+    ST.zoomT = L === "end" ? 1.06 : 1; ST.studioK = -1;
+    if (L !== "intro") { ST.mapT = 1; if (!ST.ordered) { ST.ordered = true; ST.joinUntil = performance.now() + 1200; } }
+    const card = $("#card"); card.innerHTML = CARD[L](); [...card.children].forEach((c, k) => c.style.setProperty("--i", k)); card.scrollTop = 0;
+    $$("#lenses button").forEach((b) => b.classList.toggle("on", +b.dataset.lens === i));
+    const on = $("#lenses button.on"); if (on) on.scrollIntoView({ block: "nearest", inline: "center" });
+    history.replaceState(null, "", "#" + i);
+    ENTER[L](tk, replay);
   }
-  document.addEventListener("click", (e) => { const b = e.target.closest("[data-go]"); if (b) go(+b.dataset.go); });
+  document.addEventListener("click", (e) => {
+    const d = e.target.closest("[data-dash]"); if (d) { e.preventDefault(); toDashboard(); return; }
+    const b = e.target.closest("[data-lens]"); if (b) { const i = +b.dataset.lens; go(i, i === 0 && ST.lens === 0); }
+  });
+  function toDashboard() { token++; timers.forEach((h) => { clearTimeout(h); clearInterval(h); }); ST.zoomT = 7; ST.mapT = 1; P.forEach((p) => { p.mode = "orbit"; p.oa = Math.random() * 6.283; p.or = Math.random() * .1; p.osp = 2; p.life = 1e9; }); $("#fade").style.opacity = 1; setTimeout(() => (location.href = "../ravi/index.html"), reduce ? 50 : 1100); }
   addEventListener("keydown", (e) => {
-    if (e.ctrlKey || e.metaKey || e.altKey) return;
-    const k = e.key;
-    if (k === "ArrowLeft" || k === "PageDown" || k === " ") { e.preventDefault(); go(idx + 1); }
-    else if (k === "ArrowRight" || k === "PageUp") { e.preventDefault(); go(idx - 1); }
-    else if (k === "Home" || k === "0" || k === "۰") go(0);
-    else if (k === "End") go(LAST);
+    if (e.target.closest && e.target.closest("input")) return; if (e.ctrlKey || e.metaKey || e.altKey) return; const k = e.key;
+    if (k === "ArrowLeft" || k === "PageDown") { e.preventDefault(); go(ST.lens + 1); }
+    else if (k === "ArrowRight" || k === "PageUp") { e.preventDefault(); go(ST.lens - 1); }
+    else if (k === "Home" || k === "0" || k === "۰") go(0, ST.lens === 0);
+    else if (k === "End" || k === "8" || k === "۸") go(8);
     else if (/^[1-7۱-۷]$/.test(k)) go("۰۱۲۳۴۵۶۷".includes(k) ? "۰۱۲۳۴۵۶۷".indexOf(k) : +k);
     else if (k.toLowerCase() === "f") { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen?.(); }
   });
-  let rt; const relayout = () => { clearTimeout(rt); rt = setTimeout(() => { resize(); layoutParticles(idx); if (idx === 1) drawHist(scn); }, 150); };
-  addEventListener("resize", relayout);
-  SECS.forEach((s) => s.addEventListener("scroll", relayout, { passive: true }));
-  const start = () => { const m = /#(\d)/.exec(location.hash); go(m ? +m[1] : 0, false); };
-  (document.fonts && document.fonts.load ? Promise.all([document.fonts.load("900 80px Vazirmatn"), document.fonts.load("700 14px Vazirmatn")]).catch(() => {}) : Promise.resolve()).then(start);
+
+  /* ================= map interaction ================= */
+  const tip = $("#tip"); let tipT;
+  function showTip(x, y, html) { tip.innerHTML = html; tip.style.left = Math.min(W - 300, Math.max(10, x + 14)) + "px"; tip.style.top = Math.min(H2 - 140, Math.max(70, y - 20)) + "px"; tip.classList.add("on"); clearTimeout(tipT); tipT = setTimeout(hideTip, 4200); }
+  function hideTip() { tip.classList.remove("on"); }
+  cv.addEventListener("click", (e) => {
+    if (ST.mapA < .5) return; const x = e.clientX, y = e.clientY, L = LENS[ST.lens];
+    let best = null, bd = 18; ALLS.forEach((s) => { const q = proj(s.p[0], s.p[1]), d = Math.hypot(q[0] - x, q[1] - y); if (d < bd) { bd = d; best = { s }; } });
+    CH.forEach((c, k) => { const q = proj(H[k][0], H[k][1]), d = Math.hypot(q[0] - x, q[1] - y); if (d < Math.max(bd, 22)) { bd = d; best = { k }; } });
+    if (!best) { hideTip(); return; }
+    if (best.k != null) { const c = CH[best.k];
+      if (L === "studio") { ST.studioK = best.k; const v = $("#ver"); if (v) v.innerHTML = `<b>${c.fmt} · ${c.n}</b><br>${c.ver}`; return; }
+      showTip(x, y, `<b>${c.n}</b><span class="m">${c.dom ? "بستر داخلی" : "فیلتر · دسترسی با فیلترشکن"}</span><br>پیش‌بینی: ${c.fc}<br>وضعیت: ${c.st}`); return; }
+    const s = best.s, c = CH[s.k];
+    if ((ST.scanned || s.scanned) && s.flag) showTip(x, y, `<b>«${s.name}»</b><span class="r">${c.n} · شاخص ${fa(s.score)} از ۱۰۰</span><br>${s.why}<br><span class="s">از برنامه خارج شد · بررسی انسانی، نه اتهام</span>`);
+    else showTip(x, y, `<b>کانال ${c.n}</b>${ST.scanned || s.scanned ? `<span class="m">شاخص ${fa(s.score)} از ۱۰۰ · ${s.q === "g" ? "مدرک خوب" : "مدرک نامعلوم"}</span>` : "<span>هنوز سنجیده نشده</span>"}`);
+  });
+  cv.addEventListener("mousemove", (e) => { cam.mx = (e.clientX / W - .5); cam.my = (e.clientY / H2 - .5); });
+
+  let live = 162; setInterval(() => { live = Math.max(140, Math.min(184, live + Math.round((Math.random() - .5) * 6))); $("#liveN").textContent = fa(live); }, 1400);
+
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(resize, 120); });
+  const start = () => { requestAnimationFrame(frame); const m = /#(\d)/.exec(location.hash); ST.lens = -1; go(m ? +m[1] : 0); };
+  (document.fonts && document.fonts.load ? Promise.all([document.fonts.load("900 14px Vazirmatn"), document.fonts.load("700 12px Vazirmatn")]).catch(() => {}) : Promise.resolve()).then(start);
 })();
 </script>
 </body>

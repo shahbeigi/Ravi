@@ -12,7 +12,7 @@ The user has confirmed that the prospective media partner's strongest contributi
 4. [Local agent fleet assessment](04_local_agent_fleet.md): 24/7 worker groups, authorized interaction, synthetic engagement, capacity, and comparative experiments.
 5. [Desk-research gaps](05_desk_research_gaps.md): 2026 shutdowns and what they change, platform usage figures, ad pricing and fraud, Iranian ad networks, models from abroad.
 6. [Field-sprint kit](06_field_sprint_kit.md): partner and Persian client interview guides, supplier quote template, pilot proposal template.
-7. [Short showcase](../showcase/index.html) for partner meetings (six features, about 10 minutes). [Partner onboarding script](07_partner_onboarding_script.md) and its visual version, the [onboarding journey](../onboarding/index.html); the main [dashboard](../ravi/index.html).
+7. [Short showcase](../showcase/index.html) for partner meetings: a living campaign map with seven feature lenses (about 10 minutes). [Partner onboarding script](07_partner_onboarding_script.md) and its visual version, the [onboarding journey](../onboarding/index.html); the main [dashboard](../ravi/index.html).
 8. [Decision Room](../decision-room/index.html): Persian, animated, seven chapters (problem, differentiation, campaign flow and the "100 agents" question, agent system, readiness map, unit-economics calculator, open decisions and pilot offer). Team and media-partner modes; open with `#partner` for the partner view.
 9. [Animated technical walkthrough](../technical-walkthrough/walkthrough.html): six chapters with pause/scrub controls and implementation notes; fictional campaign and proposed screens.
 

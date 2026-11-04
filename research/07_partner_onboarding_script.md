@@ -12,22 +12,25 @@ A steel company asks for 400,000 real views and 100 price enquiries from contrac
 2. **"The AI system is real, big and safe."** Hundreds of parallel agents do the operational work; humans approve money, publication and claims; nothing is faked.
 3. **"The first step is small and concrete."** 10 days, 5 client conversations, 3 old campaign files, then a paid pilot with go/no-go gates.
 
-## Recommended format: the short showcase (8–10 minutes)
+## Recommended format: the living campaign map (8–10 minutes)
 
-The full journey below is long for a first meeting. For the partner meeting, use **`showcase/index.html`**: one page, six features, switched with the tabs or the keys ۱–۶ while the speaker talks. Open the dashboard only at the end (button in the top bar and on the last slide). Keep the full journey and the Decision Room as backup for questions.
+The full journey below is long for a first meeting. For the partner meeting, use **`showcase/index.html`**: one live map of a campaign (the brand in the centre, the real channels and their suppliers around it, agents working along the connections). Each capability is a **lens** over the same map, switched with the bottom bar or keys ۱–۷ while the speaker talks. The dashboard opens only at the end: the map zooms into the brand node and hands over to `ravi/index.html`.
 
-| Key | Feature | What the screen does | Talk track (about one minute each) |
+Colour code (same as the dashboard): green = agent work, gold = proven number or payment, red = suspicious, grey = estimate or cut.
+
+| Key | Lens | What the map does | Talk track (about one minute each) |
 |---|---|---|---|
-| ۰ | Cover | Points form «راوی» | «ما به برندها کمک می‌کنیم هدف بازدید و استعلامشان را واقعاً بگیرند، و برای هر عدد مدرک داشته باشند.» |
-| ۱ | از هدف تا برنامه | Histogram of 10,000 runs; click a scenario | «پیش از خرج، احتمال رسیدن به هدف را نشان می‌دهیم، بر اساس سابقه‌ی واقعی همان کانال‌ها. مشتری می‌داند چه می‌خرد.» Click محتاط, then متعادل. |
-| ۲ | کیفیت رسانه | Channel grid is scanned; normal vs suspicious view curve | «بازدید جعلی را پیش از خرید پیدا می‌کنیم. این همان چیزی است که امروز در بازار کسی تضمین نمی‌کند.» |
-| ۳ | استودیو محتوا | One idea fans out into four formats; a claim is blocked | «یک ایده، همه‌ی قالب‌ها، به فارسی. ادعای «مقاوم‌ترین میلگرد ایران» بدون مدرک منتشر نمی‌شود.» |
-| ۴ | ناوگان عامل‌ها | Hundreds of points flow between the ledger and agent groups | «صدها عامل کار عملیات را هم‌زمان انجام می‌دهند: حدود ۱۸ هزار کار در یک کمپین، و فقط ۹ تصمیم با انسان.» |
-| ۵ | پایش زنده | Delivery curves; at hour 18 Eitaa lags; click «تأیید» | «وقتی بستری عقب بماند، جایگزین واقعی با یک کلیک فعال می‌شود. در قطعی اینترنت، برنامه‌ی جایگزین امضاشده اجرا می‌شود.» |
-| ۶ | پرداخت با مدرک | Evidence grades A–D; money flows only from A and B | «تأمین‌کننده وقتی پول می‌گیرد که مدرکش پذیرفته شود. هر عدد گزارش منبع دارد.» |
-| ✦ | شروع همکاری | Points form «۱۰ روز»; dashboard button | «ده روز با هم: پنج مشتری، سه پرونده‌ی قبلی، یک نفر از عملیات.» Then open the dashboard. |
+| ۰ | Opening | Noise (the market's untrustworthy numbers) pulls into order and the map forms | «بازار پر از عدد است و کمتر عددی قابل اعتماد است. راوی این هیاهو را به یک نقشه‌ی قابل اثبات تبدیل می‌کند.» |
+| ۱ | سنجه | A scan sweeps the map; suspicious suppliers turn red and their links are cut | «پیش از خرج، رفتار واقعی بازدید هر کانال را می‌سنجیم.» Click a red node to show why it was flagged. |
+| ۲ | پیش‌نما | A ring around the brand fills to the probability; each channel shows its range | «پیش از خرج می‌دانید احتمال رسیدن به هدف چقدر است.» Drag the target slider. |
+| ۳ | ناوگان | Hundreds of particles run from eight agent groups to every channel | «صدها عامل کار عملیات را هم‌زمان انجام می‌دهند؛ حدود ۱۸ هزار کار و فقط ۹ تصمیم با انسان.» |
+| ۴ | استودیو | Content leaves the brand and takes each channel's format | «یک ایده، قالب هر بستر.» Click a channel to show its version. |
+| ۵ | دیده‌بان | Pulses on every link; Eitaa turns red; one click activates Bale | Click «تأیید». Then flip «قطع اینترنت بین‌الملل»: Telegram and Instagram drop and the plan continues on domestic channels. |
+| ۶ | سند | Results return as receipts with a grade; gold coins flow out only for A and B | «پول فقط در برابر مدرک پذیرفته پرداخت می‌شود.» |
+| ۷ | پاسخ | Questions flow in from the audience; enquiries go to the sales node | «دستیار برند به پرسش فنی و قیمت جواب می‌دهد و استعلام را با نام پروژه به فروش می‌فرستد.» |
+| ✦ | نسخه‌ی شما | Type the partner's name and pick a colour; the whole map recolours | Then press «ورود به داشبورد»: the map zooms into the brand and opens the dashboard. |
 
-Keys: ← next, → previous, ۱–۶ jump to a feature, Home cover, End last slide, F full screen. Each feature has a small «این بخش در داشبورد» link for questions.
+Keys: ← next, → previous, ۱–۷ lenses, Home opening (press again to replay), End last card, F full screen.
 
 ## The example client
 
